@@ -2,9 +2,6 @@ declare global {
   namespace App {
     // No server-side locals — static site
   }
-
-  // Injected by Vite `define` (vite.config.ts) — app version from package.json.
-  const __APP_VERSION__: string;
 }
 
 // @rokkit/states ships JS source; its package `types` points at an unpublished

@@ -126,6 +126,9 @@
       { label: 'Roadmap', href: `${GITHUB}/projects` },
     ]},
   ];
+
+  // The version Sensei last released, read when the site is built (+page.ts).
+  let { data } = $props();
 </script>
 
 <div class="site">
@@ -392,7 +395,7 @@
           A patient observer for AI-assisted work. Built quietly,
           shipped slowly.
         </div>
-        <div class="mono footer-version">v{__APP_VERSION__}</div>
+        <div class="mono footer-version">v{data.version}</div>
       </div>
       <div class="footer-cols gap-14">
         {#each footerCols as col}
