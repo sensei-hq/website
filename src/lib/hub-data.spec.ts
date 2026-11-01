@@ -11,8 +11,8 @@ import {
 import rokkitConfig from '../../rokkit.config.js';
 
 describe('hub-data — portfolio model', () => {
-	it('splits into 3 products and 4 libraries', () => {
-		expect(productList().map((p) => p.id)).toEqual(['sensei', 'torii', 'seiki']);
+	it('splits into 4 products and 4 libraries', () => {
+		expect(productList().map((p) => p.id)).toEqual(['sensei', 'torii', 'seiki', 'katachi']);
 		expect(libraryList().map((p) => p.id)).toEqual(['gateway', 'dbd', 'rokkit', 'kavach']);
 	});
 
@@ -35,7 +35,7 @@ describe('hub-data — portfolio model', () => {
 	it('ids are unique and the index restarts per kind', () => {
 		const ids = PRODUCTS.map((p) => p.id);
 		expect(new Set(ids).size).toBe(ids.length);
-		expect(productList().map((p) => p.index)).toEqual(['01', '02', '03']);
+		expect(productList().map((p) => p.index)).toEqual(['01', '02', '03', '04']);
 		expect(libraryList().map((p) => p.index)).toEqual(['01', '02', '03', '04']);
 	});
 
@@ -57,6 +57,15 @@ describe('hub-data — portfolio model', () => {
 		const labels = NAV_LINKS.map(([, label]) => label);
 		expect(labels).toContain('Products');
 		expect(labels).toContain('Libraries');
+	});
+
+	// Katachi is what Burn-E became (laser-only → paper and wood, layered art, kits):
+	// it graduates from incubating to a product with its own page and repo.
+	it('Katachi is a product with its own page; Burn-E is no longer incubating', () => {
+		const k = productList().find((p) => p.id === 'katachi');
+		expect([k?.href, k?.kanji]).toEqual(['/katachi', '形']);
+		expect(INCUBATING.map((p) => p.id)).not.toContain('burne');
+		expect(REPOS.map((r) => r.name)).toContain('sensei-hq/katachi');
 	});
 
 	it('open-source repos all point at github.com/sensei-hq', () => {

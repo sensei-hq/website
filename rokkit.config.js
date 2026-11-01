@@ -24,7 +24,7 @@ export default {
     kavach:  { light: 'oklch(0.485 0.170 305)', dark: 'oklch(0.700 0.150 305)' },
     magpie:  { light: 'oklch(0.500 0.120 210)', dark: 'oklch(0.720 0.110 200)' },
     kata:    { light: 'oklch(0.500 0.130 150)', dark: 'oklch(0.720 0.120 145)' },
-    burne:   { light: 'oklch(0.510 0.150 50)',  dark: 'oklch(0.730 0.140 50)'  },
+    katachi: { light: 'oklch(0.520 0.085 65)',  dark: 'oklch(0.780 0.070 70)'  },
   },
 
   themes: ['zen-sumi'],

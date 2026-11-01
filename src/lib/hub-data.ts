@@ -77,6 +77,14 @@ export const PRODUCTS: Product[] = [
     meta: ['Self-hosted', 'SSO · SCIM', 'Full audit trail'],
     status: 'Beta', href: '/torii-seiki#seiki',
   },
+  {
+    id: 'katachi', kind: 'product', index: '04', kanji: '形', name: 'Katachi',
+    category: 'Web · Craft',
+    tagline: 'From a photo to a cut.',
+    blurb: 'For hobbyists with a laser or a cutter and no time for a vector editor. Snap a sketch and the thing it must fit, say what you want, and get measured, cut-ready parts with a preview before any material is used.',
+    meta: ['Phone or browser', 'Laser cutters today', 'G-code · SVG'],
+    status: 'Preview', href: '/katachi',
+  },
 
   // ── Libraries — things you build on ─────────────────────────────────────
   {
@@ -131,10 +139,6 @@ export const INCUBATING: IncubatingProduct[] = [
     category: 'Local-first · Fitness',
     tagline: 'Training that meets you where you are.',
     blurb: 'AI programs your workouts and adapts to your real progress. No cloud subscription, no rented streaks — your training stays yours.' },
-  { id: 'burne', kanji: '燃', name: 'Burn-E', label: 'Nen · to burn',
-    category: 'Desktop · Fabrication',
-    tagline: 'A visual G-code editor for laser work.',
-    blurb: 'Design, preview and tune toolpaths for laser cutting and engraving — see the burn before you commit the material.' },
 ];
 
 export const REPOS: Repo[] = [
@@ -142,6 +146,7 @@ export const REPOS: Repo[] = [
   { name: 'sensei-hq/dbd', accentClass: 'bg-dbd', lang: 'Rust', note: 'Schema design, library and CLI', href: 'https://github.com/sensei-hq/dbd' },
   { name: 'sensei-hq/rokkit', accentClass: 'bg-rokkit', lang: 'Svelte', note: 'Data-driven components', href: 'https://github.com/sensei-hq/rokkit' },
   { name: 'sensei-hq/kavach', accentClass: 'bg-kavach', lang: 'TypeScript', note: 'Auth for SvelteKit', href: 'https://github.com/sensei-hq/kavach' },
+  { name: 'sensei-hq/katachi', accentClass: 'bg-katachi', lang: 'Svelte', note: 'Snap → Make craft tool', href: 'https://github.com/sensei-hq/katachi' },
 ];
 
 export const NAV_LINKS = [

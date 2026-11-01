@@ -4,7 +4,7 @@ import AxeBuilder from '@axe-core/playwright';
 // WCAG 2.1 AA colour-contrast on every top-level page, in BOTH themes. The
 // named-token palette must stay legible when it flips, so we run axe's
 // `color-contrast` rule against each page with data-mode forced light and dark.
-const PAGES = ['/', '/torii-seiki', '/sensei', '/sensei/docs', '/sensei/faq', '/privacy', '/terms'];
+const PAGES = ['/', '/torii-seiki', '/katachi', '/sensei', '/sensei/docs', '/sensei/faq', '/privacy', '/terms'];
 const MODES = ['light', 'dark'] as const;
 
 for (const path of PAGES) {
