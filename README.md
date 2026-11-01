@@ -1,9 +1,9 @@
 ---
 organization: Sensei HQ
-workspace: sensei
+workspace: website
 role: website
-tagline: Sensei marketing site
-summary: Marketing website for Sensei.
+tagline: Sensei HQ studio site
+summary: The sensei-hq.com site — the studio home and a page for each product (Sensei, Torii · Seiki, Katachi).
 stack: [sveltekit, svelte, typescript]
 ---
 
