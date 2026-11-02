@@ -37,3 +37,17 @@ test.describe('Sensei HQ hub at /', () => {
     await expect(page.locator('nav a[href="#libraries"]').first()).toBeVisible();
   });
 });
+
+test.describe('Still taking shape', () => {
+  test('Katachi sits among the incubating, marked Preview and linked to its page', async ({ page }) => {
+    await page.goto('/');
+    const section = page.locator('#incubation');
+    const katachi = section.locator('a[href="/katachi"]');
+    await expect(katachi).toBeVisible();
+    await expect(katachi).toContainText('Katachi');
+    await expect(katachi).toContainText('Preview');
+    await expect(katachi).not.toContainText('Incubating');
+    await expect(section.getByText('Incubating')).toHaveCount(2);
+    await expect(page.locator('#products a[href="/katachi"]')).toHaveCount(0);
+  });
+});

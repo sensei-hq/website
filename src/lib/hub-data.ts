@@ -32,6 +32,9 @@ export interface IncubatingProduct {
   category: string;
   tagline: string;
   blurb: string;
+  /** an experiment is Incubating; one you can already try is a Preview, with its own page */
+  status: 'Incubating' | 'Preview';
+  href?: string;
 }
 
 export interface Principle {
@@ -77,15 +80,6 @@ export const PRODUCTS: Product[] = [
     meta: ['Self-hosted', 'SSO · SCIM', 'Full audit trail'],
     status: 'Beta', href: '/torii-seiki#seiki',
   },
-  {
-    id: 'katachi', kind: 'product', index: '04', kanji: '形', name: 'Katachi',
-    category: 'Web · Craft',
-    tagline: 'From a photo to a cut.',
-    blurb: 'For hobbyists with a laser or a cutter and no time for a vector editor. Snap a sketch and the thing it must fit, say what you want, and get measured, cut-ready parts with a preview before any material is used.',
-    meta: ['Phone or browser', 'Laser cutters today', 'G-code · SVG'],
-    status: 'Preview', href: '/katachi',
-  },
-
   // ── Libraries — things you build on ─────────────────────────────────────
   {
     id: 'gateway', kind: 'library', index: '01', kanji: '関', name: 'Gateway', lang: 'Rust',
@@ -131,14 +125,21 @@ export const PRINCIPLES: Principle[] = [
 ];
 
 export const INCUBATING: IncubatingProduct[] = [
+  { id: 'katachi', kanji: '形', name: 'Katachi', label: 'Katachi · shape',
+    category: 'Web · Craft',
+    tagline: 'From a photo to a cut.',
+    blurb: 'For hobbyists with a laser or a cutter and no time for a vector editor. Snap a sketch and the thing it must fit, say what you want, and get measured, cut-ready parts with a preview before any material is used.',
+    status: 'Preview', href: '/katachi' },
   { id: 'magpie', kanji: '集', name: 'Magpie', label: 'Shū · to gather',
     category: 'Local-first · Library',
     tagline: 'Your whole library, in one nest.',
-    blurb: 'Books, comics, manga and webtoons — collected, organized and read in one place. No accounts, no clouds, just your shelf.' },
+    blurb: 'Books, comics, manga and webtoons — collected, organized and read in one place. No accounts, no clouds, just your shelf.',
+    status: 'Incubating' },
   { id: 'kata', kanji: '型', name: 'Kata', label: 'Kata · form',
     category: 'Local-first · Fitness',
     tagline: 'Training that meets you where you are.',
-    blurb: 'AI programs your workouts and adapts to your real progress. No cloud subscription, no rented streaks — your training stays yours.' },
+    blurb: 'AI programs your workouts and adapts to your real progress. No cloud subscription, no rented streaks — your training stays yours.',
+    status: 'Incubating' },
 ];
 
 export const REPOS: Repo[] = [

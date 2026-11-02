@@ -21,13 +21,17 @@
 
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
     {#each INCUBATING as p (p.id)}
-      <div class="incubation-card border border-paper-edge border-dashed rounded-lg text-{p.id}">
+      <svelte:element
+        this={p.href ? 'a' : 'div'}
+        href={p.href}
+        class="incubation-card border border-paper-edge rounded-lg no-underline text-{p.id}"
+        class:border-dashed={p.status === 'Incubating'}>
         <div class="p-6 flex flex-col" style="flex:1">
           <div class="flex items-center justify-between">
             <span class="kanji text-{p.id} text-3xl" style="line-height:1">{p.kanji}</span>
             <span class="flex items-center gap-2 border border-paper-edge rounded-sm px-2 py-1 text-ink-soft mono text-xs" style="white-space:nowrap">
               <span class="incubation-dot" style="background:var(--{p.id})"></span>
-              Incubating
+              {p.status}
             </span>
           </div>
           <div class="flex items-baseline gap-2 mt-5 mb-1">
@@ -38,7 +42,7 @@
           <p class="display text-ink m-0 text-base" style="font-weight:400;line-height:1.3">{p.tagline}</p>
           <p class="text-ink-mute mt-2 text-sm" style="line-height:1.6">{p.blurb}</p>
         </div>
-      </div>
+      </svelte:element>
     {/each}
   </div>
 </section>
