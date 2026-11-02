@@ -35,12 +35,8 @@ bun run build        # → build/
 - **Products and libraries** are data: add an entry to `src/lib/hub-data.ts`, and its accent
   hue to `rokkit.config.js` and `uno.config.js` (a test checks every id has one).
 - **A product page** keeps its copy in `src/lib/<product>-data.ts` beside its route.
-- **The Sensei version** on `/sensei` is read at build time from the `VERSION` file on
-  Sensei's `main` branch — what a Sensei release tags. If it cannot be read, the build fails
-  and the live site keeps its last good deployment.
 
 ## Deploy
 
 Cloudflare builds the site from this repository's `main` branch: `bun run build`, output in
-`build/`, from the repository root. A Sensei release rebuilds the site through a Cloudflare
-deploy hook so `/sensei` shows the new version.
+`build/`, from the repository root.

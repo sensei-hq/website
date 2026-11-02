@@ -126,9 +126,6 @@
       { label: 'Roadmap', href: `${GITHUB}/projects` },
     ]},
   ];
-
-  // The version Sensei last released, read when the site is built (+page.ts).
-  let { data } = $props();
 </script>
 
 <div class="site">
@@ -395,7 +392,6 @@
           A patient observer for AI-assisted work. Built quietly,
           shipped slowly.
         </div>
-        <div class="mono footer-version">v{data.version}</div>
       </div>
       <div class="footer-cols gap-14">
         {#each footerCols as col}
@@ -1129,11 +1125,6 @@
     color: var(--sumi-3);
     max-width: 280px;
     line-height: 1.6;
-  }
-  .footer-version {
-    font-size: var(--text-xs);
-    color: var(--sumi-4);
-    margin-top: 14px;
   }
   .footer-cols {
     display: flex;
