@@ -10,6 +10,23 @@ html, body {
   font-family: var(--font-ui);
 }
 
+/* Hairline figures: the focused (lit) element draws in the brand accent.
+   The library scopes its own palette under :where(), so this wins without
+   !important — and it follows every use:hairline figure automatically. */
+[data-hairline] svg .hi {
+  stroke: var(--accent);
+}
+
+/* Motion trace: whatever the figure is currently moving also takes the
+   accent (tagged `mv` by the use:hairline action). Dots are fills,
+   everything else is strokes; resting (.off) dots stay dim. */
+[data-hairline] svg .mv:not(.dot) {
+  stroke: var(--accent);
+}
+[data-hairline] svg .dot.mv:not(.off) {
+  fill: var(--accent);
+}
+
 /* Shared editorial chrome for the legal / docs / faq pages — one definition
    (DRY) instead of a duplicated <style> block per page. The title's responsive
    size is a utility on each heading (`text-2xl lg:text-3xl`), per the md:/lg:

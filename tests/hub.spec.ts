@@ -36,6 +36,14 @@ test.describe('Sensei HQ hub at /', () => {
     await expect(page.locator('nav a[href="#products"]').first()).toBeVisible();
     await expect(page.locator('nav a[href="#libraries"]').first()).toBeVisible();
   });
+
+  test('Sensei, Torii and Seiki are marked Preview (not Available)', async ({ page }) => {
+    for (const href of ['/sensei', '/torii-seiki', '/torii-seiki#seiki']) {
+      const card = page.locator(`#products a[href="${href}"]`).first();
+      await expect(card).toContainText('Preview');
+      await expect(card).not.toContainText('Available');
+    }
+  });
 });
 
 test.describe('Still taking shape', () => {

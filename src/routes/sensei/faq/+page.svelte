@@ -3,9 +3,9 @@
 
   const faqs = [
     { q: 'Which AI assistants does sensei work with?',
-      a: 'Any AI coding assistant that speaks MCP — Claude Code, Cursor, Windsurf, Copilot, Codex, and Aider. Sensei connects via its MCP server and adapts to each platform\'s capabilities through a feature registry.' },
+      a: 'Any AI coding assistant that speaks MCP — Claude Code, Cursor, Windsurf, VS Code, Zed, and Claude Desktop. Sensei connects via its MCP server and adapts to each platform\'s capabilities through a feature registry.' },
     { q: 'What does sensei ship with?',
-      a: 'A full toolkit: 20 slash commands for phased development (from /idea through /validate), 8 specialist agents (analyst, developer, acceptance tester, security reviewer, performance engineer, DevOps/SRE, UX designer, and persona reviewer), plus skills, hooks, and MCP tools for code search, pattern detection, and call graph analysis.' },
+      a: 'A full toolkit: 20 slash commands for phased development (from /idea through /validate), 9 specialist agents (analyst, developer, acceptance tester, security reviewer, performance engineer, DevOps/SRE, UX designer, persona reviewer, and test reviewer), plus skills, hooks, and MCP tools for code search, pattern detection, and call graph analysis.' },
     { q: 'How does the phased workflow work?',
       a: 'Sensei organizes development into phases — idea, analyze, blueprint, experiment, plan, build, and validate. Each phase produces artifacts that carry context forward. You can follow the full workflow or pick a recipe (Lean, Exploratory, Maintenance) that fits the task.' },
     { q: 'Does sensei see my code?',

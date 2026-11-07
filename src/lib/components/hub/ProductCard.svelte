@@ -11,7 +11,7 @@
 
   function statusClass(status: string): string {
     if (status === 'Available') return 'text-on-accent-soft bg-accent-soft';
-    if (status === 'Beta') return 'text-on-warning-soft bg-warning-soft';
+    if (status === 'Beta' || status === 'Preview') return 'text-on-warning-soft bg-warning-soft';
     return 'text-on-success-soft bg-success-soft';
   }
 </script>

@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { browser } from '$app/environment';
   import { base } from '$app/paths';
   import { vibe } from '@rokkit/states';
   import { Button } from '@rokkit/ui';
+  import { hairline } from '$lib/actions/hairline.js';
   import { heroBrief, surfaces } from '$lib/sensei-surfaces-data';
   import type {
     AnatomyRowsMech,
@@ -19,18 +19,9 @@
   } from '$lib/sensei-surfaces-data';
 
   const GITHUB = 'https://github.com/sensei-hq/sensei';
-  const RELEASES = 'https://github.com/sensei-hq/sensei-releases';
-  const RELEASE_BASE = `${RELEASES}/releases/latest/download`;
-
-  // ── Platform detection ──────────────────────────────────────
-  let os = $state('macOS');
-  let dlFile = $state('Sensei_aarch64.dmg');
-
-  if (browser) {
-    const ua = navigator.userAgent || '';
-    if (/Win/.test(ua)) { os = 'Windows'; dlFile = 'Sensei_x86_64-setup.exe'; }
-    else if (/Linux/.test(ua)) { os = 'Linux'; dlFile = 'sensei_amd64.AppImage'; }
-  }
+  // Releases ship on the sensei repo with version-pinned asset names, so the
+  // download CTAs link the latest release page instead of guessing a file.
+  const RELEASES_URL = `${GITHUB}/releases/latest`;
 
   // ── Theme toggle ────────────────────────────────────────────
   let isDark = $derived(vibe.mode === 'dark');
@@ -112,6 +103,7 @@
   const footerCols = [
     { title: 'Product', links: [
       { label: 'Download', href: '#' },
+      { label: 'Relay', href: `${base}/sensei/relay` },
       { label: 'FAQ', href: `${base}/sensei/faq` },
       { label: 'Docs', href: `${base}/sensei/docs` },
       { label: 'Changelog', href: `${GITHUB}/releases` },
@@ -170,9 +162,9 @@
         chatbot. Not a copilot. A patient observer.
       </p>
       <div class="hero-actions gap-4">
-        <Button href="{RELEASE_BASE}/{dlFile}" variant="primary" size="lg">
+        <Button href={RELEASES_URL} variant="primary" size="lg">
           <span class="kanji text-lg" style="line-height: 1">下</span>
-          Download for {os}
+          Download Sensei
         </Button>
         <a href="#how" class="hero-link">See how it works ↓</a>
       </div>
@@ -254,7 +246,7 @@
     <div class="gallery-inner">
       <div class="section-tag">The screens · 面</div>
       <h2 class="display gallery-heading mb-4">
-        Five surfaces,<br/>one rhythm.
+        Seven surfaces,<br/>one rhythm.
       </h2>
       <p class="gallery-sub display mb-8">
         Each surface answers one question and stays quiet otherwise. The pixels will keep
@@ -330,9 +322,9 @@
         No surprises.
       </p>
       <div class="mt-11">
-        <Button href="{RELEASE_BASE}/{dlFile}" variant="primary" size="lg">
+        <Button href={RELEASES_URL} variant="primary" size="lg">
           <span class="kanji text-lg" style="line-height: 1">下</span>
-          Download for {os}
+          Download Sensei
         </Button>
       </div>
     </div>
@@ -347,8 +339,8 @@
       </h2>
       <div class="faq-cards gap-6">
         {#each [
-          { q: 'What platforms?', a: 'Claude Code, Cursor, Windsurf, Copilot, Codex, Aider — anything that speaks MCP.' },
-          { q: 'What\'s included?', a: '20 commands, 8 agents, skills, hooks, and MCP tools for code search, patterns, and call graph analysis.' },
+          { q: 'What platforms?', a: 'Claude Code, Cursor, Windsurf, VS Code, Zed, Claude Desktop — anything that speaks MCP.' },
+          { q: 'What\'s included?', a: '20 commands, 9 agents, skills, hooks, and MCP tools for code search, patterns, and call graph analysis.' },
           { q: 'Will it slow me down?', a: 'Rust daemon, event-driven. Ollama is optional and hardware-aware — it degrades gracefully.' },
           { q: 'Is it free?', a: 'Free during preview. If we move to a paid tier, early adopters get a permanent discount.' },
         ] as card}
@@ -461,7 +453,6 @@
     <div class="surf-grid gap-16 items-start">
       <div>
         <div class="gap-3 mb-4 flex items-baseline">
-          <span class="mono text-accent text-sm surf-n">{s.n}</span>
           <span class="kanji text-accent text-2xl surf-id-kanji">{s.kanji}</span>
           <div class="gap-1 flex flex-col">
             <span class="display font-normal text-2xl surf-name">{s.name}</span>
@@ -475,7 +466,6 @@
           {#each s.lead as seg (seg.t)}{#if seg.em}<span class="text-ink">{seg.t}</span>{:else}{seg.t}{/if}{/each}
         </p>
         <div class="surf-why pl-3 flex items-start gap-2.5">
-          <span class="surf-eyebrow text-xs text-ink-soft font-semibold">Why</span>
           <span class="text-sm text-ink-mute italic surf-why-note">{s.why}</span>
         </div>
       </div>
@@ -485,6 +475,11 @@
         {@render mechanic(mech)}
       {/each}
     </div>
+    {#if s.detailHref}
+      <div class="mt-8">
+        <a href="{base}{s.detailHref}" class="detail-link">{s.detailLabel} →</a>
+      </div>
+    {/if}
   </div>
 {/snippet}
 
@@ -571,10 +566,18 @@
           <div class="flex items-center text-accent mono text-sm px-1.5">→</div>
         {/if}
         <div class="flow-step py-4 px-4 flex-1 bg-paper border border-paper-edge rounded-lg flex flex-col gap-1.5">
-          <span class="mono text-accent text-xs">{(i + 1).toString().padStart(2, '0')}</span>
-          <span class="display font-medium text-ink text-lg flow-step-title">{st.title}</span>
-          <span class="surf-eyebrow text-xs text-ink-soft font-semibold">{st.who}</span>
-          <span class="text-xs text-ink-mute flow-step-desc">{st.desc}</span>
+          <div class="flow-text">
+            <span class="mono text-accent text-xs">{(i + 1).toString().padStart(2, '0')}</span>
+            <span class="display font-medium text-ink text-lg flow-step-title">{st.title}</span>
+            <span class="surf-eyebrow text-xs text-ink-soft font-semibold">{st.who}</span>
+            <span class="text-xs text-ink-mute flow-step-desc">{st.desc}</span>
+          </div>
+          {#if st.figure}
+            <div
+              class="flow-hairline"
+              use:hairline={{ figure: st.figure, play: true, intensity: 0.4, motion: st.motion, label: st.title }}>
+            </div>
+          {/if}
         </div>
       {/each}
     </div>
@@ -898,10 +901,34 @@
 
   /* Block frame: identity column + rationale column. */
   .surf-grid { display: grid; grid-template-columns: 1fr 1.25fr; }
-  .surf-n { letter-spacing: 0.06em; }
   .surf-id-kanji { line-height: 1; }
+  .detail-link { color: var(--accent); text-decoration: none; font-size: 14px; }
+  .detail-link:hover { text-decoration: underline; }
   .surf-name { letter-spacing: -0.015em; line-height: 1; }
   .surf-headline { line-height: 1.25; letter-spacing: -0.01em; max-width: 380px; }
+  /* Flow steps with a figure: copy left, square figure right in 2:1 columns. */
+  .flow-step:has(.flow-hairline) {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+  .flow-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 2 1 0;
+    min-width: 0;
+  }
+  .flow-hairline {
+    flex: 1 1 0;
+    min-width: 96px;
+    aspect-ratio: 1 / 1;
+    --hairline-plate: var(--paper);
+    --hairline-hi: var(--ink);
+    --hairline-edge: var(--ink-mute);
+    --hairline-mid: var(--ink-soft);
+    --hairline-lo: var(--ink-faint);
+  }
   .surf-lead { line-height: 1.65; }
   .surf-why { border-left: 2px solid var(--accent-soft); }
   .surf-why-note { line-height: 1.55; }
@@ -1166,6 +1193,15 @@
     .gallery-heading { font-size: var(--text-3xl); }
     .surf-grid { grid-template-columns: 1fr; gap: 40px; }
     .surf-headline { max-width: none; }
+    .flow-step:has(.flow-hairline) { flex-direction: column; align-items: stretch; gap: 6px; }
+    .flow-step:has(.flow-hairline) > .flow-hairline {
+      order: -1;
+      flex: none;
+      width: 100%;
+      height: 72px;
+      aspect-ratio: auto;
+      min-width: 0;
+    }
     .today-row { grid-template-columns: 1fr; gap: 8px; }
     .grid-3 { grid-template-columns: 1fr; }
     .hero-focal { grid-template-columns: 1fr; gap: 24px; }

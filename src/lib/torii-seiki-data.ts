@@ -42,7 +42,7 @@ export const CLIENTS: Client[] = [
     blurb: 'Everything a member needs and nothing they don’t. Ask a model, keep a library, try things in the playground — and always see where the answer actually ran.',
     surfaces: ['Workspace', 'Ask', 'Library', 'Playground', 'Activity', 'Settings'],
     meta: ['macOS · Windows · Linux', 'Tauri', 'Works offline'],
-    status: 'Beta',
+    status: 'Preview',
   },
   {
     id: 'seiki', kanji: '社', gloss: 'Sha · the sanctuary',
@@ -51,7 +51,7 @@ export const CLIENTS: Client[] = [
     blurb: 'The quiet room where the rules are kept. Every request, every provider, every fallback chain and every budget — set once, cascading down your org, without standing over anyone’s shoulder.',
     surfaces: ['Overview', 'Requests & audit', 'Organization', 'Models', 'Routing', 'Connections', 'Governance', 'Budgets'],
     meta: ['Self-hosted', 'SSO · SCIM', 'Full audit trail'],
-    status: 'Beta',
+    status: 'Preview',
   },
 ];
 

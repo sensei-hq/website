@@ -12,6 +12,8 @@
  * and the accent border colours in the page.
  */
 
+import type { HairlineFigure } from '$lib/actions/hairline.js';
+
 /** Semantic colour keys → text-<token> / var(--<token>) in the page. */
 export type Tone = 'accent' | 'success' | 'warning' | 'ink-mute' | 'ink-soft';
 
@@ -43,6 +45,10 @@ export interface FlowStep {
 	title: string;
 	who: string;
 	desc: string;
+	/** Optional mini figure rendered above the step copy. */
+	figure?: HairlineFigure;
+	/** Pass false to keep the single-focus highlight (no motion trail). */
+	motion?: boolean;
 }
 export interface AnatomyCard {
 	title: string;
@@ -105,7 +111,7 @@ export type Mechanic =
 	| PillsMech
 	| ModesMech;
 
-/** One of the five surfaces: identity → headline → lead → why → mechanics. */
+/** One of the surfaces: identity → headline → lead → why → mechanics. */
 export interface Surface {
 	n: string;
 	kanji: string;
@@ -115,6 +121,9 @@ export interface Surface {
 	lead: LeadSegment[];
 	why: string;
 	mechanics: Mechanic[];
+	/** Optional link to a full detail page, rendered after the mechanics. */
+	detailHref?: string;
+	detailLabel?: string;
 }
 
 // ── Hero centrepiece — the product's voice, not a screenshot ────────
@@ -180,7 +189,59 @@ export const heroBrief: HeroBrief = {
 
 export const surfaces: Surface[] = [
 	{
+		n: '00',
+		kanji: '継',
+		name: 'Relay',
+		role: 'The run engine',
+		headline: 'One run, however many assistants.',
+		lead: [
+			{ t: 'Work passes between assistants; ' },
+			{ t: 'sensei holds the thread.', em: true },
+			{ t: ' Plans become runs you can watch, pause, and steer — whoever is doing the work.' }
+		],
+		why: 'Many assistants help; nobody owns the handoff. Relay makes the handoff the product.',
+		mechanics: [
+			{
+				kind: 'flow',
+				label: 'The motion',
+				steps: [
+					{ title: 'Plan', who: 'You', desc: 'A goal with steps, limits, and owners.', figure: 'branches' },
+					{ title: 'Run', who: 'Any driver', desc: 'Each step on whichever backend fits.', figure: 'terminal' },
+					{ title: 'Gate', who: 'You approve', desc: 'It pauses where a human must decide.', figure: 'slow', motion: false }
+				]
+			}
+		],
+		detailHref: '/sensei/relay',
+		detailLabel: 'How relay works'
+	},
+	{
 		n: '01',
+		kanji: '図',
+		name: 'Diagrams & Metrics',
+		role: '図 · the code you have',
+		headline: 'The index, the map, and the numbers — one honest picture.',
+		lead: [
+			{ t: 'Sensei reads your codebase the way it reads your sessions: ' },
+			{ t: 'every symbol indexed, every call mapped,', em: true },
+			{ t: ' and the few numbers that say whether you and your assistant are getting better together.' }
+		],
+		why: 'An assistant that cannot see the shape of your code guesses. The diagram is what turns a guess into a reading.',
+		mechanics: [
+			{
+				kind: 'flow',
+				label: 'What it draws',
+				steps: [
+					{ title: 'The index', who: 'Sensei', desc: 'Every symbol, call, and session — searchable.', figure: 'phosphor' },
+					{ title: 'The map', who: 'Sensei', desc: 'The call graph, drawn so a human can read it.', figure: 'terrain' },
+					{ title: 'The numbers', who: 'You', desc: 'First-try-right and friends, honestly scored.', figure: 'plot' }
+				]
+			}
+		],
+		detailHref: '/sensei/diagrams',
+		detailLabel: 'Tour the diagrams'
+	},
+	{
+		n: '02',
 		kanji: '観',
 		name: 'Today',
 		role: '家 · the morning brief',
@@ -227,7 +288,7 @@ export const surfaces: Surface[] = [
 		]
 	},
 	{
-		n: '02',
+		n: '03',
 		kanji: '録',
 		name: 'Sessions',
 		role: '録 · the week in review',
@@ -283,7 +344,7 @@ export const surfaces: Surface[] = [
 		]
 	},
 	{
-		n: '03',
+		n: '04',
 		kanji: '今',
 		name: 'Insights',
 		role: '今 · candidates for triage',
@@ -324,7 +385,7 @@ export const surfaces: Surface[] = [
 		]
 	},
 	{
-		n: '04',
+		n: '05',
 		kanji: '覚',
 		name: 'Memories',
 		role: '覚 · adopted teachings',
@@ -367,7 +428,7 @@ export const surfaces: Surface[] = [
 		]
 	},
 	{
-		n: '05',
+		n: '06',
 		kanji: '具',
 		name: 'Instruments',
 		role: '具 · your tools, observed',
