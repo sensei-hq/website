@@ -31,6 +31,7 @@
       title: 'Connect',
       items: [
         { label: 'GitHub', href: 'https://github.com/sensei-hq', external: true },
+        { label: 'Sponsor', href: 'https://github.com/sponsors/sensei-hq', external: true },
         { label: 'Twitter', href: 'https://twitter.com/sensei_hq', external: true },
         { label: 'hi@sensei-hq.com', href: 'mailto:hi@sensei-hq.com', external: false },
       ],

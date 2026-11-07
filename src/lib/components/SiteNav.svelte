@@ -48,6 +48,16 @@
           size="sm"
           label={cta.label}
           class="ml-1" />
+        <a href="https://github.com/sponsors/sensei-hq"
+           target="_blank"
+           rel="noopener"
+           aria-label="Sponsor sensei-hq on GitHub"
+           title="Sponsor"
+           class="sponsor-icon ml-1 inline-flex items-center p-1 -m-1">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+          </svg>
+        </a>
       </div>
 
       <!-- Hamburger (small mobile) -->
@@ -86,6 +96,16 @@
         size="md"
         label={cta.label}
         onclick={close} />
+      <a href="https://github.com/sponsors/sensei-hq"
+         target="_blank"
+         rel="noopener"
+         class="flex items-center gap-3 text-ink-mute text-base nav-link no-underline"
+         onclick={close}>
+        <svg class="sponsor-icon flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+        </svg>
+        Sponsor
+      </a>
     </div>
   {/if}
 </div>
@@ -107,6 +127,14 @@
   }
   .nav-link:hover {
     color: var(--ink);
+  }
+  .sponsor-icon {
+    color: #db61a2;
+    transition: opacity 0.15s;
+  }
+  a:hover > .sponsor-icon,
+  a.sponsor-icon:hover {
+    opacity: 0.75;
   }
   .site-nav-toggle {
     align-items: center;

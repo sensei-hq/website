@@ -55,7 +55,7 @@
     </div>
     <!-- Kanji panel -->
     <div class="kanji-panel border-l border-paper-edge">
-      <span class="kanji text-{p.id}" style="font-size:220px;line-height:1;opacity:0.92">{p.kanji}</span>
+      <span class="kanji text-{p.id} featured-kanji">{p.kanji}</span>
       <span class="mono text-xs" style="position:absolute;bottom:18px;right:20px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-faint)">Kan · to observe</span>
     </div>
   </a>
@@ -107,6 +107,25 @@
     position: relative;
     min-height: 320px;
     overflow: hidden;
+  }
+  .featured-kanji {
+    font-size: 220px;
+    line-height: 1;
+    opacity: 0.92;
+  }
+  /* Below md the featured card stacks: content first, kanji band below. */
+  @media (max-width: 767px) {
+    .featured-card {
+      grid-template-columns: 1fr;
+    }
+    .kanji-panel {
+      border-left: none;
+      border-top: 1px solid var(--paper-edge);
+      min-height: 200px;
+    }
+    .featured-kanji {
+      font-size: 132px;
+    }
   }
   .product-card {
     display: flex;
