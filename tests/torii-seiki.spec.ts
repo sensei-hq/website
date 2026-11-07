@@ -29,4 +29,11 @@ test.describe('Torii · Seiki product page at /torii-seiki', () => {
     await expect(page.locator('[class~="i-brand:sensei-hq"]').first()).toBeVisible();
     await expect(page.locator('[class~="i-brand:sensei"]')).toHaveCount(0);
   });
+
+  test('positions Seiki as managed SaaS, not self-hosted', async ({ page }) => {
+    // Settled 2026-11-07: SaaS-first, self-hosting deferred to later.
+    await expect(page.locator('body')).toContainText('Fully managed');
+    await expect(page.locator('body')).not.toContainText('Self-hosted');
+    await expect(page.locator('body')).not.toContainText('Strategos');
+  });
 });

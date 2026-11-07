@@ -339,7 +339,7 @@
       </h2>
       <div class="faq-cards gap-6">
         {#each [
-          { q: 'What platforms?', a: 'Claude Code, Cursor, Windsurf, VS Code, Zed, Claude Desktop — anything that speaks MCP.' },
+          { q: 'What platforms?', a: 'Claude Code, OpenCode, Zed, VS Code and Copilot, with transcript, MCP and skills support — more coming soon.' },
           { q: 'What\'s included?', a: '20 commands, 9 agents, skills, hooks, and MCP tools for code search, patterns, and call graph analysis.' },
           { q: 'Will it slow me down?', a: 'Rust daemon, event-driven. Ollama is optional and hardware-aware — it degrades gracefully.' },
           { q: 'Is it free?', a: 'Free during preview. If we move to a paid tier, early adopters get a permanent discount.' },

@@ -3,7 +3,7 @@
 
   const faqs = [
     { q: 'Which AI assistants does sensei work with?',
-      a: 'Any AI coding assistant that speaks MCP — Claude Code, Cursor, Windsurf, VS Code, Zed, and Claude Desktop. Sensei connects via its MCP server and adapts to each platform\'s capabilities through a feature registry.' },
+      a: 'Claude Code, OpenCode, Zed, VS Code and Copilot, with transcript, MCP and skills support — more coming soon. Sensei connects via its MCP server and adapts to each platform\'s capabilities through a feature registry.' },
     { q: 'What does sensei ship with?',
       a: 'A full toolkit: 20 slash commands for phased development (from /idea through /validate), 9 specialist agents (analyst, developer, acceptance tester, security reviewer, performance engineer, DevOps/SRE, UX designer, persona reviewer, and test reviewer), plus skills, hooks, and MCP tools for code search, pattern detection, and call graph analysis.' },
     { q: 'How does the phased workflow work?',

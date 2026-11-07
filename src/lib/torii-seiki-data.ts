@@ -50,19 +50,19 @@ export const CLIENTS: Client[] = [
     tagline: 'The sanctuary behind it.',
     blurb: 'The quiet room where the rules are kept. Every request, every provider, every fallback chain and every budget — set once, cascading down your org, without standing over anyone’s shoulder.',
     surfaces: ['Overview', 'Requests & audit', 'Organization', 'Models', 'Routing', 'Connections', 'Governance', 'Budgets'],
-    meta: ['Self-hosted', 'SSO · SCIM', 'Full audit trail'],
+    meta: ['Fully managed', 'SSO · SCIM', 'Full audit trail'],
     status: 'Preview',
   },
 ];
 
 export const PLANES: Plane[] = [
   { label: 'On your device', kanji: '手', text: 'Local models, local context, nothing leaves the machine. Marked as such on every answer.' },
-  { label: 'Via the gateway', kanji: '関', text: 'Routed, logged and budgeted through your own deployment — in the region you chose.' },
+  { label: 'Via the gateway', kanji: '関', text: 'Routed, logged and budgeted through the hosted gateway — in the region you chose.' },
 ];
 
 export const CAPABILITIES: Capability[] = [
   { kanji: '路', title: 'Fallback chains', text: 'Order your models once — primary, then the next, then the local one. Gateway walks the chain when a provider stalls, and Seiki shows you how often it had to.' },
-  { kanji: '繋', title: 'Connections', text: 'Bring your own keys for every provider and router. Strategos holds the credentials; your apps hold one address.' },
+  { kanji: '繋', title: 'Connections', text: 'Bring your own keys for every provider and router. Seiki holds the credentials in your org vault; your apps hold one address.' },
   { kanji: '具', title: 'MCP & tools', text: 'Register MCP servers — stdio on the desktop, http for shared ones — and allow-list tools per role and space.' },
   { kanji: '鍵', title: 'Programmatic access', text: 'Scoped keys turn the same gateway into an endpoint your own services can call, with usage attributed back to a team.' },
   { kanji: '階', title: 'Hierarchy & budgets', text: 'Org, department, team, person — your real structure. Permissions follow it, and so do spend caps, cascading downward.' },
@@ -70,10 +70,10 @@ export const CAPABILITIES: Capability[] = [
 ];
 
 export const PRIVACY_ROWS: DetailRow[] = [
-  { term: 'Prompts and responses', detail: 'Only to the provider you routed them to.' },
-  { term: 'Audit log', detail: 'Never. It lives in your database.' },
-  { term: 'Usage telemetry', detail: 'Never. There is none to send.' },
-  { term: 'Licence check', detail: 'Once, at install. Offline after that.' },
+  { term: 'Prompts and responses', detail: 'Through the gateway — then only to the provider you routed to.' },
+  { term: 'Provider keys', detail: 'Sealed in your org vault. Members never handle one.' },
+  { term: 'Audit log', detail: 'Immutable. Export or stream it to your SIEM any time.' },
+  { term: 'Identity', detail: 'SSO through your provider. We never see passwords.' },
 ];
 
 export const GATEWAY_ROWS: DetailRow[] = [

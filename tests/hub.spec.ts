@@ -43,6 +43,10 @@ test.describe('Sensei HQ hub at /', () => {
       await expect(card).toContainText('Preview');
       await expect(card).not.toContainText('Available');
     }
+    // Seiki is managed SaaS (2026-11-07); self-hosting comes later, if ever.
+    await expect(page.locator('#products a[href="/torii-seiki#seiki"]').first()).toContainText(
+      'Fully managed'
+    );
   });
 });
 

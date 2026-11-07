@@ -17,7 +17,7 @@
   <title>Torii · Seiki — the gate and the governance plane · Sensei HQ</title>
   <meta
     name="description"
-    content="Torii is the desktop client your team walks through to reach your models; Seiki is the self-hosted governance plane behind it — routing, budgets, audit. Both built on Gateway." />
+    content="Torii is the desktop client your team walks through to reach your models; Seiki is the managed governance plane behind it — routing, budgets, audit. Both built on Gateway." />
 </svelte:head>
 
 <!-- ── Nav ───────────────────────────────────────────────────────────── -->
@@ -59,7 +59,7 @@
         <a href="#clients" class="text-ink-mute text-sm no-underline">Meet Torii and Seiki ↓</a>
       </div>
       <div class="flex flex-wrap gap-4 mt-12">
-        {#each ['Self-hosted', 'Bring your own keys', 'Built on Gateway'] as m (m)}
+        {#each ['Fully managed', 'Bring your own keys', 'Built on Gateway'] as m (m)}
           <span class="mono text-ink-soft text-xs">{m}</span>
         {/each}
       </div>
@@ -208,17 +208,20 @@
           <span class="mono text-ink-soft text-xs" style="letter-spacing:0.12em;text-transform:uppercase">Zō · to keep</span>
         </div>
         <h2 class="display text-ink m-0 text-3xl" style="font-weight:300;line-height:1.15;letter-spacing:-0.022em;max-width:460px">
-          Your prompts stay in your building.
+          Your data stays yours.
         </h2>
         <p class="text-ink-mute mt-4 m-0 text-base" style="line-height:1.7;max-width:460px">
-          Both clients run on your own infrastructure. There is no Sensei HQ account, no
-          telemetry back to us, and no copy of your traffic anywhere we can read it.
-          You hold the provider keys; you choose the region; you can export or delete
-          the whole audit log whenever you like.
+          Seiki runs the governance plane for you: prompts pass through it — that is
+          what makes routing, budgets, and audit possible — encrypted per tenant,
+          with residency pinned to your region. Provider keys live sealed in your
+          org's vault and members never handle one; every request lands in an
+          immutable audit trail you can export or stream to your SIEM. No telemetry
+          you didn't ask for. Need planes inside your own VPC? Self-hosting for
+          regulated tenants is on the roadmap.
         </p>
       </div>
       <div class="border border-paper-edge rounded-lg bg-paper-soft p-7">
-        <span class="mono text-ink-soft block mb-4 text-xs" style="letter-spacing:0.12em;text-transform:uppercase">What leaves your network</span>
+        <span class="mono text-ink-soft block mb-4 text-xs" style="letter-spacing:0.12em;text-transform:uppercase">Where your data goes</span>
         <div class="flex flex-col">
           {#each PRIVACY_ROWS as row, i (row.term)}
             <div class="ts-detail-row py-3 flex items-baseline justify-between gap-6" class:last={i === PRIVACY_ROWS.length - 1}>

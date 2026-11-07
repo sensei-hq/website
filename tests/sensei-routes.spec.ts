@@ -62,16 +62,20 @@ test('Download buttons point at the real releases page', async ({ page }) => {
 
 test('FAQ answers match the shipped product', async ({ page }) => {
   // Counts come from marketplace/catalog.json (20 commands, 9 agents);
-  // platforms from the assistants the daemon actually registers.
+  // supported assistants per 2026-11-07 (mixed support): Claude Code,
+  // OpenCode, Zed, VS Code, Copilot — the rest is "more coming soon".
   await page.goto('/sensei');
   const card = page.locator('.faq-card', { hasText: "What's included?" });
   await expect(card).toContainText('20 commands, 9 agents');
   const platforms = page.locator('.faq-card', { hasText: 'What platforms?' });
-  await expect(platforms).toContainText('Claude Code, Cursor, Windsurf, VS Code, Zed, Claude Desktop');
-  await expect(platforms).not.toContainText('Copilot, Codex');
+  await expect(platforms).toContainText('Claude Code, OpenCode, Zed, VS Code and Copilot');
+  await expect(platforms).toContainText('more coming soon');
+  await expect(platforms).not.toContainText('Cursor');
   await page.goto('/sensei/faq');
   await page.getByText('Which AI assistants does sensei work with?').click();
-  await expect(page.getByText('Claude Code, Cursor, Windsurf, VS Code, Zed, and Claude Desktop').first()).toBeVisible();
+  const assistants = page.locator('.faq-item', { hasText: 'Which AI assistants' });
+  await expect(assistants).toContainText('Claude Code, OpenCode, Zed, VS Code and Copilot');
+  await expect(assistants).toContainText('more coming soon');
   await page.getByText('What does sensei ship with?').click();
   await expect(page.getByText('9 specialist agents').first()).toBeVisible();
 });

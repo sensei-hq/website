@@ -77,7 +77,7 @@ export const PRODUCTS: Product[] = [
     category: 'Web · Governance plane',
     tagline: 'The sanctuary behind the gate.',
     blurb: 'Where the rules are kept: every request, every provider, routing and fallback chains, and budgets that cascade down your real org structure.',
-    meta: ['Self-hosted', 'SSO · SCIM', 'Full audit trail'],
+    meta: ['Fully managed', 'SSO · SCIM', 'Full audit trail'],
     status: 'Preview', href: '/torii-seiki#seiki',
   },
   // ── Libraries — things you build on ─────────────────────────────────────
