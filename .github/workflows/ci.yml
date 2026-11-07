@@ -7,7 +7,9 @@ on:
 
 jobs:
   check:
-    runs-on: ubuntu-latest
+    # Pinned: Playwright 1.59.1 cannot install chromium on ubuntu-26.04
+    # (ubuntu-latest); 24.04 is the newest image it supports.
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
