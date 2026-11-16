@@ -2,8 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { evaluateScene, renderComponent, validateScene, type FrameOp } from './renderer.js';
-import type { SceneSpec } from './scene-schema.js';
+import { evaluateScene, layoutComponents, renderComponent, validateScene, type FrameOp } from './renderer.js';
+import type { ComponentSpec, SceneSpec } from './scene-schema.js';
 
 // The real W builders, loaded from a film's shared.js (string builders only; no DOM at definition
 // time), so the catalog ports are checked against the actual sources instead of copied expectations.
@@ -179,6 +179,30 @@ describe('tracks', () => {
     expect(evaluateScene(spec, 1).map((o) => o.attrs)).toEqual([{ y: '740', height: '0' }, { y: '740', height: '0' }]);
     expect(op(evaluateScene(spec, 1.25), '.bar', 0)).toBeUndefined();
     expect(evaluateScene(spec, 1.25)[0].attrs).toEqual({ y: '497', height: '243' });
+  });
+
+  it('groups nest svg children; svg passes bespoke shapes through', () => {
+    expect(renderComponent({ type: 'group', id: 'g', style: 'fill:red', children: [{ type: 'wire', id: 'w', a: [0, 0], c: [1, 1], b: [2, 0] }] }).svg).toBe(
+      `<g class="g" style="fill:red">${W.wire('w', [0, 0], [1, 1], [2, 0])}</g>`,
+    );
+    expect(renderComponent({ type: 'svg', id: 's', body: '<rect/>' })).toEqual({ svg: '<rect/>', html: '' });
+    expect(validateScene({ components: [{ type: 'group', id: 'g', children: [{ type: 'nope', id: 'x' } as never] }], tracks: [] })).toEqual([
+      "component x: unknown type 'nope'",
+    ]);
+  });
+
+  it('layout preserves svg/html interleave order and grounds headed words', () => {
+    const cs: ComponentSpec[] = [
+      { type: 'board', id: 'bg' },
+      { type: 'raw', id: 'chart', html: '<div class="chart"></div>' },
+      { type: 'svg', id: 'bars', body: '<rect/>' },
+      { type: 'head', id: 'h', line: 'a b', at: 'ground' },
+    ];
+    expect(layoutComponents(cs)).toEqual({
+      cam: `<svg class="art" viewBox="0 0 1920 1080">${W.board('bg')}</svg><div class="chart"></div><svg class="art" viewBox="0 0 1920 1080"><rect/></svg>`,
+      ground: '<div class="words h" style=""><h2 class="line"><span class="line-word" style="display:inline-block;white-space:pre">a </span>' +
+        '<span class="line-word" style="display:inline-block;white-space:pre">b</span></h2></div>',
+    });
   });
 
   it('fade staggers across a group; tween writes attributes', () => {
