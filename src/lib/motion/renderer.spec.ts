@@ -79,8 +79,8 @@ describe('renderer', () => {
     // push lerps 1 -> 1.02 over eio(seg(t, 0, 9)): at t=0 the scale is exactly 1.
     expect(op(evaluateScene(spec, 0), '.cam')).toEqual({ transform: 'scale(1)' });
     expect(op(evaluateScene(spec, 9), '.cam')!.transform).toMatch(/^scale\(1\.02/);
-    // fade is opacity + a rise from dy (default 18).
-    expect(op(evaluateScene(spec, 5.2), '.ev')).toEqual({ opacity: '0', transform: 'translateY(18px)' });
+    // fade is opacity + a rise from dy (default 18), with W.fade's precisions.
+    expect(op(evaluateScene(spec, 5.2), '.ev')).toEqual({ opacity: '0.000', transform: 'translateY(18.0px)' });
     // draw drives strokeDashoffset 1 -> 0.
     expect(op(evaluateScene(spec, 4.6), '.wire')).toEqual({ strokeDasharray: '1 1', strokeDashoffset: '1' });
     expect(op(evaluateScene(spec, 5.3), '.wire')).toEqual({ strokeDasharray: '1 1', strokeDashoffset: '0' });
@@ -160,15 +160,15 @@ describe('tracks', () => {
     const spec = one([{ kind: 'effect', effect: 'words', target: '.title', count: 6, t0: 0 }]);
     const at0 = evaluateScene(spec, 0);
     expect(at0).toHaveLength(6);
-    expect(at0[0].style).toEqual({ opacity: '0', transform: 'translateX(30px)' });
+    expect(at0[0].style).toEqual({ opacity: '0', transform: 'translateX(30.00px)' });
     const late = evaluateScene(spec, 2);
     expect(late.every((o) => o.style!.opacity === '1')).toBe(true);
-    expect(late[0].style).toEqual({ opacity: '1', transform: 'translateX(0px)' });
+    expect(late[0].style).toEqual({ opacity: '1', transform: 'translateX(0.00px)' });
   });
 
   it('settle lands the mark with overshoot, breathe and rotate-in', () => {
     const spec = one([{ kind: 'effect', effect: 'settle', target: '.mark', t0: 0.3, t1: 1, o: 1.4, scaleFrom: 0.7, scaleTo: 1, breatheAmp: 0.012, breatheFreq: 1.6, rotateFrom: -14, rotateTo: 0, rt0: 0.3, rt1: 1.4, opacityMult: 1.5 }]);
-    expect(op(evaluateScene(spec, 0), '.mark')).toEqual({ opacity: '0', transform: 'scale(0.7) rotate(-14deg)' });
+    expect(op(evaluateScene(spec, 0), '.mark')).toEqual({ opacity: '0', transform: 'scale(0.7) rotate(-14.00deg)' });
     const mid = op(evaluateScene(spec, 0.65), '.mark')!;
     expect(mid.opacity).toBe('1');
     expect(mid.transform).toMatch(/^scale\(1\.\d+\) rotate\(-\d/);
@@ -176,9 +176,9 @@ describe('tracks', () => {
 
   it('growBars grows chart bars from per-bar times', () => {
     const spec = one([{ kind: 'effect', effect: 'growBars', target: '.bar', count: 2, t0s: [1, 1.5], dur: 0.5, easing: 'eob', o: 1.1, base: 740, hs: [240, 240], bs: [0, 0] }]);
-    expect(evaluateScene(spec, 1).map((o) => o.attrs)).toEqual([{ y: '740', height: '0' }, { y: '740', height: '0' }]);
+    expect(evaluateScene(spec, 1).map((o) => o.attrs)).toEqual([{ y: '740.0', height: '0.0' }, { y: '740.0', height: '0.0' }]);
     expect(op(evaluateScene(spec, 1.25), '.bar', 0)).toBeUndefined();
-    expect(evaluateScene(spec, 1.25)[0].attrs).toEqual({ y: '497', height: '243' });
+    expect(evaluateScene(spec, 1.25)[0].attrs).toEqual({ y: '497.0', height: '243.0' });
   });
 
   it('groups nest svg children; svg passes bespoke shapes through', () => {
@@ -208,12 +208,12 @@ describe('tracks', () => {
   it('fade staggers across a group; tween writes attributes', () => {
     const spec = one([
       { kind: 'effect', effect: 'fade', target: '.c', count: 3, t0: 0.6, stagger: 0.3 },
-      { kind: 'tween', target: '.rw', prop: 'attr:width', from: 0, to: 91.2, t0: 6.2, t1: 7.6, easing: 'eio' },
+      { kind: 'tween', target: '.rw', prop: 'attr:width', from: 0, to: 91.2, t0: 6.2, t1: 7.6, easing: 'eio', decimals: 1 },
     ]);
     const ops = evaluateScene(spec, 0.75);
     expect(ops).toHaveLength(4);
     expect(Number(op(ops, '.c', 0)!.opacity)).toBeGreaterThan(0);
-    expect(op(ops, '.c', 1)).toMatchObject({ opacity: '0' });
+    expect(op(ops, '.c', 1)).toMatchObject({ opacity: '0.000' });
     expect(evaluateScene(spec, 9).find((o) => o.selector === '.rw')!.attrs).toEqual({ width: '91.2' });
   });
 });

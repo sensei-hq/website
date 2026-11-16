@@ -26,6 +26,7 @@
 		"@types/d3": "^7.4.3",
 		"@types/node": "^25.9.9",
 		"@types/pixelmatch": "^5.2.6",
+		"@types/pngjs": "^6.0.5",
 		"axe-core": "^4.14.0",
 		"pixelmatch": "^8.0.0",
 		"pngjs": "^7.0.0",

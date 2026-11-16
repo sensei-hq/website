@@ -7,19 +7,34 @@ import { fileURLToPath } from 'node:url';
 // imports do not resolve, so the published list is read off disk with the same rule
 // (publish_date <= today in America/Chicago).
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const readJson = (p: string) => JSON.parse(readFileSync(join(root, p), 'utf8'));
+const readJson = (p: string): any => JSON.parse(readFileSync(join(root, p), 'utf8'));
 const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Chicago', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
-const ARTICLES = readJson('src/lib/content/articles/index.json')
-  .filter((e: { publish_date: string }) => e.publish_date <= today)
-  .map((e: { slug: string }) => ({ ...e, sections: readJson(`src/lib/content/articles/${e.slug}.json`).sections }))
-  .sort((a: { publish_date: string }, b: { publish_date: string }) => b.publish_date.localeCompare(a.publish_date));
+interface ArticleEntry { slug: string; title: string; publish_date: string; sections: { id: string; title: string; figure?: unknown; motion?: unknown }[] }
+const ARTICLES: ArticleEntry[] = (readJson('src/lib/content/articles/index.json') as ArticleEntry[])
+  .filter((e) => e.publish_date <= today)
+  .map((e) => ({ ...e, sections: readJson(`src/lib/content/articles/${e.slug}.json`).sections }))
+  .sort((a, b) => b.publish_date.localeCompare(a.publish_date));
+
+/** Scene ids of the film that shares the slug, if any (articles-data load() plays those scenes as figures). */
+const filmScenes = (slug: string): Set<string> => {
+  try {
+    return new Set((readJson(`src/lib/motion/films/${slug}/film.json`).scenes as { id: string }[]).map((s) => s.id));
+  } catch {
+    return new Set();
+  }
+};
+/** Sections that render a <Figure>: an HTML figure, authored motion or a same-slug scene id. */
+const figureCount = (a: ArticleEntry) => {
+  const scenes = filmScenes(a.slug);
+  return a.sections.filter((s) => s.figure || s.motion || scenes.has(s.id)).length;
+};
 
 test.describe('Articles at /articles', () => {
   test('the index lists every article', async ({ page }) => {
     await page.goto('/articles');
     await expect(page.getByRole('heading', { name: 'Articles', level: 1 })).toBeVisible();
     for (const a of ARTICLES) {
-      await expect(page.locator(`a[href="/articles/${a.slug}"]`)).toBeVisible();
+      await expect(page.locator(`a[href="/articles/${a.slug}"]`).first()).toBeVisible();
     }
   });
 
@@ -28,7 +43,7 @@ test.describe('Articles at /articles', () => {
       await page.goto(`/articles/${a.slug}`);
       await expect(page.getByRole('heading', { name: a.title, level: 1 })).toBeVisible();
       await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href', `https://sensei-hq.com/articles/${a.slug}`);
-      await expect(page.locator('figure')).toHaveCount(a.sections.filter((s) => s.figure).length);
+      await expect(page.locator('figure')).toHaveCount(figureCount(a));
       for (const s of a.sections) {
         await expect(page.getByRole('heading', { name: s.title, level: 2 })).toBeVisible();
       }
