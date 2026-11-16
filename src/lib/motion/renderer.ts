@@ -28,12 +28,13 @@ const ease = (name: TweenTrack['easing'], x: number, o?: number) =>
 
 function tween(tr: TweenTrack, t: number): FrameOp[] {
   const n = tr.count ?? 1, gap = tr.stagger ?? 0, ops: FrameOp[] = [];
+  const f = tr.decimals === undefined ? fmt : (v: number) => v.toFixed(tr.decimals);
   for (let i = 0; i < n; i++) {
     const v = K.lerp(tr.from, tr.to, ease(tr.easing, K.seg(t, tr.t0 + i * gap, tr.t1 + i * gap)));
     const op: FrameOp = { selector: tr.target, index: i };
-    if (tr.prop === 'opacity') op.style = { opacity: fmt(v) };
-    else if (tr.prop === 'transform') op.style = { transform: (tr.template ?? '{v}').replace('{v}', fmt(v)) };
-    else op.attrs = { [tr.prop.slice('attr:'.length)]: fmt(v) };
+    if (tr.prop === 'opacity') op.style = { opacity: f(v) };
+    else if (tr.prop === 'transform') op.style = { transform: (tr.template ?? '{v}').replace('{v}', f(v)) };
+    else op.attrs = { [tr.prop.slice('attr:'.length)]: f(v) };
     ops.push(op);
   }
   return ops;
@@ -45,7 +46,7 @@ function showHead(target: string, t0: number, t: number, head: { eyebrow?: strin
   if (head.eyebrow) ops.push(part(`${target} .eyebrow`, 0));
   head.line.split(' ').forEach((_, i) => {
     const p = K.eo((t - (t0 + 0.15) - i * 0.11) / 0.5);
-    ops.push({ selector: `${target} .line-word`, index: i, style: { opacity: fmt(p), transform: `translateX(${fmt((1 - p) * 30)}px)` } });
+    ops.push({ selector: `${target} .line-word`, index: i, style: { opacity: fmt(p), transform: `translateX(${((1 - p) * 30).toFixed(2)}px)` } });
   });
   if (head.sub) ops.push(part(`${target} .sub`, 0.9));
   return ops;
@@ -60,7 +61,7 @@ function words(target: string, count: number, t0: number, t: number, stagger = 0
   const ops: FrameOp[] = [];
   for (let i = 0; i < count; i++) {
     const p = K.eo((t - t0 - i * stagger) / dur);
-    ops.push({ selector: target, index: i, style: { opacity: fmt(p), transform: `translateX(${fmt((1 - p) * dx)}px)` } });
+    ops.push({ selector: target, index: i, style: { opacity: fmt(p), transform: `translateX(${((1 - p) * dx).toFixed(2)}px)` } });
   }
   return ops;
 }
@@ -75,7 +76,7 @@ function fade(target: string, t: number, t0: number, d = 0.5, dy = 18, count = 1
   const ops: FrameOp[] = [];
   for (let i = 0; i < count; i++) {
     const p = K.eo(K.seg(t, t0 + i * stagger, t0 + i * stagger + d));
-    ops.push({ selector: target, index: i, style: { opacity: fmt(p), transform: `translateY(${fmt(K.lerp(dy, 0, p))}px)` } });
+    ops.push({ selector: target, index: i, style: { opacity: p.toFixed(3), transform: `translateY(${K.lerp(dy, 0, p).toFixed(1)}px)` } });
   }
   return ops;
 }
@@ -85,7 +86,7 @@ function pop(target: string, t: number, t0: number, base = '', count = 1, stagge
   const ops: FrameOp[] = [];
   for (let i = 0; i < count; i++) {
     const p = K.seg(t, t0 + i * stagger, t0 + i * stagger + 0.4);
-    ops.push({ selector: target, index: i, style: { opacity: fmt(K.eo(p)), transform: `${base} scale(${fmt(K.lerp(0.5, 1, K.eob(p, 1.8)))})`.trim() } });
+    ops.push({ selector: target, index: i, style: { opacity: K.eo(p).toFixed(3), transform: `${base} scale(${K.lerp(0.5, 1, K.eob(p, 1.8)).toFixed(3)})`.trim() } });
   }
   return ops;
 }
@@ -126,7 +127,7 @@ function settle(target: string, t: number, o: { t0: number; t1: number; o?: numb
   const s = K.eob(K.seg(t, o.t0, o.t1), o.o ?? 1.4);
   const scale = K.lerp(o.scaleFrom ?? 0.7, o.scaleTo ?? 1, s) * (1 + (o.breatheAmp ?? 0.012) * Math.sin(t * (o.breatheFreq ?? 1.6)));
   const rot = K.lerp(o.rotateFrom ?? -14, o.rotateTo ?? 0, K.eo(K.seg(t, o.rt0 ?? o.t0, o.rt1 ?? o.t1)));
-  return [{ selector: target, index: 0, style: { opacity: fmt(K.clamp01(s * (o.opacityMult ?? 1.5))), transform: `scale(${fmt(scale)}) rotate(${fmt(rot)}deg)` } }];
+  return [{ selector: target, index: 0, style: { opacity: fmt(K.clamp01(s * (o.opacityMult ?? 1.5))), transform: `scale(${fmt(scale)}) rotate(${rot.toFixed(2)}deg)` } }];
 }
 
 // Problem's activity chart: per-bar start times, y/height attributes from stacked heights.
@@ -134,7 +135,7 @@ function growBars(target: string, t: number, o: { count: number; t0s: number[]; 
   const ops: FrameOp[] = [];
   for (let i = 0; i < o.count; i++) {
     const h = Math.max(0, o.hs[i] * ease(o.easing, K.seg(t, o.t0s[i], o.t0s[i] + o.dur), o.o));
-    ops.push({ selector: target, index: i, attrs: { y: fmt(o.base - o.bs[i] - h), height: fmt(h) } });
+    ops.push({ selector: target, index: i, attrs: { y: (o.base - o.bs[i] - h).toFixed(1), height: h.toFixed(1) } });
   }
   return ops;
 }

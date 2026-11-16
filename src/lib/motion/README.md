@@ -19,6 +19,8 @@ films/<slug>/
   base.css      the film's look (`#stage` variables, .ground/.words/.line …); scoped to the scene's shadow root
   shared.js     helpers on `window.W` (board, nodes, tiles …) and `W.portrait`, the columns-to-rows adapter
   scene-<id>.js one per scene: kit.scene('<id>', { init(kit) { … }, render(t) { … } })
+  scene-<id>.json the same scene as data, optional: the loader prefers it over the module
+                (components, tracks, portrait — see JSON scenes below)
   score.js      the music and sound effects (Motion's score API), played by the site (score.ts): live in the show
                 and the article figures, and rendered into the videos by render.py
 ```
@@ -55,6 +57,20 @@ Every film ends on a short closing scene: its punchline as the title (with the p
 (`build.py` poster), the vertical poster, and the article's link-preview image and film card (`static/covers/<slug>.jpg`,
 written by `render.py`). It is not an article section; its line is the article's `takeaway`, as text, without the
 logo. Set `"cover": { "scene": "close", "at": 4.5 }` in film.json to pick another frame.
+
+## JSON scenes
+
+A scene can be data instead of code: `scene-<id>.json` holds components (what is on stage, from
+the catalog in `scene-schema.ts`: board, head, node, wire, checks, bars, logo, group, svg, raw),
+tracks (tweens and effects over `t`) and the portrait spec. `renderer.ts` evaluates a spec to
+style ops as a pure function of `t` and mounts it; `films.ts` prefers the JSON twin where one
+exists (`hasJsonScene`), in every layout. The show takes `?src=json|js` to force one source.
+
+Converting a scene: copy its `kit.css` into `css`, its portrait spec verbatim, its words into
+`head` (grounded) or `raw` (in the camera), and each animated beat into a track, keeping the
+original class names. Ports must keep the modules' formulas including their number formatting
+(`toFixed` precisions move pixels). `tests/motion-parity.spec.ts` shoots every converted film
+scene by scene from both sources and fails on any visible difference.
 
 ## Timing to the voice
 

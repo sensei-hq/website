@@ -3,6 +3,8 @@
 // renders (films/tools/render.py), in any of three layouts. See ./README.md.
 import { createKit, type Kit, type SceneDef } from './kit.js';
 import { collectScore, type Score } from './score.js';
+import { mountJsonScene } from './renderer.js';
+import type { SceneSpec } from './scene-schema.js';
 
 export type Layout = 'landscape' | 'portrait' | 'figure';
 
@@ -39,6 +41,11 @@ const sources = import.meta.glob<string>(['./films/*/*.js', './films/*/*.css'], 
   query: '?raw',
   import: 'default',
 });
+// JSON scenes, preferred over the module where present (see the parity test).
+const jsonScenes = import.meta.glob<SceneSpec>('./films/*/scene-*.json', { eager: true, import: 'default' });
+
+/** Whether the scene has a JSON twin (which the loader then prefers). */
+export const hasJsonScene = (slug: string, id: string) => Boolean(jsonScenes[`./films/${slug}/scene-${id}.json`]);
 
 const slugOf = (path: string) => path.split('/')[2];
 
@@ -67,24 +74,32 @@ export function timeline(f: FilmMeta) {
   return { duration: at, scenes };
 }
 
-interface Code { css: string; shared: string; scenes: string[] }
-const cache = new Map<string, Promise<Code>>();
+const cssCache = new Map<string, Promise<string>>();
+const jsCache = new Map<string, Promise<{ shared: string; scenes: string[] }>>();
 
-function code(f: FilmMeta): Promise<Code> {
-  if (!cache.has(f.slug)) {
-    const get = (name: string) => {
-      const load = sources[`./films/${f.slug}/${name}`];
-      if (!load) throw new Error(`motion: ${f.slug}/${name} is missing`);
-      return load();
-    };
-    cache.set(
+function loadSource(slug: string, name: string): Promise<string> {
+  const load = sources[`./films/${slug}/${name}`];
+  if (!load) throw new Error(`motion: ${slug}/${name} is missing`);
+  return load() as Promise<string>;
+}
+
+/** A film's CSS (base.css), needed by .js and .json scenes alike. */
+function css(f: FilmMeta): Promise<string> {
+  if (!cssCache.has(f.slug)) cssCache.set(f.slug, loadSource(f.slug, 'base.css'));
+  return cssCache.get(f.slug)!;
+}
+
+/** A film's code (shared.js plus every scene module), for .js scenes only. */
+function js(f: FilmMeta): Promise<{ shared: string; scenes: string[] }> {
+  if (!jsCache.has(f.slug)) {
+    jsCache.set(
       f.slug,
-      Promise.all([get('base.css'), get('shared.js'), ...f.scenes.map((s) => get(`scene-${s.id}.js`))]).then(
-        ([css, shared, ...scenes]) => ({ css, shared, scenes }),
+      Promise.all([loadSource(f.slug, 'shared.js'), ...f.scenes.map((s) => loadSource(f.slug, `scene-${s.id}.js`))]).then(
+        ([shared, ...scenes]) => ({ shared, scenes }),
       ),
     );
   }
-  return cache.get(f.slug)!;
+  return jsCache.get(f.slug)!;
 }
 
 export interface Mounted {
@@ -124,9 +139,12 @@ function figureLayout(kit: Kit, spec: Spec) {
   ground.appendChild(inner);
 }
 
-/** Renders one scene of a film into `host` (in its shadow root, so film and page CSS stay apart). */
-export async function mountScene(host: HTMLElement, f: FilmMeta, sceneId: string, layout: Layout): Promise<Mounted> {
-  const src = await code(f);
+/**
+ * Renders one scene of a film into `host` (in its shadow root, so film and page CSS stay apart).
+ * JSON scenes win where they exist; `src` forces one source (the parity test's ?src=).
+ */
+export async function mountScene(host: HTMLElement, f: FilmMeta, sceneId: string, layout: Layout, opts: { src?: 'json' | 'js' } = {}): Promise<Mounted> {
+  const base = await css(f);
   const [W, H] = SIZES[layout];
   const root = host.shadowRoot ?? host.attachShadow({ mode: 'open' });
   root.innerHTML = '';
@@ -136,11 +154,29 @@ export async function mountScene(host: HTMLElement, f: FilmMeta, sceneId: string
     `#stage{position:absolute;left:0;top:0;width:${W}px;height:${H}px;overflow:hidden;transform-origin:0 0;background:${f.background};` +
     `--display:'Fraunces',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--serif:'Shippori Mincho','Fraunces',serif;--mono:'JetBrains Mono',ui-monospace,monospace;` +
     `-webkit-font-smoothing:antialiased}` +
-    src.css;
+    base;
   const stage = document.createElement('div');
   stage.id = 'stage';
   root.append(style, stage);
+  const meta = f.scenes.find((s) => s.id === sceneId)!;
 
+  const useJson = opts.src ? opts.src === 'json' : hasJsonScene(f.slug, sceneId);
+  if (useJson) {
+    const spec = jsonScenes[`./films/${f.slug}/scene-${sceneId}.json`];
+    if (!spec) throw new Error(`motion: ${f.slug} has no JSON scene "${sceneId}"`);
+    const mounted = mountJsonScene(stage, spec, { W, H });
+    if (layout === 'figure') {
+      if (!spec.portrait) throw new Error(`motion: ${f.slug}/${sceneId}.json needs a portrait spec for figures`);
+      figureLayout(createKit({ stage, W, H, onScene: () => {}, onScore: () => {} }), spec.portrait);
+    }
+    return {
+      W, H, dur: meta.dur, stage,
+      render: (t) => mounted.render(warp(t, meta.holds)),
+      destroy: () => { root.innerHTML = ''; },
+    };
+  }
+
+  const src = await js(f);
   const defs: Record<string, SceneDef> = {};
   const kit = createKit({ stage, W, H, onScene: (id, def) => (defs[id] = def), onScore: () => {} });
   // Each mount gets its own `window`/`W`, so two films (or two layouts) on one page never share state.
@@ -157,7 +193,6 @@ export async function mountScene(host: HTMLElement, f: FilmMeta, sceneId: string
 
   const def = defs[sceneId];
   if (!def) throw new Error(`motion: ${f.slug} has no scene "${sceneId}"`);
-  const meta = f.scenes.find((s) => s.id === sceneId)!;
   const inst = Object.create(def) as SceneDef;
   kit.dur = meta.dur;
   await inst.init?.call(inst, kit);

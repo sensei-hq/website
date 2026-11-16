@@ -43,6 +43,8 @@ export interface TweenTrack {
   t1: number;
   easing: EasingName;
   stagger?: number;
+  /** toFixed decimals for the value, matching the module it ports (default: compact). */
+  decimals?: number;
 }
 
 export interface ShowHeadTrack { kind: 'effect'; effect: 'showHead'; target: string; t0: number }

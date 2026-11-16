@@ -1,0 +1,45 @@
+{
+  "components": [
+    { "type": "board", "id": "hook-bg" },
+    {
+      "type": "raw",
+      "id": "counters",
+      "html": "<div class='card hook-ctr' style='top:230px'><h4>TOKENS</h4><b>0</b><i>↑</i></div><div class='card hook-ctr' style='top:430px'><h4>COMMITS</h4><b>0</b><i>↑</i></div><div class='card hook-ctr' style='top:630px'><h4>LINES CHANGED</h4><b>0</b><i>↑</i></div>"
+    },
+    { "type": "raw", "id": "q", "html": "<div class='hook-q'>?</div>" },
+    {
+      "type": "head",
+      "id": "hook-head",
+      "at": "ground",
+      "eyebrow": "Developer productivity",
+      "line": "More tokens. More commits. Is any of it right?",
+      "style": "left:110px;top:300px;width:720px"
+    }
+  ],
+  "tracks": [
+    { "kind": "effect", "effect": "push", "target": ".cam", "t0": 0, "dur": 6.5, "from": 1, "to": 1.03 },
+    { "kind": "effect", "effect": "showHead", "target": ".hook-head", "t0": -0.4 },
+    { "kind": "effect", "effect": "fade", "target": ".hook-ctr", "count": 3, "t0": 0.6, "stagger": 0.3 },
+    {
+      "kind": "effect",
+      "effect": "counter",
+      "target": ".hook-ctr b",
+      "count": 3,
+      "values": [1240000, 148, 9412],
+      "prefixes": ["", "", "+"],
+      "t0": 0.8,
+      "t1": 3.4,
+      "easing": "eio",
+      "stagger": 0.3,
+      "format": "locale"
+    },
+    { "kind": "effect", "effect": "pop", "target": ".hook-q", "t0": 3.8, "base": "translate(-50%,-50%)" }
+  ],
+  "css": ".hook-ctr { position:absolute; left:960px; width:600px; height:170px; box-sizing:border-box; padding:24px 34px; box-shadow:0 12px 26px rgba(0,0,0,.06) }.hook-ctr h4 { margin:0; font-size:24px; font-weight:600; letter-spacing:0.1em; color:var(--mute) } .hook-ctr b { display:block; margin-top:6px; font-family:var(--display); font-weight:400; font-size:78px; line-height:1; font-variant-numeric:tabular-nums }.hook-ctr i { position:absolute; right:34px; top:58px; font-style:normal; font-size:56px; color:var(--jade) }.hook-q { position:absolute; left:1660px; top:540px; transform:translate(-50%,-50%); font-family:var(--display); font-size:300px; line-height:1; color:var(--accent) }",
+  "portrait": {
+    "hoist": [".hook-head"],
+    "frame": [640, 900],
+    "crop": [930, 200, 880, 620],
+    "css": ".hook-head{left:70px!important;top:150px!important;width:940px!important}"
+  }
+}

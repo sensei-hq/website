@@ -1,7 +1,7 @@
 <script lang="ts">
   // The show shell: a film's scenes as slides, in landscape or portrait, fitted to the window.
   //   ←/→ scene · Space play/pause · M sound · R replay scene · O orientation · F fullscreen · Home restart
-  // Query: ?o=portrait|landscape  ?slide=N (1-based)  ?capture=1 (no chrome, stage at 1:1, window.__show for render.py)
+  // Query: ?o=portrait|landscape  ?slide=N (1-based)  ?capture=1 (no chrome, stage at 1:1, window.__show for render.py)  ?src=json|js (force a scene source; default prefers JSON)
   import { onMount, untrack } from 'svelte';
   import { page } from '$app/state';
   import { film as getFilm, mountScene, fontsReady, timeline, filmScore, coverTime, SIZES, type Layout, type Mounted } from '$lib/motion/films.js';
@@ -12,6 +12,7 @@
   const tl = timeline(f);
   const q = page.url.searchParams;
   const capture = q.get('capture') === '1';
+  const src = q.get('src') === 'js' ? 'js' : q.get('src') === 'json' ? 'json' : undefined;
 
   let layout = $state<Layout>(q.get('o') === 'portrait' ? 'portrait' : 'landscape');
   let index = $state(Math.max(0, Math.min(f.scenes.length - 1, Number(q.get('slide') ?? 1) - 1)));
@@ -45,10 +46,10 @@
   /** Makes sure the current scene is mounted in the current layout, then draws `local`. */
   function show(i: number, t: number, lay: Layout = layout) {
     pending = pending.then(async () => {
-      const key = `${i}:${lay}`;
+      const key = `${i}:${lay}:${src ?? ''}`;
       if (key !== mountedKey) {
         m?.destroy();
-        m = await mountScene(host, f, tl.scenes[i].id, lay);
+        m = await mountScene(host, f, tl.scenes[i].id, lay, { src });
         mountedKey = key;
       }
       m!.stage.style.transform = `scale(${scale})`;
@@ -79,7 +80,7 @@
     else if (k === 'm') { sound = !sound; syncAudio(); }
     else if (k === 'r') { local = 0; playing = true; syncAudio(); }
     else if (k === 'home') { playing = true; go(0); }
-    else if (k === 'o') { layout = layout === 'portrait' ? 'landscape' : 'portrait'; history.replaceState(history.state, '', `?o=${layout}&slide=${index + 1}`); }
+    else if (k === 'o') { layout = layout === 'portrait' ? 'landscape' : 'portrait'; history.replaceState(history.state, '', `?o=${layout}&slide=${index + 1}${src ? `&src=${src}` : ''}`); }
     else if (k === 'f') { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
   }
 

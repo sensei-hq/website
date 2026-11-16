@@ -1,0 +1,50 @@
+{
+  "components": [
+    { "type": "board", "id": "close-bg" },
+    {
+      "type": "group",
+      "id": "close-mark",
+      "style": "transform-origin:1530px 540px",
+      "children": [{ "type": "logo", "id": "close-logo", "name": "sensei", "x": 1530, "y": 540, "size": 400 }]
+    },
+    {
+      "type": "raw",
+      "id": "card",
+      "at": "ground",
+      "html": "<div class='close-card'><h1 class='close-title'><span class='close-w' style='display:inline-block;white-space:pre'>Measure </span><span class='close-w' style='display:inline-block;white-space:pre'>right </span><span class='close-w' style='display:inline-block;white-space:pre'>work, </span><span class='close-w' style='display:inline-block;white-space:pre'>not </span><span class='close-w' style='display:inline-block;white-space:pre'>more </span><span class='close-w' style='display:inline-block;white-space:pre'>work.</span></h1><div class='close-bar'></div><p class='sub close-sub'>Sensei pairs every speed metric with its quality companion.</p></div>"
+    }
+  ],
+  "tracks": [
+    { "kind": "effect", "effect": "push", "target": ".cam", "t0": 0, "dur": 5, "from": 1, "to": 1.025 },
+    { "kind": "tween", "target": ".close-card", "prop": "opacity", "from": 0, "to": 1, "t0": -0.2, "t1": 0.4, "easing": "eo" },
+    { "kind": "tween", "target": ".close-card", "prop": "transform", "template": "translateY({v}px)", "from": 24, "to": 0, "t0": -0.2, "t1": 0.4, "easing": "eo" },
+    { "kind": "effect", "effect": "words", "target": ".close-w", "count": 6, "t0": 0 },
+    { "kind": "tween", "target": ".close-bar", "prop": "transform", "template": "scaleX({v})", "from": 0, "to": 1, "t0": 0.6, "t1": 1.1, "easing": "eo", "decimals": 3 },
+    { "kind": "tween", "target": ".close-sub", "prop": "opacity", "from": 0, "to": 1, "t0": 0.8, "t1": 1.3, "easing": "eo" },
+    { "kind": "tween", "target": ".close-sub", "prop": "transform", "template": "translateX({v}px)", "from": 26, "to": 0, "t0": 0.8, "t1": 1.3, "easing": "eo" },
+    {
+      "kind": "effect",
+      "effect": "settle",
+      "target": ".close-mark",
+      "t0": 0.3,
+      "t1": 1,
+      "o": 1.4,
+      "scaleFrom": 0.7,
+      "scaleTo": 1,
+      "breatheAmp": 0.012,
+      "breatheFreq": 1.6,
+      "rotateFrom": -14,
+      "rotateTo": 0,
+      "rt0": 0.3,
+      "rt1": 1.4,
+      "opacityMult": 1.5
+    }
+  ],
+  "css": ".close-card { position:absolute; left:110px; top:330px; display:flex; flex-direction:column; gap:26px; max-width:1060px }.close-title { margin:0; font-family:var(--display, serif); font-weight:400; font-size:120px; line-height:1.04; letter-spacing:-0.02em }.close-bar { width:300px; height:3px; border-radius:2px; background:var(--accent); transform-origin:0 50% } .close-card .sub { font-size:42px }",
+  "portrait": {
+    "hoist": [".close-card"],
+    "frame": [700, 920],
+    "crop": [1250, 260, 560, 560],
+    "css": ".close-card{left:70px!important;top:180px!important;max-width:none!important;width:940px} .close-title{font-size:110px!important}"
+  }
+}
