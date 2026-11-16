@@ -2,10 +2,14 @@ import { describe, expect, it } from 'vitest';
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { FILMS, film, timeline } from './films.js';
+import { FILMS, film, hasJsonScene, timeline } from './films.js';
+import { validateScene } from './renderer.js';
+import type { SceneSpec } from './scene-schema.js';
 
 // Scene modules on disk, one per scene id in each film's film.json.
 const sceneFiles = import.meta.glob('./films/*/scene-*.js');
+// JSON scenes, preferred over the module where present.
+const jsonScenes = import.meta.glob<SceneSpec>('./films/*/scene-*.json', { eager: true, import: 'default' });
 
 // Recorded voiceover takes for stop-repeating-yourself, in seconds, rounded UP to 0.1 s from the
 // ElevenLabs takes measured 2026-11-14 (Jeremy, eleven_v4). The build starts each take LEAD s into
@@ -89,4 +93,22 @@ describe('motion films', () => {
       }
     });
   }
+
+  it('prefers JSON scenes where they exist, modules elsewhere', () => {
+    for (const id of ['hook', 'problem', 'pair', 'sensei', 'close']) {
+      expect(hasJsonScene('measure-right-work', id), id).toBe(true);
+    }
+    expect(hasJsonScene('sensei-relay', 'dispatch')).toBe(false);
+    expect(hasJsonScene('no-film', 'nope')).toBe(false);
+  });
+
+  it('every JSON scene validates and covers a real scene id', () => {
+    const paths = Object.keys(jsonScenes);
+    expect(paths.length).toBeGreaterThan(0);
+    for (const [path, spec] of Object.entries(jsonScenes)) {
+      expect(validateScene(spec), path).toEqual([]);
+      const [, slug, id] = path.match(/\.\/films\/(.+)\/scene-(.+)\.json/)!;
+      expect(film(slug)?.scenes.some((s) => s.id === id), path).toBe(true);
+    }
+  });
 });
