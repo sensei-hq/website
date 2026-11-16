@@ -85,7 +85,7 @@ export const PRODUCTS: Product[] = [
     id: 'gateway', kind: 'library', index: '01', kanji: '関', name: 'Gateway', lang: 'Rust',
     category: 'AI gateway',
     tagline: 'Fallback chains and budgets, in one workspace.',
-    blurb: 'Talk to every model provider through one Rust interface. Order your fallbacks, cap the spend, and embed it in your own service rather than adding another hop.',
+    blurb: 'Talk to around fifteen model providers, and local models, through one Rust interface. Order your fallbacks, cap the spend, and embed it in your own service rather than adding another hop.',
     meta: ['Rust crate', 'MIT licensed', 'Budget control'],
     status: 'Open source', href: 'https://gateway.sensei-hq.com',
   },
@@ -93,8 +93,8 @@ export const PRODUCTS: Product[] = [
     id: 'dbd', kind: 'library', index: '02', kanji: '構', name: 'DBD', lang: 'Rust',
     category: 'Schema design · CLI',
     tagline: 'Schema design that lives in your terminal.',
-    blurb: 'Model your database in DBML, then generate, diff and sync it across Postgres, SQLite, Convex and Supabase — all from the command line.',
-    meta: ['Rust CLI · DBML', 'MIT licensed', 'Postgres · SQLite · Convex'],
+    blurb: 'Keep your schema as plain SQL files. dbd orders, applies and migrates them on Postgres, Supabase and SQLite, catches drift in CI, and generates DBML docs — all from the command line.',
+    meta: ['Rust CLI · SQL', 'MIT licensed', 'Postgres · Supabase · SQLite'],
     status: 'Open source', href: 'https://dbd.sensei-hq.com',
   },
   {
@@ -110,7 +110,7 @@ export const PRODUCTS: Product[] = [
     category: 'Authentication',
     tagline: 'Auth for Svelte, without the ceremony.',
     blurb: 'Sessions, providers and route guards in a few lines. Sane defaults, escape hatches everywhere, and no vendor lock-in.',
-    meta: ['SvelteKit', 'OAuth · Passkeys', 'MIT licensed'],
+    meta: ['SvelteKit', 'OAuth · Magic links', 'MIT licensed'],
     status: 'Open source', href: 'https://kavach.sensei-hq.com',
   },
 ];
@@ -144,7 +144,7 @@ export const INCUBATING: IncubatingProduct[] = [
 
 export const REPOS: Repo[] = [
   { name: 'sensei-hq/gateway', accentClass: 'bg-gateway', lang: 'Rust', note: 'Fallback chains and budgets', href: 'https://github.com/sensei-hq/gateway' },
-  { name: 'sensei-hq/dbd', accentClass: 'bg-dbd', lang: 'Rust', note: 'Schema design, library and CLI', href: 'https://github.com/sensei-hq/dbd' },
+  { name: 'sensei-hq/dbd', accentClass: 'bg-dbd', lang: 'Rust', note: 'Schema as code, library and CLI', href: 'https://github.com/sensei-hq/dbd' },
   { name: 'sensei-hq/rokkit', accentClass: 'bg-rokkit', lang: 'Svelte', note: 'Data-driven components', href: 'https://github.com/sensei-hq/rokkit' },
   { name: 'sensei-hq/kavach', accentClass: 'bg-kavach', lang: 'TypeScript', note: 'Auth for SvelteKit', href: 'https://github.com/sensei-hq/kavach' },
   { name: 'sensei-hq/katachi', accentClass: 'bg-katachi', lang: 'Svelte', note: 'Snap → Make craft tool', href: 'https://github.com/sensei-hq/katachi' },
