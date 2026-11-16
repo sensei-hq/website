@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { ARTICLES, published, today } from './articles-data';
+import { cardHref } from './article-meta.js';
 
 describe('articles data', () => {
   it('has unique slugs and section ids', () => {
@@ -22,5 +23,20 @@ describe('articles data', () => {
     expect(live.some((a) => a.slug === 'schema-as-code')).toBe(true);
     expect(live.some((a) => a.slug === 'file-path-is-the-entity-name')).toBe(false);
     expect(published(new Date('2026-11-16T12:00:00Z'), true).length).toBe(ARTICLES.length);
+  });
+  it('cards link publicly, or stay in preview when previewing', () => {
+    expect(cardHref('sensei-relay')).toBe('/articles/sensei-relay');
+    expect(cardHref('sensei-relay', true)).toBe('/admin/preview/sensei-relay');
+  });
+  it('related links point at live pages, never a scheduled article', () => {
+    const bySlug = new Map(ARTICLES.map((a) => [a.slug, a]));
+    for (const a of ARTICLES) {
+      if (!a.related) continue;
+      const m = /^\/articles\/([a-z0-9-]+)\/?$/.exec(a.related.href);
+      if (!m) continue; // product pages and external links are always live
+      const target = bySlug.get(m[1]);
+      expect(target, `${a.slug} related target exists`).toBeDefined();
+      expect(target!.date <= a.date, `${a.slug} related target is live first`).toBe(true);
+    }
   });
 });
