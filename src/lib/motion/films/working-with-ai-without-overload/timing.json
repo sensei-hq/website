@@ -1,0 +1,13 @@
+{
+  "scenes": {
+    "flood": {
+      "dur": 13.0
+    },
+    "define": {
+      "dur": 19.7
+    },
+    "build": {
+      "dur": 19.3
+    }
+  }
+}

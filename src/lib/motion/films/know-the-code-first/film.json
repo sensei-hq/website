@@ -1,0 +1,19 @@
+{
+  "title": "Know the Code First",
+  "look": "Session board: a terminal, the code map's modules and bands, a README against the code, the assistant's context and the intake card on a dot-grid desk. Plain. Colors and type from the Zen-Sumi design system: washi paper, sumi ink, rationed vermillion for what's broken or hidden, jade for what's sound. The Sensei mark on the close.",
+  "background": "#F3F0E9",
+  "palette": ["#F9F6F1", "#48413D", "#1F1916", "#C25237"],
+  "fonts": {
+    "display": { "family": "Fraunces", "or": "fraunces", "weights": [300, 400] },
+    "sans": { "family": "Inter", "or": "instrument-sans", "weights": [400, 600] }
+  },
+  "scenes": [
+    { "id": "hook", "name": "Searching", "dur": 9, "desc": "Without a map, the assistant greps and opens file after file." },
+    { "id": "map", "name": "The code map", "dur": 12.5, "desc": "The map opens on modules; go down a level by choice: modules, then files, then symbols." },
+    { "id": "coupling", "name": "What it hides", "dur": 12, "desc": "Upward dependencies, cycles, and files that change together with no import between them." },
+    { "id": "drift", "name": "Doc drift", "dur": 11.5, "desc": "A README names a method the code renamed; the doc is checked against the live code and flagged." },
+    { "id": "context", "name": "Context", "dur": 12.5, "desc": "Sensei's tools hand the assistant the right context on the first turn, and say so when they can't." },
+    { "id": "intake", "name": "Intake", "dur": 12.5, "desc": "Describe the chunk of work; Sensei reads lifecycle, intent and risk, and recommends a way of working." },
+    { "id": "close", "name": "Sensei", "dur": 5.5, "desc": "End card with the Sensei mark: know the code before you change it." }
+  ]
+}

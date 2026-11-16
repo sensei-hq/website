@@ -1,0 +1,16 @@
+{
+  "scenes": {
+    "hook": {
+      "dur": 13.1
+    },
+    "enforcement": {
+      "dur": 15.0
+    },
+    "scope": {
+      "dur": 13.1
+    },
+    "close": {
+      "dur": 6.3
+    }
+  }
+}

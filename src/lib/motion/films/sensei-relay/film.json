@@ -1,0 +1,71 @@
+{
+  "title": "Sensei Relay",
+  "look": "Relay board: Flat assistant nodes on a grid, task cards gliding along live wires. Plain. Colors and type from the Zen-Sumi design system: washi paper, sumi ink, rationed vermillion.",
+  "background": "#F3F0E9",
+  "palette": [
+    "#F9F6F1",
+    "#48413D",
+    "#1F1916",
+    "#C25237"
+  ],
+  "fonts": {
+    "display": {
+      "family": "Fraunces",
+      "or": "fraunces",
+      "weights": [
+        300,
+        400
+      ]
+    },
+    "sans": {
+      "family": "Inter",
+      "or": "instrument-sans",
+      "weights": [
+        400,
+        600
+      ]
+    },
+    "serif": {
+      "family": "Shippori Mincho",
+      "or": "fraunces"
+    }
+  },
+  "scenes": [
+    {
+      "id": "silos",
+      "name": "In silos",
+      "dur": 7,
+      "desc": "Many assistants sit on the board, each boxed in its own silo."
+    },
+    {
+      "id": "manual",
+      "name": "You relay",
+      "dur": 7.5,
+      "desc": "The user ferries tasks and messages between assistants and every review is a self-review."
+    },
+    {
+      "id": "register",
+      "name": "Register",
+      "dur": 7,
+      "desc": "Sensei Relay: one assistant registers as controller, the rest as contributors, and wires connect them."
+    },
+    {
+      "id": "dispatch",
+      "name": "Plan and dispatch",
+      "dur": 8,
+      "desc": "The controller plans the goal, sends task cards to contributors, and they report back."
+    },
+    {
+      "id": "review",
+      "name": "Review and gate",
+      "dur": 7.5,
+      "desc": "Contributors cross-review against the requirement; results consolidate and pass a metrics gate."
+    },
+    {
+      "id": "handover",
+      "name": "Always on",
+      "dur": 5.5,
+      "desc": "Assistants unregister and rejoin, the controller hands over, then the Sensei Relay end card."
+    }
+  ]
+}

@@ -13,3 +13,6 @@ node_modules
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 *.last-run.json
+
+# Film masters, voiceover takes and renders (large; published on YouTube, not in git)
+/films
