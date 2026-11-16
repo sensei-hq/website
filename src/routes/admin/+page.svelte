@@ -128,7 +128,7 @@
                 <p class="label mono">Article points</p>
                 <ol class="pts">{#each r.points as s}<li><b>{s.title}</b>{#if s.points.length}<ul>{#each s.points as pt}<li>{pt}</li>{/each}</ul>{/if}</li>{/each}</ol>
                 <p class="label mono" style="margin-top:18px">Motion</p>
-                {#if r.status.motion}<p class="m0"><a href="/show/{r.slug}" target="_blank" rel="noopener">Open the show ↗</a></p>{/if}
+                {#if r.status.motion}<p class="m0"><a href="/show/{r.slug}" target="_blank" rel="noopener">Open the show ↗</a> · <a href="/admin/scenes?film={r.slug}" target="_blank" rel="noopener">Verify scenes ↗</a></p>{/if}
                 {#each r.requests as rq (rq.id)}
                   <div class="req">
                     <p class="m0"><span class="mono kind">{rq.kind} · {rq.status}</span> {rq.body}</p>
