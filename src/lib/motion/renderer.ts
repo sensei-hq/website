@@ -139,16 +139,18 @@ function growBars(target: string, t: number, o: { count: number; t0s: number[]; 
   return ops;
 }
 
-const COMPONENTS = new Set(['board', 'head', 'node', 'wire', 'checks', 'bars', 'logo', 'raw']);
+const COMPONENTS = new Set(['board', 'head', 'node', 'wire', 'checks', 'bars', 'logo', 'group', 'svg', 'raw']);
 const EFFECTS = new Set(['showHead', 'push', 'fade', 'pop', 'draw', 'counter', 'swap', 'words', 'settle', 'growBars']);
 
 /** Authoring errors, as strings; empty means the spec is usable. */
 export function validateScene(spec: SceneSpec): string[] {
   const issues: string[] = [];
   if (!spec.components.length) issues.push('no components');
-  for (const c of spec.components as ComponentSpec[]) {
+  const checkComponent = (c: ComponentSpec) => {
     if (!COMPONENTS.has(c.type)) issues.push(`component ${c.id}: unknown type '${c.type}'`);
-  }
+    if (c.type === 'group') c.children.forEach(checkComponent);
+  };
+  (spec.components as ComponentSpec[]).forEach(checkComponent);
   spec.tracks.forEach((tr, i) => {
     if (tr.kind === 'effect' && !EFFECTS.has(tr.effect)) issues.push(`track ${i}: unknown effect '${(tr as { effect: string }).effect}'`);
   });
@@ -258,8 +260,31 @@ export function renderComponent(c: ComponentSpec): { svg: string; html: string }
     case 'logo': return { svg: logo(c.id, c.name, c.x, c.y, c.size), html: '' };
     case 'head': return { svg: '', html: head(c) };
     case 'checks': return { svg: '', html: checks(c.id, c.items, c.style) };
+    case 'group': return { svg: `<g class="${c.id}"${c.style ? ` style="${c.style}"` : ''}>${c.children.map((ch) => renderComponent(ch).svg).join('')}</g>`, html: '' };
+    case 'svg': return { svg: c.body, html: '' };
     case 'raw': return { svg: '', html: c.html };
   }
+}
+
+/**
+ * Orders components into the camera and the ground, preserving the spec's svg/html interleave
+ * order (paint order matters: problem's bars paint over its chart card). Consecutive SVG parts
+ * coalesce into one svg.art block, as the scene modules' markup does.
+ */
+export function layoutComponents(cs: ComponentSpec[]): { cam: string; ground: string } {
+  const cam: string[] = [], ground: string[] = [];
+  let svgBuf: string[] = [];
+  const flush = () => {
+    if (svgBuf.length) cam.push(`<svg class="art" viewBox="0 0 1920 1080">${svgBuf.join('')}</svg>`);
+    svgBuf = [];
+  };
+  for (const c of cs) {
+    const r = renderComponent(c);
+    if (r.svg && !r.html) svgBuf.push(r.svg);
+    else { flush(); ((c as { at?: string }).at === 'ground' ? ground : cam).push(r.svg + r.html); }
+  }
+  flush();
+  return { cam: cam.join(''), ground: ground.join('') };
 }
 
 // ── Mount (thin DOM layer; Playwright's coverage, not unit) ───────────────────────────────
@@ -290,15 +315,10 @@ export function mountJsonScene(host: HTMLElement, spec: SceneSpec, opts: { W: nu
   const issues = validateScene(spec);
   if (issues.length) throw new Error(issues.join('; '));
   host.innerHTML = '';
-  const svg: string[] = [], html: string[] = [];
-  for (const c of spec.components) {
-    const r = renderComponent(c);
-    svg.push(r.svg);
-    html.push(r.html);
-  }
+  const laid = layoutComponents(spec.components);
   const ground = document.createElement('div');
   ground.className = 'ground';
-  ground.innerHTML = `<div class="cam json-cam"><svg class="art" viewBox="0 0 1920 1080">${svg.join('')}</svg>${html.join('')}</div>`;
+  ground.innerHTML = `<div class="cam json-cam">${laid.cam}</div>${laid.ground}`;
   host.appendChild(ground);
   if (spec.css) { const st = document.createElement('style'); st.textContent = spec.css; host.appendChild(st); }
   if (spec.portrait && opts.H > opts.W) applyPortrait(host, spec.portrait, opts.W);
