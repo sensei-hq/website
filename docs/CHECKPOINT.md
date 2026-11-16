@@ -5,13 +5,12 @@ JSON scene SceneRenderer + per-field prerender/runtime split (option 2 now, opti
 
 ## Done
 - Committed the stack in 4: d1488dc motion+show+covers, 549ee9a articles+feeds+sitemap, 6872af7 admin+worker, e7437d2 product blurbs.
-- Tree green: svelte-check 0 errors, 50/50 unit tests.
-- Surveyed 93 scenes: shared W base, tween archetype + small procedural tail.
+- Renderer skeleton TDD: 717febd spec, 5eb6085 scene-schema.ts + renderer.ts (pure eval + mount, board/head/raw + tween/showHead/push/fade/pop/draw).
+- Tree green: svelte-check 0 errors, 56/56 unit tests.
 
 ## Remain
-1. Renderer skeleton: scene-schema.ts + renderer.ts + renderer.spec.ts (TDD).
-2. Loader prefers scene-<id>.json; convert one 5-scene film; frame-compare.
-3. Runtime publish-state reads (schedule/YouTube/social) for instant publish.
+1. Loader prefers scene-<id>.json; grow catalog (node, wire, checks, bars…); convert one 5-scene film; Playwright frame-compare vs .js.
+2. Runtime publish-state reads (schedule/YouTube/social) for instant publish.
 
 ## Next command
 bun run test:unit -- src/lib/motion/renderer.spec.ts
