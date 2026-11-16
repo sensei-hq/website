@@ -7,8 +7,10 @@
   import { sectionPath, isProduct } from '$lib/article-meta.js';
   import { SITE, DEFAULT_IMAGE, CHANNELS, PRODUCT_HOME, articleJsonLd, ldScript } from '$lib/seo.js';
   import { PRODUCT_NAMES } from '$lib/article-meta.js';
+  import type { Article } from '$lib/articles-data.js';
+  import type { ArticleCardData } from '$lib/articles-server.js';
 
-  let { data } = $props();
+  let { data, preview = false }: { data: { article: Article; more: ArticleCardData[] }; preview?: boolean } = $props();
   const a = $derived(data.article);
   const url = $derived(`${SITE}/articles/${a.slug}`);
   // The film's cover (its closing punchline card) when it has one, else the YouTube thumbnail.
@@ -141,7 +143,7 @@
     <section class="a-shell pb-20">
       <p class="mono text-ink-soft text-xs m-0 mb-4" style="letter-spacing:0.12em;text-transform:uppercase">More articles</p>
       <div class="more">
-        {#each data.more as m (m.slug)}<ArticleCard a={m} />{/each}
+        {#each data.more as m (m.slug)}<ArticleCard a={m} {preview} />{/each}
       </div>
     </section>
   {/if}

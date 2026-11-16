@@ -1,8 +1,8 @@
 <script lang="ts">
   import { base } from '$app/paths';
   import type { ArticleCardData } from '$lib/articles-server.js';
-  import { sectionPath } from '$lib/article-meta.js';
-  let { a }: { a: ArticleCardData } = $props();
+  import { sectionPath, cardHref } from '$lib/article-meta.js';
+  let { a, preview = false }: { a: ArticleCardData; preview?: boolean } = $props();
   const fmt = (d: string) => new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 </script>
 
@@ -11,7 +11,7 @@
   <p class="meta mono">
     <a href="{base}{sectionPath(a.product)}" class="prod">{a.productName}</a> · <time datetime={a.date}>{fmt(a.date)}</time>{a.video ? ' · video' : ''}
   </p>
-  <h3 class="display t"><a href="{base}/articles/{a.slug}" class="stretch">{a.title}</a></h3>
+  <h3 class="display t"><a href="{base}{cardHref(a.slug, preview)}" class="stretch">{a.title}</a></h3>
   <p class="d">{a.dek}</p>
   <p class="tags">
     {#each a.tags.slice(0, 4) as t}<a href="{base}/articles/tag/{t}" class="tag mono">#{t}</a>{/each}

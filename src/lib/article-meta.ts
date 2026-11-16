@@ -12,3 +12,6 @@ export const isProduct = (p: ArticleProduct) => p !== 'practice';
 
 /** Where an article's section lives: its product's list, or the concepts list. */
 export const sectionPath = (p: ArticleProduct) => (isProduct(p) ? `/articles/product/${p}` : '/articles/concepts');
+
+/** Where a card links: the public page, or the admin preview when previewing (scheduled cards would 404 publicly). */
+export const cardHref = (slug: string, preview = false) => (preview ? `/admin/preview/${slug}` : `/articles/${slug}`);
