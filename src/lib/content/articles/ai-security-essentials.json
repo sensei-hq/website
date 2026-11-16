@@ -1,0 +1,139 @@
+{
+  "sections": [
+    {
+      "id": "doors",
+      "eyebrow": "Why it matters",
+      "title": "Every assistant is a new door",
+      "body": [
+        "AI now sits inside everyday work: it reads our documents and email, writes our code, and increasingly acts through tools. That is the value, and it is also the risk.",
+        "An assistant that can read and act on your behalf is a path into your data and systems. Securing AI is mostly about controlling what goes in, what comes out, and what it is allowed to do."
+      ],
+      "motion": {
+        "film": "ai-security-essentials",
+        "scene": "hook"
+      },
+      "caption": "Each assistant connects to what matters most."
+    },
+    {
+      "id": "top10",
+      "eyebrow": "The landscape",
+      "title": "The OWASP Top 10 for LLM applications, 2026",
+      "body": [
+        "The OWASP GenAI Security Project publishes the most widely used list of risks for applications built on large language models. The 2026 edition is shaped by community votes and thousands of real incidents.",
+        "It reads more easily in three groups: what goes into the model, what comes out of it, and what it can do."
+      ],
+      "figure": "top10",
+      "caption": "Numbers are the 2026 ranking; groups are ours."
+    },
+    {
+      "id": "inject",
+      "eyebrow": "Risk 01",
+      "title": "Prompt injection",
+      "body": [
+        "The top risk, again. An attacker hides instructions in content the AI will read: a web page, a PDF, an email, an image, even a calendar invite. The model cannot reliably tell your instructions from theirs, so it may follow them.",
+        "The danger grows with what the assistant can reach. An injected instruction in a summariser is a nuisance; in an agent with email and file access it is a breach."
+      ],
+      "points": [
+        "Treat every input as untrusted",
+        "Keep instructions apart from data",
+        "Give tools the least privilege they need",
+        "Ask a human before risky actions"
+      ],
+      "caption": "A hidden line in a document tries to steer the assistant."
+    },
+    {
+      "id": "phish",
+      "eyebrow": "The human layer",
+      "title": "AI-driven phishing",
+      "body": [
+        "Attackers use AI too. Phishing used to give itself away with clumsy wording; now it is personal, fluent and produced at scale, and a cloned voice can sound like your CEO on the phone.",
+        "The defence is less about spotting bad grammar and more about process: confirm unusual requests out of band, and make credentials hard to steal in the first place."
+      ],
+      "points": [
+        "Verify requests on a second channel",
+        "Use phishing-resistant MFA or passkeys",
+        "Turn on email authentication (SPF, DKIM, DMARC)",
+        "Run regular awareness drills"
+      ],
+      "caption": "Fictional examples: each one has a tell."
+    },
+    {
+      "id": "agency",
+      "eyebrow": "Risks 03 and 06",
+      "title": "Agents with too much power",
+      "body": [
+        "Excessive agency climbed to third place in 2026. Agents are given broad tools (email, files, payments, cloud) “just in case”, so one bad instruction or one mistake becomes many actions.",
+        "Unbounded consumption is its sibling: an agent stuck in a loop, or an attacker driving expensive calls, runs up real cost."
+      ],
+      "points": [
+        "Scoped, short-lived credentials",
+        "Approval gates for risky actions",
+        "Log and audit every action",
+        "Spending caps and circuit breakers"
+      ],
+      "caption": "Fewer tools, a gate on the risky one, a cap on cost."
+    },
+    {
+      "id": "data",
+      "eyebrow": "Risks 02, 08 and 10",
+      "title": "Guard what goes in and what comes out",
+      "body": [
+        "Sensitive data leaks in two directions. People paste secrets and personal data into prompts; models repeat what they have seen. And anything hidden in the context, from system prompts to tool schemas, should be assumed extractable.",
+        "On the way out, model output is just untrusted text. Passing it straight into a browser, a shell or a database invites the classic injection bugs."
+      ],
+      "points": [
+        "Classify data before it reaches AI",
+        "Keep secrets out of prompts",
+        "Assume system prompts can leak",
+        "Check output before other systems use it"
+      ],
+      "caption": "Redact on the way in, check on the way out."
+    },
+    {
+      "id": "pillars",
+      "eyebrow": "Beyond security",
+      "title": "Responsible AI",
+      "body": [
+        "Secure is necessary but not sufficient. Responsible AI asks whether a system is fair, explainable and respectful of privacy, whether someone is accountable for it, and whether people stay in charge of high-impact decisions.",
+        "Those principles need something to stand on: a clear AI use policy, an inventory of the models in use, risk reviews, and an established framework such as the NIST AI Risk Management Framework or ISO/IEC 42001."
+      ],
+      "figure": "pillars",
+      "caption": "Five principles on a base of governance."
+    },
+    {
+      "id": "layers",
+      "eyebrow": "Bringing it together",
+      "title": "Defence in depth",
+      "body": [
+        "No single control stops everything. Prompt filters miss things, people approve things, and models change. Layer the controls so that what gets past one is caught by the next."
+      ],
+      "points": [
+        "Govern: policy, owners, inventory",
+        "Protect the data",
+        "Guard inputs and outputs",
+        "Limit what agents can do",
+        "Monitor and red-team"
+      ],
+      "caption": "Each attempt is stopped by a different layer."
+    }
+  ],
+  "takeaway": "Secure by design. Responsible by default.",
+  "sources": [
+    {
+      "label": "OWASP GenAI Security Project: Top 10 for LLM Applications 2026",
+      "href": "https://genai.owasp.org/"
+    },
+    {
+      "label": "Help Net Security: OWASP 2026 LLM Top 10 released",
+      "href": "https://www.helpnetsecurity.com/2026/08/06/owasp-2026-llm-top-10-released/"
+    },
+    {
+      "label": "NIST AI Risk Management Framework",
+      "href": "https://www.nist.gov/itl/ai-risk-management-framework"
+    },
+    {
+      "label": "ISO/IEC 42001: AI management systems",
+      "href": "https://www.iso.org/standard/81230.html"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "sections": [
+    {
+      "id": "problem",
+      "eyebrow": "The problem",
+      "title": "Seed data by copy and paste",
+      "body": [
+        "Every environment needs the same lookup values. Usually they arrive by a script someone runs once, or a dump nobody can diff."
+      ]
+    },
+    {
+      "id": "import",
+      "eyebrow": "The flow",
+      "title": "Files in, procedures run",
+      "body": [
+        "dbd import loads staging data from CSV, TSV, JSON and JSONL files under import/, then calls the procedures that read it, so the logic for merging into real tables stays in SQL you own. dbd export writes table data back out to files."
+      ],
+      "code": {
+        "lang": "text",
+        "text": "import/staging/lookups.csv\nddl/procedure/staging/import_lookups.ddl\n\n$ dbd import"
+      }
+    },
+    {
+      "id": "why",
+      "eyebrow": "Why it helps",
+      "title": "Reviewable, repeatable",
+      "body": [
+        "Seed data becomes a diff in a pull request, and every environment gets the same values the same way."
+      ],
+      "points": [
+        "CSV, TSV, JSON, JSONL",
+        "Your procedures decide how rows merge",
+        "Export to compare or back up"
+      ]
+    }
+  ],
+  "takeaway": ""
+}

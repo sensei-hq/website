@@ -65,3 +65,11 @@ html, body {
 .prose li { margin-bottom: 8px; }
 .prose a { color: var(--shu); text-decoration: none; }
 .prose a:hover { text-decoration: underline; }
+
+/* Articles (/articles): the page width shared by the index, each article and its nav. */
+.a-shell {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: 28px;
+  padding-right: 28px;
+}

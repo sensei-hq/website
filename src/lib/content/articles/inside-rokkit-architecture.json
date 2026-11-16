@@ -1,0 +1,46 @@
+{
+  "sections": [
+    {
+      "id": "layers",
+      "eyebrow": "The layers",
+      "title": "From core to themes",
+      "body": [
+        "Field mapping and types live in @rokkit/core. Reactive wrappers live in @rokkit/states. Keyboard navigation and interactions in @rokkit/actions. Filtering and transforms in @rokkit/data. Components in @rokkit/ui, with forms and charts on top, and themes and icons as plain CSS and assets."
+      ],
+      "code": {
+        "lang": "text",
+        "text": "@rokkit/core      field mapping, types\n@rokkit/states    ProxyItem, wrappers, theme store\n@rokkit/actions   navigator, interactions\n@rokkit/data      filter, search, rollup\n@rokkit/ui        components\n@rokkit/forms · @rokkit/chart\n@rokkit/themes · @rokkit/icons"
+      }
+    },
+    {
+      "id": "rule",
+      "eyebrow": "The rule",
+      "title": "Dependencies only point down",
+      "body": [
+        "No package imports from one above it. The UI never imports forms; state never imports UI. That keeps each layer testable on its own and stops accidental cycles."
+      ]
+    },
+    {
+      "id": "compose",
+      "eyebrow": "The habit",
+      "title": "Composition over configuration",
+      "body": [
+        "Components do one job. A list does not grow searchable, filterable and sortable flags; you compose a search with a list instead."
+      ],
+      "points": [
+        "Small components, clear edges",
+        "Behaviour through actions, not props",
+        "Styling through themes, not components"
+      ]
+    },
+    {
+      "id": "ai",
+      "eyebrow": "With AI",
+      "title": "Architecture as a guardrail",
+      "body": [
+        "A strict dependency order is a rule an assistant can follow and a reviewer can check. It is one of the simplest ways to stop generated code from creeping across boundaries."
+      ]
+    }
+  ],
+  "takeaway": ""
+}

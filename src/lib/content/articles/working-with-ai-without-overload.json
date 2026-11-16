@@ -1,0 +1,60 @@
+{
+  "sections": [
+    {
+      "id": "flood",
+      "eyebrow": "The problem",
+      "title": "More output than anyone can read",
+      "body": [
+        "We all use AI extensively now, and it gives us a lot: pages of code, long analyses, detailed answers to every question. It arrives far faster than we can read it.",
+        "Reading, reviewing and trying to understand all of it creates significant cognitive load. Skim too fast and mistakes get through; read every line and the speed-up disappears."
+      ],
+      "caption": "Generated races ahead; read crawls."
+    },
+    {
+      "id": "questions",
+      "eyebrow": "The questions",
+      "title": "How are you managing it?",
+      "body": [
+        "Three questions are worth asking of your own practice. How do you skim through it efficiently without being overwhelmed? Are you focusing on the intent and the expected outcome? And how do you make sure what the AI gives you is relevant, accurate and aligned with what you are trying to achieve?",
+        "The answer that has worked for me is to do most of the thinking before the AI writes anything."
+      ],
+      "caption": "Output drifts round the target; aim for the intent."
+    },
+    {
+      "id": "define",
+      "eyebrow": "The cycle · steps 1 to 3",
+      "title": "Define it before AI builds it",
+      "body": [
+        "Start with the concept: what are we trying to achieve, and why? Then break it into detailed requirements.",
+        "Read those requirements properly. This is the step most people rush, and any miss here will skew every result after it.",
+        "Then decide how the work will be verified. A clear definition of verification keeps the model on the design rather than drifting from it. Clear guidelines and predefined skills help a lot here."
+      ],
+      "caption": "Concept, requirements, verification."
+    },
+    {
+      "id": "build",
+      "eyebrow": "The cycle · steps 4 to 6",
+      "title": "Then build in steps you can check",
+      "body": [
+        "Next comes the design: discuss and decide how it will be implemented, which patterns, principles and architecture. This is what keeps the result from becoming spaghetti code. UX belongs here too, alongside the design; mock-ups can be made quickly in Claude Cowork.",
+        "With the design agreed, make a plan in phases, so the results of each phase can be verified before the next one starts. From that point on, the focus is on results."
+      ],
+      "caption": "Design and UX, a phased plan, results."
+    },
+    {
+      "id": "payoff",
+      "eyebrow": "The payoff",
+      "title": "Read against the definition",
+      "body": [
+        "With the cycle in place you no longer need to read everything. You check output against the definition you wrote: does it meet the intent, does it pass the verification? Only what misses needs your close attention."
+      ],
+      "points": [
+        "Skim for intent first",
+        "Check against the verification criteria",
+        "Read deeply only what misses"
+      ],
+      "caption": "Most output passes the gate; the misses come to you."
+    }
+  ],
+  "takeaway": "Define it. Verify it. Then trust the results."
+}

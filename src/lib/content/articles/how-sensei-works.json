@@ -1,0 +1,77 @@
+{
+  "sections": [
+    {
+      "id": "hook",
+      "eyebrow": "The whole picture",
+      "title": "Local first, end to end",
+      "body": [
+        "Sensei is easiest to understand as three boundaries. Your machine, where the work happens and where everything Sensei learns is kept. The models it can call, through one gateway. And your team, through a dōjō, if you choose to have one. A phone companion sits alongside for the moments that need you."
+      ],
+      "caption": "The simplified architecture: your machine, other models, your team."
+    },
+    {
+      "id": "machine",
+      "eyebrow": "On your machine",
+      "title": "Sensei runs where you work",
+      "body": [
+        "Sensei is a desktop app that wraps a local runtime. Your assistant, whether Claude Code, Cursor, Zed or another, connects to it through hooks and MCP; your code and sessions never leave the machine unless you share."
+      ],
+      "points": [
+        "CLI: sensei run, from the terminal",
+        "MCP servers: the tools and instruments your assistant calls",
+        "Daemon: always on, watching sessions and the code and running the analysis",
+        "Local Postgres: everything Sensei captures and learns, stored on your machine"
+      ]
+    },
+    {
+      "id": "gateway",
+      "eyebrow": "The gateway",
+      "title": "One way in to every model",
+      "body": [
+        "Every model call Sensei makes, from summarising a session to consolidating memories or suggesting a doc fix, goes through one gateway, a library inside the app. It picks the model for the task, falls back when a provider is down, and keeps track of cost.",
+        "By default it uses an embedded Ollama with Gemma 4: fast, local, no setup, and it works offline. When you want more, point it at your own Ollama host or bring your own keys for cloud models such as Claude, GPT-4o, Qwen or Kimi."
+      ]
+    },
+    {
+      "id": "dojo",
+      "eyebrow": "The dōjō",
+      "title": "Your team’s shared mind",
+      "body": [
+        "The dōjō is the team side: a hosted service at dojo.sensei-hq.com, or one you run in your own VPC. Members push the lessons they choose to share; maintainers triage and approve them; consolidated practice flows back down to everyone as upgrades and rules.",
+        "Separately, an opt-in public collective shares anonymised learnings across all Sensei users."
+      ]
+    },
+    {
+      "id": "relay",
+      "eyebrow": "Relay",
+      "title": "Stay in the loop, away from the keyboard",
+      "body": [
+        "When work runs while you’re away, your phone becomes the companion: watch a run’s progress, get a ping when something needs you, approve a gated action or answer a decision.",
+        "Only status and the choices you’re asked to make cross over; never code or transcripts."
+      ]
+    },
+    {
+      "id": "roles",
+      "eyebrow": "Who does what",
+      "title": "Sensei and the dōjō, side by side",
+      "body": [
+        "Sensei is personal and complete on its own. The dōjō is optional, and adds the team."
+      ],
+      "points": [
+        "Sensei, on your machine: watches your sessions and git history; maps the code and checks docs against it; learns from your corrections; resolves the rules for each session; gives your assistant context and guidance",
+        "Dōjō, for your team: shares rules and lessons across people; lets maintainers triage and approve; holds rules for the team, workspaces and repositories; sends upgrades to every member; is your inbox for runs away from the keyboard; never sees your code or transcripts"
+      ]
+    },
+    {
+      "id": "together",
+      "eyebrow": "Together",
+      "title": "What you learn alone, the team keeps",
+      "body": [
+        "The two work as a loop. Sensei learns from your sessions on your machine. You share a lesson, opt-in and previewed. The dōjō consolidates it through triage and approval. It comes back to every member as an upgrade they can apply, mute or pin. And Sensei loads it at the start of the next session.",
+        "Each turn of the loop makes every session a little better, for everyone on the team."
+      ]
+    }
+  ],
+  "takeaway": "Your machine does the work. Your team keeps the lessons.",
+  "takeawaySub": "Sensei and the dōjō, working together."
+}

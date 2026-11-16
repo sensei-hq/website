@@ -1,0 +1,70 @@
+{
+  "sections": [
+    {
+      "id": "silos",
+      "eyebrow": "The problem",
+      "title": "Every assistant works alone",
+      "body": [
+        "There is an assistant for nearly everything now: one for code, one for research, one for review, often several of each. Each is good at its job, and each lives in its own chat with its own context.",
+        "None of them knows what the others are doing. There is no shared plan, no shared memory of the goal, and nothing that checks one assistant’s work against another’s."
+      ],
+      "caption": "Six assistants, six silos."
+    },
+    {
+      "id": "manual",
+      "eyebrow": "The workaround",
+      "title": "So you become the relay",
+      "body": [
+        "You can make them work together, but only by doing the joining yourself: copying a task from one chat to the next, pasting results back, passing messages along.",
+        "Reviews are the weak spot. Each assistant checks its own output, and every gate between steps is you, reading, judging and handing on."
+      ],
+      "caption": "You carry every hand-off and every review."
+    },
+    {
+      "id": "register",
+      "eyebrow": "The idea",
+      "title": "One controller, many contributors",
+      "body": [
+        "Sensei Relay starts by giving each assistant a role. One registers as the controller; the rest register as contributors. They can be different assistants, or several parallel runs of the same one.",
+        "The controller owns the goal. Contributors own the tasks they are given. Everyone is connected through Relay rather than through your clipboard."
+      ],
+      "caption": "Registration turns a crowd into a team."
+    },
+    {
+      "id": "dispatch",
+      "eyebrow": "The plan",
+      "title": "Plan, dispatch, report",
+      "body": [
+        "Given a goal, the controller prepares a plan and breaks it into tasks, then distributes them to the contributors that are available.",
+        "Each contributor completes its task and reports back to the controller, so progress lives in one place instead of in scrollback across five windows."
+      ],
+      "caption": "Tasks go out along the wires; reports come back."
+    },
+    {
+      "id": "review",
+      "eyebrow": "The check",
+      "title": "Cross-review, then a metrics gate",
+      "body": [
+        "Results are not self-reviewed. Contributors review each other’s work against the requirement, which catches what a single assistant would wave through.",
+        "The controller then consolidates the results and gates them by metrics: requirements covered, tests passing, review score. The goal counts as achieved only when the numbers say so."
+      ],
+      "points": [
+        "Peer review against the requirement",
+        "One consolidated result",
+        "A gate of agreed metrics"
+      ],
+      "caption": "Peer checks, one merge, one gate."
+    },
+    {
+      "id": "handover",
+      "eyebrow": "Reliability",
+      "title": "Built to keep going",
+      "body": [
+        "Real work is messy. Assistants can unregister and register again without the run losing its place, and the controller can hand over to another assistant mid-run.",
+        "The goal stays the goal, whoever happens to be holding it."
+      ],
+      "caption": "Leave, rejoin, hand over: the run carries on."
+    }
+  ],
+  "takeaway": "Many assistants. One goal. Delivered reliably."
+}

@@ -1,0 +1,75 @@
+{
+  "sections": [
+    {
+      "id": "hook",
+      "eyebrow": "The question",
+      "title": "When two rules disagree",
+      "body": [
+        "Your dōjō has a mandatory rule: never log tokens or personal data, even at debug level. A repository has a recommended rule: log full request bodies while debugging the login flow. Both apply to the same session. Which does the assistant follow?"
+      ],
+      "caption": "Two real rules, pulling opposite ways."
+    },
+    {
+      "id": "enforcement",
+      "eyebrow": "Rule one",
+      "title": "The stronger rule wins",
+      "body": [
+        "Every rule has an enforcement tier: mandatory, required, recommended or advisory. When two rules conflict, the stronger tier wins, whatever scope each comes from.",
+        "A mandatory rule is never overridden by a closer one. In the example, the dōjō’s mandatory rule holds, and the repository’s rule is flagged as conflicting with it so someone can fix or retire it."
+      ],
+      "points": [
+        "Mandatory: never overridden",
+        "Required: must be met",
+        "Recommended: follow unless there’s a reason not to",
+        "Advisory: good to know"
+      ]
+    },
+    {
+      "id": "scope",
+      "eyebrow": "Rule two",
+      "title": "Then the closer rule wins",
+      "body": [
+        "Between rules of the same strength, the most specific scope wins. The ladder runs from broadest to closest: built-in defaults, you, the dōjō, a workspace, a repository.",
+        "Example: the dōjō adopts a TypeScript pack that recommends no default exports in shared packages; a repository built on a framework that needs default exports in route files says so, also as a recommendation. Same strength, so the repository’s rule, the closer one, wins there."
+      ]
+    },
+    {
+      "id": "resolve",
+      "eyebrow": "Resolved",
+      "title": "One order, every time",
+      "body": [
+        "Resolution is deterministic. Sensei gathers every rule that applies to the repository, orders them by enforcement and then by scope, locks the mandatory ones, and merges duplicates, keeping the stronger copy.",
+        "It runs whenever a session loads its context, so the assistant always gets the same answer to the same question."
+      ]
+    },
+    {
+      "id": "packs",
+      "eyebrow": "Rule sets",
+      "title": "Start from packs that already work",
+      "body": [
+        "You don’t have to write every rule yourself. Sensei ships rule packs that you can adopt for yourself, a dōjō, a workspace or a single repository. A few, with two of their rules each:"
+      ],
+      "points": [
+        "Security baseline (required): no secrets in source; never log tokens or PII (both mandatory)",
+        "TDD discipline (required): write the failing test first; never merge on red",
+        "Clean Code (recommended): intention-revealing names; comments explain why, not what",
+        "Design principles, SOLID (recommended): single responsibility; composition over inheritance",
+        "Compliance baseline (required): collect only what the feature needs; encrypt regulated data",
+        "UX and design (recommended): accessibility is a requirement; clear feedback for every action",
+        "Ponytail (recommended): question whether the code needs to exist; reuse before writing something new",
+        "Stack packs, adopted where the stack is found: Rust (no unwrap on the request path), TypeScript (strict types, no any)"
+      ]
+    },
+    {
+      "id": "sticky",
+      "eyebrow": "It sticks",
+      "title": "Rules that survive a long session",
+      "body": [
+        "Mandatory and required rules are pushed into the session from the first turn, without the assistant having to ask. When the context fills up and compacts, the full mandatory tier is sent again, not a summary of it.",
+        "Recommended and advisory rules are fetched when they’re relevant. And a mandatory rule is enforced: an action that would break one is blocked rather than waved through."
+      ]
+    }
+  ],
+  "takeaway": "The stronger rule wins. Then the closer one.",
+  "takeawaySub": "Sensei resolves your rules the same way, every session."
+}

@@ -1,0 +1,42 @@
+{
+  "sections": [
+    {
+      "id": "risk",
+      "eyebrow": "The risk",
+      "title": "Plausible is not protected",
+      "body": [
+        "Generated auth code often checks the user in the page component but not on the server, protects the routes in the prompt but not the new one added later, and hard-codes roles in several places that slowly disagree."
+      ],
+      "points": [
+        "Client-only checks",
+        "Missing protection on new routes",
+        "Role logic duplicated and drifting"
+      ]
+    },
+    {
+      "id": "mitigate",
+      "eyebrow": "Mitigate",
+      "title": "Make the safe path the short path",
+      "body": [
+        "Keep authorization declarative and central, enforce it on the server, default to deny, and test the rules rather than the pages."
+      ]
+    },
+    {
+      "id": "kavach",
+      "eyebrow": "How Kavach helps",
+      "title": "Less auth code to generate",
+      "body": [
+        "With Kavach, an assistant edits a rule list and a config file instead of writing checks into every page. kavach.handle enforces the rules in SvelteKit’s server hooks, and new routes start protected."
+      ]
+    },
+    {
+      "id": "week",
+      "eyebrow": "The week",
+      "title": "The Kavach idea",
+      "body": [
+        "Auth as a foundation, protected by default, roles in one place, providers behind adapters. Next week: Sensei, and what code quality means when AI writes the code."
+      ]
+    }
+  ],
+  "takeaway": ""
+}

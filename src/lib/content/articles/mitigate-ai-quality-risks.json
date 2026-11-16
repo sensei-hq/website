@@ -1,0 +1,45 @@
+{
+  "sections": [
+    {
+      "id": "habits",
+      "eyebrow": "The habits",
+      "title": "Do the thinking first",
+      "body": [
+        "The best results come from deciding more before the assistant writes anything."
+      ],
+      "points": [
+        "Write the requirements down and read them properly",
+        "Define how the result will be verified, before building",
+        "Agree the design: patterns, principles, architecture",
+        "Work in phases, each with a check",
+        "Encode conventions as rules, not reminders"
+      ]
+    },
+    {
+      "id": "why",
+      "eyebrow": "Why it works",
+      "title": "Less room to guess",
+      "body": [
+        "Every unanswered question is a place the assistant will improvise. Clear requirements and a verification definition turn improvisation into execution."
+      ]
+    },
+    {
+      "id": "sensei",
+      "eyebrow": "In Sensei",
+      "title": "Habits you can see",
+      "body": [
+        "Sensei scores how deep a session’s opening plan was, flags when work departs from it, and turns what you keep correcting into rules the assistant receives next time."
+      ]
+    },
+    {
+      "id": "more",
+      "eyebrow": "Read more",
+      "title": "The full cycle",
+      "body": [
+        "Our article “Working with AI without the overload” walks through the whole cycle step by step."
+      ]
+    }
+  ],
+  "takeaway": "Less room to guess.",
+  "takeawaySub": "Sensei helps with all five habits."
+}

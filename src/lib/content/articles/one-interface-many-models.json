@@ -1,0 +1,38 @@
+{
+  "sections": [
+    {
+      "id": "problem",
+      "eyebrow": "The problem",
+      "title": "SDK sprawl",
+      "body": [
+        "Use two providers and you have two clients, two error types and two retry stories. Add a third for cost or a fourth for a new model, and provider code starts to leak into business logic."
+      ]
+    },
+    {
+      "id": "gateway",
+      "eyebrow": "What Gateway is",
+      "title": "A routing engine, as a library",
+      "body": [
+        "Gateway is a provider-agnostic routing engine in Rust: trait-based adapters for around fifteen cloud providers, including Anthropic, Bedrock and OpenAI, plus named fallback chains, circuit breakers and budget management."
+      ],
+      "code": {
+        "lang": "toml",
+        "text": "gateway = { package = \"sensei-gateway\", git = \"https://github.com/sensei-hq/gateway\", tag = \"v0.12.0\" }"
+      }
+    },
+    {
+      "id": "why",
+      "eyebrow": "Why a library",
+      "title": "No extra hop",
+      "body": [
+        "It runs inside your process, not as another service in the request path. You pin a tagged release and your lockfile pins the commit."
+      ],
+      "points": [
+        "One interface, many providers",
+        "Embedded, not proxied",
+        "MIT licensed"
+      ]
+    }
+  ],
+  "takeaway": ""
+}

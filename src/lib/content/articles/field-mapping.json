@@ -1,0 +1,46 @@
+{
+  "sections": [
+    {
+      "id": "defaults",
+      "eyebrow": "Defaults",
+      "title": "Sensible names first",
+      "body": [
+        "Selection components look for label, value, icon, children and snippet by default. If your data already uses those names, there is nothing to configure."
+      ]
+    },
+    {
+      "id": "custom",
+      "eyebrow": "Custom",
+      "title": "Strings, dot-paths or functions",
+      "body": [
+        "When it doesn’t, map the roles to your fields. A mapping can be a field name, a dot-path into nested data, or a function computed from the raw item."
+      ],
+      "code": {
+        "lang": "js",
+        "text": "fields = {\n  label: (item) => `${item.firstName} ${item.lastName}`,\n  value: 'userId',\n  icon: 'profile.avatar',   // dot-path\n  children: 'reports'       // nested items for a Tree\n}"
+      }
+    },
+    {
+      "id": "how",
+      "eyebrow": "Under the hood",
+      "title": "Resolved once, read cheaply",
+      "body": [
+        "Every mapping is turned into a resolver function when the item is wrapped, so reading a field never branches on its type. Missing segments in a dot-path resolve to undefined instead of throwing."
+      ],
+      "points": [
+        "One place for the transformation",
+        "Safe nested resolution",
+        "Per-item overrides for mixed lists"
+      ]
+    },
+    {
+      "id": "ai",
+      "eyebrow": "With AI",
+      "title": "A smaller surface to review",
+      "body": [
+        "A fields object is a few declarative lines. That is far easier to review than a generated adapter layer, and it keeps the original data intact."
+      ]
+    }
+  ],
+  "takeaway": ""
+}

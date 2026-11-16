@@ -1,0 +1,64 @@
+{
+  "sections": [
+    {
+      "id": "hook",
+      "eyebrow": "The problem",
+      "title": "How well does your assistant know your code?",
+      "body": [
+        "Ask an assistant where something lives and watch what it does: grep, open a file, open another, grep again. Each file costs context, and the picture it builds is whatever it happened to read."
+      ],
+      "caption": "Search, open, guess."
+    },
+    {
+      "id": "map",
+      "eyebrow": "The code map",
+      "title": "A map that opens on modules",
+      "body": [
+        "Real codebases have thousands of symbols and tens of thousands of edges. Draw them all and you get a hairball. Sensei’s code map opens on modules and the bands between them, and you go down a level when you choose: a module’s files, sorted into code, tests and docs, then a file’s symbols with their callers and callees."
+      ]
+    },
+    {
+      "id": "coupling",
+      "eyebrow": "What it hides",
+      "title": "See what the code hides",
+      "body": [
+        "Lenses on the same map show what reading files won’t."
+      ],
+      "points": [
+        "Structure: layers coloured by direction, so a lower layer calling a higher one stands out",
+        "Cycles: only the bands inside a cycle, with their members tinted",
+        "Hidden coupling: files that keep changing together in commits with no import between them",
+        "Complexity: modules tinted by how much of their code is over a complexity threshold, measured with qlty"
+      ]
+    },
+    {
+      "id": "drift",
+      "eyebrow": "Doc drift",
+      "title": "Catch the doc that’s gone stale",
+      "body": [
+        "When a README says to call LoginService.authenticate() and the code has since renamed it, the doc is wrong, and it misleads the next reader and the next assistant alike.",
+        "Sensei reads the identifiers your docs mention and checks them against the live code graph. A doc whose names no longer exist is marked drifted or broken, and the count shows where you’ll see it."
+      ]
+    },
+    {
+      "id": "context",
+      "eyebrow": "Context",
+      "title": "The right context on the first turn",
+      "body": [
+        "Sensei’s capabilities are tools the assistant can call during a session: search, the graph, your rules, what it has learned. Instead of grepping its way in, the assistant can ask and get back the relevant files, callers, rules and memories.",
+        "When Sensei can’t answer, it says so, and the assistant falls back to searching rather than working from an empty answer."
+      ]
+    },
+    {
+      "id": "intake",
+      "eyebrow": "Intake",
+      "title": "Start with the right way of working",
+      "body": [
+        "Before a chunk of work starts, intake reads it on three axes: lifecycle (existing code, or new), intent (a bug, a feature, an exploration) and risk, which comes from the blast radius in the code graph.",
+        "From those it recommends a playbook, such as debug-flow or spec-driven, and you confirm. High-risk work always keeps you in the loop; the rigour follows the risk."
+      ]
+    }
+  ],
+  "takeaway": "Know the code before you change it.",
+  "takeawaySub": "Sensei maps it, checks it, and hands it over."
+}

@@ -1,0 +1,42 @@
+{
+  "sections": [
+    {
+      "id": "notice",
+      "eyebrow": "Notice",
+      "title": "Patterns you are too close to see",
+      "body": [
+        "Sensei watches sessions locally. When the same correction keeps happening, it forms a finding and offers one action: apply, review or dismiss."
+      ]
+    },
+    {
+      "id": "promote",
+      "eyebrow": "Promote",
+      "title": "A memory becomes a rule",
+      "body": [
+        "A learning that keeps proving itself can be promoted to a rule at a higher scope, from your repository to your project or team."
+      ]
+    },
+    {
+      "id": "share",
+      "eyebrow": "Share",
+      "title": "The dōjō loop",
+      "body": [
+        "For teams, a shared dōjō runs one loop: bind a project, contribute a finding, have maintainers triage and approve it, and distribute approved knowledge back by scope."
+      ],
+      "points": [
+        "Always opt-in and previewed",
+        "Client work anonymized before it can leave",
+        "High-impact changes need a second approval"
+      ]
+    },
+    {
+      "id": "week",
+      "eyebrow": "The week",
+      "title": "The Sensei idea",
+      "body": [
+        "Define quality, measure the right things, know the failure modes, build good habits, and turn standards into rules the assistant actually loads. Next week: Gateway, routing across model providers."
+      ]
+    }
+  ],
+  "takeaway": ""
+}

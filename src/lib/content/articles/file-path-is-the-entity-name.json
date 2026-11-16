@@ -1,0 +1,46 @@
+{
+  "sections": [
+    {
+      "id": "problem",
+      "eyebrow": "The problem",
+      "title": "Config that drifts from reality",
+      "body": [
+        "Many schema tools need a manifest listing every object and its order. The manifest and the SQL drift apart, and the tool trusts the manifest."
+      ]
+    },
+    {
+      "id": "convention",
+      "eyebrow": "The convention",
+      "title": "Folders carry the meaning",
+      "body": [
+        "In dbd, the folder structure is the model. A file at ddl/table/config/lookups.ddl becomes the entity config.lookups of type table. Views, materialized views and procedures sit in their own folders the same way."
+      ],
+      "code": {
+        "lang": "text",
+        "text": "ddl/\n  table/config/lookups.ddl          → table config.lookups\n  view/config/genders.ddl           → view config.genders\n  procedure/staging/import_lookups.ddl"
+      }
+    },
+    {
+      "id": "why",
+      "eyebrow": "Why it helps",
+      "title": "Nothing to keep in sync",
+      "body": [
+        "There is no list to update when you add a table. dbd discovers entities from the tree and works out the dependency order from the SQL itself."
+      ],
+      "points": [
+        "Add a file, get an entity",
+        "Move a file, rename the entity",
+        "Review the tree, review the schema"
+      ]
+    },
+    {
+      "id": "ai",
+      "eyebrow": "With AI",
+      "title": "Conventions are instructions",
+      "body": [
+        "A predictable layout is easy for an assistant to follow: “add a view in the config schema” has exactly one right place to go."
+      ]
+    }
+  ],
+  "takeaway": ""
+}

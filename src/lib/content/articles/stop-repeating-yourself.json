@@ -1,0 +1,84 @@
+{
+  "sections": [
+    {
+      "id": "repeat",
+      "eyebrow": "The problem",
+      "title": "You keep saying the same thing",
+      "body": [
+        "Work with an AI assistant for a while and a pattern shows up. The output is close but not quite right, so you correct it. Next session: the same miss, the same correction.",
+        "Use the repository pattern. Don’t comment every line. No raw SQL. Each reminder costs a minute; together they cost hours, and the AI never seems to learn."
+      ],
+      "caption": "The same correction, for the third time."
+    },
+    {
+      "id": "causes",
+      "eyebrow": "Why it happens",
+      "title": "Two causes, two fixes",
+      "body": [
+        "Most misses come down to one of two things.",
+        "The AI drifts: it guesses, skips a pattern or makes something up, and you go round in correction loops until it lands.",
+        "Or the ask is thin: acceptance criteria, edge cases or scope are missing, so the AI fills the gaps with guesses that look plausible and are not what you meant."
+      ],
+      "caption": "A loop of corrections, or a request full of blanks."
+    },
+    {
+      "id": "read",
+      "eyebrow": "Transcript analysis",
+      "title": "Sensei reads your sessions",
+      "body": [
+        "Sensei captures your assistant sessions (Claude Code through its hooks, Zed read-only) and reads them after the fact.",
+        "Every follow-up that corrects the AI’s work is a signal: “that’s not what I asked”, “why did you…”, “revert that”. Sensei counts them per session, and only unambiguous ones, so a polite “now also add…” never counts against you. A session with no corrections landed first time, and the share of sessions that do is the number Sensei is judged by."
+      ],
+      "caption": "Corrections picked out of one session."
+    },
+    {
+      "id": "rules",
+      "eyebrow": "From repeats to rules",
+      "title": "Repeats become rules",
+      "body": [
+        "One correction is noise. The same correction across several sessions is a pattern. Sensei clusters similar corrections and proposes a rule (a memory, in Sensei’s terms) from them.",
+        "Once a rule has enough support it goes into use: the AI loads it at the start of each new session for that project, through Sensei’s MCP tools. You stop saying it; the AI starts doing it.",
+        "If a later correction contradicts a rule, Sensei records the violation, and a rule that keeps being broken is challenged instead of trusted."
+      ],
+      "caption": "Corrections gather into rules the next session loads."
+    },
+    {
+      "id": "depth",
+      "eyebrow": "Thin asks",
+      "title": "Catch the gaps before work starts",
+      "body": [
+        "Rules fix how the AI works. Thin asks need fixing upstream, before anything is built.",
+        "Sensei’s plan depth review holds every piece of work to a bar. Then an adversarial review assumes the plan is wrong and hunts for what was missed: empty states, large inputs, who is allowed to do what."
+      ],
+      "points": [
+        "Observable acceptance criteria",
+        "Inputs, outputs and dependencies defined",
+        "No TBDs left",
+        "Open questions answered",
+        "Scope: what is in, and what is out"
+      ],
+      "caption": "The depth bar, then reviewers asking what was missed."
+    },
+    {
+      "id": "measure",
+      "eyebrow": "Measured",
+      "title": "Every change is measured",
+      "body": [
+        "A rule is a claim: this will help. Sensei checks the claim by comparing how many sessions land first time before and after the change.",
+        "A rule that helps is kept and grows stronger. One that makes things worse shows up as a regression, so you can undo it."
+      ],
+      "caption": "Illustrative: first-time sessions before and after a rule."
+    },
+    {
+      "id": "practice",
+      "eyebrow": "In practice",
+      "title": "Why I use it",
+      "body": [
+        "I run Sensei on my own work regularly for one reason: I don’t want to spend my time typing the same kind of message again and again.",
+        "Start small. Let it capture a week of sessions, look at the corrections it found, and accept the rules that match how you already work."
+      ]
+    }
+  ],
+  "takeaway": "Stop repeating yourself.",
+  "takeawaySub": "Sensei learns from every session."
+}

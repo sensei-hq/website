@@ -1,0 +1,38 @@
+{
+  "sections": [
+    {
+      "id": "problem",
+      "eyebrow": "The problem",
+      "title": "The page you forgot",
+      "body": [
+        "When protection is opt-in, every new route is public until someone remembers to add a check. One missed check is a data leak."
+      ]
+    },
+    {
+      "id": "default",
+      "eyebrow": "The default",
+      "title": "Deny first, allow explicitly",
+      "body": [
+        "In Kavach, routes are protected by default. You list the public ones, such as login and register, in one config file."
+      ],
+      "code": {
+        "lang": "js",
+        "text": "export default {\n  routes: {\n    public: ['/login', '/register'],\n    roles: {\n      admin: { home: '/admin' },\n      user: { home: '/dashboard' }\n    }\n  }\n}"
+      }
+    },
+    {
+      "id": "why",
+      "eyebrow": "Why it helps",
+      "title": "Safe when you forget",
+      "body": [
+        "A new page is private until made public. Forgetting fails closed, which is the right way to fail."
+      ],
+      "points": [
+        "One file shows what is public",
+        "New routes start private",
+        "Each role has its own home page"
+      ]
+    }
+  ],
+  "takeaway": ""
+}

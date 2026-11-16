@@ -1,0 +1,38 @@
+{
+  "sections": [
+    {
+      "id": "problem",
+      "eyebrow": "The problem",
+      "title": "Days spent on plumbing",
+      "body": [
+        "Every new app needs sign-in, sessions that work on both server and browser, protected pages and roles. It is rarely the product, yet it eats days, and small mistakes in it are security bugs."
+      ]
+    },
+    {
+      "id": "kavach",
+      "eyebrow": "What Kavach is",
+      "title": "A drop-in auth framework for SvelteKit",
+      "body": [
+        "Kavach gives you one API across auth platforms, declarative route protection and pre-built UI components, with full TypeScript types and unified session handling on server and client."
+      ],
+      "code": {
+        "lang": "sh",
+        "text": "sv create my-app && cd my-app\nbunx @kavach/cli init   # guided setup\nbun run dev"
+      }
+    },
+    {
+      "id": "why",
+      "eyebrow": "Why it matters",
+      "title": "Minutes, not days",
+      "body": [
+        "The guided CLI wires the hooks and config for you, so the time goes into your product instead of into redirects."
+      ],
+      "points": [
+        "One API, many providers",
+        "Rules instead of scattered checks",
+        "Server and client sessions in step"
+      ]
+    }
+  ],
+  "takeaway": ""
+}

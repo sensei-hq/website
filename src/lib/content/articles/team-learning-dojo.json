@@ -1,0 +1,57 @@
+{
+  "sections": [
+    {
+      "id": "hook",
+      "eyebrow": "The problem",
+      "title": "Your team learns the same thing four times",
+      "body": [
+        "Four developers, four assistants, the same correction typed four times: reuse the rate limiter. Each assistant is taught separately, and each lesson stays where it was learned."
+      ],
+      "caption": "The same lesson, four times."
+    },
+    {
+      "id": "constitution",
+      "eyebrow": "Your rules",
+      "title": "Start with your own constitution",
+      "body": [
+        "Even working alone you have a constitution: the rules Sensei follows on your projects. Some you write, some it learns from your corrections, and some come from proven rule packs you adopt.",
+        "Your own rules stay yours. A dōjō is optional, and joining one doesn’t take them away."
+      ]
+    },
+    {
+      "id": "share",
+      "eyebrow": "Share what works",
+      "title": "Share it, on your terms",
+      "body": [
+        "When a rule works for you, you can offer it to your dōjō. You see exactly what would be shared first: the rule itself and counts as evidence, never code or transcripts, with origin details like repository names stripped. Nothing goes until you confirm."
+      ]
+    },
+    {
+      "id": "triage",
+      "eyebrow": "The dōjō",
+      "title": "The team decides what becomes a rule",
+      "body": [
+        "Contributions from members accumulate: four people offering versions of the same lesson become one candidate with the evidence of all four. Maintainers triage and approve it, and then it is distributed."
+      ]
+    },
+    {
+      "id": "upgrade",
+      "eyebrow": "Upgrades",
+      "title": "It comes back as an upgrade",
+      "body": [
+        "Every member receives the approved rule as an upgrade, and each decides: apply it, mute it, or pin it. Applied, it joins their constitution and their assistant loads it from the next session."
+      ]
+    },
+    {
+      "id": "resolve",
+      "eyebrow": "Wherever you code",
+      "title": "The right rules, in every repository",
+      "body": [
+        "Rules live at three levels in a dōjō: the dōjō itself, a workspace (a group of repositories) and a single repository, alongside your personal rules. You sign in once, and Sensei resolves the effective rules for every repository you touch.",
+        "You can preview, for any project, exactly which rules govern it and why, before the first commit. How conflicts are settled is covered in “Which rule wins?”."
+      ]
+    }
+  ],
+  "takeaway": "Learn it once. The team keeps it.",
+  "takeawaySub": "Sensei and your dōjō, sharing on your terms."
+}

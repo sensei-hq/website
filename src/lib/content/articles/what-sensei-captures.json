@@ -1,0 +1,66 @@
+{
+  "sections": [
+    {
+      "id": "hook",
+      "eyebrow": "The question",
+      "title": "What does it actually see?",
+      "body": [
+        "Any tool that promises to improve how you work with an AI assistant has to watch that work first. So it is fair to ask exactly what it watches, and where that goes.",
+        "For Sensei the answer is short: the work itself, kept on your machine."
+      ],
+      "caption": "The editor and the assistant, both observed."
+    },
+    {
+      "id": "streams",
+      "eyebrow": "What it captures",
+      "title": "Four streams, one place",
+      "body": [
+        "You point Sensei at a folder once. From then on it stays up to date by itself: a one-time scan finds the repositories and workspaces under it, a watcher keeps them current, and branch switches flip the view to the branch you have checked out."
+      ],
+      "points": [
+        "Folders: scanned once, then watched, so nothing needs a manual re-scan",
+        "Git: branches and commit history, which later feed churn and quality trends",
+        "Sessions: every prompt, tool call and result from your assistant",
+        "Usage: tokens, cost and how full the context window got"
+      ]
+    },
+    {
+      "id": "sessions",
+      "eyebrow": "Sessions",
+      "title": "Every session, as events",
+      "body": [
+        "An assistant session arrives as a stream of events: it starts, you prompt, it calls tools, the tools return, it ends. Sensei stores the events as they happened and turns them into one session record after the fact.",
+        "That record is where the useful signals come from: how long it took, whether it landed first time or needed a correction, how many tool calls, what it consumed. Claude Code is captured live; other assistants are read from their transcripts."
+      ]
+    },
+    {
+      "id": "graph",
+      "eyebrow": "The code graph",
+      "title": "It maps the code itself",
+      "body": [
+        "Alongside the activity, Sensei builds a graph of each repository: files, symbols, the calls and imports between them, and the docs that mention them, grouped into communities of code that belongs together.",
+        "The graph is incremental. Change a file and only that file’s part of the graph is re-indexed; nothing is duplicated and nothing goes stale. The code map, search, doc-drift checks and the context Sensei gives your assistant all read it."
+      ]
+    },
+    {
+      "id": "local",
+      "eyebrow": "Local first",
+      "title": "It stays on your machine",
+      "body": [
+        "Captured events, sessions, the graph and usage are stored locally. Nothing is uploaded by default.",
+        "Event payloads are checked against a list of secret patterns as they are captured, and a match is redacted before it is stored, with the redaction logged. A key that appears in a command’s output never reaches the database."
+      ]
+    },
+    {
+      "id": "share",
+      "eyebrow": "Your choice",
+      "title": "Sharing is yours to choose",
+      "body": [
+        "Sharing with a team, through a dōjō, is opt-in. When you share something, you see exactly what would leave first: the rule or finding itself, never your code or transcripts, with origin details such as repository names stripped.",
+        "Only after you confirm does it go. The team side is covered in “Learn it once”."
+      ]
+    }
+  ],
+  "takeaway": "It sees the work. You keep it.",
+  "takeawaySub": "Sensei captures locally; sharing is your call."
+}

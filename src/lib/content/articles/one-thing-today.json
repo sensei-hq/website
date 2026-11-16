@@ -1,0 +1,61 @@
+{
+  "sections": [
+    {
+      "id": "hook",
+      "eyebrow": "The problem",
+      "title": "Not another dashboard",
+      "body": [
+        "Most developer tools answer “what could we measure?” with a wall of charts. Someone then has to read them, decide what matters, and remember to come back.",
+        "Your day doesn’t need more charts. It needs the one decision worth making."
+      ],
+      "caption": "A wall of charts, and the one card that needs you."
+    },
+    {
+      "id": "today",
+      "eyebrow": "Today",
+      "title": "One thing, with its receipt",
+      "body": [
+        "Sensei opens on Today: a single finding that needs a decision, with its provenance, the sessions it came from, one click away. Below it sit at most three supporting insights, your first-turn resolution trend, and your most recent sessions.",
+        "The receipt matters. You can check the evidence before you act, rather than trusting a score."
+      ]
+    },
+    {
+      "id": "loop",
+      "eyebrow": "The loop",
+      "title": "Observe, find, act",
+      "body": [
+        "Every part of Sensei works the same way. It observes the work, forms one finding, and offers one action: Apply, Review or Dismiss.",
+        "The action feeds the next round of observation, so a dismissed finding teaches as much as an applied one."
+      ]
+    },
+    {
+      "id": "listening",
+      "eyebrow": "Early days",
+      "title": "At first, it just listens",
+      "body": [
+        "A mentor who gives advice on day one is guessing. Until enough of your work has been watched, Today says “Still listening…” and offers no action at all.",
+        "Once there is enough signal across your projects, it switches over and findings start. That threshold is decided by the daemon from what it has actually seen, not by a timer."
+      ]
+    },
+    {
+      "id": "insights",
+      "eyebrow": "Insights",
+      "title": "Now, soon, settled",
+      "body": [
+        "Insights are sorted for you into three columns: Now (needs a decision), Soon (still building evidence) and Settled (decided or adopted).",
+        "Each asks for a single decision with a sensible default, and one decision moves it along."
+      ]
+    },
+    {
+      "id": "adopted",
+      "eyebrow": "Adopted",
+      "title": "See what it adopted for you",
+      "body": [
+        "Some of what Sensei learns it adopts on your behalf: memories your assistant loads at the start of the next relevant session. Each one is laid open: what it is, why it exists, how it applies, where, and a seven-day strip of how often it was used.",
+        "You can reinforce or challenge any of them, and a memory with enough support can be promoted to a rule."
+      ]
+    }
+  ],
+  "takeaway": "One thing today, with its receipt.",
+  "takeawaySub": "Sensei turns watching into one decision."
+}

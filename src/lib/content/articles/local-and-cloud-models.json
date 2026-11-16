@@ -1,0 +1,34 @@
+{
+  "sections": [
+    {
+      "id": "why",
+      "eyebrow": "Why local",
+      "title": "Not everything needs the cloud",
+      "body": [
+        "Embeddings, classification and anything touching private data can often run on the device: cheaper, private and available offline."
+      ]
+    },
+    {
+      "id": "how",
+      "eyebrow": "How",
+      "title": "Same traits, different engine",
+      "body": [
+        "Gateway’s local providers run llama.cpp, ONNX Runtime and FastEmbed in-process, implementing the same capability traits as the cloud adapters, so code doesn’t care where a model runs. Each engine is an opt-in feature."
+      ],
+      "points": [
+        "llama-cpp: GGUF generation and embeddings",
+        "fastembed: lightweight embeddings",
+        "ort: ONNX Runtime on CPU"
+      ]
+    },
+    {
+      "id": "week",
+      "eyebrow": "The week",
+      "title": "The Gateway idea",
+      "body": [
+        "One interface, fallback chains, circuit breakers, budgets, and local models alongside cloud ones. That is the first four weeks; the series continues."
+      ]
+    }
+  ],
+  "takeaway": ""
+}

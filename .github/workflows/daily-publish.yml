@@ -1,0 +1,23 @@
+name: daily-publish
+
+# The site is prerendered, so a scheduled article goes live at the first build on or after its date
+# (America/Chicago; see published() in src/lib/articles-data.ts). This rebuilds every morning.
+#
+# Setup, once: in Cloudflare, create a deploy hook for this site's production branch (Pages: Settings →
+# Builds & deployments → Deploy hooks), then add its URL as the repository secret CLOUDFLARE_DEPLOY_HOOK.
+
+on:
+  schedule:
+    - cron: '7 11 * * *' # 05:07 Chicago (CST), 06:07 in summer time
+  workflow_dispatch:
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Trigger the Cloudflare build
+        env:
+          HOOK: ${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then echo "CLOUDFLARE_DEPLOY_HOOK is not set"; exit 1; fi
+          curl -fsS -X POST "$HOOK"

@@ -22,6 +22,7 @@
     {
       title: 'Studio',
       items: [
+        { label: 'Articles', href: `${base}/articles`, external: false },
         { label: 'Approach', href: '#approach', external: false },
         { label: 'Open source', href: '#open', external: false },
         { label: 'Contact', href: '#contact', external: false },

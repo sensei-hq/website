@@ -1,0 +1,42 @@
+{
+  "sections": [
+    {
+      "id": "problem",
+      "eyebrow": "The problem",
+      "title": "The same form, rewritten",
+      "body": [
+        "Labels, bindings, validation, loading states, dirty tracking: every form repeats the same work, and every copy drifts a little."
+      ]
+    },
+    {
+      "id": "idea",
+      "eyebrow": "The idea",
+      "title": "Data and schema in, form out",
+      "body": [
+        "FormRenderer takes your data and, optionally, a JSON-schema-like description. Types map to inputs (a string with format email becomes an email field), layout is a separate description, and lookups load options for selects."
+      ],
+      "points": [
+        "Schema derived from data when you have none",
+        "Layout separate from schema",
+        "Validation on blur, dirty state tracked"
+      ]
+    },
+    {
+      "id": "same",
+      "eyebrow": "One library",
+      "title": "Built from the same components",
+      "body": [
+        "Form inputs are built on the same Rokkit components as the rest of the UI, so they theme and behave the same way."
+      ]
+    },
+    {
+      "id": "week",
+      "eyebrow": "The week",
+      "title": "The Rokkit idea",
+      "body": [
+        "Bind data as it is, map fields instead of reshaping, keep a strict architecture, and let themes do the styling. Next week: Kavach, authentication for SvelteKit."
+      ]
+    }
+  ],
+  "takeaway": ""
+}
