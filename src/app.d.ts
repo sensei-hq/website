@@ -1,6 +1,12 @@
+import type { Caller } from '$lib/server/access';
+import type { D1, R2 } from '$lib/server/posting';
+
 declare global {
   namespace App {
-    // No server-side locals — static site
+    // The public site is prerendered; only /admin and /api/admin run on the server (hooks.server.ts).
+    interface Locals { caller?: Caller }
+    /** Cloudflare bindings (wrangler.jsonc): DB = D1 (approvals, posts, audit), MEDIA = R2 (staged videos, slides). */
+    interface Platform { env?: { DB?: D1; MEDIA?: R2 }; ctx?: { waitUntil(p: Promise<unknown>): void } }
   }
 }
 

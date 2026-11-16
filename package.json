@@ -11,6 +11,9 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.check.json",
 		"test:unit": "vitest run",
 		"test:e2e": "playwright test",
+		"test:tools": "cd films/tools && python3 -m unittest discover -s tests",
+		"publish:youtube": "films/.venv/bin/python films/tools/publish.py youtube",
+		"publish:instagram": "films/.venv/bin/python films/tools/publish.py instagram",
 		"icons:bundle": "rokkit-cli bundle -i icons -o src/lib/icons"
 	},
 	"devDependencies": {
@@ -27,7 +30,8 @@
 		"svelte-check": "^4.7.8",
 		"typescript": "^6.0.3",
 		"vite": "^8.3.6",
-		"vitest": "^4.1.12"
+		"vitest": "^4.1.12",
+		"wrangler": "^4.152.0"
 	},
 	"dependencies": {
 		"@iconify-json/solar": "^1.2.14",
@@ -40,6 +44,7 @@
 		"@rokkit/themes": "^1.15.2",
 		"@rokkit/ui": "^1.15.2",
 		"@rokkit/unocss": "^1.15.2",
+		"@sveltejs/adapter-cloudflare": "^7.2.8",
 		"@sveltejs/adapter-static": "^3.0.11",
 		"@unocss/extractor-svelte": "^66.12.0",
 		"@unocss/reset": "^66.12.0",

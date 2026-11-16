@@ -1,0 +1,63 @@
+name: post
+
+# Posts what Jerry approved in https://sensei-hq.com/admin (YouTube, Instagram, X). Nothing goes out unless it is
+# approved for exactly the content staged, its article's date has come, and posting is not paused in /admin.
+# POST_MODE (a repository variable) must be "live" to post for real; anything else is a dry run, which reports what it
+# would post to /admin. Setup and secrets: docs/posting.md.
+
+on:
+  schedule:
+    - cron: '41 12 * * *'   # 06:41 Chicago (CST) / 07:41 in summer time, after the 05:07 site rebuild
+  workflow_dispatch:
+    inputs:
+      only:
+        description: 'Only these channels (comma-separated: youtube,instagram_reel,instagram_carousel,x); empty for all'
+        required: false
+        default: ''
+
+concurrency:
+  group: post
+  cancel-in-progress: false
+
+permissions:
+  contents: write   # to commit the post links into src/lib/content/articles/index.json
+
+jobs:
+  post:
+    runs-on: ubuntu-24.04
+    environment: posting   # holds the secrets below; can be restricted to the main branch
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Post approved pieces
+        env:
+          POST_MODE: ${{ vars.POST_MODE }}
+          ONLY: ${{ inputs.only }}
+          ADMIN_ORIGIN: https://sensei-hq.com
+          POSTER_CLIENT_ID: ${{ secrets.POSTER_CLIENT_ID }}
+          POSTER_CLIENT_SECRET: ${{ secrets.POSTER_CLIENT_SECRET }}
+          YT_PRIVACY: ${{ vars.YT_PRIVACY }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
+        run: |
+          args=""
+          [ "$POST_MODE" = "live" ] && args="--live"
+          [ -n "$ONLY" ] && args="$args --only $ONLY"
+          python3 scripts/post.py $args
+      - name: Commit post links
+        if: always() && vars.POST_MODE == 'live'
+        run: |
+          if ! git diff --quiet src/lib/content/articles/index.json; then
+            git config user.name "sensei-hq posting"
+            git config user.email "posting@sensei-hq.com"
+            git add src/lib/content/articles/index.json
+            git commit -m "Record post links ($(date -u +%F))"
+            git push
+          fi
