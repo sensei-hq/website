@@ -681,7 +681,7 @@
     "video": "wide",
     "filmLength": "1:22",
     "social": {
-      "youtube": "",
+      "youtube": "https://www.youtube.com/watch?v=d8CqyKoBFto",
       "instagram": "",
       "x": ""
     },
@@ -689,7 +689,8 @@
     "related": {
       "label": "Sensei",
       "href": "/sensei"
-    }
+    },
+    "youtube": "d8CqyKoBFto"
   },
   {
     "slug": "from-correction-to-rule",
