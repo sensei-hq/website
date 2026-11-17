@@ -52,6 +52,8 @@ test.describe('Articles at /articles', () => {
 
   test('search filters the gallery', async ({ page }) => {
     await page.goto('/articles');
+    // Wait for hydration: filling before Svelte binds the input gets overwritten with ''.
+    await page.waitForLoadState('networkidle');
     await page.getByRole('searchbox', { name: 'Search articles' }).fill('zzzz-no-match');
     await expect(page.getByText('Nothing matches yet')).toBeVisible();
   });
