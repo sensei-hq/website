@@ -3,7 +3,7 @@
   import { base } from '$app/paths';
   import { PRODUCTS } from '$lib/hub-data.js';
 
-  const meta = ['Independent studio', 'Est. 2024', 'Three products · four libraries'];
+  const meta = ['Independent studio', 'Est. 2024', 'Three products · five libraries'];
   const workshopCount = String(PRODUCTS.length).padStart(2, '0');
 
   // Internal routes (/sensei, /torii-seiki) get the base prefix and open in place;
@@ -26,7 +26,7 @@
       </h1>
       <p class="text-ink-mute mt-5 text-lg" style="line-height:1.6;max-width:540px">
         Sensei HQ is a small workshop of developer tools — three products you
-        open, four libraries you build on. Restraint over noise, craft over
+        open, five libraries you build on. Restraint over noise, craft over
         scale, and a deep respect for the person on the other side of the screen.
       </p>
       <div class="flex items-center flex-wrap gap-3 mt-6">

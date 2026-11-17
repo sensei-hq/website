@@ -11,10 +11,10 @@
         <span class="mono text-ink-soft text-xs" style="letter-spacing:0.12em;text-transform:uppercase">Kō · in the open</span>
       </div>
       <h2 class="display text-ink m-0 text-2xl" style="font-weight:400;letter-spacing:-0.015em;line-height:1.3">
-        All four libraries are built in the open.
+        All five libraries are built in the open.
       </h2>
       <p class="text-ink-mute mt-4 text-sm" style="line-height:1.7;max-width:420px">
-        Gateway, DBD, Rokkit and Kavach are MIT-licensed and developed in public.
+        Gateway, DBD, Rokkit, Kavach and emaki are MIT-licensed and developed in public.
         Read the source, file an issue, or send a pull request — the workshop door is open.
       </p>
       <Button href="https://github.com/sensei-hq" target="_blank" rel="noopener"

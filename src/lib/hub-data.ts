@@ -113,6 +113,14 @@ export const PRODUCTS: Product[] = [
     meta: ['SvelteKit', 'OAuth · Magic links', 'MIT licensed'],
     status: 'Open source', href: 'https://kavach.sensei-hq.com',
   },
+  {
+    id: 'emaki', kind: 'library', index: '05', kanji: '絵', name: 'emaki', lang: 'TypeScript',
+    category: 'Motion stories',
+    tagline: 'Articles, players and narrated video from JSON scenes.',
+    blurb: 'Write each story once as data and render it three ways — reader-friendly articles, a presentation-ready story player, and narrated videos — in every language you configure. Framework-agnostic core with Svelte, React and Vue wrappers, a CLI and a Claude plugin.',
+    meta: ['TypeScript', 'MIT licensed', 'Svelte · React · Vue'],
+    status: 'Open source', href: 'https://emaki.sensei-hq.com',
+  },
 ];
 
 export const PRINCIPLES: Principle[] = [
@@ -147,6 +155,7 @@ export const REPOS: Repo[] = [
   { name: 'sensei-hq/dbd', accentClass: 'bg-dbd', lang: 'Rust', note: 'Schema as code, library and CLI', href: 'https://github.com/sensei-hq/dbd' },
   { name: 'sensei-hq/rokkit', accentClass: 'bg-rokkit', lang: 'Svelte', note: 'Data-driven components', href: 'https://github.com/sensei-hq/rokkit' },
   { name: 'sensei-hq/kavach', accentClass: 'bg-kavach', lang: 'TypeScript', note: 'Auth for SvelteKit', href: 'https://github.com/sensei-hq/kavach' },
+  { name: 'sensei-hq/emaki', accentClass: 'bg-emaki', lang: 'TypeScript', note: 'Motion stories from JSON scenes', href: 'https://github.com/sensei-hq/emaki' },
   { name: 'sensei-hq/katachi', accentClass: 'bg-katachi', lang: 'Svelte', note: 'Snap → Make craft tool', href: 'https://github.com/sensei-hq/katachi' },
 ];
 

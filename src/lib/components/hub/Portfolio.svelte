@@ -14,7 +14,7 @@
       <div>
         <span class="mono text-ink-soft mb-3 block text-xs" style="letter-spacing:0.12em;text-transform:uppercase">The portfolio</span>
         <h2 class="display text-ink m-0 text-3xl" style="font-weight:300;letter-spacing:-0.02em">
-          Three products. Four libraries.
+          Three products. Five libraries.
         </h2>
       </div>
       <p class="text-ink-mute text-sm" style="line-height:1.6;max-width:360px">

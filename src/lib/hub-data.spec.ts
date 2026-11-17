@@ -11,9 +11,9 @@ import {
 import rokkitConfig from '../../rokkit.config.js';
 
 describe('hub-data — portfolio model', () => {
-	it('splits into 3 products and 4 libraries', () => {
+	it('splits into 3 products and 5 libraries', () => {
 		expect(productList().map((p) => p.id)).toEqual(['sensei', 'torii', 'seiki']);
-		expect(libraryList().map((p) => p.id)).toEqual(['gateway', 'dbd', 'rokkit', 'kavach']);
+		expect(libraryList().map((p) => p.id)).toEqual(['gateway', 'dbd', 'rokkit', 'kavach', 'emaki']);
 	});
 
 	it('every entry has kind product or library', () => {
@@ -36,7 +36,7 @@ describe('hub-data — portfolio model', () => {
 		const ids = PRODUCTS.map((p) => p.id);
 		expect(new Set(ids).size).toBe(ids.length);
 		expect(productList().map((p) => p.index)).toEqual(['01', '02', '03']);
-		expect(libraryList().map((p) => p.index)).toEqual(['01', '02', '03', '04']);
+		expect(libraryList().map((p) => p.index)).toEqual(['01', '02', '03', '04', '05']);
 	});
 
 	it('every entry has the required non-empty copy', () => {

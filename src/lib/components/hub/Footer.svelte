@@ -17,6 +17,7 @@
         { label: 'DBD', href: 'https://dbd.sensei-hq.com', external: true },
         { label: 'Rokkit', href: 'https://rokkit.sensei-hq.com', external: true },
         { label: 'Kavach', href: 'https://kavach.sensei-hq.com', external: true },
+        { label: 'emaki', href: 'https://emaki.sensei-hq.com', external: true },
       ],
     },
     {

@@ -9,7 +9,7 @@ test.describe('Sensei HQ hub at /', () => {
   test('renders the hub title and key sections', async ({ page }) => {
     await expect(page).toHaveTitle(/Sensei HQ/);
     await expect(
-      page.getByRole('heading', { name: 'Three products. Four libraries.' })
+      page.getByRole('heading', { name: 'Three products. Five libraries.' })
     ).toBeVisible();
     await expect(
       page.getByRole('heading', { name: 'What our products stand on.' })
@@ -24,7 +24,7 @@ test.describe('Sensei HQ hub at /', () => {
   });
 
   test('library rows point at per-library subdomains in a new tab', async ({ page }) => {
-    for (const host of ['gateway', 'dbd', 'rokkit', 'kavach']) {
+    for (const host of ['gateway', 'dbd', 'rokkit', 'kavach', 'emaki']) {
       const link = page.locator(`a[href="https://${host}.sensei-hq.com"]`).first();
       await expect(link).toBeVisible();
       await expect(link).toHaveAttribute('target', '_blank');
