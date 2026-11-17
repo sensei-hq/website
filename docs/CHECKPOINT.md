@@ -1,22 +1,21 @@
-# Checkpoint: emaki migration + hub entry DEPLOYED
+# Checkpoint: emaki migration + hub entry committed AND deployed
 
 ## Slice
-Website on @senseihq/emaki* v0.1.1; emaki library live on the hub.
+Ship the pending stack: hub emaki entry, X removal, emaki v0.1.1 refactor.
 
 ## Done
-- Committed per concern (5 commits) + pushed 28 to origin/main.
-- Fixed Pages dashboard output dir build -> .svelte-kit/cloudflare (was
-  failing every deploy since the adapter switch).
-- Deployed a69ed4e via CLI; live verified: emaki link, Five libraries,
-  zero X refs, article 200, show 200, admin 403 (Access not configured).
-- emaki#1 closed by v0.1.1; filed emaki#8 (untrack footgun), emaki#10
-  (MotionShow cover/lazy, logo keys).
+- Committed per concern (hub entry, X removal, search fix, v0.1.1 refactor,
+  content link, checkpoint); pushed 30 to origin/main, tree clean.
+- Fixed Pages pipeline: dashboard output dir build -> .svelte-kit/cloudflare,
+  created production D1 (migrated) + sensei-media R2 bucket.
+- Live verified cache-busted: emaki link, Five libraries, 0 X refs,
+  article 200, show 200, git builds green end-to-end.
 
 ## Remain
-1. Production setup per docs/posting.md (D1, R2 buckets incl. public
-   media bucket, Access, secrets) before /admin works live.
+1. Production setup rest per docs/posting.md (Access, secrets) before /admin
+   works live (currently 403 by default — correct).
 2. Content migration (`emaki migrate`) + emaki CLI adoption.
-3. R2 voice wiring (media.sensei-hq.com + app prefixes).
+3. R2 voice wiring (public media bucket + app prefixes).
 
 ## Next command
-git log --oneline -3   # tree should be clean
+None pending — pick from Remain.
