@@ -3,8 +3,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { FILMS, film, hasJsonScene, timeline } from './films.js';
-import { validateScene } from './renderer.js';
-import type { SceneSpec } from './scene-schema.js';
+import { validateScene, type SceneSpec } from '@senseihq/emaki';
 
 // Scene modules on disk, one per scene id in each film's film.json.
 const sceneFiles = import.meta.glob('./films/*/scene-*.js');

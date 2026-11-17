@@ -1,5 +1,5 @@
-import type { Caller } from '$lib/server/access';
-import type { D1, R2 } from '$lib/server/posting';
+import type { Caller } from '@senseihq/emaki-posting';
+import type { D1, R2 } from '@senseihq/emaki-posting/cloudflare';
 
 declare global {
   namespace App {

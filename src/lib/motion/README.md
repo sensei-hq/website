@@ -1,11 +1,12 @@
 # Motion films · one set of scene files for articles, slide shows and video
 
 Each folder in `films/` is one film: its scenes as small JavaScript modules written against the scene kit
-(`kit.ts`, the same API Claude's Motion films use). A scene is a pure function of time, so the **same files** render:
+(`@senseihq/emaki`, the same API Claude's Motion films use; `films.ts` here only wires our folders to it).
+A scene is a pure function of time, so the **same files** render:
 
 | Where | How | Layout |
 |---|---|---|
-| Article figures | `<MotionScene film scene />` via `motion: { film, scene }` on an article section | `figure`: the scene's artwork only, its words left out (the article says them) |
+| Article figures | `<MotionScene film scene />` (from `@senseihq/emaki-svelte`) via `motion: { film, scene }` on an article section | `figure`: the scene's artwork only, its words left out (the article says them) |
 | Slide show | `/show/<film>` (arrows, space, O for orientation, F fullscreen; `?o=portrait`, `?slide=N`) | `landscape` 1920×1080 or `portrait` 1080×1920 |
 | Video | `python3 films/tools/render.py <film> --o portrait\|landscape\|both` | Playwright drives `/show/<film>?capture=1` frame by frame into ffmpeg |
 
@@ -16,7 +17,7 @@ films/<slug>/
   film.json     title, look, background, scenes [{ id, name, dur, desc }] in order (dur includes the end hold),
                 optional cover { scene, at } (default: the last scene's final picture)
   timing.json   optional: per scene a running time and/or pauses, fitted to the voiceover (see Timing below)
-  base.css      the film's look (`#stage` variables, .ground/.words/.line …); scoped to the scene's shadow root
+  look.css      the film's look (`#stage` variables, .ground/.words/.line …); scoped to the scene's shadow root
   shared.js     helpers on `window.W` (board, nodes, tiles …) and `W.portrait`, the columns-to-rows adapter
   scene-<id>.js one per scene: kit.scene('<id>', { init(kit) { … }, render(t) { … } })
   scene-<id>.json the same scene as data, optional: the loader prefers it over the module
@@ -31,9 +32,9 @@ Every scene ends its `init` with `W.portrait(kit, { hoist, frame, crop, css })`:
 - `crop`: `[x, y, w, h]` of the artwork on the 1920×1080 board.
 - `frame`: `[top, height]` of the band the artwork fills in portrait; `css` places the hoisted words.
 
-The loader (`films.ts`) reads that one spec three ways: landscape ignores it, portrait recomposes columns into
-rows, and figure hides the words and frames the crop. A scene that is all words (`frame` height under 50) shows
-whole in a figure; the articles keep their HTML figures for those (`top10`, `pillars`).
+The loader (`@senseihq/emaki`, wired up in `films.ts`) reads that one spec three ways: landscape ignores it,
+portrait recomposes columns into rows, and figure hides the words and frames the crop. A scene that is all words
+(`frame` height under 50) shows whole in a figure; the articles keep their HTML figures for those (`top10`, `pillars`).
 
 ## Rules for scene code
 
@@ -61,10 +62,10 @@ logo. Set `"cover": { "scene": "close", "at": 4.5 }` in film.json to pick anothe
 ## JSON scenes
 
 A scene can be data instead of code: `scene-<id>.json` holds components (what is on stage, from
-the catalog in `scene-schema.ts`: board, head, node, wire, checks, bars, logo, group, svg, raw),
-tracks (tweens and effects over `t`) and the portrait spec. `renderer.ts` evaluates a spec to
-style ops as a pure function of `t` and mounts it; `films.ts` prefers the JSON twin where one
-exists (`hasJsonScene`), in every layout. The show takes `?src=json|js` to force one source.
+the catalog in `@senseihq/emaki`: board, head, node, wire, checks, bars, logo, group, svg, raw),
+tracks (tweens and effects over `t`) and the portrait spec. The emaki renderer evaluates a spec to
+style ops as a pure function of `t` and mounts it; the loader prefers the JSON twin where one
+exists, in every layout. The show takes `?src=json|js` to force one source.
 
 Converting a scene: copy its `kit.css` into `css`, its portrait spec verbatim, its words into
 `head` (grounded) or `raw` (in the camera), and each animated beat into a track, keeping the

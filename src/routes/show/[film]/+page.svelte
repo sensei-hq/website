@@ -5,7 +5,7 @@
   import { onMount, untrack } from 'svelte';
   import { page } from '$app/state';
   import { film as getFilm, mountScene, fontsReady, timeline, filmScore, coverTime, SIZES, type Layout, type Mounted } from '$lib/motion/films.js';
-  import { play as playScore, renderWav, type Score } from '$lib/motion/score.js';
+  import { playScore, renderWav, type Score } from '@senseihq/emaki';
 
   // The film comes from the URL; +page.ts has already 404ed unknown ones.
   const f = getFilm(page.params.film ?? '')!;

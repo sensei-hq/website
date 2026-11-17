@@ -19,16 +19,16 @@ test.describe('Admin scenes inspector', () => {
   test('plays a scene with controls', async ({ page }) => {
     await page.goto('/admin/scenes?film=measure-right-work&scene=hook');
     await expect(page.getByRole('heading', { name: 'Scenes' })).toBeVisible();
-    await expect(page.locator('.sr-host')).toBeVisible();
-    await expect(page.locator('.sr-time')).toContainText('/ 6.5');
+    await expect(page.locator('.motion-player')).toBeVisible();
+    await expect(page.locator('.mp-bar span')).toContainText('/ 6.5');
     await page.getByRole('slider', { name: 'Seek' }).fill('3');
-    await expect(page.locator('.sr-time')).toContainText('3.0 /');
+    await expect(page.locator('.mp-bar span')).toContainText('3.0 /');
   });
 
   test('json and module sources both render', async ({ page }) => {
     for (const src of ['json', 'js']) {
       await page.goto(`/admin/scenes?film=measure-right-work&scene=hook&src=${src}`);
-      await expect(page.locator('.sr-host')).toBeVisible();
+      await expect(page.locator('.motion-player')).toBeVisible();
       await expect(page.locator('.sr-src')).toContainText(src === 'json' ? 'JSON' : 'module');
     }
   });

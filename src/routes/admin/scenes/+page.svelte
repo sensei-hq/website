@@ -3,15 +3,22 @@
   // scrubbable player. The player state owns the selection; the component renders it.
   import { goto } from '$app/navigation';
   import { page } from '$app/state';
-  import SceneRenderer from '$lib/components/motion/SceneRenderer.svelte';
-  import { initialPlayerState, playerLoad, type SceneSource } from '$lib/motion/scene-player.js';
+  import { untrack } from 'svelte';
+  import { ScenePlayer } from '@senseihq/emaki-svelte';
+  import { ScenePlayerState, type SceneSource } from '@senseihq/emaki';
   import type { Layout } from '$lib/motion/films.js';
 
   let { data } = $props();
-  let player = $state(initialPlayerState());
+  // Plain instance: ScenePlayer subscribes to it internally, so no $state wrapper is needed.
+  const player = new ScenePlayerState();
 
   $effect(() => {
-    playerLoad(player, { film: data.film, scene: data.scene, layout: data.layout, src: data.src });
+    // Untracked: load() notifies synchronously, and the subscribers' reads would otherwise
+    // subscribe this effect to the player and loop it. The key guard skips redundant loads.
+    const want = `${data.film}:${data.scene}:${data.layout}:${data.src ?? ''}`;
+    untrack(() => {
+      if (player.key !== want) player.load({ film: data.film, scene: data.scene, layout: data.layout, src: data.src });
+    });
   });
 
   const scenes = $derived(data.films.find((f) => f.slug === data.film)?.scenes ?? []);
@@ -63,7 +70,7 @@
     </label>
   </section>
 
-  <SceneRenderer {player} showControls />
+  <ScenePlayer {player} controls />
 </main>
 
 <style>

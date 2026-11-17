@@ -24,7 +24,7 @@ build.py → stage.py ──upload──▶  /api/admin/media  → R2 (private)
 ```
 
 **Who can do what.** Cloudflare Access guards `/admin*` and `/api/admin*`; the site checks Access's signed token again
-on every request and refuses if anything is missing or wrong (`src/lib/server/access.ts`, the same scheme as Katachi).
+on every request and refuses if anything is missing or wrong (`@senseihq/emaki-posting/sveltekit`, the same scheme as Katachi).
 
 | Caller | How it signs in | May |
 |---|---|---|

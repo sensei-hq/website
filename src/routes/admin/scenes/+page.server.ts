@@ -1,5 +1,5 @@
 import { film as getFilm, FILMS, hasJsonScene, type Layout } from '$lib/motion/films.js';
-import type { SceneSource } from '$lib/motion/scene-player.js';
+import type { SceneSource } from '@senseihq/emaki';
 
 // The scenes inspector: verify one scene of one film, in any layout, from either source.
 export const load = ({ url }) => {

@@ -3,7 +3,7 @@
   // scenes that are all words, an HTML figure; plus a caption.
   import type { FigureId } from '$lib/articles-data.js';
   import HtmlFigure from './HtmlFigure.svelte';
-  import MotionScene from '$lib/components/motion/MotionScene.svelte';
+  import { MotionScene } from '@senseihq/emaki-svelte';
 
   let { id, caption, label, motion }: { id?: FigureId; caption: string; label: string; motion?: { film: string; scene: string } } =
     $props();

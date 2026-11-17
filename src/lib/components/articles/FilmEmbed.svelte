@@ -3,14 +3,31 @@
   // With no video id yet, the card says the film is coming. With a cover (the film's closing punchline card), the card
   // shows that instead of the drawn title, since the cover already carries the title.
   // With a motion film (`film`) and no video yet, the card plays the film itself as a slideshow, with its music.
-  import MotionShow from '$lib/components/motion/MotionShow.svelte';
+  // The show mounts only after the click (nothing to load or paint before that) and starts with sound on.
+  import { MotionShow, type ShowHandle } from '@senseihq/emaki-svelte';
   let { youtube, title, kanji, length, cover, film }: { youtube: string; title: string; kanji: string; length: string; cover?: string; film?: string } = $props();
   let playing = $state(false);
+  let show: ShowHandle | undefined = $state();
+  let sounded = false;
+  $effect(() => {
+    if (show?.api && !sounded) { sounded = true; show.api.setSound(true); }
+  });
 </script>
 
 <div class="film">
-  {#if film && !youtube}
-    <MotionShow {film} {title} {cover} {length} />
+  {#if film && !youtube && !playing}
+    <button class="card" onclick={() => (playing = true)} aria-label={`Play the film: ${title}`}>
+      {#if cover}
+        <img class="cover" src={cover} alt="" loading="lazy" />
+      {:else}
+        <span class="kanji k" aria-hidden="true">{kanji}</span>
+        <span class="t display">{title}</span>
+      {/if}
+      <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" /></svg></span>
+      <span class="meta mono" class:chip={cover}>Play the film · {length} · with music</span>
+    </button>
+  {:else if film && !youtube}
+    <MotionShow {film} bind:show />
   {:else if playing && youtube}
     <iframe
       src="https://www.youtube-nocookie.com/embed/{youtube}?autoplay=1&rel=0&cc_load_policy=1"

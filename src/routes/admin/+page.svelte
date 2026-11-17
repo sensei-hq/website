@@ -1,7 +1,7 @@
 <script lang="ts">
   // The posting desk: what goes out when, what will be posted, and the approval for each channel.
   import { enhance } from '$app/forms';
-  import { CHANNEL_NAMES, type Channel } from '$lib/posting-names';
+  import { CHANNEL_NAMES, type Channel } from '@senseihq/emaki-posting';
   let { data, form } = $props();
   const LABEL: Record<string, string> = { 'not-staged': 'not staged', awaiting: 'to approve', changed: 'changed: re-approve', approved: 'approved', posted: 'posted', failed: 'failed' };
   const fmt = (d: string) => new Date(d + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
