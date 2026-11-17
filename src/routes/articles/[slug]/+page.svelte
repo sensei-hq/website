@@ -45,7 +45,6 @@
   <meta property="article:section" content={productName} />
   {#each a.tags as t}<meta property="article:tag" content={t} />{/each}
   <meta name="twitter:card" content={a.cover || a.youtube ? 'summary_large_image' : 'summary'} />
-  <meta name="twitter:site" content="@sensei_hq" />
   <meta name="twitter:title" content={a.title} />
   <meta name="twitter:description" content={a.dek} />
   <meta name="twitter:image" content={image} />

@@ -10,7 +10,7 @@ export const DEFAULT_IMAGE = `${SITE}/favicon/android-chrome-512x512.png`;
 export const CHANNELS = {
   youtube: '', // e.g. 'https://www.youtube.com/@sensei-hq'
   instagram: '', // e.g. 'https://www.instagram.com/sensei_hq'
-  x: 'https://x.com/sensei_hq',
+  x: '', // no account yet — add it here when there is one
   github: 'https://github.com/sensei-hq',
 };
 
