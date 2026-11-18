@@ -1,4 +1,4 @@
-# Checkpoint: emaki migration + hub entry committed AND deployed
+# Checkpoint: emaki @ 0.2.0 verified, uncommitted
 
 ## Slice
 Ship the pending stack: hub emaki entry, X removal, emaki v0.1.1 refactor.

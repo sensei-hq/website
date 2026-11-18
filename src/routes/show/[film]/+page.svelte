@@ -31,7 +31,7 @@
     if (!score || !sound || !playing) return;
     await audio.resume();
     const from = tl.scenes[index].start + local;
-    voice = playScore(audio, audio.destination, score, from, tl.duration, audio.currentTime + 0.05, tl.duration);
+    voice = playScore(audio, audio.destination, score, { from, to: tl.duration, at: audio.currentTime + 0.05, end: tl.duration });
   }
   let vw = $state(0), vh = $state(0);
   let host: HTMLDivElement;

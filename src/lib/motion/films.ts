@@ -21,10 +21,7 @@ const films = import.meta.glob('./films/*/film.json', { eager: true, import: 'de
 const scenes = import.meta.glob('./films/*/scene-*.json', { import: 'default' });
 const timings = import.meta.glob('./films/*/timing.json', { eager: true, import: 'default' }) as Record<string, TimingJson>;
 const raw = import.meta.glob(['./films/*/*.js', './films/*/look.css'], { query: '?raw', import: 'default' });
-const logoFiles = import.meta.glob('./logos/*.svg', { eager: true, query: '?raw', import: 'default' }) as Record<string, string>;
-// registerLogo keys by name, not path: ./logos/sensei.svg serves scenes asking for 'sensei'.
-const logos: Record<string, string> = {};
-for (const [path, svg] of Object.entries(logoFiles)) logos[path.split('/').pop()!.replace(/\.svg$/, '')] = svg;
+const logos = import.meta.glob('./logos/*.svg', { eager: true, query: '?raw', import: 'default' }) as Record<string, string>;
 
 setupMotion({ source: viteSource({ films, scenes, timings, raw, logos }).filmSource, site: { locales: ['en'], defaultLocale: 'en' }, logos });
 
