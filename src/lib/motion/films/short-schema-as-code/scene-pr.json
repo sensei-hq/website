@@ -1,0 +1,34 @@
+{
+  "components": [
+    { "type": "board", "id": "pr-bg" },
+    {
+      "type": "raw",
+      "id": "diff",
+      "html": "<div class='card pr-diff'><div class='pr-top'><b>migration_042 · new table</b><span>+38 −2</span></div><p class='mono pr-ln add'>+ CREATE TABLE users (</p><p class='mono pr-ln add'>+ &nbsp; id uuid PRIMARY KEY,</p><p class='mono pr-ln add'>+ &nbsp; email citext UNIQUE</p><p class='mono pr-ln add'>+ );</p></div>"
+    },
+    { "type": "raw", "id": "tag", "html": "<div class='tag ok pr-tag'>checks pass · ready to merge</div>" },
+    {
+      "type": "head",
+      "id": "pr-head",
+      "at": "ground",
+      "eyebrow": "AI-written SQL",
+      "line": "It lands in a pull request.",
+      "sub": "Reviewed like any other change.",
+      "style": "left:110px;top:330px;width:720px"
+    }
+  ],
+  "tracks": [
+    { "kind": "effect", "effect": "push", "target": ".cam", "t0": 0, "dur": 7.5, "from": 1, "to": 1.025 },
+    { "kind": "effect", "effect": "showHead", "target": ".pr-head", "t0": -0.4 },
+    { "kind": "effect", "effect": "fade", "target": ".pr-diff", "t0": 0.6 },
+    { "kind": "effect", "effect": "fade", "target": ".pr-ln", "count": 4, "t0": 1.2, "stagger": 0.35 },
+    { "kind": "effect", "effect": "pop", "target": ".pr-tag", "t0": 3.4 }
+  ],
+  "css": ".pr-diff { left:940px; top:230px; width:820px; box-sizing:border-box; padding:26px 34px 30px } .pr-top { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:16px } .pr-top b { font-size:32px } .pr-top span { font-family:var(--mono, monospace); font-size:28px; color:var(--jade) } .pr-ln { margin:0; padding:7px 0; font-size:31px } .pr-ln.add { color:var(--jade) } .pr-tag { left:1350px; top:760px }",
+  "portrait": {
+    "hoist": [".pr-head"],
+    "frame": [700, 920],
+    "crop": [880, 190, 940, 640],
+    "css": ".pr-head{left:70px!important;top:150px!important;width:940px!important}"
+  }
+}

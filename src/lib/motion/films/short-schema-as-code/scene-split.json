@@ -1,0 +1,57 @@
+{
+  "components": [
+    { "type": "board", "id": "split-bg" },
+    {
+      "type": "box",
+      "id": "code",
+      "cls": "card split-card",
+      "style": "left:900px;top:250px;width:430px",
+      "children": [
+        { "type": "text", "id": "code-t", "text": "CODE", "tag": "h4", "cls": "split-title ok" },
+        {
+          "type": "raw",
+          "id": "code-l",
+          "html": "<div class='chk'><i></i>in git</div><div class='chk'><i></i>reviewed</div><div class='chk'><i></i>tested</div>"
+        }
+      ]
+    },
+    {
+      "type": "box",
+      "id": "schema",
+      "cls": "card split-card",
+      "style": "left:1390px;top:250px;width:430px",
+      "children": [
+        { "type": "text", "id": "schema-t", "text": "SCHEMA", "tag": "h4", "cls": "split-title mute" },
+        {
+          "type": "raw",
+          "id": "schema-l",
+          "html": "<div class='chk split-loose'><i></i>scripts</div><div class='chk split-loose'><i></i>a console</div><div class='chk split-loose'><i></i>memory</div>"
+        }
+      ]
+    },
+    { "type": "raw", "id": "vs", "html": "<div class='tag hot split-vs'>vs</div>" },
+    {
+      "type": "head",
+      "id": "split-head",
+      "at": "ground",
+      "eyebrow": "The gap",
+      "line": "Code is reviewed. The schema is remembered.",
+      "sub": "Scripts, a console, and memory.",
+      "style": "left:110px;top:330px;width:720px"
+    }
+  ],
+  "tracks": [
+    { "kind": "effect", "effect": "push", "target": ".cam", "t0": 0, "dur": 8, "from": 1, "to": 1.025 },
+    { "kind": "effect", "effect": "showHead", "target": ".split-head", "t0": -0.4 },
+    { "kind": "effect", "effect": "fade", "target": ".split-card", "count": 2, "t0": 0.6, "stagger": 0.4 },
+    { "kind": "effect", "effect": "fade", "target": ".split-card .chk", "count": 6, "t0": 1.2, "stagger": 0.3 },
+    { "kind": "effect", "effect": "pop", "target": ".split-vs", "t0": 3.4 }
+  ],
+  "css": ".split-card { box-sizing:border-box; padding:26px 28px 30px } .split-title { margin:0 0 18px; font-size:24px; font-weight:600; letter-spacing:0.1em } .split-title.ok { color:var(--jade) } .split-title.mute { color:var(--mute) } .split-card .chk { margin:0 0 12px; font-size:30px } .split-loose i { background:var(--mute)!important } .split-loose i::after { display:none } .split-vs { left:1360px; top:470px }",
+  "portrait": {
+    "hoist": [".split-head"],
+    "frame": [700, 920],
+    "crop": [850, 200, 1020, 600],
+    "css": ".split-head{left:70px!important;top:150px!important;width:940px!important}"
+  }
+}
