@@ -1,0 +1,71 @@
+{
+  "components": [
+    { "type": "board", "id": "pair-bg" },
+    {
+      "type": "raw",
+      "id": "card-a",
+      "html": "<div class='card pair-card pair-a' style='left:880px'><h4>First-turn resolution</h4><p>Sessions done without a correction turn</p><span class='pair-num' style='color:var(--jade)'><span class='pair-na'>0</span>%</span></div>"
+    },
+    {
+      "type": "raw",
+      "id": "card-b",
+      "html": "<div class='card pair-card pair-b' style='left:1360px'><h4>Rework share</h4><p>Effort that came from corrected sessions</p><span class='pair-num' style='color:var(--accent)'><span class='pair-nb'>0</span>%</span></div>"
+    },
+    {
+      "type": "raw",
+      "id": "warn",
+      "html": "<div class='card pair-warn'><span>High resolution and <b>rising rework</b>: work deferred, not done.</span></div>"
+    },
+    {
+      "type": "raw",
+      "id": "note",
+      "html": "<span class='pair-note'>Illustrative</span>"
+    },
+    {
+      "type": "svg",
+      "id": "art",
+      "body": "<circle class='pair-dot' cx='940' cy='400' r='20' style='fill:var(--jade)'/><circle class='pair-dot' cx='1024' cy='400' r='20' style='fill:var(--jade)'/><circle class='pair-dot' cx='1108' cy='400' r='20' style='fill:var(--jade)'/><circle class='pair-dot' cx='1192' cy='400' r='20' style='fill:var(--jade)'/><circle class='pair-dot' cx='1276' cy='400' r='20' style='fill:var(--jade)'/><circle class='pair-dot' cx='940' cy='460' r='20' style='fill:var(--jade)'/><circle class='pair-dot' cx='1024' cy='460' r='20' style='fill:var(--jade)'/><circle class='pair-dot' cx='1108' cy='460' r='20' style='fill:var(--jade)'/><circle class='pair-dot' cx='1192' cy='460' r='20' style='fill:var(--jade)'/><circle class='pair-dot' cx='1276' cy='460' r='20' style='fill:var(--jade)'/><circle class='pair-dot' cx='940' cy='520' r='20' style='fill:var(--jade)'/><circle class='pair-dot' cx='1024' cy='520' r='20' style='fill:var(--jade)'/><circle class='pair-dot' cx='1108' cy='520' r='20' style='fill:var(--jade)'/><circle class='pair-dot' cx='1192' cy='520' r='20' style='fill:var(--jade)'/><circle class='pair-dot' cx='1276' cy='520' r='20' style='fill:var(--jade)'/><circle class='pair-dot' cx='940' cy='580' r='20' style='fill:var(--jade)'/><circle class='pair-dot' cx='1024' cy='580' r='20' style='fill:var(--jade)'/><circle class='pair-dot' cx='1108' cy='580' r='20' style='fill:var(--jade)'/><circle class='pair-dot' cx='1192' cy='580' r='20' style='fill:var(--jade)'/><circle class='pair-dot' cx='1276' cy='580' r='20' style='fill:var(--jade)'/><g class='pair-bar'><rect x='1400' y='420' width='380' height='64' rx='14' style='fill:var(--main)'/><rect class='pair-rw' x='1400' y='420' width='0' height='64' rx='14' style='fill:var(--accent)'/><text class='pair-lab' x='1400' y='520' style='fill:var(--accent)'>CORRECTED SESSIONS</text><text class='pair-lab' x='1780' y='520' text-anchor='end' style='fill:var(--main)'>THE REST</text></g><g class='pair-spark'><path class='pair-sf' pathLength='1' d='M915 720 L960 714 L1005 718 L1050 712 L1095 710 L1140 712 L1185 708' style='fill:none;stroke:var(--jade);stroke-width:6;stroke-linecap:round'/><path class='pair-sr' pathLength='1' d='M915 800 L960 796 L1005 788 L1050 782 L1095 770 L1140 760 L1185 744' style='fill:none;stroke:var(--accent);stroke-width:6;stroke-linecap:round'/><text class='pair-lab' x='915' y='696' style='fill:var(--jade)'>RESOLUTION</text><text class='pair-lab' x='915' y='822' style='fill:var(--accent)'>REWORK</text></g>"
+    },
+    {
+      "type": "head",
+      "id": "pair-head",
+      "at": "ground",
+      "eyebrow": "The pair",
+      "line": "Two numbers, read together.",
+      "sub": "Never read a speed metric alone.",
+      "style": "left:110px;top:330px;width:720px"
+    }
+  ],
+  "tracks": [
+    { "kind": "effect", "effect": "push", "target": ".cam", "t0": 0, "dur": 14.8, "from": 1, "to": 1.015 },
+    { "kind": "effect", "effect": "showHead", "target": ".pair-head", "t0": -0.4 },
+    { "kind": "effect", "effect": "fade", "target": ".pair-a", "t0": 0.8 },
+    { "kind": "tween", "target": ".pair-dot", "count": 20, "prop": "opacity", "from": 0, "to": 1, "t0": 1.2, "t1": 1.5, "easing": "eo", "stagger": 0.06 },
+    {
+      "kind": "effect",
+      "effect": "swap",
+      "target": ".pair-dot",
+      "indices": [2, 4, 7, 11, 13, 18],
+      "at": 2.9,
+      "style": { "fill": "var(--accent)" },
+      "base": { "fill": "var(--jade)" }
+    },
+    { "kind": "effect", "effect": "counter", "target": ".pair-na", "values": [70], "t0": 3, "t1": 3.9, "easing": "eio", "format": "int" },
+    { "kind": "effect", "effect": "fade", "target": ".pair-b", "t0": 5.6 },
+    { "kind": "tween", "target": ".pair-rw", "prop": "attr:width", "from": 0, "to": 91.2, "t0": 6.2, "t1": 7.6, "easing": "eio", "decimals": 1 },
+    { "kind": "effect", "effect": "counter", "target": ".pair-nb", "values": [24], "t0": 6.2, "t1": 7.6, "easing": "eio", "format": "int" },
+    { "kind": "tween", "target": ".pair-bar", "prop": "opacity", "from": 0, "to": 1, "t0": 5.7, "t1": 6.1, "easing": "eo" },
+    { "kind": "effect", "effect": "fade", "target": ".pair-warn", "t0": 10.4 },
+    { "kind": "effect", "effect": "fade", "target": ".pair-note", "t0": 0.8 },
+    { "kind": "tween", "target": ".pair-spark", "prop": "opacity", "from": 0, "to": 1, "t0": 10.4, "t1": 10.8, "easing": "eo" },
+    { "kind": "effect", "effect": "draw", "target": ".pair-sf", "t0": 10.6, "t1": 12 },
+    { "kind": "effect", "effect": "draw", "target": ".pair-sr", "t0": 10.8, "t1": 12.2 }
+  ],
+  "css": ".pair-card { top:150px; width:460px; height:470px; box-sizing:border-box; padding:24px 28px; box-shadow:0 14px 30px rgba(0,0,0,.07) }.pair-card h4 { margin:0; width:270px; font-size:30px; line-height:1.2; font-weight:600 } .pair-card p { margin:6px 0 0; font-size:23px; line-height:1.3; color:var(--mute); width:300px }.pair-num { position:absolute; right:26px; top:18px; font-family:var(--display); font-size:64px; line-height:1 }.pair-warn { left:880px; top:650px; width:940px; height:180px; box-sizing:border-box; padding:24px 28px 24px 330px; border-color:var(--accent); box-shadow:0 14px 30px rgba(0,0,0,.08); display:flex; align-items:center; font-size:32px; line-height:1.3 }.pair-warn b { color:var(--accent); font-weight:600 } .pair-lab { font:600 20px var(--sans); letter-spacing:0.06em } .pair-note { position:absolute; left:880px; top:112px; font-size:20px; color:var(--mute) }",
+  "portrait": {
+    "hoist": [".pair-head"],
+    "frame": [700, 920],
+    "crop": [820, 60, 1060, 830],
+    "css": ".pair-head{left:70px!important;top:150px!important;width:940px!important}"
+  }
+}
