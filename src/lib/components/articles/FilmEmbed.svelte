@@ -11,7 +11,7 @@
 
 <div class="film">
   {#if film && !youtube && cover}
-    <MotionShow {film} {cover} {title} {length} />
+    <MotionShow {film} {cover} {title} {length} playerHref={`/show/${film}`} />
   {:else if film && !youtube && !playing}
     <button class="card" onclick={() => (playing = true)} aria-label={`Play the film: ${title}`}>
       <span class="kanji k" aria-hidden="true">{kanji}</span>
@@ -20,7 +20,7 @@
       <span class="meta mono">Play the film · {length} · with music</span>
     </button>
   {:else if film && !youtube}
-    <MotionShow {film} />
+    <MotionShow {film} playerHref={`/show/${film}`} />
   {:else if playing && youtube}
     <iframe
       src="https://www.youtube-nocookie.com/embed/{youtube}?autoplay=1&rel=0&cc_load_policy=1"
