@@ -3,7 +3,7 @@ const { seg, eo, eio, eob, lerp, clamp01 } = kit;
 kit.scene('machine', {
   init(kit) {
     kit.css('.machine-asst { position:absolute; left:930px; top:405px; width:300px; box-sizing:border-box; padding:18px 20px; border-radius:16px; background:var(--second); color:var(--ground); box-shadow:0 12px 26px rgba(0,0,0,.12) }' +
-      '.machine-asst b { display:block; font-size:25px; font-weight:600 } .machine-asst span { display:block; margin-top:6px; font-size:19px; line-height:1.35; color:#C9C1B7 }' +
+      '.machine-asst b { display:block; font-size:25px; font-weight:600 } .machine-asst span { display:block; margin-top:6px; font-size:19px; line-height:1.35; color:var(--wire) }' +
       '.machine-lab { position:absolute; font-size:18px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--mute) } .machine-lock { position:absolute; left:1150px; top:752px; transform:translate(-50%,0) }');
     // The app and what it wraps; the assistant you already use talks to it through hooks and MCP.
     kit.stage.append(kit.h('<div class="ground"><div class="cam machine-cam"><svg class="art" viewBox="0 0 1920 1080">' + W.board('machine-bg') +

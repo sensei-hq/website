@@ -2,8 +2,8 @@
 const { seg, eo, eio, eob, lerp, clamp01 } = kit;
 kit.scene('hook', {
   init(kit) {
-    kit.css('.hook-term { left:880px; top:170px; width:560px; height:620px; box-sizing:border-box; padding:22px 24px; background:var(--second); border-color:var(--second); box-shadow:0 16px 34px rgba(0,0,0,.14); font-family:var(--mono); font-size:21px; line-height:1.55; color:#E8E2D8 }' +
-      '.hook-term p { margin:0; white-space:nowrap } .hook-term p.c { color:#A6D1B8 } .hook-term p.m { color:#9C948C }' +
+    kit.css('.hook-term { left:880px; top:170px; width:560px; height:620px; box-sizing:border-box; padding:22px 24px; background:var(--second); border-color:var(--second); box-shadow:0 16px 34px rgba(0,0,0,.14); font-family:var(--mono); font-size:21px; line-height:1.55; color:var(--ground) }' +
+      '.hook-term p { margin:0; white-space:nowrap } .hook-term p.c { color:var(--mint) } .hook-term p.m { color:var(--wire) }' +
       '.hook-file { position:absolute; width:250px; height:150px; box-sizing:border-box; padding:16px 18px; border-radius:14px; background:var(--tile); border:2px solid var(--hair); box-shadow:0 10px 22px rgba(0,0,0,.07); font-family:var(--mono); font-size:19px; color:var(--mute) }');
     const L = [['c', '$ grep -rn "rateLimit" .'], ['', 'src/auth/limits.ts:12'], ['', 'src/api/login.ts:48'], ['', 'src/legacy/throttle.js:7'], ['', 'test/limits.spec.ts:3'],
       ['c', '$ cat src/auth/limits.ts'], ['m', '… 412 lines'], ['c', '$ cat src/api/login.ts'], ['m', '… 655 lines'], ['c', '$ cat src/legacy/throttle.js'], ['m', '… 298 lines'], ['c', '$ grep -rn "limiter" .']];
