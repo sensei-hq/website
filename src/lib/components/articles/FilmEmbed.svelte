@@ -46,7 +46,7 @@
 </div>
 
 <style>
-  .film { position: relative; aspect-ratio: 16 / 9; border: 1px solid var(--paper-edge); border-radius: 12px; overflow: hidden; background: var(--paper-soft); }
+  .film { position: relative; aspect-ratio: 16 / 9; border: 1px solid var(--paper-edge); border-radius: 12px; overflow: hidden; background: var(--paper-soft); --emk-accent: var(--accent); }
   iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
   .card {
     position: absolute; inset: 0; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; gap: 10px;

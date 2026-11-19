@@ -22,7 +22,10 @@ until voice exists). Preview at `/show/short-<slug>?o=portrait`.
 - Motion: head from −0.4 s, artwork builds staggered 0.25–0.6 s apart, ≥1.5 s hold.
   Calm: fades, short rises, pops, drawn wires, push 1.00 → 1.025–1.03.
 - Colour from look tokens only (`var(--accent)` for what is wrong, `var(--jade)` for what
-  is right, `var(--mute)` for the secondary). No literal hex except soft shadows.
+  is right, `var(--mute)` for the secondary). No literal hex except soft shadows and brand-mark
+  fills. Films follow the page into dark mode through the look's dark block, so every colour a
+  scene uses must be a token: `var(--amber)` for cycle/gold highlights, `var(--mint)` for terminal
+  greens, `currentColor` for ink-coloured logo fills.
 - Repeated cards share one size; mono (`b.mono`) never wraps (`white-space:nowrap` on chips).
 - Wires render with their id as the class: one `draw` track per wire, ends on card edges.
 - Text is English literals (the site is en-only); nothing language-specific lives in scenes.
