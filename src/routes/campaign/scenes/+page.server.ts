@@ -1,8 +1,14 @@
+import { error } from '@sveltejs/kit';
+import { dev } from '$app/environment';
 import { film as getFilm, FILMS, hasJsonScene, type Layout } from '$lib/motion/films.js';
 import type { SceneSource } from '@senseihq/emaki';
 
 // The scenes inspector: verify one scene of one film, in any layout, from either source.
+// Dev-only review tooling: never deployed (404 in prod).
+export const prerender = false;
+
 export const load = ({ url }) => {
+  if (!dev) error(404, 'Not found');
   const films = FILMS.map((f) => ({
     slug: f.slug,
     title: f.title,

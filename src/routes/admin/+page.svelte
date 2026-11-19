@@ -128,7 +128,7 @@
                 <p class="label mono">Article points</p>
                 <ol class="pts">{#each r.points as s}<li><b>{s.title}</b>{#if s.points.length}<ul>{#each s.points as pt}<li>{pt}</li>{/each}</ul>{/if}</li>{/each}</ol>
                 <p class="label mono" style="margin-top:18px">Motion</p>
-                {#if r.status.motion}<p class="m0"><a href="/show/{r.slug}" target="_blank" rel="noopener">Open the show ↗</a> · <a href="/admin/scenes?film={r.slug}" target="_blank" rel="noopener">Verify scenes ↗</a></p>{/if}
+                {#if r.status.motion}<p class="m0"><a href="/show/{r.show ?? r.slug}" target="_blank" rel="noopener">Open the show ↗</a> <span class="dim">(scenes are verified in dev at /campaign/scenes)</span></p>{/if}
                 {#each r.requests as rq (rq.id)}
                   <div class="req">
                     <p class="m0"><span class="mono kind">{rq.kind} · {rq.status}</span> {rq.body}</p>
@@ -222,6 +222,7 @@
   .script { margin: 0; max-height: 380px; overflow: auto; padding: 14px; border: 1px solid var(--paper-edge); border-radius: 10px; background: var(--paper-soft); font-size: 12px; line-height: 1.55; white-space: pre-wrap; }
   .pts { margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.55; } .pts ul { padding-left: 16px; color: var(--ink-mute); }
   .m0 { margin: 0; font-size: 13px; }
+  .dim { color: var(--ink-faint); font-size: 12px; }
   .req { margin: 10px 0; padding: 10px 12px; border: 1px solid var(--paper-edge); border-radius: 10px; display: flex; flex-direction: column; gap: 6px; }
   .kind { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-right: 6px; }
   .reply { color: var(--ink-mute); } .reply span { font-size: 11px; color: var(--ink-soft); margin-right: 6px; }

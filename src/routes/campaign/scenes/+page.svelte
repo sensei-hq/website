@@ -32,12 +32,12 @@
   };
 </script>
 
-<svelte:head><title>Admin · Scenes · Sensei HQ</title><meta name="robots" content="noindex" /></svelte:head>
+<svelte:head><title>Campaign · Scenes · Sensei HQ</title><meta name="robots" content="noindex" /></svelte:head>
 
 <main class="adm">
   <header class="top">
     <div>
-      <p class="mono eyebrow"><a href="/admin">Admin</a> · scenes</p>
+      <p class="mono eyebrow"><a href="/campaign">Campaigns</a> · scenes</p>
       <h1 class="display">Scenes</h1>
     </div>
     <div class="who mono"><span class="sr-src">{data.effective === 'json' ? 'JSON scene' : 'module scene'}</span></div>

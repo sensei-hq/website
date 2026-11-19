@@ -18,7 +18,7 @@
   <span class="spacer"></span>
   <a href={show} target="_blank" rel="noopener">Show 16:9 ↗</a>
   <a href="{show}?o=portrait" target="_blank" rel="noopener">Portrait 9:16 ↗</a>
-  <a href="/admin/scenes?film=short-{data.article.slug}" target="_blank" rel="noopener">Scenes ↗</a>
+  <a href="/campaign/scenes?film=short-{data.article.slug}" target="_blank" rel="noopener">Scenes ↗</a>
 </div>
 <VoicePanel slug={data.article.slug} />
 <PublishPanel slug={data.article.slug} render={data.status.render} />

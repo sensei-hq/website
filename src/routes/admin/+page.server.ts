@@ -16,8 +16,9 @@ export const load = async ({ platform, locals }) => {
   const plan = d.plan.map((r) => {
     const a = articles.get(r.slug)!;
     const motion = films.has(r.slug) || films.has(`short-${r.slug}`) || !!r.status.motion;
+    const show = films.has(r.slug) ? r.slug : `short-${r.slug}`;
     return {
-      ...r, dek: a.dek, app: PRODUCT_NAMES[a.product],
+      ...r, dek: a.dek, app: PRODUCT_NAMES[a.product], show,
       points: a.sections.map((s) => ({ title: s.title, points: s.points ?? [] })),
       status: { ...r.status, motion },
     };
