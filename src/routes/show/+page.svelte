@@ -8,6 +8,9 @@
 <main class="mx-auto max-w-3xl px-6 py-16">
   <h1 class="font-display text-4xl">Shows</h1>
   <p class="mt-2 opacity-70">Each film as a slide show. Arrow keys move between scenes, O switches orientation.</p>
+  {#if import.meta.env.DEV}
+    <p class="mt-4"><a class="underline" href="/show/shorts">Review the 28 campaign shorts →</a></p>
+  {/if}
   <ul class="mt-8 flex flex-col gap-4">
     {#each FILMS as f (f.slug)}
       <li class="flex flex-wrap items-baseline gap-x-4">
