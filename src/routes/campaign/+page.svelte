@@ -31,6 +31,7 @@
           </h2>
           <p class="dur">{r.f.scenes.length} scenes · {fmt(timeline(r.f).duration)}</p>
           <nav class="links">
+            <a href="/campaign/{r.slug}">Review</a>
             <a href="/show/short-{r.slug}?o=portrait">9:16</a>
             <a href="/show/short-{r.slug}">16:9</a>
             <a href="/articles/{r.slug}">Article</a>
