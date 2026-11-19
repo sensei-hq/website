@@ -26,6 +26,8 @@ test('review page shows the article with its toolbar', async ({ page }) => {
     'href',
     '/show/short-schema-as-code?o=portrait',
   );
+  await expect(page.getByRole('heading', { name: 'Voice' })).toBeVisible();
+  await expect(page.getByRole('button', { name: /Generate voice|Regenerate all takes/ })).toBeVisible();
 });
 
 test('unknown campaign slug is a 404', async ({ page }) => {
