@@ -5,8 +5,10 @@ import { fileURLToPath } from 'node:url';
 import { FILMS, film, hasJsonScene, timeline } from './films.js';
 import { validateScene, type SceneSpec } from '@senseihq/emaki';
 
-// Scene modules on disk, one per scene id in each film's film.json.
-const sceneFiles = import.meta.glob('./films/*/scene-*.js');
+// Scene sources on disk: JSON first, JS modules where a scene needs code.
+const sceneModules = import.meta.glob('./films/*/scene-*.js');
+const lookFiles = import.meta.glob('./films/*/look.css');
+const scoreFiles = import.meta.glob('./films/*/score.js');
 // JSON scenes, preferred over the module where present.
 const jsonScenes = import.meta.glob<SceneSpec>('./films/*/scene-*.json', { eager: true, import: 'default' });
 
@@ -28,12 +30,21 @@ const TAKES: Record<string, number> = {
 };
 
 describe('motion films', () => {
-  it('ships a scene module for every scene of every film', () => {
+  it('ships a scene source for every scene of every film (JSON preferred, JS allowed)', () => {
     expect(FILMS.length).toBeGreaterThan(0);
     for (const f of FILMS) {
       for (const s of f.scenes) {
-        expect(sceneFiles, `${f.slug}/${s.id}`).toHaveProperty(`./films/${f.slug}/scene-${s.id}.js`);
+        const json = `./films/${f.slug}/scene-${s.id}.json`;
+        const js = `./films/${f.slug}/scene-${s.id}.js`;
+        expect(json in jsonScenes || js in sceneModules, `${f.slug}/${s.id} needs ${json} or ${js}`).toBe(true);
       }
+    }
+  });
+
+  it('ships a look and a score for every film', () => {
+    for (const f of FILMS) {
+      expect(lookFiles, `${f.slug}/look.css`).toHaveProperty(`./films/${f.slug}/look.css`);
+      expect(scoreFiles, `${f.slug}/score.js`).toHaveProperty(`./films/${f.slug}/score.js`);
     }
   });
 
