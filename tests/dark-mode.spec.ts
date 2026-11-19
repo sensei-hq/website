@@ -17,6 +17,35 @@ test.describe('Dark mode switching', () => {
     expect(style).toBeTruthy();
   });
 
+  test('motion figures follow body data-mode', async ({ page }) => {
+    await page.goto('/articles/schema-as-code');
+    await page.waitForSelector('figure .motion-scene');
+    const stage = () =>
+      page.evaluate(() => {
+        const host = document.querySelector('figure .motion-scene > div');
+        const st = host?.shadowRoot?.querySelector('#stage') as HTMLElement | null;
+        return st ? [st.dataset.mode, getComputedStyle(st).backgroundColor] : null;
+      });
+    await page.evaluate(() => {
+      document.body.dataset.mode = 'light';
+    });
+    await page.waitForFunction(() => {
+      const st = document.querySelector('figure .motion-scene > div')?.shadowRoot?.querySelector('#stage');
+      return st?.getAttribute('data-mode') === 'light';
+    });
+    const light = await stage();
+    await page.evaluate(() => {
+      document.body.dataset.mode = 'dark';
+    });
+    await page.waitForFunction(
+      () => document.querySelector('figure .motion-scene > div')?.shadowRoot?.querySelector('#stage')?.getAttribute('data-mode') === 'dark',
+      null,
+      { timeout: 5000 },
+    );
+    const dark = await stage();
+    expect(dark?.[1]).not.toBe(light?.[1]);
+  });
+
   test('dark mode applies dark surface colors to FloatingNavigation', async ({ page }) => {
     // Force light first to get a baseline
     await page.evaluate(() => { document.body.dataset.mode = 'light'; });

@@ -9,6 +9,9 @@ import { validateScene, type SceneSpec } from '@senseihq/emaki';
 const sceneModules = import.meta.glob('./films/*/scene-*.js');
 const lookFiles = import.meta.glob('./films/*/look.css');
 const scoreFiles = import.meta.glob('./films/*/score.js');
+const voiceScripts = import.meta.glob('./films/*/voice/*.json', { eager: true, import: 'default' });
+// fs, not a ?raw glob: Vitest resolves raw globs to empty strings.
+const lookCss = (slug: string) => readFileSync(new URL(`./films/${slug}/look.css`, import.meta.url), 'utf8');
 // JSON scenes, preferred over the module where present.
 const jsonScenes = import.meta.glob<SceneSpec>('./films/*/scene-*.json', { eager: true, import: 'default' });
 
@@ -38,6 +41,29 @@ describe('motion films', () => {
         const js = `./films/${f.slug}/scene-${s.id}.js`;
         expect(json in jsonScenes || js in sceneModules, `${f.slug}/${s.id} needs ${json} or ${js}`).toBe(true);
       }
+    }
+  });
+
+  it('ships a voice script covering every scene of every film', () => {
+    for (const f of FILMS) {
+      const p = `./films/${f.slug}/voice/en.json`;
+      expect(p in voiceScripts, `${f.slug} voice script`).toBe(true);
+      if (!(p in voiceScripts)) continue;
+      const lines = (voiceScripts as Record<string, { scene: string; text: string }[]>)[p];
+      expect(lines.map((l) => l.scene), `${f.slug} scenes`).toEqual(f.scenes.map((s) => s.id));
+      for (const l of lines) expect(l.text.trim().length, `${f.slug}/${l.scene} text`).toBeGreaterThan(0);
+    }
+  });
+
+  it('every film opts into dark mode with a dark background', () => {
+    for (const f of FILMS) {
+      expect(f.dark?.background, `${f.slug} dark.background`).toBe('#1E1B18');
+    }
+  });
+
+  it('every look redefines its tokens for dark mode', () => {
+    for (const f of FILMS) {
+      expect(lookCss(f.slug).includes('#stage[data-mode="dark"]'), f.slug).toBe(true);
     }
   });
 
