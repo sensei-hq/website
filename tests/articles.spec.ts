@@ -53,6 +53,13 @@ test.describe('Articles at /articles', () => {
     });
   }
 
+  test('film card links its standalone show', async ({ page }) => {
+    await page.goto('/articles/schema-as-code');
+    await page.waitForLoadState('networkidle');
+    await page.locator('.film').getByRole('button', { name: /^Play the film/ }).click();
+    await expect(page.locator('.film .emk-popout')).toHaveAttribute('href', '/show/short-schema-as-code');
+  });
+
   test('search filters the gallery', async ({ page }) => {
     await page.goto('/articles');
     // Wait for hydration: filling before Svelte binds the input gets overwritten with ''.
