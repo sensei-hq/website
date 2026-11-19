@@ -1,8 +1,9 @@
 // Articles: the index (src/lib/content/articles/index.json: slug, title, app, tags, keywords, publish_date, social,
 // cover …) plus one body per article (src/lib/content/articles/<slug>.json: sections, takeaway, sources). An article
-// whose slug is also a motion film (src/lib/motion/films/<slug>/) plays that film, and a section whose id is one of
-// its scenes shows that scene as its figure. Server loads only (see articles-server.ts): nothing scheduled reaches the
-// client before its date. The film masters, voiceover scripts and build tools live in website/films/ (gitignored).
+// whose slug is also a motion film (src/lib/motion/films/<slug>/, or a campaign Short at short-<slug>/) plays that
+// film, and a section whose id is one of its scenes shows that scene as its figure. Server loads only (see
+// articles-server.ts): nothing scheduled reaches the client before its date. The film masters, voiceover scripts and
+// build tools live in website/films/ (gitignored).
 import INDEX from './content/articles/index.json';
 import { film as filmOf } from './motion/films.js';
 
@@ -64,7 +65,7 @@ export interface Article {
   takeawaySub?: string;
   sources?: { label: string; href: string }[];
   related?: { label: string; href: string };
-  /** Set when a motion film of the same slug exists (src/lib/motion/films/<slug>/): the article plays it. */
+  /** Set when a motion film of the same slug (or short-<slug> for a campaign Short) exists: the article plays it. */
   film?: string;
 }
 
@@ -88,14 +89,16 @@ export function youtubeId(v = ''): string {
 function load(e: IndexEntry): Article {
   const body = BODIES[`./content/articles/${e.slug}.json`];
   if (!body) throw new Error(`articles: no body for "${e.slug}" (src/lib/content/articles/${e.slug}.json)`);
-  const f = filmOf(e.slug), scenes = new Set(f?.scenes.map((s) => s.id) ?? []);
+  // A campaign Short's motion film lives at short-<slug>; it plays the same role as a same-slug film.
+  const f = filmOf(e.slug) ?? filmOf(`short-${e.slug}`);
+  const scenes = new Set(f?.scenes.map((s) => s.id) ?? []);
   const social = Object.fromEntries(Object.entries(e.social ?? {}).filter(([, v]) => v));
   return {
     slug: e.slug, title: e.title, dek: e.dek, kanji: e.kanji, kanjiGloss: e.kanjiGloss, topic: e.topic,
     date: e.publish_date, minutes: e.minutes, product: e.app, tags: e.tags, keywords: e.keywords ?? [], series: e.series,
     youtube: youtubeId(e.social?.youtube), cover: e.cover, video: e.video ?? 'wide', filmLength: e.filmLength, social,
-    related: e.related, film: f ? e.slug : undefined, takeaway: body.takeaway, takeawaySub: body.takeawaySub, sources: body.sources,
-    sections: body.sections.map((s) => (s.motion || s.figure || !scenes.has(s.id) ? s : { ...s, motion: { film: e.slug, scene: s.id } })),
+    related: e.related, film: f?.slug, takeaway: body.takeaway, takeawaySub: body.takeawaySub, sources: body.sources,
+    sections: body.sections.map((s) => (s.motion || s.figure || !f || !scenes.has(s.id) ? s : { ...s, motion: { film: f.slug, scene: s.id } })),
   };
 }
 
