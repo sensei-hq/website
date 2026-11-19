@@ -38,9 +38,13 @@ until voice exists). Preview at `/show/short-<slug>?o=portrait`.
 
 ## Close card
 
-Punchline title (3–9 words) + vermillion bar + one-line sub (`<product> · open source · <stack>`)
-+ the article URL in mono mute (`sensei-hq.com/articles/<slug>`) + the product mark on the
-right (`logo` component; marks: `dbd`, `gateway`, `kavach`, `rokkit`, `sensei`). Copy the
+Punchline title (3–9 words) + vermillion bar + one-line sub + the article URL in mono
+mute (`sensei-hq.com/articles/<slug>`) + the product mark on the right (`logo` component at
+the pilot's geometry: size 400 at 1530,540, origin 1530,540). Sub lines, settled days 01–28:
+`dbd · open source · Rust CLI`, `Rokkit · open source · Svelte`, `Kavach · open source ·
+SvelteKit`, `Gateway · open source · Rust library`, and — Sensei is a Preview product, not
+open source — `Sensei · local-first · Desktop app`. All marks in `logos/` are normalized to
+a 512 viewBox, which the `logo` component assumes; never compensate per scene. Copy the
 pilot's close tracks (card fade/rise, word arrival, bar draw, sub slide, settle mark).
 
 ## Verify before reporting
