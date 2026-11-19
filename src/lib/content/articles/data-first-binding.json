@@ -6,7 +6,12 @@
       "title": "Glue code everywhere",
       "body": [
         "An API returns users. The dropdown wants {label, value}. So you write a map(). Then the tree wants children, the list wants icons, and the selection callback hands you the reshaped object instead of the one you started with."
-      ]
+      ],
+      "motion": {
+        "film": "short-data-first-binding",
+        "scene": "hook"
+      },
+      "caption": "A pile of map() calls before anything renders."
     },
     {
       "id": "idea",
@@ -19,7 +24,12 @@
         "No map() before rendering",
         "No view-model objects for display",
         "Events return the data you passed in"
-      ]
+      ],
+      "motion": {
+        "film": "short-data-first-binding",
+        "scene": "adapt"
+      },
+      "caption": "Raw objects slot straight into the list."
     },
     {
       "id": "code",
@@ -31,7 +41,12 @@
       "code": {
         "lang": "svelte",
         "text": "<script>\n  import { List } from '@rokkit/ui'\n  let items = $state(['a', 'b', 'c'])\n  let value = $state(null)\n</script>\n\n<List bind:items bind:value />"
-      }
+      },
+      "motion": {
+        "film": "short-data-first-binding",
+        "scene": "original"
+      },
+      "caption": "Selection hands back your original object."
     },
     {
       "id": "ai",
@@ -39,8 +54,13 @@
       "title": "Less glue, fewer bugs",
       "body": [
         "Generated glue code is where subtle bugs live: a dropped field, a renamed key. Fewer conversions means less code for an assistant to get wrong, and less for you to review."
-      ]
+      ],
+      "motion": {
+        "film": "short-data-first-binding",
+        "scene": "reshape"
+      },
+      "caption": "The reshape step where generated glue breaks."
     }
   ],
-  "takeaway": ""
+  "takeaway": "Stop reshaping data for your UI."
 }

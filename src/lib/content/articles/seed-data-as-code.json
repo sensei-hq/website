@@ -6,7 +6,12 @@
       "title": "Seed data by copy and paste",
       "body": [
         "Every environment needs the same lookup values. Usually they arrive by a script someone runs once, or a dump nobody can diff."
-      ]
+      ],
+      "motion": {
+        "film": "short-seed-data-as-code",
+        "scene": "terminal"
+      },
+      "caption": "An old terminal ran the seed script once."
     },
     {
       "id": "import",
@@ -18,7 +23,12 @@
       "code": {
         "lang": "text",
         "text": "import/staging/lookups.csv\nddl/procedure/staging/import_lookups.ddl\n\n$ dbd import"
-      }
+      },
+      "motion": {
+        "film": "short-seed-data-as-code",
+        "scene": "import"
+      },
+      "caption": "Files flow through dbd import into procedures."
     },
     {
       "id": "why",
@@ -31,8 +41,13 @@
         "CSV, TSV, JSON, JSONL",
         "Your procedures decide how rows merge",
         "Export to compare or back up"
-      ]
+      ],
+      "motion": {
+        "film": "short-seed-data-as-code",
+        "scene": "pr"
+      },
+      "caption": "Seed data reviewed as a CSV pull-request diff."
     }
   ],
-  "takeaway": ""
+  "takeaway": "Reference data as code."
 }

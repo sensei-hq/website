@@ -6,7 +6,12 @@
       "title": "Config that drifts from reality",
       "body": [
         "Many schema tools need a manifest listing every object and its order. The manifest and the SQL drift apart, and the tool trusts the manifest."
-      ]
+      ],
+      "motion": {
+        "film": "short-file-path-is-the-entity-name",
+        "scene": "manifest"
+      },
+      "caption": "A manifest card drifted from its SQL files."
     },
     {
       "id": "convention",
@@ -18,7 +23,12 @@
       "code": {
         "lang": "text",
         "text": "ddl/\n  table/config/lookups.ddl          → table config.lookups\n  view/config/genders.ddl           → view config.genders\n  procedure/staging/import_lookups.ddl"
-      }
+      },
+      "motion": {
+        "film": "short-file-path-is-the-entity-name",
+        "scene": "path"
+      },
+      "caption": "A file path becomes its entity name."
     },
     {
       "id": "why",
@@ -31,7 +41,12 @@
         "Add a file, get an entity",
         "Move a file, rename the entity",
         "Review the tree, review the schema"
-      ]
+      ],
+      "motion": {
+        "film": "short-file-path-is-the-entity-name",
+        "scene": "addfile"
+      },
+      "caption": "A new file pops into the tree."
     },
     {
       "id": "ai",
@@ -39,8 +54,13 @@
       "title": "Conventions are instructions",
       "body": [
         "A predictable layout is easy for an assistant to follow: “add a view in the config schema” has exactly one right place to go."
-      ]
+      ],
+      "motion": {
+        "film": "short-file-path-is-the-entity-name",
+        "scene": "assistant"
+      },
+      "caption": "An assistant drops SQL into its slot."
     }
   ],
-  "takeaway": ""
+  "takeaway": "Convention over configuration."
 }

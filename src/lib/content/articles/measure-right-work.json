@@ -6,7 +6,12 @@
       "title": "Volume is a vanity metric",
       "body": [
         "More commits, more tokens, more lines: all of these go up when work is going badly too, because fixing things is also activity."
-      ]
+      ],
+      "motion": {
+        "film": "measure-right-work",
+        "scene": "problem"
+      },
+      "caption": "A bad week charts busier than a good one."
     },
     {
       "id": "pair",
@@ -19,7 +24,12 @@
         "Never read a speed metric alone",
         "Drill into the modules where friction concentrates",
         "Treat a rising rework trend as an early warning"
-      ]
+      ],
+      "motion": {
+        "film": "measure-right-work",
+        "scene": "pair"
+      },
+      "caption": "Two paired cards: resolution beside its rework share."
     },
     {
       "id": "sensei",
@@ -27,7 +37,12 @@
       "title": "Grouped by what they answer",
       "body": [
         "Sensei groups its metrics by outcome, quality, velocity, usage and cost, and always shows velocity next to its quality companion."
-      ]
+      ],
+      "motion": {
+        "film": "measure-right-work",
+        "scene": "sensei"
+      },
+      "caption": "Metric groups with velocity beside its quality companion."
     }
   ],
   "takeaway": "Measure right work, not more work.",

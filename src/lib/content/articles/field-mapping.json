@@ -6,7 +6,12 @@
       "title": "Sensible names first",
       "body": [
         "Selection components look for label, value, icon, children and snippet by default. If your data already uses those names, there is nothing to configure."
-      ]
+      ],
+      "motion": {
+        "film": "short-field-mapping",
+        "scene": "hook"
+      },
+      "caption": "Mismatched data and dropdown shapes face off."
     },
     {
       "id": "custom",
@@ -18,7 +23,12 @@
       "code": {
         "lang": "js",
         "text": "fields = {\n  label: (item) => `${item.firstName} ${item.lastName}`,\n  value: 'userId',\n  icon: 'profile.avatar',   // dot-path\n  children: 'reports'       // nested items for a Tree\n}"
-      }
+      },
+      "motion": {
+        "film": "short-field-mapping",
+        "scene": "three-ways"
+      },
+      "caption": "Three mapping styles appear side by side."
     },
     {
       "id": "how",
@@ -31,7 +41,12 @@
         "One place for the transformation",
         "Safe nested resolution",
         "Per-item overrides for mixed lists"
-      ]
+      ],
+      "motion": {
+        "film": "short-field-mapping",
+        "scene": "untouched"
+      },
+      "caption": "The original object stays exactly as written."
     },
     {
       "id": "ai",
@@ -39,8 +54,13 @@
       "title": "A smaller surface to review",
       "body": [
         "A fields object is a few declarative lines. That is far easier to review than a generated adapter layer, and it keeps the original data intact."
-      ]
+      ],
+      "motion": {
+        "film": "short-field-mapping",
+        "scene": "mapping"
+      },
+      "caption": "A fields object maps label and value."
     }
   ],
-  "takeaway": ""
+  "takeaway": "Field mapping, not glue code."
 }

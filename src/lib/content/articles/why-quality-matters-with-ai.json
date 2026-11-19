@@ -6,7 +6,12 @@
       "title": "More code, same reviewers",
       "body": [
         "Assistants produce code faster than people can read it. Review becomes the bottleneck, and what slips past review becomes the next pattern the assistant copies."
-      ]
+      ],
+      "motion": {
+        "film": "short-why-quality-matters-with-ai",
+        "scene": "review-bottleneck"
+      },
+      "caption": "Waiting code swamps the review gate."
     },
     {
       "id": "rework",
@@ -14,7 +19,12 @@
       "title": "Fast now, slow later",
       "body": [
         "A session that “finishes” but needs correcting has moved work, not done it. Effort spent fixing is the hidden cost of speed."
-      ]
+      ],
+      "motion": {
+        "film": "short-why-quality-matters-with-ai",
+        "scene": "rework-loop"
+      },
+      "caption": "Sessions loop back to fixing, not finishing."
     },
     {
       "id": "compounding",
@@ -27,7 +37,12 @@
         "Duplication gets duplicated",
         "Workarounds become patterns",
         "Inconsistency spreads"
-      ]
+      ],
+      "motion": {
+        "film": "short-why-quality-matters-with-ai",
+        "scene": "codebase-prompt"
+      },
+      "caption": "Messy in, messy out; clean in, clean out."
     },
     {
       "id": "sensei",
@@ -35,8 +50,13 @@
       "title": "Pair speed with its quality companion",
       "body": [
         "Sensei never shows velocity alone. First-turn resolution is always paired with rework share, so faster never hides more fixing."
-      ]
+      ],
+      "motion": {
+        "film": "short-why-quality-matters-with-ai",
+        "scene": "hook"
+      },
+      "caption": "One shortcut copied three ways at speed."
     }
   ],
-  "takeaway": ""
+  "takeaway": "Speed, always with its quality companion."
 }

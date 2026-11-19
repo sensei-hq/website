@@ -6,7 +6,12 @@
       "title": "Standards nobody loads",
       "body": [
         "Teams write conventions down, then rely on everyone, and every assistant, remembering them. They don’t. The same correction gets typed again next week."
-      ]
+      ],
+      "motion": {
+        "film": "short-governance-rules",
+        "scene": "hook"
+      },
+      "caption": "A wiki style guide, just a suggestion."
     },
     {
       "id": "levels",
@@ -19,7 +24,12 @@
         "mandatory > required > recommended > advisory",
         "Then priority (P0–P3) and impact",
         "Then the most specific scope wins"
-      ]
+      ],
+      "motion": {
+        "film": "short-governance-rules",
+        "scene": "four-tiers"
+      },
+      "caption": "Four tiers ranked from mandatory to advisory."
     },
     {
       "id": "scopes",
@@ -27,7 +37,12 @@
       "title": "From organization to repository",
       "body": [
         "Rules attach at scopes such as organization, client, team, technology, project and repository. The more specific scope refines the broader one, and duplicates collapse to the highest authority."
-      ]
+      ],
+      "motion": {
+        "film": "short-governance-rules",
+        "scene": "scope-ladder"
+      },
+      "caption": "A scope ladder where the most specific wins."
     },
     {
       "id": "delivery",
@@ -35,8 +50,13 @@
       "title": "Loaded, not remembered",
       "body": [
         "The assistant calls Sensei’s get_rules and layered-context tools at session start and after context compaction, so the resolved rules are in front of it while it works."
-      ]
+      ],
+      "motion": {
+        "film": "short-governance-rules",
+        "scene": "hook"
+      },
+      "caption": "Rules loaded into the assistant every session."
     }
   ],
-  "takeaway": ""
+  "takeaway": "Rules your assistant actually follows."
 }

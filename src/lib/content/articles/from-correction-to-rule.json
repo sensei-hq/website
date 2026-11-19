@@ -6,7 +6,12 @@
       "title": "Patterns you are too close to see",
       "body": [
         "Sensei watches sessions locally. When the same correction keeps happening, it forms a finding and offers one action: apply, review or dismiss."
-      ]
+      ],
+      "motion": {
+        "film": "short-from-correction-to-rule",
+        "scene": "finding"
+      },
+      "caption": "A finding card offering apply, review, or dismiss."
     },
     {
       "id": "promote",
@@ -14,7 +19,12 @@
       "title": "A memory becomes a rule",
       "body": [
         "A learning that keeps proving itself can be promoted to a rule at a higher scope, from your repository to your project or team."
-      ]
+      ],
+      "motion": {
+        "film": "short-from-correction-to-rule",
+        "scene": "ladder"
+      },
+      "caption": "A rule climbing from repository to shared team rule."
     },
     {
       "id": "share",
@@ -27,7 +37,12 @@
         "Always opt-in and previewed",
         "Client work anonymized before it can leave",
         "High-impact changes need a second approval"
-      ]
+      ],
+      "motion": {
+        "film": "short-from-correction-to-rule",
+        "scene": "dojo-loop"
+      },
+      "caption": "Three chips circling the dōjō: contribute, triage, distribute."
     },
     {
       "id": "week",
@@ -35,8 +50,13 @@
       "title": "The Sensei idea",
       "body": [
         "Define quality, measure the right things, know the failure modes, build good habits, and turn standards into rules the assistant actually loads. Next week: Gateway, routing across model providers."
-      ]
+      ],
+      "motion": {
+        "film": "short-from-correction-to-rule",
+        "scene": "hook"
+      },
+      "caption": "Three repeated fixes funnelling into one shared rule."
     }
   ],
-  "takeaway": ""
+  "takeaway": "Turn corrections into shared rules."
 }

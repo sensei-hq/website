@@ -6,7 +6,12 @@
       "title": "Costs you see next month",
       "body": [
         "A prompt that grew, a loop that didn’t stop, a model swapped for a pricier one: AI costs are easy to run up and hard to see until the invoice."
-      ]
+      ],
+      "motion": {
+        "film": "short-llm-budgets",
+        "scene": "hook"
+      },
+      "caption": "The invoice arrives next month, too late."
     },
     {
       "id": "estimate",
@@ -18,7 +23,12 @@
       "code": {
         "lang": "text",
         "text": "estimate = input_tokens × input_price / 1k\n         + max_output_tokens × output_price / 1k"
-      }
+      },
+      "motion": {
+        "film": "short-llm-budgets",
+        "scene": "estimate"
+      },
+      "caption": "Gateway estimates each candidate model's cost first."
     },
     {
       "id": "why",
@@ -31,8 +41,13 @@
         "Estimates before the call",
         "Over-budget models skipped",
         "Works with fallback chains"
-      ]
+      ],
+      "motion": {
+        "film": "short-llm-budgets",
+        "scene": "skipped"
+      },
+      "caption": "Over-budget models grey out; the chain continues."
     }
   ],
-  "takeaway": ""
+  "takeaway": "Spend as a routing decision."
 }

@@ -10,7 +10,12 @@
       "code": {
         "lang": "text",
         "text": "@rokkit/core      field mapping, types\n@rokkit/states    ProxyItem, wrappers, theme store\n@rokkit/actions   navigator, interactions\n@rokkit/data      filter, search, rollup\n@rokkit/ui        components\n@rokkit/forms · @rokkit/chart\n@rokkit/themes · @rokkit/icons"
-      }
+      },
+      "motion": {
+        "film": "short-inside-rokkit-architecture",
+        "scene": "layers"
+      },
+      "caption": "Seven packages stacked from core to chart."
     },
     {
       "id": "rule",
@@ -18,7 +23,12 @@
       "title": "Dependencies only point down",
       "body": [
         "No package imports from one above it. The UI never imports forms; state never imports UI. That keeps each layer testable on its own and stops accidental cycles."
-      ]
+      ],
+      "motion": {
+        "film": "short-inside-rokkit-architecture",
+        "scene": "rule"
+      },
+      "caption": "Down allowed, up crossed out in red."
     },
     {
       "id": "compose",
@@ -31,7 +41,12 @@
         "Small components, clear edges",
         "Behaviour through actions, not props",
         "Styling through themes, not components"
-      ]
+      ],
+      "motion": {
+        "film": "short-inside-rokkit-architecture",
+        "scene": "compose"
+      },
+      "caption": "Search and list snap together as one."
     },
     {
       "id": "ai",
@@ -39,8 +54,13 @@
       "title": "Architecture as a guardrail",
       "body": [
         "A strict dependency order is a rule an assistant can follow and a reviewer can check. It is one of the simplest ways to stop generated code from creeping across boundaries."
-      ]
+      ],
+      "motion": {
+        "film": "short-inside-rokkit-architecture",
+        "scene": "hook"
+      },
+      "caption": "Tangled imports every library drifts toward."
     }
   ],
-  "takeaway": ""
+  "takeaway": "An order AI can follow."
 }

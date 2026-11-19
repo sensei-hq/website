@@ -6,7 +6,12 @@
       "title": "Lock-in by a thousand calls",
       "body": [
         "Provider SDK calls spread through components, hooks and server code. Switching later means touching all of them."
-      ]
+      ],
+      "motion": {
+        "film": "short-swap-auth-providers",
+        "scene": "tangle"
+      },
+      "caption": "Tangled SDK wires run into components, hooks, server code."
     },
     {
       "id": "adapters",
@@ -21,7 +26,12 @@
         "@kavach/adapter-auth0",
         "@kavach/adapter-amplify",
         "@kavach/adapter-convex"
-      ]
+      ],
+      "motion": {
+        "film": "short-swap-auth-providers",
+        "scene": "adapters"
+      },
+      "caption": "Five provider adapters slot into one API bar."
     },
     {
       "id": "why",
@@ -29,8 +39,13 @@
       "title": "Decide later, change cheaply",
       "body": [
         "Start with what you know, and keep the option to move. Your routes, rules and UI do not change when the adapter does."
-      ]
+      ],
+      "motion": {
+        "film": "short-swap-auth-providers",
+        "scene": "swap"
+      },
+      "caption": "Adapter swaps while routes, rules and UI stay."
     }
   ],
-  "takeaway": ""
+  "takeaway": "Decide later, change cheaply."
 }

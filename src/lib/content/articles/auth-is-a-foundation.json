@@ -6,7 +6,12 @@
       "title": "Days spent on plumbing",
       "body": [
         "Every new app needs sign-in, sessions that work on both server and browser, protected pages and roles. It is rarely the product, yet it eats days, and small mistakes in it are security bugs."
-      ]
+      ],
+      "motion": {
+        "film": "short-auth-is-a-foundation",
+        "scene": "layers"
+      },
+      "caption": "Five auth layers revealed beneath the sign-in form."
     },
     {
       "id": "kavach",
@@ -18,7 +23,12 @@
       "code": {
         "lang": "sh",
         "text": "sv create my-app && cd my-app\nbunx @kavach/cli init   # guided setup\nbun run dev"
-      }
+      },
+      "motion": {
+        "film": "short-auth-is-a-foundation",
+        "scene": "kavach"
+      },
+      "caption": "The Kavach shield mark for SvelteKit apps."
     },
     {
       "id": "why",
@@ -31,8 +41,13 @@
         "One API, many providers",
         "Rules instead of scattered checks",
         "Server and client sessions in step"
-      ]
+      ],
+      "motion": {
+        "film": "short-auth-is-a-foundation",
+        "scene": "terminal"
+      },
+      "caption": "Terminal runs the guided Kavach init command."
     }
   ],
-  "takeaway": ""
+  "takeaway": "Auth without the ceremony."
 }

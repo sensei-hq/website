@@ -6,7 +6,12 @@
       "title": "The page you forgot",
       "body": [
         "When protection is opt-in, every new route is public until someone remembers to add a check. One missed check is a data leak."
-      ]
+      ],
+      "motion": {
+        "film": "short-protected-by-default",
+        "scene": "hook"
+      },
+      "caption": "Two locked route cards, one forgotten without a check."
     },
     {
       "id": "default",
@@ -18,7 +23,12 @@
       "code": {
         "lang": "js",
         "text": "export default {\n  routes: {\n    public: ['/login', '/register'],\n    roles: {\n      admin: { home: '/admin' },\n      user: { home: '/dashboard' }\n    }\n  }\n}"
-      }
+      },
+      "motion": {
+        "film": "short-protected-by-default",
+        "scene": "flip-default"
+      },
+      "caption": "Every route locked except the two listed public."
     },
     {
       "id": "why",
@@ -31,8 +41,13 @@
         "One file shows what is public",
         "New routes start private",
         "Each role has its own home page"
-      ]
+      ],
+      "motion": {
+        "film": "short-protected-by-default",
+        "scene": "fails-closed"
+      },
+      "caption": "A forgotten page fails closed on the lock."
     }
   ],
-  "takeaway": ""
+  "takeaway": "Protected by default."
 }

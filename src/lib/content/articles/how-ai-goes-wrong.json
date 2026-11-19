@@ -13,7 +13,12 @@
         "Spec deviation: quietly doing something other than the plan",
         "Duplication: writing a new helper instead of finding the existing one",
         "Context pressure: running out of room mid-task and losing the thread"
-      ]
+      ],
+      "motion": {
+        "film": "how-ai-goes-wrong",
+        "scene": "patterns"
+      },
+      "caption": "Five failure panels act out each pattern in turn."
     },
     {
       "id": "trace",
@@ -21,7 +26,12 @@
       "title": "Each one is observable",
       "body": [
         "An edit with no prior read is visible in the session. So is a pivot away from the stated plan, a compaction mid-task, or a jump in duplicated lines after a merge."
-      ]
+      ],
+      "motion": {
+        "film": "how-ai-goes-wrong",
+        "scene": "trace"
+      },
+      "caption": "A session log flags each failure's visible trace."
     },
     {
       "id": "sensei",
@@ -29,7 +39,12 @@
       "title": "Named, counted, shown back",
       "body": [
         "Sensei tracks these as metrics, such as edit before read, spec deviation and context pressure, per repository, with the evidence behind each so you can judge it yourself."
-      ]
+      ],
+      "motion": {
+        "film": "how-ai-goes-wrong",
+        "scene": "sensei"
+      },
+      "caption": "Sensei counts each pattern per repository with evidence."
     },
     {
       "id": "prevent",
@@ -44,7 +59,12 @@
         "Spec deviation: scope and acceptance criteria are made explicit in the plan; a departure is shown as the plan quote against the action",
         "Duplication: the code index is searched for an existing helper before a new one is written; duplication is measured at sampled commits",
         "Context pressure: your rules are re-injected when the context compacts, and checkpoints let work resume; sessions that hit compaction are tracked"
-      ]
+      ],
+      "motion": {
+        "film": "how-ai-goes-wrong",
+        "scene": "prevent"
+      },
+      "caption": "Prevent each pattern first, catch what slips through."
     }
   ],
   "takeaway": "Predictable failures are preventable.",

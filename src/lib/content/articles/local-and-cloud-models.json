@@ -6,7 +6,12 @@
       "title": "Not everything needs the cloud",
       "body": [
         "Embeddings, classification and anything touching private data can often run on the device: cheaper, private and available offline."
-      ]
+      ],
+      "motion": {
+        "film": "short-local-and-cloud-models",
+        "scene": "laptop"
+      },
+      "caption": "Private data stays locked on the laptop."
     },
     {
       "id": "how",
@@ -19,7 +24,12 @@
         "llama-cpp: GGUF generation and embeddings",
         "fastembed: lightweight embeddings",
         "ort: ONNX Runtime on CPU"
-      ]
+      ],
+      "motion": {
+        "film": "short-local-and-cloud-models",
+        "scene": "engines"
+      },
+      "caption": "Three in-process engines: llama.cpp, ONNX, FastEmbed."
     },
     {
       "id": "week",
@@ -27,8 +37,13 @@
       "title": "The Gateway idea",
       "body": [
         "One interface, fallback chains, circuit breakers, budgets, and local models alongside cloud ones. That is the first four weeks; the series continues."
-      ]
+      ],
+      "motion": {
+        "film": "short-local-and-cloud-models",
+        "scene": "socket"
+      },
+      "caption": "Local and cloud tiles share one socket."
     }
   ],
-  "takeaway": ""
+  "takeaway": "Local and cloud, one interface."
 }

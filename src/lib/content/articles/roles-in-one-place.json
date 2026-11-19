@@ -10,7 +10,12 @@
       "code": {
         "lang": "js",
         "text": "rules: [\n  { path: '/', public: true },\n  { path: '/dashboard', roles: '*' },\n  { path: '/admin', roles: ['admin'] },\n  { path: '/beta', roles: ['tester'], fallback: '/waitlist' }\n]"
-      }
+      },
+      "motion": {
+        "film": "short-roles-in-one-place",
+        "scene": "one-list"
+      },
+      "caption": "Every route rule collects into one panel."
     },
     {
       "id": "decision",
@@ -23,7 +28,12 @@
         "Not signed in → 401 → login",
         "Wrong role → 403 → unauthorized or home",
         "Deepest matching path wins"
-      ]
+      ],
+      "motion": {
+        "film": "short-roles-in-one-place",
+        "scene": "two-arrows"
+      },
+      "caption": "Two arrows: 401 to login, 403 for wrong role."
     },
     {
       "id": "where",
@@ -31,8 +41,13 @@
       "title": "Automatically, or on its own",
       "body": [
         "kavach.handle uses the sentry automatically in your SvelteKit hooks; you can also use @kavach/sentry standalone."
-      ]
+      ],
+      "motion": {
+        "film": "short-roles-in-one-place",
+        "scene": "deepest-path"
+      },
+      "caption": "Nested paths light up to the deepest match."
     }
   ],
-  "takeaway": ""
+  "takeaway": "Roles in one place."
 }
