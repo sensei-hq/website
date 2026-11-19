@@ -18,6 +18,22 @@ test('show bar follows the standard chrome contract', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Sound off' })).toHaveAttribute('aria-pressed', 'true');
 });
 
+test('chrome=0 hides the toolbar for recordings', async ({ page }) => {
+  await page.goto('/show/short-schema-as-code?chrome=0');
+  await expect(page.locator('.emk-bar')).toHaveCount(0);
+  await expect(page.locator('.frame')).toBeVisible();
+});
+
+test('clicking the stage toggles play and pause', async ({ page }) => {
+  await page.goto('/show/short-schema-as-code');
+  const frame = page.locator('.frame');
+  await expect(frame).toHaveAttribute('data-playing', 'true');
+  await frame.click({ position: { x: 30, y: 30 } });
+  await expect(frame).toHaveAttribute('data-playing', 'false');
+  await frame.click({ position: { x: 30, y: 30 } });
+  await expect(frame).toHaveAttribute('data-playing', 'true');
+});
+
 test('O flips orientation and keeps the scene', async ({ page }) => {
   await page.goto('/show/short-schema-as-code?slide=3');
   await expect(page.locator('.emk-count')).toContainText('3 / 6');
