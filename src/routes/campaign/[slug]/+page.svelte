@@ -2,6 +2,7 @@
   // One campaign piece under review: the article exactly as it will publish, with a
   // toolbar for its production state (motion, takes, render) and review links.
   import ArticlePage from '../../articles/[slug]/+page.svelte';
+  import PublishPanel from './PublishPanel.svelte';
   import VoicePanel from './VoicePanel.svelte';
   let { data } = $props();
   const show = $derived(`/show/short-${data.article.slug}`);
@@ -20,6 +21,7 @@
   <a href="/admin/scenes?film=short-{data.article.slug}" target="_blank" rel="noopener">Scenes ↗</a>
 </div>
 <VoicePanel slug={data.article.slug} />
+<PublishPanel slug={data.article.slug} render={data.status.render} />
 <ArticlePage data={data as never} preview />
 
 <style>
