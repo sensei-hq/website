@@ -151,7 +151,7 @@
         {/each}
       </div>
       <button onclick={() => { playing = !playing; syncAudio(); }} aria-label={playing ? 'Pause' : 'Play'}>{playing ? '❚❚' : '▶'}</button>
-      <button onclick={() => { sound = !sound; syncAudio(); }} aria-label={sound ? 'Mute' : 'Sound on'} aria-pressed={sound}>{sound ? 'Sound on' : 'Muted'}</button>
+      <button onclick={() => { sound = !sound; syncAudio(); }} aria-label={sound ? 'Turn sound off' : 'Turn sound on'} aria-pressed={sound}>{sound ? 'Sound on' : 'Sound off'}</button>
       <button onclick={() => go(index + 1)} aria-label="Next scene">→</button>
       <button onclick={() => onkey(new KeyboardEvent('keydown', { key: 'o' }))} aria-label="Switch orientation">{layout === 'portrait' ? '9:16' : '16:9'}</button>
     </div>
