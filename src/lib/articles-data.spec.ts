@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { ARTICLES, published, today } from './articles-data';
 import { cardHref } from './article-meta.js';
+import { film as filmOf } from './motion/films.js';
 
 describe('articles data', () => {
   it('has unique slugs and section ids', () => {
@@ -10,7 +11,25 @@ describe('articles data', () => {
   it('uses ISO dates, and every film article has a takeaway', () => {
     for (const a of ARTICLES) {
       expect(a.date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
-      if (a.video !== 'short') expect(a.takeaway.length).toBeGreaterThan(0);
+      expect(a.takeaway.length, a.slug).toBeGreaterThan(0);
+    }
+  });
+  it('every section of a short-filmed article shows a figure', () => {
+    for (const a of ARTICLES.filter((a) => a.video === 'short')) {
+      for (const s of a.sections) {
+        expect(s.figure || s.motion, `${a.slug}/${s.id}`).toBeTruthy();
+        if (s.motion) expect(s.caption, `${a.slug}/${s.id} caption`).toBeTruthy();
+      }
+    }
+  });
+  it('every section motion reference resolves to a real scene', () => {
+    for (const a of ARTICLES) {
+      for (const s of a.sections) {
+        if (!s.motion) continue;
+        const f = filmOf(s.motion.film);
+        expect(f, `${a.slug}/${s.id} film ${s.motion.film}`).toBeDefined();
+        expect(f!.scenes.some((sc) => sc.id === s.motion!.scene), `${a.slug}/${s.id} scene ${s.motion.scene}`).toBe(true);
+      }
     }
   });
   it('tags are lower-case and hyphenated', () => {

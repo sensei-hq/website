@@ -15,13 +15,16 @@ const ARTICLES: ArticleEntry[] = (readJson('src/lib/content/articles/index.json'
   .map((e) => ({ ...e, sections: readJson(`src/lib/content/articles/${e.slug}.json`).sections }))
   .sort((a, b) => b.publish_date.localeCompare(a.publish_date));
 
-/** Scene ids of the film that shares the slug, if any (articles-data load() plays those scenes as figures). */
+/** Scene ids of the film that shares the slug (or the campaign Short at short-<slug>), if any. Mirrors articles-data load(). */
 const filmScenes = (slug: string): Set<string> => {
-  try {
-    return new Set((readJson(`src/lib/motion/films/${slug}/film.json`).scenes as { id: string }[]).map((s) => s.id));
-  } catch {
-    return new Set();
+  for (const dir of [slug, `short-${slug}`]) {
+    try {
+      return new Set((readJson(`src/lib/motion/films/${dir}/film.json`).scenes as { id: string }[]).map((s) => s.id));
+    } catch {
+      continue;
+    }
   }
+  return new Set();
 };
 /** Sections that render a <Figure>: an HTML figure, authored motion or a same-slug scene id. */
 const figureCount = (a: ArticleEntry) => {
@@ -45,7 +48,7 @@ test.describe('Articles at /articles', () => {
       await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href', `https://sensei-hq.com/articles/${a.slug}`);
       await expect(page.locator('figure')).toHaveCount(figureCount(a));
       for (const s of a.sections) {
-        await expect(page.getByRole('heading', { name: s.title, level: 2 })).toBeVisible();
+        await expect(page.locator(`section#${s.id}`).getByRole('heading', { name: s.title, level: 2 })).toBeVisible();
       }
     });
   }
