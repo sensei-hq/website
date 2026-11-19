@@ -9,6 +9,7 @@ test('show sound toggle reads Sound off, then Sound on', async ({ page }) => {
   await expect(btn).toHaveText('Sound off');
   await expect(btn).toHaveAttribute('aria-pressed', 'false');
   await btn.click();
-  await expect(btn).toHaveText('Sound on');
-  await expect(btn).toHaveAttribute('aria-pressed', 'true');
+  const on = page.getByRole('button', { name: 'Turn sound off' });
+  await expect(on).toHaveText('Sound on');
+  await expect(on).toHaveAttribute('aria-pressed', 'true');
 });
