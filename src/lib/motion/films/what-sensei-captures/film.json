@@ -2,18 +2,75 @@
   "title": "What Sensei Sees",
   "look": "Session board: source tiles, an event stream, a code graph and the machine boundary on a dot-grid desk. Plain. Colors and type from the Zen-Sumi design system: washi paper, sumi ink, rationed vermillion, jade for what stays safe. The Sensei mark on the close.",
   "background": "#F3F0E9",
-  "palette": ["#F9F6F1", "#48413D", "#1F1916", "#C25237"],
+  "dark": {
+    "background": "#1E1B18"
+  },
+  "palette": [
+    "#F9F6F1",
+    "#48413D",
+    "#1F1916",
+    "#C25237"
+  ],
   "fonts": {
-    "display": { "family": "Fraunces", "or": "fraunces", "weights": [300, 400] },
-    "sans": { "family": "Inter", "or": "instrument-sans", "weights": [400, 600] }
+    "display": {
+      "family": "Fraunces",
+      "or": "fraunces",
+      "weights": [
+        300,
+        400
+      ]
+    },
+    "sans": {
+      "family": "Inter",
+      "or": "instrument-sans",
+      "weights": [
+        400,
+        600
+      ]
+    }
   },
   "scenes": [
-    { "id": "hook", "name": "Watching", "dur": 9, "desc": "A mentor learns by watching the work: the editor and the assistant, observed." },
-    { "id": "streams", "name": "Four streams", "dur": 12.5, "desc": "Folders, git, sessions and usage flow into one local store." },
-    { "id": "sessions", "name": "Sessions", "dur": 12.5, "desc": "Every session is a stream of events that becomes one session record." },
-    { "id": "graph", "name": "The code graph", "dur": 12.5, "desc": "Files, symbols, calls and docs as a graph that a change updates in place." },
-    { "id": "local", "name": "Stays local", "dur": 12, "desc": "Everything is stored on your machine; secrets are redacted as they are captured." },
-    { "id": "share", "name": "Your choice", "dur": 12, "desc": "Sharing is opt-in: you preview exactly what leaves, anonymised, then confirm." },
-    { "id": "close", "name": "Sensei", "dur": 5.5, "desc": "End card with the Sensei mark: it sees the work, you keep it." }
+    {
+      "id": "hook",
+      "name": "Watching",
+      "dur": 9,
+      "desc": "A mentor learns by watching the work: the editor and the assistant, observed."
+    },
+    {
+      "id": "streams",
+      "name": "Four streams",
+      "dur": 12.5,
+      "desc": "Folders, git, sessions and usage flow into one local store."
+    },
+    {
+      "id": "sessions",
+      "name": "Sessions",
+      "dur": 12.5,
+      "desc": "Every session is a stream of events that becomes one session record."
+    },
+    {
+      "id": "graph",
+      "name": "The code graph",
+      "dur": 12.5,
+      "desc": "Files, symbols, calls and docs as a graph that a change updates in place."
+    },
+    {
+      "id": "local",
+      "name": "Stays local",
+      "dur": 12,
+      "desc": "Everything is stored on your machine; secrets are redacted as they are captured."
+    },
+    {
+      "id": "share",
+      "name": "Your choice",
+      "dur": 12,
+      "desc": "Sharing is opt-in: you preview exactly what leaves, anonymised, then confirm."
+    },
+    {
+      "id": "close",
+      "name": "Sensei",
+      "dur": 5.5,
+      "desc": "End card with the Sensei mark: it sees the work, you keep it."
+    }
   ]
 }

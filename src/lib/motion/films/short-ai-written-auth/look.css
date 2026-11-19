@@ -1,5 +1,5 @@
 #stage { --ground:#F9F6F1; --main:#48413D; --second:#1F1916; --accent:#C25237; color:var(--second); font-family:var(--sans, system-ui, sans-serif) }
-#stage { --jade:#599576; --board:#F3F0E9; --dot:#DCD7CD; --tile:#FCFAF6; --hair:#DCD7CD; --mute:#7F7975; --wire:#B2ADA9; --edge:color-mix(in srgb, var(--second) 14%, transparent); --shade:color-mix(in srgb, var(--second) 7%, transparent); --soft:var(--main) }
+#stage { --jade:#599576; --board:#F3F0E9; --dot:#DCD7CD; --tile:#FCFAF6; --hair:#DCD7CD; --mute:#7F7975; --wire:#B2ADA9; --edge:color-mix(in srgb, var(--second) 14%, transparent); --shade:color-mix(in srgb, var(--second) 7%, transparent); --soft:var(--main); --amber:#C9962E; --mint:#A6D1B8 }
 .ground { position:absolute; inset:0; background:var(--board) }
 .art { position:absolute; inset:0; width:100%; height:100%; overflow:visible }
 .cam { position:absolute; inset:0; transform-origin:960px 540px }
@@ -14,3 +14,4 @@
 .chk { display:flex; align-items:flex-start; gap:18px; padding:16px 22px; background:var(--tile); border:2px solid var(--hair); border-radius:14px; font-size:32px; line-height:1.25; font-weight:500 }
 .chk i { flex:none; width:30px; height:30px; margin-top:3px; border-radius:50%; background:var(--jade); position:relative } .chk i::after { content:''; position:absolute; left:9px; top:5px; width:8px; height:14px; border:solid var(--ground); border-width:0 4px 4px 0; transform:rotate(45deg) }
 .mono { font-family:var(--mono, ui-monospace, monospace) }
+#stage[data-mode="dark"] { --ground:#191614; --main:#D8D0C7; --second:#F2ECE4; --accent:#E0795C; --jade:#6FAE8B; --board:#1E1B18; --dot:#34302B; --tile:#26221F; --hair:#3A3530; --mute:#A0978F; --wire:#5E5751; --amber:#D9A93F; --mint:#4E7F61; --shade:rgba(0,0,0,.35) }

@@ -2,17 +2,69 @@
   "title": "Your database deserves version control too",
   "look": "Session board on a dot-grid desk: a messy console, a git-vs-memory split, a folder of .ddl files, dbd commands, a pull-request diff, and the dbd end card. Plain. Colors and type from the Zen-Sumi design system: washi paper, sumi ink, rationed vermillion for what is wrong, jade for what is right.",
   "background": "#F3F0E9",
-  "palette": ["#F9F6F1", "#48413D", "#1F1916", "#C25237"],
+  "dark": {
+    "background": "#1E1B18"
+  },
+  "palette": [
+    "#F9F6F1",
+    "#48413D",
+    "#1F1916",
+    "#C25237"
+  ],
   "fonts": {
-    "display": { "family": "Fraunces", "or": "fraunces", "weights": [300, 400] },
-    "sans": { "family": "Inter", "or": "instrument-sans", "weights": [400, 600] }
+    "display": {
+      "family": "Fraunces",
+      "or": "fraunces",
+      "weights": [
+        300,
+        400
+      ]
+    },
+    "sans": {
+      "family": "Inter",
+      "or": "instrument-sans",
+      "weights": [
+        400,
+        600
+      ]
+    }
   },
   "scenes": [
-    { "id": "hook", "name": "Where it lives", "dur": 6, "desc": "A messy console: the schema lives in scripts, sessions and memory." },
-    { "id": "split", "name": "Git vs memory", "dur": 8, "desc": "Code is in git, reviewed, tested; the schema is scripts, a console and memory." },
-    { "id": "folder", "name": "Tables as files", "dur": 7, "desc": "A folder of .ddl files: every table is a file you can review." },
-    { "id": "commands", "name": "The loop", "dur": 6, "desc": "dbd init, inspect, apply: ordered, applied, migrated, documented." },
-    { "id": "pr", "name": "The pull request", "dur": 7.5, "desc": "AI-written SQL lands in a pull request diff, not in production." },
-    { "id": "close", "name": "dbd", "dur": 5.5, "desc": "End card with the dbd mark: schema design that lives in your terminal." }
+    {
+      "id": "hook",
+      "name": "Where it lives",
+      "dur": 6,
+      "desc": "A messy console: the schema lives in scripts, sessions and memory."
+    },
+    {
+      "id": "split",
+      "name": "Git vs memory",
+      "dur": 8,
+      "desc": "Code is in git, reviewed, tested; the schema is scripts, a console and memory."
+    },
+    {
+      "id": "folder",
+      "name": "Tables as files",
+      "dur": 7,
+      "desc": "A folder of .ddl files: every table is a file you can review."
+    },
+    {
+      "id": "commands",
+      "name": "The loop",
+      "dur": 6,
+      "desc": "dbd init, inspect, apply: ordered, applied, migrated, documented."
+    },
+    {
+      "id": "pr",
+      "name": "The pull request",
+      "dur": 7.5,
+      "desc": "AI-written SQL lands in a pull request diff, not in production."
+    },
+    {
+      "id": "close",
+      "name": "dbd",
+      "dur": 5.5,
+      "desc": "End card with the dbd mark: schema design that lives in your terminal."
+    }
   ]
 }

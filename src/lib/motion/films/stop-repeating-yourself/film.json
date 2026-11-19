@@ -2,18 +2,75 @@
   "title": "Stop Repeating Yourself",
   "look": "Session board: chat bubbles, transcript cards and rule cards on a dot-grid desk. Plain. Colors and type from the Zen-Sumi design system: washi paper, sumi ink, rationed vermillion. The Sensei mark on the close.",
   "background": "#F3F0E9",
-  "palette": ["#F9F6F1", "#48413D", "#1F1916", "#C25237"],
+  "dark": {
+    "background": "#1E1B18"
+  },
+  "palette": [
+    "#F9F6F1",
+    "#48413D",
+    "#1F1916",
+    "#C25237"
+  ],
   "fonts": {
-    "display": { "family": "Fraunces", "or": "fraunces", "weights": [300, 400] },
-    "sans": { "family": "Inter", "or": "instrument-sans", "weights": [400, 600] }
+    "display": {
+      "family": "Fraunces",
+      "or": "fraunces",
+      "weights": [
+        300,
+        400
+      ]
+    },
+    "sans": {
+      "family": "Inter",
+      "or": "instrument-sans",
+      "weights": [
+        400,
+        600
+      ]
+    }
   },
   "scenes": [
-    { "id": "repeat", "name": "Again", "dur": 10, "desc": "You keep telling the AI the same thing: the same correction comes back, counted up." },
-    { "id": "causes", "name": "Two reasons", "dur": 12.5, "desc": "Two causes: the AI drifts into correction loops, or the ask is thin and it guesses." },
-    { "id": "read", "name": "Sensei reads", "dur": 15, "desc": "Sensei reads the session transcript and picks out each follow-up that corrects the AI." },
-    { "id": "rules", "name": "Repeats become rules", "dur": 13, "desc": "Corrections from many sessions cluster into rules the AI loads at the start of the next session." },
-    { "id": "depth", "name": "Thin asks", "dur": 15, "desc": "The plan depth review checks a request against the bar; an adversarial review hunts what was missed." },
-    { "id": "measure", "name": "Measured", "dur": 11, "desc": "First-time results show whether a rule helped; a change that helps is kept." },
-    { "id": "close", "name": "Sensei", "dur": 5.5, "desc": "End card with the Sensei mark: stop repeating yourself." }
+    {
+      "id": "repeat",
+      "name": "Again",
+      "dur": 10,
+      "desc": "You keep telling the AI the same thing: the same correction comes back, counted up."
+    },
+    {
+      "id": "causes",
+      "name": "Two reasons",
+      "dur": 12.5,
+      "desc": "Two causes: the AI drifts into correction loops, or the ask is thin and it guesses."
+    },
+    {
+      "id": "read",
+      "name": "Sensei reads",
+      "dur": 15,
+      "desc": "Sensei reads the session transcript and picks out each follow-up that corrects the AI."
+    },
+    {
+      "id": "rules",
+      "name": "Repeats become rules",
+      "dur": 13,
+      "desc": "Corrections from many sessions cluster into rules the AI loads at the start of the next session."
+    },
+    {
+      "id": "depth",
+      "name": "Thin asks",
+      "dur": 15,
+      "desc": "The plan depth review checks a request against the bar; an adversarial review hunts what was missed."
+    },
+    {
+      "id": "measure",
+      "name": "Measured",
+      "dur": 11,
+      "desc": "First-time results show whether a rule helped; a change that helps is kept."
+    },
+    {
+      "id": "close",
+      "name": "Sensei",
+      "dur": 5.5,
+      "desc": "End card with the Sensei mark: stop repeating yourself."
+    }
   ]
 }

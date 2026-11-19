@@ -2,6 +2,9 @@
   "title": "Sensei Relay",
   "look": "Relay board: Flat assistant nodes on a grid, task cards gliding along live wires. Plain. Colors and type from the Zen-Sumi design system: washi paper, sumi ink, rationed vermillion.",
   "background": "#F3F0E9",
+  "dark": {
+    "background": "#1E1B18"
+  },
   "palette": [
     "#F9F6F1",
     "#48413D",
