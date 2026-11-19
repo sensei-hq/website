@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "Your data says fullName. Your dropdown wants label."
+  },
+  {
+    "scene": "mapping",
+    "text": "Instead of a map(), give Rokkit a fields mapping."
+  },
+  {
+    "scene": "three-ways",
+    "text": "Strings, dot-paths, or functions — whatever your data needs."
+  },
+  {
+    "scene": "untouched",
+    "text": "Resolved once, read cheaply, and your data stays untouched."
+  },
+  {
+    "scene": "close",
+    "text": "Rokkit. Field mapping, not glue code."
+  }
+]

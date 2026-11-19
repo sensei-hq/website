@@ -1,0 +1,34 @@
+[
+  {
+    "scene": "hook",
+    "text": "How does Sensei fit together? It runs on your machine, uses one gateway for models, and connects to your team through a dōjō. Your phone keeps you in the loop."
+  },
+  {
+    "scene": "machine",
+    "text": "On your machine, Sensei is a desktop app: a command line, the tools your assistant calls, an always-on daemon, and a local database. Your code and sessions stay there."
+  },
+  {
+    "scene": "gateway",
+    "text": "Every model call goes through one gateway. By default it’s a small model running locally, fast and private. When you want more, use your own models or cloud keys, and if one is down, it moves on."
+  },
+  {
+    "scene": "dojo",
+    "text": "The dōjō is your team’s shared mind. You push up the lessons you choose to share, the team approves them, and practice flows back down to everyone."
+  },
+  {
+    "scene": "relay",
+    "text": "And with Relay, your phone lets you watch a run, approve an action, or answer a question, without ever sending code."
+  },
+  {
+    "scene": "roles",
+    "text": "So Sensei works the code beside you, and works on its own. The dōjō is optional, and connects your team."
+  },
+  {
+    "scene": "together",
+    "text": "Together, they make a loop: Sensei learns, you share, the team approves, and the lesson comes back to every session."
+  },
+  {
+    "scene": "close",
+    "text": "Sensei. Your machine does the work. Your team keeps the lessons."
+  }
+]

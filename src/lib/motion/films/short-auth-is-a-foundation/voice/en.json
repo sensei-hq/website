@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "Sign-in is one screen. Auth is a whole foundation."
+  },
+  {
+    "scene": "layers",
+    "text": "Sessions, providers, redirects, roles, server checks."
+  },
+  {
+    "scene": "kavach",
+    "text": "Kavach packages that foundation for SvelteKit."
+  },
+  {
+    "scene": "terminal",
+    "text": "bunx @kavach/cli init, follow the prompts, done."
+  },
+  {
+    "scene": "close",
+    "text": "Kavach. Auth without the ceremony."
+  }
+]

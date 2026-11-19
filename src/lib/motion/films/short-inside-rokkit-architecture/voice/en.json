@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "How do you keep a component library from becoming spaghetti?"
+  },
+  {
+    "scene": "layers",
+    "text": "Rokkit stacks its packages: core, states, actions, data, ui, then forms and charts."
+  },
+  {
+    "scene": "rule",
+    "text": "One rule: dependencies only point down."
+  },
+  {
+    "scene": "compose",
+    "text": "And components compose instead of collecting flags."
+  },
+  {
+    "scene": "close",
+    "text": "A rule AI can follow and you can check."
+  }
+]

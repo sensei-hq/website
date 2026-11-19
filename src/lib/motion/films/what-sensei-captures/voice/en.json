@@ -1,0 +1,30 @@
+[
+  {
+    "scene": "hook",
+    "text": "What does Sensei actually see? A mentor learns by watching the work, so it’s fair to ask what it watches, and where that goes."
+  },
+  {
+    "scene": "streams",
+    "text": "Point it at a folder once and it stays up to date by itself. It watches your folders, your git history, every assistant session, and what each session used: tokens, cost, context."
+  },
+  {
+    "scene": "sessions",
+    "text": "A session arrives as events: a prompt, a tool call, a result. Sensei turns them into one record: how long it took, whether it landed first time, and what it cost."
+  },
+  {
+    "scene": "graph",
+    "text": "It also maps the code itself: files, symbols, calls and docs. When a file changes, only its part of the map is updated."
+  },
+  {
+    "scene": "local",
+    "text": "All of it stays on your machine. Secrets are blacked out the moment they’re captured, before anything is stored."
+  },
+  {
+    "scene": "share",
+    "text": "Sharing with your team is your choice. You see exactly what would leave, anonymised, and nothing goes until you confirm."
+  },
+  {
+    "scene": "close",
+    "text": "Sensei. It sees the work. You keep it."
+  }
+]

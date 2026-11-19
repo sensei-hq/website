@@ -1,0 +1,26 @@
+[
+  {
+    "scene": "silos",
+    "text": "There's an assistant for everything now. But each one works alone, in its own silo."
+  },
+  {
+    "scene": "manual",
+    "text": "So you become the relay: copying tasks between chats, passing messages along, and reviewing every result yourself."
+  },
+  {
+    "scene": "register",
+    "text": "Sensei Relay connects them. One assistant registers as the controller; the rest join as contributors."
+  },
+  {
+    "scene": "dispatch",
+    "text": "The controller turns your goal into a plan, hands out the tasks, and every contributor reports back."
+  },
+  {
+    "scene": "review",
+    "text": "Contributors review each other's work against the requirement. Results are merged, and a metrics gate decides when the goal is met."
+  },
+  {
+    "scene": "handover",
+    "text": "Leave and rejoin, hand over control. Sensei Relay: many assistants, one goal, delivered reliably."
+  }
+]

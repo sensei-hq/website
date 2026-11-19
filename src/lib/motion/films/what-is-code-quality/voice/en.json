@@ -1,0 +1,26 @@
+[
+  {
+    "scene": "hook",
+    "text": "What is code quality, really? Elegant? Clever? Short? None of those."
+  },
+  {
+    "scene": "definition",
+    "text": "It’s how cheaply and safely you can make the next change: find the place, change it once, and know nothing else broke."
+  },
+  {
+    "scene": "signals",
+    "text": "You can measure it: duplication, complexity smells, test coverage and churn."
+  },
+  {
+    "scene": "trend",
+    "text": "And read the trend. Eight percent and falling beats four percent and climbing."
+  },
+  {
+    "scene": "sensei",
+    "text": "Sensei measures these at sampled commits across your real git history."
+  },
+  {
+    "scene": "close",
+    "text": "Sensei. Quality is a trajectory."
+  }
+]

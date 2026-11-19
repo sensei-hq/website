@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "How much of your UI code is just reshaping data?"
+  },
+  {
+    "scene": "reshape",
+    "text": "API gives users; the dropdown wants label and value; so you map."
+  },
+  {
+    "scene": "adapt",
+    "text": "Rokkit components adapt to your data instead."
+  },
+  {
+    "scene": "original",
+    "text": "And selection returns your original object, not a copy."
+  },
+  {
+    "scene": "close",
+    "text": "Less glue code. Less for AI to get wrong."
+  }
+]

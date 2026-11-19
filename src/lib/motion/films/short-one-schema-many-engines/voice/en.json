@@ -1,0 +1,18 @@
+[
+  {
+    "scene": "hook",
+    "text": "Write your schema once. Use it everywhere."
+  },
+  {
+    "scene": "emit",
+    "text": "dbd emit translates it to MySQL, T-SQL or SQLite, and lists what won’t fit."
+  },
+  {
+    "scene": "diagram",
+    "text": "dbd dbml and dbd diagram turn it into docs and an interactive diagram."
+  },
+  {
+    "scene": "close",
+    "text": "Docs that can’t go stale, because they come from the source."
+  }
+]

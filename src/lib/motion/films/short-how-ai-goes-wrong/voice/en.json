@@ -1,0 +1,26 @@
+[
+  {
+    "scene": "hook",
+    "text": "AI-assisted coding goes wrong in five predictable ways."
+  },
+  {
+    "scene": "patterns",
+    "text": "Editing a file it never read. A confident fix from a skim. Quietly drifting from the plan. A new helper instead of the existing one. And losing the thread when the context fills up."
+  },
+  {
+    "scene": "trace",
+    "text": "Each one leaves a trace, in the session and in git."
+  },
+  {
+    "scene": "sensei",
+    "text": "Sensei names and counts them per repository, with the evidence behind each, so you can judge for yourself."
+  },
+  {
+    "scene": "prevent",
+    "text": "Better still, it heads them off: it grounds the task, checks the plan’s depth, searches for existing code, and keeps your rules through compaction. What slips through is caught, and your corrections become rules."
+  },
+  {
+    "scene": "close",
+    "text": "Predictable failures are preventable."
+  }
+]

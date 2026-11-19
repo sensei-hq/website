@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "Is your access control a list, or a scavenger hunt?"
+  },
+  {
+    "scene": "one-list",
+    "text": "Kavach keeps every route rule in one list."
+  },
+  {
+    "scene": "deepest-path",
+    "text": "Deepest path wins: public, any user, or specific roles."
+  },
+  {
+    "scene": "two-arrows",
+    "text": "Not signed in: 401 to login. Wrong role: 403."
+  },
+  {
+    "scene": "close",
+    "text": "Kavach sentry. Roles in one place."
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "scene": "hook",
+    "text": "Does your team teach its assistants the same lesson again and again? Four people, four assistants, the same correction."
+  },
+  {
+    "scene": "constitution",
+    "text": "Even solo, Sensei follows a constitution: your rules. You can add proven rule packs for security, testing, or a lighter way of coding."
+  },
+  {
+    "scene": "share",
+    "text": "When a rule works for you, share it with your dōjō, on your terms. You see what would leave, anonymised, and confirm."
+  },
+  {
+    "scene": "triage",
+    "text": "Contributions gather into one candidate. Maintainers triage and approve it, then it goes out to the team."
+  },
+  {
+    "scene": "upgrade",
+    "text": "It reaches everyone as an upgrade. Each person can apply it, mute it, or pin it."
+  },
+  {
+    "scene": "resolve",
+    "text": "Sign in once, and the right rules follow you into every repository. Preview which rules govern a project, and why, before the first commit."
+  },
+  {
+    "scene": "close",
+    "text": "Sensei. Learn it once. The team keeps it."
+  }
+]

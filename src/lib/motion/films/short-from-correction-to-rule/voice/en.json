@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "The best rules come from corrections you keep making."
+  },
+  {
+    "scene": "finding",
+    "text": "Sensei notices the pattern locally and proposes a finding."
+  },
+  {
+    "scene": "ladder",
+    "text": "Proven learnings get promoted to a rule at a higher scope."
+  },
+  {
+    "scene": "dojo-loop",
+    "text": "Teams share through a dōjō: contribute, triage, distribute."
+  },
+  {
+    "scene": "close",
+    "text": "Opt-in, previewed, anonymized. That’s Sensei."
+  }
+]

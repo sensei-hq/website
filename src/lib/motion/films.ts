@@ -13,6 +13,7 @@ import {
   type TimingJson,
 } from '@senseihq/emaki';
 import { viteSource } from '@senseihq/emaki/loaders/vite';
+import type { VoiceLine } from '@senseihq/emaki';
 
 export type { Layout, Mounted, FilmMeta, SceneMeta };
 export { SIZES, timeline, warp, coverTime, filmScore } from '@senseihq/emaki';
@@ -22,8 +23,9 @@ const scenes = import.meta.glob('./films/*/scene-*.json', { import: 'default' })
 const timings = import.meta.glob('./films/*/timing.json', { eager: true, import: 'default' }) as Record<string, TimingJson>;
 const raw = import.meta.glob(['./films/*/*.js', './films/*/look.css'], { query: '?raw', import: 'default' });
 const logos = import.meta.glob('./logos/*.svg', { eager: true, query: '?raw', import: 'default' }) as Record<string, string>;
+const voiceText = import.meta.glob('./films/*/voice/*.json', { eager: true, import: 'default' }) as Record<string, VoiceLine[]>;
 
-setupMotion({ source: viteSource({ films, scenes, timings, raw, logos }).filmSource, site: { locales: ['en'], defaultLocale: 'en' }, logos });
+setupMotion({ source: viteSource({ films, scenes, timings, raw, logos, voiceText }).filmSource, site: { locales: ['en'], defaultLocale: 'en' }, logos });
 
 // ── Sync index (articles-data and prerender entries need films without awaiting) ────────────
 

@@ -1,0 +1,26 @@
+[
+  {
+    "scene": "hook",
+    "text": "Your production database has drifted. You just don’t know it yet."
+  },
+  {
+    "scene": "pileup",
+    "text": "A console hotfix here, a manual index there."
+  },
+  {
+    "scene": "diff",
+    "text": "dbd diff compares the live DB with the design: columns, keys, indexes, comments, enums."
+  },
+  {
+    "scene": "red-check",
+    "text": "Add --exit-code and CI fails when they differ."
+  },
+  {
+    "scene": "green-check",
+    "text": "Drift becomes a failing check, not an incident."
+  },
+  {
+    "scene": "close",
+    "text": "dbd. Trust, but diff."
+  }
+]

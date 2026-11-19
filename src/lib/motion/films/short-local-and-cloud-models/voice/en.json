@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "Not every model call needs the cloud."
+  },
+  {
+    "scene": "laptop",
+    "text": "Embeddings and private data can stay on the device."
+  },
+  {
+    "scene": "engines",
+    "text": "Gateway runs llama.cpp, ONNX Runtime and FastEmbed in-process."
+  },
+  {
+    "scene": "socket",
+    "text": "Through the same interface as cloud models."
+  },
+  {
+    "scene": "close",
+    "text": "Gateway. Local and cloud, one interface."
+  }
+]

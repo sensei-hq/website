@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "Retrying a failing endpoint makes it worse."
+  },
+  {
+    "scene": "breaker-opens",
+    "text": "A circuit breaker stops the traffic instead."
+  },
+  {
+    "scene": "states",
+    "text": "Five failures: open. Wait. Then probe a few requests."
+  },
+  {
+    "scene": "closes-again",
+    "text": "Three successes and it closes again."
+  },
+  {
+    "scene": "close",
+    "text": "Meanwhile the fallback chain carries the load."
+  }
+]

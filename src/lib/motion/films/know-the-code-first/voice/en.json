@@ -1,0 +1,30 @@
+[
+  {
+    "scene": "hook",
+    "text": "How well does your assistant know your code? Without a map, it searches, opens file after file, and guesses."
+  },
+  {
+    "scene": "map",
+    "text": "Sensei’s code map opens on modules, not on thousands of symbols. Go down a level when you choose: a module’s files, then a file’s functions and who calls them."
+  },
+  {
+    "scene": "coupling",
+    "text": "It shows what the code hides: layers called the wrong way round, cycles, and files that always change together with nothing linking them."
+  },
+  {
+    "scene": "drift",
+    "text": "Docs are checked against the live code. When a method is renamed, the README that still names it is flagged."
+  },
+  {
+    "scene": "context",
+    "text": "Your assistant can ask Sensei directly, and get the right files, callers, rules and memories on the first turn. When Sensei can’t help, it says so."
+  },
+  {
+    "scene": "intake",
+    "text": "And each chunk of work starts at intake. Sensei reads what kind of work it is and how risky, then recommends a way of working. You confirm."
+  },
+  {
+    "scene": "close",
+    "text": "Sensei. Know the code before you change it."
+  }
+]

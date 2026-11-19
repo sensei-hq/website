@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "Where do your lookup values come from?"
+  },
+  {
+    "scene": "terminal",
+    "text": "Usually: a script someone ran once."
+  },
+  {
+    "scene": "import",
+    "text": "dbd import loads CSV or JSON from the repo and calls your procedures."
+  },
+  {
+    "scene": "pr",
+    "text": "Seed data becomes a pull request you can review."
+  },
+  {
+    "scene": "close",
+    "text": "dbd. Reference data as code."
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "scene": "hook",
+    "text": "Where does your database schema actually live?"
+  },
+  {
+    "scene": "split",
+    "text": "Code is in git, reviewed, tested. The schema is often scripts, a console and memory."
+  },
+  {
+    "scene": "folder",
+    "text": "Schema as code fixes that: every table is a file you can review."
+  },
+  {
+    "scene": "commands",
+    "text": "dbd orders, applies, migrates and documents those files for you."
+  },
+  {
+    "scene": "pr",
+    "text": "So when AI writes SQL, it lands in a pull request, not in production."
+  },
+  {
+    "scene": "close",
+    "text": "dbd: schema design that lives in your terminal. Link in bio."
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "scene": "hook",
+    "text": "Your team says never log personal data. This repository says log full requests while debugging. When two rules disagree, which one does the AI follow?"
+  },
+  {
+    "scene": "enforcement",
+    "text": "Rule one: the stronger rule wins. Mandatory beats required, beats recommended, beats advisory. And a mandatory rule is never overridden, however close the other one is."
+  },
+  {
+    "scene": "scope",
+    "text": "Rule two: between rules of the same strength, the closer one wins. Built-in, then you, your dōjō, a workspace, and finally the repository."
+  },
+  {
+    "scene": "resolve",
+    "text": "Sensei gathers every rule that applies, sorts by strength then scope, locks the mandatory ones, and merges duplicates. The same order, every time."
+  },
+  {
+    "scene": "packs",
+    "text": "You can start from packs that already work: security, test-first, clean code, SOLID, compliance, UX, a minimal-solution pack, and packs for your stack."
+  },
+  {
+    "scene": "sticky",
+    "text": "The strongest rules are in context from the first turn, sent again when the context compacts, and a mandatory violation is blocked."
+  },
+  {
+    "scene": "close",
+    "text": "Sensei. The stronger rule wins. Then the closer one."
+  }
+]

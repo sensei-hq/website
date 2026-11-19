@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "Your AI bill arrives next month. Your budget should act now."
+  },
+  {
+    "scene": "estimate",
+    "text": "Gateway estimates the cost of each candidate model before calling it."
+  },
+  {
+    "scene": "numbers",
+    "text": "Input tokens plus maximum output, at that model’s prices."
+  },
+  {
+    "scene": "skipped",
+    "text": "Over budget? Skipped. The chain moves on."
+  },
+  {
+    "scene": "close",
+    "text": "Gateway. Spend as a routing decision."
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "scene": "repeat",
+    "text": "Is your AI missing the mark? Do you keep reminding it which pattern to follow, and what not to do?"
+  },
+  {
+    "scene": "causes",
+    "text": "There are usually two reasons. The AI drifts, and you go round in correction loops. Or the ask is thin, so it fills the gaps with guesses."
+  },
+  {
+    "scene": "read",
+    "text": "Sensei reads your sessions. Every follow-up that corrects the AI's work, like “that's not what I asked” or “revert that”, is a signal. And it tracks which sessions land first time."
+  },
+  {
+    "scene": "rules",
+    "text": "When the same correction keeps coming back, Sensei turns it into a rule. The AI loads those rules at the start of the next session, so you don't have to say it again."
+  },
+  {
+    "scene": "depth",
+    "text": "For thin asks, Sensei checks the plan before work starts: clear acceptance criteria, defined inputs, no open questions. Then an adversarial review hunts for what was missed."
+  },
+  {
+    "scene": "measure",
+    "text": "Every change is measured. If a rule helps, more sessions land first time, and it stays. If it doesn't, you'll see that too."
+  },
+  {
+    "scene": "close",
+    "text": "Sensei. Stop repeating yourself."
+  }
+]

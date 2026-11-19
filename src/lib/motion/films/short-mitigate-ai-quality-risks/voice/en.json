@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "Keep AI on track with five habits."
+  },
+  {
+    "scene": "habits",
+    "text": "Write the requirements down, and actually read them. Define how you’ll verify the result before building. Agree the design. Work in phases, each with a check. And turn conventions into rules."
+  },
+  {
+    "scene": "why",
+    "text": "Every unanswered question is a place the AI improvises. Answer them first, and improvising becomes executing."
+  },
+  {
+    "scene": "sensei",
+    "text": "Sensei scores how deep your plan was, flags when work leaves it, and turns what you keep correcting into rules."
+  },
+  {
+    "scene": "close",
+    "text": "Sensei. Less room to guess."
+  }
+]

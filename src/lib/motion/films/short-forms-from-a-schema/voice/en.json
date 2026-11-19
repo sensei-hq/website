@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "Still hand-coding every form?"
+  },
+  {
+    "scene": "derive",
+    "text": "Rokkit derives the form from your data and an optional schema."
+  },
+  {
+    "scene": "fields",
+    "text": "Types pick inputs; layout is separate; lookups fill selects."
+  },
+  {
+    "scene": "validation",
+    "text": "Validation and dirty state handled for you."
+  },
+  {
+    "scene": "close",
+    "text": "Rokkit. Forms from data."
+  }
+]
