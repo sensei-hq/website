@@ -25,7 +25,9 @@ until voice exists). Preview at `/show/short-<slug>?o=portrait`.
   is right, `var(--mute)` for the secondary). No literal hex except soft shadows and brand-mark
   fills. Films follow the page into dark mode through the look's dark block, so every colour a
   scene uses must be a token: `var(--amber)` for cycle/gold highlights, `var(--mint)` for terminal
-  greens, `currentColor` for ink-coloured logo fills.
+  greens, `currentColor` for ink-coloured logo fills. Screens that are dark objects (terminals,
+  consoles, dark cards, voids, dark-mode demos) take the `night` class so they stay a lifted
+  shade in dark mode instead of inverting; buttons, badges and markers invert normally.
 - Repeated cards share one size; mono (`b.mono`) never wraps (`white-space:nowrap` on chips).
 - Wires render with their id as the class: one `draw` track per wire, ends on card edges.
 - Text is English literals (the site is en-only); nothing language-specific lives in scenes.
