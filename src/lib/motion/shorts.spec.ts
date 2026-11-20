@@ -3,9 +3,9 @@ import { SHORTS } from './shorts.js';
 import { FILMS } from './films.js';
 
 describe('shorts gallery', () => {
-  it('covers days 1-28 exactly once', () => {
+  it('covers days 1-31 exactly once', () => {
     expect(SHORTS.map((s) => s.day).sort((a, b) => a - b)).toEqual(
-      Array.from({ length: 28 }, (_, i) => i + 1),
+      Array.from({ length: 31 }, (_, i) => i + 1),
     );
   });
 
@@ -19,6 +19,6 @@ describe('shorts gallery', () => {
 
   it('names a real product mark per short', () => {
     for (const s of SHORTS)
-      expect(['dbd', 'rokkit', 'kavach', 'sensei', 'gateway'], s.slug).toContain(s.product);
+      expect(['dbd', 'rokkit', 'kavach', 'sensei', 'gateway', 'emaki'], s.slug).toContain(s.product);
   });
 });
