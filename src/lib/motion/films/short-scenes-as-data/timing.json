@@ -1,0 +1,21 @@
+{
+  "scenes": {
+    "hook": {
+      "dur": 7.1,
+      "voice": 0.6
+    },
+    "scenes-as-json": {
+      "dur": 7.3,
+      "voice": 0.6
+    },
+    "diff-and-generate": {
+      "voice": 0.6
+    },
+    "three-renders": {
+      "voice": 0.6
+    },
+    "close": {
+      "voice": 0.6
+    }
+  }
+}
