@@ -34,7 +34,7 @@ test('unknown campaign slug is a 404', async ({ page }) => {
   expect(res?.status()).toBe(404);
 });
 
-test('one film state drives the player and its figures', async ({ page }) => {
+test('cc stays shared while sound stays per player', async ({ page }) => {
   await page.goto('/campaign/fallback-chains');
   await page.waitForLoadState('networkidle');
   await page.getByRole('button', { name: /Play the film/ }).click();
@@ -42,12 +42,17 @@ test('one film state drives the player and its figures', async ({ page }) => {
   // CC on the film captions the figures too.
   await page.getByRole('button', { name: 'Captions' }).first().click();
   await expect(page.locator('.emk-scene-cap').first()).toBeVisible();
-  // Sound on the film sounds the figures too.
-  await page.getByRole('button', { name: 'Sound on', exact: true }).click();
-  await expect(page.locator('.ms-snd').first()).toHaveAttribute('aria-pressed', 'true');
   // And back: a figure toggle drives the film.
   await page.locator('.emk-scene-cc').first().click();
   await expect(page.locator('.emk-cap')).toBeHidden();
+  // Sound never spreads: the film must not sound its figures.
+  await page.getByRole('button', { name: 'Sound on', exact: true }).click();
+  await expect(page.locator('.ms-snd').first()).toHaveAttribute('aria-pressed', 'false');
+  // And a figure toggle sounds only itself.
+  await page.locator('.ms-snd').first().click();
+  await expect(page.locator('.ms-snd').first()).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('.ms-snd').nth(1)).toHaveAttribute('aria-pressed', 'false');
+  await expect(page.getByRole('button', { name: 'Sound off', exact: true })).toHaveAttribute('aria-pressed', 'true');
 });
 
 test('voice off cuts narration everywhere while the film plays', async ({ page }) => {
@@ -61,8 +66,12 @@ test('voice off cuts narration everywhere while the film plays', async ({ page }
   await page.locator('.emk-bar').waitFor();
   await page.getByRole('button', { name: 'Sound on', exact: true }).click();
   await expect.poll(() => takes.length, { timeout: 15000 }).toBeGreaterThan(0);
-  // Let the figures sound too, then mark the count.
-  for (const fig of await page.locator('.ms-snd').all()) await fig.scrollIntoViewIfNeeded();
+  // A figure sounds only on its own toggle, narrating while voice is on.
+  const fig = page.locator('.ms-snd').first();
+  await fig.scrollIntoViewIfNeeded();
+  await fig.click();
+  const figMark = takes.length;
+  await expect.poll(() => takes.length, { timeout: 15000 }).toBeGreaterThan(figMark);
   await page.waitForTimeout(1500);
   const mark = takes.length;
   await page.getByRole('button', { name: 'Voice on' }).click();
@@ -75,6 +84,14 @@ test('voice off cuts narration everywhere while the film plays', async ({ page }
   await page.getByRole('button', { name: 'Voice off' }).click();
   await page.getByRole('button', { name: 'Previous scene' }).click();
   await expect.poll(() => takes.length, { timeout: 15000 }).toBeGreaterThan(mark);
+  // The figure follows the shared cut too: re-sounding it under voice-off plays no take.
+  await page.getByRole('button', { name: 'Voice on' }).click();
+  const figMark2 = takes.length;
+  await fig.click();
+  await fig.click();
+  await expect(fig).toHaveAttribute('aria-pressed', 'true');
+  await page.waitForTimeout(2500);
+  expect(takes.length).toBe(figMark2);
 });
 
 test.describe('Campaign scenes inspector', () => {
