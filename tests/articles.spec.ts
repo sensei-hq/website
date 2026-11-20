@@ -60,6 +60,19 @@ test.describe('Articles at /articles', () => {
     await expect(page.locator('.film .emk-popout')).toHaveAttribute('href', '/show/short-schema-as-code');
   });
 
+  test('playing stage fills its box edge-to-edge', async ({ page }) => {
+    await page.goto('/articles/schema-as-code');
+    await page.waitForLoadState('networkidle');
+    await page.locator('.film').getByRole('button', { name: /^Play the film/ }).click();
+    await page.locator('.film .emk-bar').waitFor();
+    const slack = await page.evaluate(() => {
+      const fit = document.querySelector('.film .ms-fit')!.getBoundingClientRect();
+      const st = document.querySelector('.film .ms-stage')!.getBoundingClientRect();
+      return Math.max(Math.abs(fit.width - st.width), Math.abs(fit.height - st.height));
+    });
+    expect(slack).toBeLessThanOrEqual(2);
+  });
+
   test('search filters the gallery', async ({ page }) => {
     await page.goto('/articles');
     // Wait for hydration: filling before Svelte binds the input gets overwritten with ''.
