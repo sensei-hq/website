@@ -28,6 +28,10 @@
   const shareLinkedIn = $derived(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`);
   const date = $derived(new Date(a.date + 'T12:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }));
   const href = (h: string) => (h.startsWith('/') ? base + h : h);
+  // One film-level state for the player and its figures: a toggle anywhere drives all of them.
+  let sound = $state(false);
+  let cc = $state(false);
+  let voice = $state(true);
 </script>
 
 <svelte:head>
@@ -73,7 +77,7 @@
     </section>
   {:else if a.video !== 'short' || a.film}
     <section class="a-shell pb-8">
-      <FilmEmbed youtube={a.video === 'short' ? '' : a.youtube} title={a.title} kanji={a.kanji} length={a.filmLength} cover={a.cover} film={a.film} />
+      <FilmEmbed youtube={a.video === 'short' ? '' : a.youtube} title={a.title} kanji={a.kanji} length={a.filmLength} cover={a.cover} film={a.film} {sound} {cc} {voice} onsoundchange={(v) => (sound = v)} onccchange={(v) => (cc = v)} onvoicechange={(v) => (voice = v)} />
     </section>
   {/if}
 
@@ -96,7 +100,7 @@
             <pre class="code" data-lang={s.code.lang}><code>{s.code.text}</code></pre>
           {/if}
         </div>
-        {#if s.figure || s.motion}<Figure id={s.figure} motion={s.motion} caption={s.caption ?? ''} label="{s.title}: {s.caption ?? ''}" />{/if}
+        {#if s.figure || s.motion}<Figure id={s.figure} motion={s.motion} caption={s.caption ?? ''} label="{s.title}: {s.caption ?? ''}" {sound} {cc} {voice} onsoundchange={(v) => (sound = v)} onccchange={(v) => (cc = v)} />{/if}
       </div>
     </section>
   {/each}

@@ -5,13 +5,19 @@
   import HtmlFigure from './HtmlFigure.svelte';
   import { MotionScene } from '@senseihq/emaki-svelte';
 
-  let { id, caption, label, motion }: { id?: FigureId; caption: string; label: string; motion?: { film: string; scene: string } } =
-    $props();
+  let {
+    id, caption, label, motion,
+    sound = false, cc = false, voice = true, onsoundchange, onccchange,
+  }: {
+    id?: FigureId; caption: string; label: string; motion?: { film: string; scene: string };
+    sound?: boolean; cc?: boolean; voice?: boolean;
+    onsoundchange?: (on: boolean) => void; onccchange?: (on: boolean) => void;
+  } = $props();
 </script>
 
 <figure class="fig-card">
   {#if motion}
-    <MotionScene film={motion.film} scene={motion.scene} {label} />
+    <MotionScene film={motion.film} scene={motion.scene} {label} {sound} {cc} {voice} {onsoundchange} {onccchange} />
   {:else}
     <HtmlFigure kind={id as 'top10'} />
   {/if}
