@@ -46,6 +46,25 @@ test.describe('Dark mode switching', () => {
     expect(dark?.[1]).not.toBe(light?.[1]);
   });
 
+  test('dark surfaces stay dark instead of inverting', async ({ page }) => {
+    await page.goto('/campaign/scenes?film=know-the-code-first&scene=hook');
+    await page.waitForSelector('.motion-player');
+    await page.evaluate(() => {
+      document.body.dataset.mode = 'dark';
+    });
+    await page.waitForFunction(
+      () => document.querySelector('.motion-player > div')?.shadowRoot?.querySelector('#stage')?.getAttribute('data-mode') === 'dark',
+      null,
+      { timeout: 5000 },
+    );
+    const lum = await page.evaluate(() => {
+      const el = document.querySelector('.motion-player > div')?.shadowRoot?.querySelector('.hook-term') as HTMLElement | null;
+      const [r, g, b] = getComputedStyle(el!).backgroundColor.match(/[\d.]+/g)!.map(Number);
+      return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+    });
+    expect(lum).toBeLessThan(0.35);
+  });
+
   test('dark mode applies dark surface colors to FloatingNavigation', async ({ page }) => {
     // Force light first to get a baseline
     await page.evaluate(() => { document.body.dataset.mode = 'light'; });

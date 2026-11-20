@@ -67,6 +67,12 @@ describe('motion films', () => {
     }
   });
 
+  it('every look pins a night scope for dark surfaces', () => {
+    for (const f of FILMS) {
+      expect(lookCss(f.slug).includes('#stage[data-mode="dark"] .night'), f.slug).toBe(true);
+    }
+  });
+
   it('ships a look and a score for every film', () => {
     for (const f of FILMS) {
       expect(lookFiles, `${f.slug}/look.css`).toHaveProperty(`./films/${f.slug}/look.css`);
