@@ -34,6 +34,49 @@ test('unknown campaign slug is a 404', async ({ page }) => {
   expect(res?.status()).toBe(404);
 });
 
+test('one film state drives the player and its figures', async ({ page }) => {
+  await page.goto('/campaign/fallback-chains');
+  await page.waitForLoadState('networkidle');
+  await page.getByRole('button', { name: /Play the film/ }).click();
+  await page.locator('.emk-bar').waitFor();
+  // CC on the film captions the figures too.
+  await page.getByRole('button', { name: 'Captions' }).first().click();
+  await expect(page.locator('.emk-scene-cap').first()).toBeVisible();
+  // Sound on the film sounds the figures too.
+  await page.getByRole('button', { name: 'Sound on', exact: true }).click();
+  await expect(page.locator('.ms-snd').first()).toHaveAttribute('aria-pressed', 'true');
+  // And back: a figure toggle drives the film.
+  await page.locator('.emk-scene-cc').first().click();
+  await expect(page.locator('.emk-cap')).toBeHidden();
+});
+
+test('voice off cuts narration everywhere while the film plays', async ({ page }) => {
+  const takes: string[] = [];
+  page.on('response', (r) => {
+    if (r.url().includes('/api/campaign/scenes-as-data/takes/')) takes.push(r.url());
+  });
+  await page.goto('/campaign/scenes-as-data');
+  await page.waitForLoadState('networkidle');
+  await page.getByRole('button', { name: /Play the film/ }).click();
+  await page.locator('.emk-bar').waitFor();
+  await page.getByRole('button', { name: 'Sound on', exact: true }).click();
+  await expect.poll(() => takes.length, { timeout: 15000 }).toBeGreaterThan(0);
+  // Let the figures sound too, then mark the count.
+  for (const fig of await page.locator('.ms-snd').all()) await fig.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(1500);
+  const mark = takes.length;
+  await page.getByRole('button', { name: 'Voice on' }).click();
+  await expect(page.getByRole('button', { name: 'Voice off' })).toHaveAttribute('aria-pressed', 'false');
+  await page.getByRole('button', { name: 'Next scene' }).click();
+  await expect(page.locator('.emk-count')).toContainText('2 / 5');
+  await page.waitForTimeout(3500);
+  expect(takes.length).toBe(mark);
+  // And back on: narration resumes.
+  await page.getByRole('button', { name: 'Voice off' }).click();
+  await page.getByRole('button', { name: 'Previous scene' }).click();
+  await expect.poll(() => takes.length, { timeout: 15000 }).toBeGreaterThan(mark);
+});
+
 test.describe('Campaign scenes inspector', () => {
   test('plays a scene with controls', async ({ page }) => {
     await page.goto('/campaign/scenes?film=measure-right-work&scene=hook');
