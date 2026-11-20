@@ -11,3 +11,4 @@
 .tag.ctl { background:var(--accent); color:var(--ground); border-color:var(--accent) } .tag.con { background:var(--main); color:var(--ground); border-color:var(--main) }
 .hl { position:relative; display:inline-block } .hl svg { position:absolute; left:-2%; bottom:-14px; width:104%; height:24px; overflow:visible }
 #stage[data-mode="dark"] { --ground:#191614; --main:#D8D0C7; --second:#F2ECE4; --accent:#E0795C; --jade:#6FAE8B; --board:#1E1B18; --dot:#34302B; --tile:#26221F; --hair:#3A3530; --mute:#A0978F; --wire:#5E5751; --amber:#D9A93F; --mint:#4E7F61; --shade:rgba(0,0,0,.35) }
+#stage[data-mode="dark"] .night { --ground:#F9F6F1; --main:#48413D; --second:#2B2521; --accent:#E0795C; --jade:#6FAE8B; --tile:#2B2521; --hair:#4A443E; --mute:#B0A89F; --wire:#8E8780; --amber:#D9A93F; --mint:#A6D1B8; --shade:rgba(0,0,0,.4) }

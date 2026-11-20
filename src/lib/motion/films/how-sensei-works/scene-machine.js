@@ -9,7 +9,7 @@ kit.scene('machine', {
     kit.stage.append(kit.h('<div class="ground"><div class="cam machine-cam"><svg class="art" viewBox="0 0 1920 1080">' + W.board('machine-bg') +
       '<path class="machine-w1" pathLength="1" d="M1230 445 H1340" style="fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round"/><path class="machine-w2" pathLength="1" d="M1230 497 H1340" style="fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round;stroke-dasharray:10 9"/></svg>' +
       W.zone('machine-z', 880, 180, 950, 640, 'Your machine', '机', 'var(--main)') +
-      '<div class="machine-asst"><b>Your assistant</b><span>Claude Code, Cursor, Zed and others</span></div>' +
+      '<div class="machine-asst night"><b>Your assistant</b><span>Claude Code, Cursor, Zed and others</span></div>' +
       '<span class="machine-lab machine-l1" style="left:1246px;top:418px">Hooks</span><span class="machine-lab machine-l2" style="left:1246px;top:504px">MCP</span>' +
       W.zone('machine-app', 1340, 220, 460, 500, 'Sensei app', '観', 'var(--accent)') +
       W.box('machine-b', 1365, 260, 410, 0, '令', 'CLI', 'sensei run, from the terminal', 'var(--soft)') +

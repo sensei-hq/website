@@ -4,7 +4,7 @@
     {
       "type": "raw",
       "id": "term",
-      "html": "<div class='card hook-term'><div class='hook-bar'><i></i><i></i><i></i></div><p class='mono hook-ln'>$ psql prod</p><p class='mono hook-ln dim'>$ cat schema_final_v2.sql</p><p class='mono hook-ln dim'>$ # where is the users table?</p><p class='mono hook-ln dim'>$ history | grep ALTER</p><p class='mono hook-ln hot'>error: relation already exists</p></div>"
+      "html": "<div class='card hook-term night'><div class='hook-bar'><i></i><i></i><i></i></div><p class='mono hook-ln'>$ psql prod</p><p class='mono hook-ln dim'>$ cat schema_final_v2.sql</p><p class='mono hook-ln dim'>$ # where is the users table?</p><p class='mono hook-ln dim'>$ history | grep ALTER</p><p class='mono hook-ln hot'>error: relation already exists</p></div>"
     },
     { "type": "raw", "id": "q", "html": "<div class='hook-q'>?</div>" },
     {

@@ -9,7 +9,7 @@ kit.scene('hook', {
       ['c', '$ cat src/auth/limits.ts'], ['m', '… 412 lines'], ['c', '$ cat src/api/login.ts'], ['m', '… 655 lines'], ['c', '$ cat src/legacy/throttle.js'], ['m', '… 298 lines'], ['c', '$ grep -rn "limiter" .']];
     const F = ['auth/limits.ts', 'api/login.ts', 'legacy/throttle.js', 'auth/session.ts', 'api/routes.ts'];
     kit.stage.append(kit.h('<div class="ground"><div class="cam hook-cam"><svg class="art" viewBox="0 0 1920 1080">' + W.board('hook-bg') + '</svg>' +
-      '<div class="card hook-term">' + L.map(([c, s]) => '<p class="' + c + '">' + s + '</p>').join('') + '</div>' +
+      '<div class="card hook-term night">' + L.map(([c, s]) => '<p class="' + c + '">' + s + '</p>').join('') + '</div>' +
       F.map((f, i) => '<div class="hook-file" style="left:' + (1480 + (i % 2) * 40) + 'px;top:' + (200 + i * 100) + 'px">' + f + '</div>').join('') + '</div>' +
       W.head('hook-head', 'Context', 'How well does your assistant know your code?', 'Without a map, it searches, opens and guesses.', 'left:110px;top:300px;width:700px') + '</div>'));
     const q = (s) => kit.stage.querySelector(s), all = (s) => [...kit.stage.querySelectorAll(s)];

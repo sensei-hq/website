@@ -15,3 +15,4 @@
 .chk i { flex:none; width:30px; height:30px; margin-top:3px; border-radius:50%; background:var(--jade); position:relative } .chk i::after { content:''; position:absolute; left:9px; top:5px; width:8px; height:14px; border:solid var(--ground); border-width:0 4px 4px 0; transform:rotate(45deg) }
 .mono { font-family:var(--mono, ui-monospace, monospace) }
 #stage[data-mode="dark"] { --ground:#191614; --main:#D8D0C7; --second:#F2ECE4; --accent:#E0795C; --jade:#6FAE8B; --board:#1E1B18; --dot:#34302B; --tile:#26221F; --hair:#3A3530; --mute:#A0978F; --wire:#5E5751; --amber:#D9A93F; --mint:#4E7F61; --shade:rgba(0,0,0,.35) }
+#stage[data-mode="dark"] .night { --ground:#F9F6F1; --main:#48413D; --second:#2B2521; --accent:#E0795C; --jade:#6FAE8B; --tile:#2B2521; --hair:#4A443E; --mute:#B0A89F; --wire:#8E8780; --amber:#D9A93F; --mint:#A6D1B8; --shade:rgba(0,0,0,.4) }
