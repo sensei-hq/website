@@ -42,3 +42,17 @@ test('O flips orientation and keeps the scene', async ({ page }) => {
   await expect(page.locator('.emk-count')).toContainText('3 / 6');
   await expect(page.locator('.emk-bar')).toBeVisible();
 });
+
+test('a fitted short plays its takes with the picture', async ({ page }) => {
+  const takes: string[] = [];
+  page.on('response', (r) => {
+    if (r.url().includes('/api/campaign/scenes-as-data/takes/')) takes.push(`${r.status()} ${r.url()}`);
+  });
+  await page.goto('/show/short-scenes-as-data');
+  await page.waitForLoadState('networkidle');
+  await expect(page.locator('.emk-count')).toContainText('1 / 5');
+  // Sound starts off; enabling it (a gesture, so audio unlocks) cues the narration.
+  await page.getByRole('button', { name: 'Sound on' }).click();
+  await expect.poll(() => takes.length, { timeout: 15000 }).toBeGreaterThan(0);
+  expect(takes[0]).toMatch(/^200 https?:\/\/[^/]+\/api\/campaign\/scenes-as-data\/takes\/1$/);
+});

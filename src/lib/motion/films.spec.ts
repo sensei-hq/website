@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { FILMS, film, hasJsonScene, timeline } from './films.js';
+import { FILMS, film, hasJsonScene, takeUrl, timeline } from './films.js';
 import { validateScene, type SceneSpec } from '@senseihq/emaki';
 
 // Scene sources on disk: JSON first, JS modules where a scene needs code.
@@ -152,5 +152,18 @@ describe('motion films', () => {
       const [, slug, id] = path.match(/\.\/films\/(.+)\/scene-(.+)\.json/)!;
       expect(film(slug)?.scenes.some((s) => s.id === id), path).toBe(true);
     }
+  });
+});
+
+describe('dev narration', () => {
+  it('maps a campaign short scene to its take by order', () => {
+    expect(takeUrl('short-scenes-as-data', 'hook')).toBe('/api/campaign/scenes-as-data/takes/1');
+    expect(takeUrl('short-scenes-as-data', 'close')).toBe('/api/campaign/scenes-as-data/takes/5');
+  });
+
+  it('returns null off-campaign', () => {
+    expect(takeUrl('short-scenes-as-data', 'nope')).toBeNull();
+    expect(takeUrl('sensei-relay', 'hook')).toBeNull();
+    expect(takeUrl('no-film', 'hook')).toBeNull();
   });
 });
