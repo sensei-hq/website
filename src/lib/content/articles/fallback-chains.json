@@ -45,5 +45,5 @@
       "caption": "Tile one fails; the request hops to tile two."
     }
   ],
-  "takeaway": "Decide the failure before it happens."
+  "takeaway": "Decide what happens next, before it happens."
 }

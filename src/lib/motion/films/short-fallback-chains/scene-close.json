@@ -21,7 +21,7 @@
     },
     {
       "at": "ground",
-      "html": "<div class='close-card'><h1 class='close-title'><span class='close-w' style='display:inline-block;white-space:pre'>Decide </span><span class='close-w' style='display:inline-block;white-space:pre'>the </span><span class='close-w' style='display:inline-block;white-space:pre'>failure </span><span class='close-w' style='display:inline-block;white-space:pre'>before </span><span class='close-w' style='display:inline-block;white-space:pre'>it </span><span class='close-w' style='display:inline-block;white-space:pre'>happens.</span></h1><div class='close-bar'></div><p class='sub close-sub'>Gateway · open source · Rust library</p><p class='mono close-url'>sensei-hq.com/articles/fallback-chains</p></div>",
+      "html": "<div class='close-card'><h1 class='close-title'><span class='close-w' style='display:inline-block;white-space:pre'>Decide </span><span class='close-w' style='display:inline-block;white-space:pre'>what </span><span class='close-w' style='display:inline-block;white-space:pre'>happens </span><span class='close-w' style='display:inline-block;white-space:pre'>next, </span><span class='close-w' style='display:inline-block;white-space:pre'>before </span><span class='close-w' style='display:inline-block;white-space:pre'>it </span><span class='close-w' style='display:inline-block;white-space:pre'>happens.</span></h1><div class='close-bar'></div><p class='sub close-sub'>Gateway \u00b7 open source \u00b7 Rust library</p><p class='mono close-url'>sensei-hq.com/articles/fallback-chains</p></div>",
       "id": "card",
       "type": "raw"
     }
@@ -73,7 +73,7 @@
       "template": "translateY({v}px)"
     },
     {
-      "count": 6,
+      "count": 7,
       "effect": "words",
       "kind": "effect",
       "t0": 0,
