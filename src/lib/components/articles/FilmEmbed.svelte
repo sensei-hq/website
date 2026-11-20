@@ -9,7 +9,7 @@
   let playing = $state(false);
 </script>
 
-<div class="film">
+<div class="film" class:playing={playing || cover}>
   {#if film && !youtube && cover}
     <MotionShow {film} {cover} {title} {length} playerHref={`/show/${film}`} />
   {:else if film && !youtube && !playing}
@@ -47,6 +47,9 @@
 
 <style>
   .film { position: relative; aspect-ratio: 16 / 9; border: 1px solid var(--paper-edge); border-radius: 12px; overflow: hidden; background: var(--paper-soft); --emk-accent: var(--accent); }
+  /* Once playing, the card sizes to content (aspect-locked stage plus the bar below); the fixed
+     ratio would clip the bar and letterbox the stage. */
+  .film.playing { aspect-ratio: auto; }
   iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
   .card {
     position: absolute; inset: 0; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; gap: 10px;
