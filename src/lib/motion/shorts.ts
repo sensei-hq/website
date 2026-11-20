@@ -3,7 +3,7 @@
 export interface ShortEntry {
   day: number;
   slug: string;
-  product: 'dbd' | 'rokkit' | 'kavach' | 'sensei' | 'gateway';
+  product: 'dbd' | 'rokkit' | 'kavach' | 'sensei' | 'gateway' | 'emaki';
 }
 
 export const SHORTS: ShortEntry[] = [
@@ -35,4 +35,7 @@ export const SHORTS: ShortEntry[] = [
   { day: 26, slug: 'circuit-breakers-for-llms', product: 'gateway' },
   { day: 27, slug: 'llm-budgets', product: 'gateway' },
   { day: 28, slug: 'local-and-cloud-models', product: 'gateway' },
+  { day: 29, slug: 'scenes-as-data', product: 'emaki' },
+  { day: 30, slug: 'one-film-every-framework', product: 'emaki' },
+  { day: 31, slug: 'accessible-by-default', product: 'emaki' },
 ];

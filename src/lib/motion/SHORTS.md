@@ -47,8 +47,8 @@ Punchline title (3–9 words) + vermillion bar + one-line sub + the article URL 
 mute (`sensei-hq.com/articles/<slug>`) + the product mark on the right (`logo` component at
 the pilot's geometry: size 400 at 1530,540, origin 1530,540). Sub lines, settled days 01–28:
 `dbd · open source · Rust CLI`, `Rokkit · open source · Svelte`, `Kavach · open source ·
-SvelteKit`, `Gateway · open source · Rust library`, and — Sensei is a Preview product, not
-open source — `Sensei · local-first · Desktop app`. All marks in `logos/` are normalized to
+SvelteKit`, `Gateway · open source · Rust library`, `emaki · open source · Motion library`,
+and — Sensei is a Preview product, not open source — `Sensei · local-first · Desktop app`. All marks in `logos/` are normalized to
 a 512 viewBox, which the `logo` component assumes; never compensate per scene. Copy the
 pilot's close tracks (card fade/rise, word arrival, bar draw, sub slide, settle mark).
 

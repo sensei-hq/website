@@ -1,10 +1,10 @@
 // Small, data-free article helpers that client code may import. Keep article content out of this file:
 // anything the browser imports ships in the bundle, scheduled articles included.
-export type ArticleProduct = 'sensei' | 'dbd' | 'rokkit' | 'kavach' | 'gateway' | 'practice';
+export type ArticleProduct = 'sensei' | 'dbd' | 'rokkit' | 'kavach' | 'gateway' | 'emaki' | 'practice';
 
 // 'practice' is not a product: those articles are concepts (working with AI, security, quality), listed at /articles/concepts.
 export const PRODUCT_NAMES: Record<ArticleProduct, string> = {
-  sensei: 'Sensei', dbd: 'DBD', rokkit: 'Rokkit', kavach: 'Kavach', gateway: 'Gateway', practice: 'Concept',
+  sensei: 'Sensei', dbd: 'DBD', rokkit: 'Rokkit', kavach: 'Kavach', gateway: 'Gateway', emaki: 'emaki', practice: 'Concept',
 };
 
 /** Whether an article's `app` is one of the products (not a concept). */

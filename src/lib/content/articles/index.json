@@ -853,6 +853,85 @@
     }
   },
   {
+    "slug": "scenes-as-data",
+    "title": "Your motion scenes are JSON",
+    "dek": "Timelines are opaque binaries. emaki scenes are JSON you can review, diff and generate — rendered as article figures, a story player, or narrated video.",
+    "app": "emaki",
+    "topic": "emaki",
+    "kanji": "絵",
+    "kanjiGloss": "Day 29",
+    "series": "Daily explainers",
+    "tags": [
+      "motion",
+      "json",
+      "typescript",
+      "opensource"
+    ],
+    "keywords": [],
+    "publish_date": "2026-12-14",
+    "minutes": 3,
+    "video": "short",
+    "filmLength": "0:31",
+    "social": {
+      "youtube": "",
+      "instagram": "",
+      "x": ""
+    }
+  },
+  {
+    "slug": "one-film-every-framework",
+    "title": "One film, every framework",
+    "dek": "Write the story once as JSON. emaki's framework-free core plays it in Svelte, React, Vue, or a plain web component.",
+    "app": "emaki",
+    "topic": "emaki",
+    "kanji": "絵",
+    "kanjiGloss": "Day 30",
+    "series": "Daily explainers",
+    "tags": [
+      "motion",
+      "svelte",
+      "react",
+      "vue",
+      "typescript"
+    ],
+    "keywords": [],
+    "publish_date": "2026-12-15",
+    "minutes": 3,
+    "video": "short",
+    "filmLength": "0:30",
+    "social": {
+      "youtube": "",
+      "instagram": "",
+      "x": ""
+    }
+  },
+  {
+    "slug": "accessible-by-default",
+    "title": "Accessible by default",
+    "dek": "Captions from the voice script, full keyboard controls, and one consistent chrome on every film. Access is the default.",
+    "app": "emaki",
+    "topic": "emaki",
+    "kanji": "絵",
+    "kanjiGloss": "Day 31",
+    "series": "Daily explainers",
+    "tags": [
+      "motion",
+      "accessibility",
+      "captions",
+      "typescript"
+    ],
+    "keywords": [],
+    "publish_date": "2026-12-16",
+    "minutes": 3,
+    "video": "short",
+    "filmLength": "0:30",
+    "social": {
+      "youtube": "",
+      "instagram": "",
+      "x": ""
+    }
+  },
+  {
     "slug": "what-sensei-captures",
     "title": "What Sensei sees, and what stays yours",
     "dek": "A mentor learns by watching the work. Sensei captures your folders, git history, assistant sessions and usage, maps the code, and keeps all of it on your machine unless you choose to share.",

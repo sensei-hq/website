@@ -1,0 +1,35 @@
+{
+  "components": [
+    { "type": "board", "id": "captions-bg" },
+    {
+      "type": "raw",
+      "id": "frame",
+      "html": "<div class='card captions-frame'><div class='captions-screen'><span class='captions-play'>▶</span></div><div class='captions-bar night'><p class='mono captions-ln'>emaki ships captions</p><p class='mono captions-ln'>from the voice script.</p></div></div>"
+    },
+    { "type": "raw", "id": "cc", "html": "<div class='tag ok captions-cc'>CC</div>" },
+    {
+      "type": "head",
+      "id": "captions-head",
+      "at": "ground",
+      "eyebrow": "Captions",
+      "line": "Captions come from the voice script.",
+      "sub": "The caption track mirrors the narration.",
+      "style": "left:110px;top:330px;width:720px"
+    }
+  ],
+  "tracks": [
+    { "kind": "effect", "effect": "push", "target": ".cam", "t0": 0, "dur": 6, "from": 1, "to": 1.025 },
+    { "kind": "effect", "effect": "showHead", "target": ".captions-head", "t0": -0.4 },
+    { "kind": "effect", "effect": "fade", "target": ".captions-frame", "t0": 0.6 },
+    { "kind": "effect", "effect": "fade", "target": ".captions-bar", "t0": 1.2 },
+    { "kind": "effect", "effect": "fade", "target": ".captions-ln", "count": 2, "t0": 1.5, "stagger": 0.4 },
+    { "kind": "effect", "effect": "pop", "target": ".captions-cc", "t0": 2.6 }
+  ],
+  "css": ".captions-frame { left:940px; top:220px; width:820px; box-sizing:border-box; padding:28px } .captions-screen { height:240px; border-radius:12px; background:var(--shade); position:relative } .captions-play { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:96px; height:96px; border-radius:50%; background:var(--jade); color:var(--ground); font-size:38px; line-height:96px; text-align:center } .captions-bar { margin-top:24px; border-radius:12px; background:var(--second); padding:22px 28px } .captions-ln { margin:0; font-size:30px; line-height:1.4; color:var(--ground); white-space:nowrap } .captions-cc { left:1630px; top:190px }",
+  "portrait": {
+    "hoist": [".captions-head"],
+    "frame": [700, 920],
+    "crop": [870, 120, 940, 600],
+    "css": ".captions-head{left:70px!important;top:150px!important;width:940px!important}"
+  }
+}

@@ -21,6 +21,7 @@ export const PRODUCT_HOME: Record<string, string> = {
   rokkit: 'https://rokkit.sensei-hq.com',
   kavach: 'https://kavach.sensei-hq.com',
   gateway: 'https://gateway.sensei-hq.com',
+  emaki: 'https://emaki.sensei-hq.com',
 };
 
 export const articleUrl = (a: Article) => `${SITE}/articles/${a.slug}`;

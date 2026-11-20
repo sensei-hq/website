@@ -1,0 +1,30 @@
+{
+  "components": [
+    { "type": "board", "id": "keyboard-bg" },
+    { "type": "raw", "id": "key-play", "html": "<div class='card keyboard-key' style='left:920px'><span class='keyboard-glyph'>▶</span><span class='keyboard-label'>play</span></div>" },
+    { "type": "raw", "id": "key-seek", "html": "<div class='card keyboard-key' style='left:1140px'><span class='keyboard-glyph'>◀▶</span><span class='keyboard-label'>seek</span></div>" },
+    { "type": "raw", "id": "key-scenes", "html": "<div class='card keyboard-key' style='left:1360px'><span class='keyboard-glyph'>▦</span><span class='keyboard-label'>scenes</span></div>" },
+    { "type": "raw", "id": "key-cc", "html": "<div class='card keyboard-key' style='left:1580px'><span class='keyboard-glyph'>CC</span><span class='keyboard-label'>captions</span></div>" },
+    {
+      "type": "head",
+      "id": "keyboard-head",
+      "at": "ground",
+      "eyebrow": "Keyboard",
+      "line": "Full keyboard controls ship too.",
+      "sub": "Play, seek, scenes, captions.",
+      "style": "left:110px;top:330px;width:720px"
+    }
+  ],
+  "tracks": [
+    { "kind": "effect", "effect": "push", "target": ".cam", "t0": 0, "dur": 6, "from": 1, "to": 1.025 },
+    { "kind": "effect", "effect": "showHead", "target": ".keyboard-head", "t0": -0.4 },
+    { "kind": "effect", "effect": "fade", "target": ".keyboard-key", "count": 4, "t0": 0.8, "stagger": 0.4 }
+  ],
+  "css": ".keyboard-key { top:360px; width:200px; box-sizing:border-box; padding:34px 0 28px; display:flex; flex-direction:column; align-items:center; gap:16px } .keyboard-glyph { width:96px; height:96px; border-radius:20px; background:var(--main); color:var(--ground); font-size:38px; line-height:96px; text-align:center; white-space:nowrap } .keyboard-label { font-size:30px; font-weight:600; white-space:nowrap }",
+  "portrait": {
+    "hoist": [".keyboard-head"],
+    "frame": [700, 920],
+    "crop": [830, 230, 990, 470],
+    "css": ".keyboard-head{left:70px!important;top:150px!important;width:940px!important}"
+  }
+}
