@@ -7,17 +7,17 @@
 
   let {
     id, caption, label, motion,
-    sound = false, cc = false, voice = true, onsoundchange, onccchange,
+    cc = false, voice = true, onccchange,
   }: {
     id?: FigureId; caption: string; label: string; motion?: { film: string; scene: string };
-    sound?: boolean; cc?: boolean; voice?: boolean;
-    onsoundchange?: (on: boolean) => void; onccchange?: (on: boolean) => void;
+    cc?: boolean; voice?: boolean;
+    onccchange?: (on: boolean) => void;
   } = $props();
 </script>
 
 <figure class="fig-card">
   {#if motion}
-    <MotionScene film={motion.film} scene={motion.scene} {label} {sound} {cc} {voice} {onsoundchange} {onccchange} />
+    <MotionScene film={motion.film} scene={motion.scene} {label} {cc} {voice} {onccchange} />
   {:else}
     <HtmlFigure kind={id as 'top10'} />
   {/if}

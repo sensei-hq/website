@@ -7,18 +7,18 @@
   import { MotionShow } from '@senseihq/emaki-svelte';
   let {
     youtube, title, kanji, length, cover, film,
-    sound = false, cc = false, voice = true, onsoundchange, onccchange, onvoicechange,
+    cc = false, voice = true, onccchange, onvoicechange,
   }: {
     youtube: string; title: string; kanji: string; length: string; cover?: string; film?: string;
-    sound?: boolean; cc?: boolean; voice?: boolean;
-    onsoundchange?: (on: boolean) => void; onccchange?: (on: boolean) => void; onvoicechange?: (on: boolean) => void;
+    cc?: boolean; voice?: boolean;
+    onccchange?: (on: boolean) => void; onvoicechange?: (on: boolean) => void;
   } = $props();
   let playing = $state(false);
 </script>
 
 <div class="film" class:playing={playing || cover}>
   {#if film && !youtube && cover}
-    <MotionShow {film} {cover} {title} {length} playerHref={`/show/${film}`} {sound} {cc} {voice} {onsoundchange} {onccchange} {onvoicechange} />
+    <MotionShow {film} {cover} {title} {length} playerHref={`/show/${film}`} {cc} {voice} {onccchange} {onvoicechange} />
   {:else if film && !youtube && !playing}
     <button class="card" onclick={() => (playing = true)} aria-label={`Play the film: ${title}`}>
       <span class="kanji k" aria-hidden="true">{kanji}</span>
@@ -27,7 +27,7 @@
       <span class="meta mono">Play the film · {length} · with music</span>
     </button>
   {:else if film && !youtube}
-    <MotionShow {film} playerHref={`/show/${film}`} {sound} {cc} {voice} {onsoundchange} {onccchange} {onvoicechange} />
+    <MotionShow {film} playerHref={`/show/${film}`} {cc} {voice} {onccchange} {onvoicechange} />
   {:else if playing && youtube}
     <iframe
       src="https://www.youtube-nocookie.com/embed/{youtube}?autoplay=1&rel=0&cc_load_policy=1"
