@@ -3,7 +3,8 @@
   // With no video id yet, the card says the film is coming. With a cover (the film's closing punchline card), the card
   // shows that instead of the drawn title, since the cover already carries the title.
   // With a motion film (`film`) and no video yet, the card plays the film itself as a slideshow, with its music.
-  // emaki mounts the show on first click (cover first) and starts it with sound on.
+  // With a cover the player mounts as a poster (its toolbar visible before the first play) and starts with
+  // sound on; without JS the cover image still shows.
   import { MotionShow } from '@senseihq/emaki-svelte';
   let {
     youtube, title, kanji, length, cover, film,
@@ -18,7 +19,8 @@
 
 <div class="film" class:playing={playing || cover}>
   {#if film && !youtube && cover}
-    <MotionShow {film} {cover} {title} {length} playerHref={`/show/${film}`} {cc} {voice} {onccchange} {onvoicechange} />
+    <MotionShow {film} poster {title} {length} playerHref={`/show/${film}`} {cc} {voice} {onccchange} {onvoicechange} />
+    <noscript><img class="cover" src={cover} alt="" /></noscript>
   {:else if film && !youtube && !playing}
     <button class="card" onclick={() => (playing = true)} aria-label={`Play the film: ${title}`}>
       <span class="kanji k" aria-hidden="true">{kanji}</span>
