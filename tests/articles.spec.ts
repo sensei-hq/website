@@ -60,6 +60,15 @@ test.describe('Articles at /articles', () => {
     await expect(page.locator('.film .emk-popout')).toHaveAttribute('href', '/show/short-schema-as-code');
   });
 
+  test('film shows its toolbar before the first play', async ({ page }) => {
+    await page.goto('/articles/sensei-relay');
+    await page.waitForLoadState('networkidle');
+    await expect(page.locator('.film .emk-bar')).toBeVisible();
+    await expect(page.locator('.film').getByRole('button', { name: /^Play the film/ })).toBeVisible();
+    // Without JS there is no player: the cover still shows.
+    expect(await page.locator('.film noscript').innerHTML()).toContain('/covers/sensei-relay.jpg');
+  });
+
   test('playing stage fills its box edge-to-edge', async ({ page }) => {
     await page.goto('/articles/schema-as-code');
     await page.waitForLoadState('networkidle');
