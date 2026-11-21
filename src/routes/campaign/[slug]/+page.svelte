@@ -22,7 +22,7 @@
 </div>
 <VoicePanel slug={data.article.slug} />
 <PublishPanel slug={data.article.slug} render={data.status.render} />
-<ArticlePage data={data as never} preview />
+<ArticlePage data={data as never} preview review />
 
 <style>
   .bar {

@@ -10,7 +10,7 @@
   import type { Article } from '$lib/articles-data.js';
   import type { ArticleCardData } from '$lib/articles-server.js';
 
-  let { data, preview = false }: { data: { article: Article; more: ArticleCardData[] }; preview?: boolean } = $props();
+  let { data, preview = false, review = false }: { data: { article: Article; more: ArticleCardData[] }; preview?: boolean; review?: boolean } = $props();
   const a = $derived(data.article);
   const url = $derived(`${SITE}/articles/${a.slug}`);
   // The film's cover (its closing punchline card) when it has one, else the YouTube thumbnail.
@@ -28,8 +28,10 @@
   const shareLinkedIn = $derived(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`);
   const date = $derived(new Date(a.date + 'T12:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }));
   const href = (h: string) => (h.startsWith('/') ? base + h : h);
-  // Shared film-level state for the player and its figures: captions and the voice cut follow
-  // anywhere. Sound stays per player: sharing it would sound every figure with the film.
+  // Shared film-level state for the player and its figures: captions follow anywhere, and sound stays
+  // per player (sharing it would sound every figure with the film). The voice cut reaches the figures
+  // only under review, where takes are checked scene by scene; on the article the film carries the VO
+  // and the figures sound effects-only.
   let cc = $state(false);
   let voice = $state(true);
 </script>
@@ -100,7 +102,7 @@
             <pre class="code" data-lang={s.code.lang}><code>{s.code.text}</code></pre>
           {/if}
         </div>
-        {#if s.figure || s.motion}<Figure id={s.figure} motion={s.motion} caption={s.caption ?? ''} label="{s.title}: {s.caption ?? ''}" {cc} {voice} onccchange={(v) => (cc = v)} />{/if}
+        {#if s.figure || s.motion}<Figure id={s.figure} motion={s.motion} caption={s.caption ?? ''} label="{s.title}: {s.caption ?? ''}" {cc} voice={review ? voice : false} onccchange={(v) => (cc = v)} />{/if}
       </div>
     </section>
   {/each}
