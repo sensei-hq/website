@@ -161,9 +161,14 @@ describe('dev narration', () => {
     expect(takeUrl('short-scenes-as-data', 'close')).toBe('/api/campaign/scenes-as-data/takes/5');
   });
 
-  it('returns null off-campaign', () => {
+  it('maps a wide-film scene to its take by order', () => {
+    expect(takeUrl('sensei-relay', 'silos')).toBe('/api/films/sensei-relay/takes/1');
+    expect(takeUrl('sensei-relay', 'handover')).toBe('/api/films/sensei-relay/takes/6');
+  });
+
+  it('returns null without a film or a scene', () => {
     expect(takeUrl('short-scenes-as-data', 'nope')).toBeNull();
-    expect(takeUrl('sensei-relay', 'hook')).toBeNull();
+    expect(takeUrl('sensei-relay', 'nope')).toBeNull();
     expect(takeUrl('no-film', 'hook')).toBeNull();
   });
 });

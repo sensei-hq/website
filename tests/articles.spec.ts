@@ -96,6 +96,24 @@ test.describe('Articles at /articles', () => {
     }
   });
 
+  test('film with takes narrates them with sound and voice on', async ({ page }) => {
+    const takes: string[] = [];
+    page.on('response', (r) => {
+      if (r.url().includes('/api/films/sensei-relay/takes/')) takes.push(r.url());
+    });
+    await page.goto('/articles/sensei-relay');
+    await page.waitForLoadState('networkidle');
+    await page.locator('.film').getByRole('button', { name: /^Play the film/ }).click();
+    await page.locator('.film .emk-bar').waitFor();
+    await expect.poll(() => takes.length, { timeout: 15000 }).toBeGreaterThan(0);
+    // Voice off cuts the narration: advancing scenes fetches no more takes.
+    const mark = takes.length;
+    await page.locator('.film').getByRole('button', { name: 'Voice on' }).click();
+    await page.locator('.film').getByRole('button', { name: 'Next scene' }).click();
+    await page.waitForTimeout(2500);
+    expect(takes.length).toBe(mark);
+  });
+
   test('an unknown slug is a 404', async ({ page }) => {
     const res = await page.goto('/articles/no-such-article');
     expect(res?.status()).toBe(404);
