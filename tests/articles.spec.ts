@@ -91,4 +91,23 @@ test.describe('Articles at /articles', () => {
     const res = await page.goto('/articles/no-such-article');
     expect(res?.status()).toBe(404);
   });
+
+  test('article figures sound effects-only: no narration takes', async ({ page }) => {
+    // The film at the top carries the VO; section figures replaying its takes would be redundant.
+    // Probed through the admin preview (the article exactly as it will render) of a short whose
+    // scenes carry voice timings — the same figures DO speak on its review page (see campaign.spec),
+    // so a take here would fail.
+    const takes: string[] = [];
+    page.on('response', (r) => {
+      if (r.url().includes('/api/campaign/scenes-as-data/takes/')) takes.push(r.url());
+    });
+    await page.goto('/admin/preview/scenes-as-data');
+    await page.waitForLoadState('networkidle');
+    const fig = page.locator('.ms-snd').first();
+    await fig.scrollIntoViewIfNeeded();
+    await fig.click();
+    await expect(fig).toHaveAttribute('aria-pressed', 'true');
+    await page.waitForTimeout(2500);
+    expect(takes).toHaveLength(0);
+  });
 });
