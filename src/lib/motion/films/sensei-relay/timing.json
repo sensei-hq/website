@@ -1,21 +1,27 @@
 {
   "scenes": {
     "silos": {
+      "voice": 0.6,
       "dur": 7.7
     },
     "manual": {
+      "voice": 0.6,
       "dur": 10.3
     },
     "register": {
+      "voice": 0.6,
       "dur": 9.1
     },
     "dispatch": {
+      "voice": 0.6,
       "dur": 8.7
     },
     "review": {
+      "voice": 0.6,
       "dur": 9.6
     },
     "handover": {
+      "voice": 0.6,
       "dur": 10.4
     }
   }

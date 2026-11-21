@@ -1,0 +1,25 @@
+{
+  "scenes": {
+    "repeat": {
+      "voice": 0.6
+    },
+    "causes": {
+      "voice": 0.6
+    },
+    "read": {
+      "voice": 0.6
+    },
+    "rules": {
+      "voice": 0.6
+    },
+    "depth": {
+      "voice": 0.6
+    },
+    "measure": {
+      "voice": 0.6
+    },
+    "close": {
+      "voice": 0.6
+    }
+  }
+}

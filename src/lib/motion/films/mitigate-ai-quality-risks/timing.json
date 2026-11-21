@@ -1,10 +1,21 @@
 {
   "scenes": {
     "habits": {
+      "voice": 0.6,
       "dur": 17.1
     },
     "why": {
+      "voice": 0.6,
       "dur": 10.2
+    },
+    "hook": {
+      "voice": 0.6
+    },
+    "sensei": {
+      "voice": 0.6
+    },
+    "close": {
+      "voice": 0.6
     }
   }
 }

@@ -1,30 +1,39 @@
 {
   "scenes": {
     "hook": {
+      "voice": 0.6,
       "dur": 12.0
     },
     "top10": {
+      "voice": 0.6,
       "dur": 25.2
     },
     "inject": {
+      "voice": 0.6,
       "dur": 18.8
     },
     "phish": {
+      "voice": 0.6,
       "dur": 18.3
     },
     "agency": {
+      "voice": 0.6,
       "dur": 14.5
     },
     "data": {
+      "voice": 0.6,
       "dur": 15.7
     },
     "responsible": {
+      "voice": 0.6,
       "dur": 19.1
     },
     "layers": {
+      "voice": 0.6,
       "dur": 13.6
     },
     "close": {
+      "voice": 0.6,
       "dur": 7.5
     }
   }

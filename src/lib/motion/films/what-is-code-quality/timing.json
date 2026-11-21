@@ -1,10 +1,24 @@
 {
   "scenes": {
     "hook": {
+      "voice": 0.6,
       "dur": 8.3
     },
     "definition": {
+      "voice": 0.6,
       "dur": 9.9
+    },
+    "signals": {
+      "voice": 0.6
+    },
+    "trend": {
+      "voice": 0.6
+    },
+    "sensei": {
+      "voice": 0.6
+    },
+    "close": {
+      "voice": 0.6
     }
   }
 }

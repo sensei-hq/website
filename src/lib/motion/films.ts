@@ -27,8 +27,8 @@ const voiceText = import.meta.glob('./films/*/voice/*.json', { eager: true, impo
 
 const { filmSource } = viteSource({ films, scenes, timings, raw, logos, voiceText });
 
-// Dev-only narration: campaign takes stream from the review API (which 404s in prod),
-// so fitted shorts speak in review while deployed films stay exactly as built.
+// Dev-only narration: takes stream from the review API (which 404s in prod), so fitted films
+// speak in review while deployed films stay exactly as built.
 const devVoice = async (slug: string, locale: string, scene: string) =>
   (import.meta.env.DEV ? takeUrl(slug, scene) : null) ?? ((await filmSource.voice?.(slug, locale, scene)) ?? null);
 
@@ -53,11 +53,12 @@ export const FILMS: FilmMeta[] = Object.entries(films)
 
 export const film = (slug: string) => FILMS.find((f) => f.slug === slug);
 
-/** A campaign short's scene N plays take N from the review API. Null off-campaign. */
+/** A scene N plays take N: a campaign short's from the review API, a wide film's from its own takes. Null off-film. */
 export const takeUrl = (slug: string, scene: string): string | null => {
-  if (!slug.startsWith('short-')) return null;
   const idx = film(slug)?.scenes.findIndex((s) => s.id === scene) ?? -1;
-  return idx < 0 ? null : `/api/campaign/${slug.slice('short-'.length)}/takes/${idx + 1}`;
+  if (idx < 0) return null;
+  const n = idx + 1;
+  return slug.startsWith('short-') ? `/api/campaign/${slug.slice('short-'.length)}/takes/${n}` : `/api/films/${slug}/takes/${n}`;
 };
 
 /** Whether the scene has a JSON twin (which the loader then prefers). */

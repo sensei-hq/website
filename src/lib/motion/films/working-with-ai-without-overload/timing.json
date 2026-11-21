@@ -1,13 +1,25 @@
 {
   "scenes": {
     "flood": {
+      "voice": 0.6,
       "dur": 13.0
     },
     "define": {
+      "voice": 0.6,
       "dur": 19.7
     },
     "build": {
+      "voice": 0.6,
       "dur": 19.3
+    },
+    "questions": {
+      "voice": 0.6
+    },
+    "payoff": {
+      "voice": 0.6
+    },
+    "close": {
+      "voice": 0.6
     }
   }
 }

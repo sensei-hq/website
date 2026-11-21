@@ -1,7 +1,26 @@
 {
   "scenes": {
     "hook": {
+      "voice": 0.6,
       "dur": 9.8
+    },
+    "constitution": {
+      "voice": 0.6
+    },
+    "share": {
+      "voice": 0.6
+    },
+    "triage": {
+      "voice": 0.6
+    },
+    "upgrade": {
+      "voice": 0.6
+    },
+    "resolve": {
+      "voice": 0.6
+    },
+    "close": {
+      "voice": 0.6
     }
   }
 }
