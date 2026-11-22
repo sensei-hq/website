@@ -65,6 +65,8 @@ test.describe('Articles at /articles', () => {
     await page.waitForLoadState('networkidle');
     await expect(page.locator('.film .emk-bar')).toBeVisible();
     await expect(page.locator('.film').getByRole('button', { name: /^Play the film/ })).toBeVisible();
+    // Mute is the master: the VO toggle dims until sound is on.
+    await expect(page.locator('.film .emk-voice')).toBeDisabled();
     // Without JS there is no player: the cover still shows.
     expect(await page.locator('.film noscript').innerHTML()).toContain('/covers/sensei-relay.jpg');
   });
