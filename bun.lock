@@ -15,9 +15,9 @@
         "@rokkit/themes": "^1.15.2",
         "@rokkit/ui": "^1.15.2",
         "@rokkit/unocss": "^1.15.2",
-        "@senseihq/emaki": "^0.7.0",
-        "@senseihq/emaki-posting": "^0.7.0",
-        "@senseihq/emaki-svelte": "^0.7.0",
+        "@senseihq/emaki": "^0.8.0",
+        "@senseihq/emaki-posting": "^0.8.0",
+        "@senseihq/emaki-svelte": "^0.8.0",
         "@sveltejs/adapter-cloudflare": "^7.2.8",
         "@sveltejs/adapter-static": "^3.0.11",
         "@unocss/extractor-svelte": "^66.12.0",
@@ -314,11 +314,11 @@
 
     "@rolldown/pluginutils": ["@rolldown/pluginutils@1.0.1", "", {}, "sha512-2j9bGt5Jh8hj+vPtgzPtl72j0yRxHAyumoo6TNfAjsLB04UtpSvPbPcDcBMxz7n+9CYB0c1GxQFxYRg2jimqGw=="],
 
-    "@senseihq/emaki": ["@senseihq/emaki@0.7.0", "", {}, "sha512-GJ1dDT5dSI7rxIgDXaxnV/1ybTZy3BtVLFwNdIxrieAxIGMWYwWZz2Jms2uyvIBnL7N9NGtMmMW63ExTP7T5zQ=="],
+    "@senseihq/emaki": ["@senseihq/emaki@0.8.0", "", {}, "sha512-g87oQnhZUjrBijF/5weFlrvXKKOFayTg1paLoOJAO9oZNzQvw7LmRnIWSRqsG5AtRk2Ysk970hD/Pq7/N877mg=="],
 
-    "@senseihq/emaki-posting": ["@senseihq/emaki-posting@0.7.0", "", {}, "sha512-+Bqn4JBh8bZEYetP5MMqNO6w6OS9XSyGcde0tinV9t/jbnD2AbEf8eO62eJ9o2Xv+bciSpnhCkH00Tk85bE47w=="],
+    "@senseihq/emaki-posting": ["@senseihq/emaki-posting@0.8.0", "", {}, "sha512-IrJT5OAGYtqBpE7hRDGN7C/hhfgwwgD8E0nTrduNFl3MzHT/7hd5ethnBOs0T0I/E72inAw1tslpqd/ZA+xbig=="],
 
-    "@senseihq/emaki-svelte": ["@senseihq/emaki-svelte@0.7.0", "", { "dependencies": { "@senseihq/emaki": "0.7.0" }, "peerDependencies": { "svelte": "^5.0.0" } }, "sha512-tl2BrVXZVbpakfCa8isig1MZ9Hd04zhPk3hJQlDtQPoYWJp2X9nMLxtOqMHBgs5K9F/kY96o5+gG32KZUuak6w=="],
+    "@senseihq/emaki-svelte": ["@senseihq/emaki-svelte@0.8.0", "", { "dependencies": { "@senseihq/emaki": "0.8.0" }, "peerDependencies": { "svelte": "^5.0.0" } }, "sha512-FPVhzzKv+bDjXYmt0FoXtKZIHHqVm/GzTxfGYTDbbmhfll4/Nkj4xrTj1fmvKSiE35y2ToTLHO/XnN+4A27W8g=="],
 
     "@shikijs/core": ["@shikijs/core@4.6.0", "", { "dependencies": { "@shikijs/primitive": "4.6.0", "@shikijs/types": "4.6.0", "@shikijs/vscode-textmate": "^10.1.0", "@types/hast": "^3.0.5", "hast-util-to-html": "^9.0.6" } }, "sha512-bfd4OKgvoyXYiYmMRuleA656P4V7M/Du9lcTl38Ngm6KszMj7bq4J1IGZwSYR4c95Tv5UQALtYNWUwaI9UT3xw=="],
 
