@@ -1,4 +1,4 @@
-# Checkpoint: Phase A under way (#1 done); Sensei install PR mergeable
+# Checkpoint: Phase A under way (#1, #2 done); Sensei install PR mergeable
 
 ## Slice
 .com / .org split + commercial transition — plan agreed (docs/plan/site-split.md).
@@ -12,16 +12,18 @@
   sensei-hq/sensei PR #539 — develop merged in, token added, CI running.
 - #1 closed by 4abc01e: crawl e2e (tests/no-private-repo-links.spec.ts)
   fails on any link to sensei-hq/(sensei|torii); links → sensei-releases.
+- #2 closed by f657fb5: src/lib/claims.ts — `unverified(…)` + `shown(…)`;
+  SSO/SCIM kept in data, never rendered (unit + e2e guards).
 
 ## Remain
 1. Owner: merge #539 once CI is green, release; then deploy the site
    (download links 404 until sensei-releases has a release).
-2. Website Phase A: #2, #3; replace root MIT LICENSE with proprietary notice.
+2. Website Phase A: #3; replace root MIT LICENSE with proprietary notice.
 3. Phases B → C → D (#4); Phase E in library repos.
 4. Older: posting setup per docs/posting.md (Access, secrets).
 
 ## Next command
-`gh issue view 2` — failing test that unverified SSO/SCIM claims are not shown.
+`gh issue view 3` — failing test: Katachi/Magpie/Kata under "Coming soon", proprietary.
 
 ## Open questions
 - D5–D8 in the plan (pricing per product, concepts placement, email provider,
