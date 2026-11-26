@@ -48,6 +48,7 @@
 		"@senseihq/emaki": "^0.8.0",
 		"@senseihq/emaki-posting": "^0.8.0",
 		"@senseihq/emaki-svelte": "^0.8.0",
+		"@site/articles": "workspace:*",
 		"@site/content": "workspace:*",
 		"@site/ui": "workspace:*",
 		"@sveltejs/adapter-cloudflare": "^7.2.8",

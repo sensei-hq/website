@@ -1,3 +1,5 @@
-import { gallery } from '$lib/articles-server.js';
+import { indexData } from '@site/articles/server';
+import { ARTICLES_SITE } from '$lib/articles-site.js';
 
-export const load = () => gallery();
+export const prerender = true;
+export const load = () => indexData(ARTICLES_SITE);

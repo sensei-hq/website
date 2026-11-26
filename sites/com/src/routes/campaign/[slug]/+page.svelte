@@ -1,7 +1,8 @@
 <script lang="ts">
   // One campaign piece under review: the article exactly as it will publish, with a
   // toolbar for its production state (motion, takes, render) and review links.
-  import ArticlePage from '../../articles/[slug]/+page.svelte';
+  import ArticlePage from '@site/articles/ArticlePage.svelte';
+  import { ARTICLES_SITE } from '$lib/articles-site.js';
   import PublishPanel from './PublishPanel.svelte';
   import VoicePanel from './VoicePanel.svelte';
   let { data } = $props();
@@ -22,7 +23,7 @@
 </div>
 <VoicePanel slug={data.article.slug} />
 <PublishPanel slug={data.article.slug} render={data.status.render} />
-<ArticlePage data={data as never} preview review />
+<ArticlePage data={data as never} site={ARTICLES_SITE} preview review />
 
 <style>
   .bar {

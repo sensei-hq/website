@@ -1,10 +1,11 @@
 <script lang="ts">
-  import ListPage from '$lib/components/articles/ListPage.svelte';
-  import { PRODUCT_HOME } from '$lib/seo.js';
+  import ListPage from '@site/articles/ListPage.svelte';
+  import { ARTICLES_SITE } from '$lib/articles-site.js';
   let { data } = $props();
 </script>
 
 <ListPage
+  site={ARTICLES_SITE}
   kanji={data.kanji}
   eyebrow="Product"
   title={data.name}
@@ -12,4 +13,4 @@
   path="/articles/product/{data.id}"
   cards={data.cards}
   tags={data.tags}
-  home={PRODUCT_HOME[data.id]} />
+  home={ARTICLES_SITE.productHome[data.id]} />

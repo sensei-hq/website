@@ -1,6 +1,6 @@
 <script lang="ts">
   // The figures that are mostly words: the OWASP grid, the phishing examples, the pillars, the questions.
-  import { reveal } from '$lib/actions/reveal.js';
+  import { reveal } from './reveal.js';
   type Kind = 'top10' | 'phish' | 'pillars' | 'questions';
   let { kind }: { kind: Kind } = $props();
 
@@ -16,12 +16,14 @@
     ['Chat · IT support', 'Can you read me the sign-in code I just sent?', 'Asks for a code'],
   ];
   const pillars = [['Fairness', 'Check for bias'], ['Transparency', 'Say how it works'], ['Privacy', 'Protect personal data'], ['Accountability', 'Clear ownership'], ['Human oversight', 'People make the big calls']];
+  // The messages step in on wider screens; written out whole so UnoCSS finds the classes.
+  const INDENT = ['', 'sm:ml-[18px]', 'sm:ml-[36px]'];
   const questions = ['How do you skim it without getting overwhelmed?', 'Do you focus on the intent and the expected outcome?', 'How do you know it is relevant, accurate and aligned with what you need?'];
 </script>
 
 <div class="hf" use:reveal>
   {#if kind === 'top10'}
-    <div class="t10">
+    <div class="t10 grid grid-cols-1 sm:grid-cols-3 gap-3">
       {#each groups as [title, items]}
         <div class="col">
           <p class="grp r">{title}</p>
@@ -34,7 +36,7 @@
   {:else if kind === 'phish'}
     <div class="msgs">
       {#each msgs as [head, body, flag], i}
-        <div class="msg r" style="--d:{i * 0.35}s;margin-left:{i * 18}px">
+        <div class="msg r max-w-full sm:max-w-[86%] {INDENT[i]}" style="--d:{i * 0.35}s">
           <p class="mh">{head}</p>
           {#if body}<p class="mb">{body}</p>{:else}<div class="wave" aria-hidden="true">{#each Array(28) as _, k}<i style="height:{6 + Math.abs(Math.sin(k * 1.7)) * 22}px"></i>{/each}</div>{/if}
           <span class="flag r" style="--d:{1.4 + i * 0.3}s">{flag}</span>
@@ -44,7 +46,7 @@
     </div>
   {:else if kind === 'pillars'}
     <div class="pil">
-      <div class="row">
+      <div class="row grid grid-cols-2 sm:grid-cols-5 gap-2 items-end">
         {#each pillars as [t, d], i}
           <div class="p r" style="--d:{0.4 + i * 0.15}s"><b>{t}</b><span>{d}</span></div>
         {/each}
@@ -63,7 +65,6 @@
   :global([data-anim]) .r { opacity: 0; transform: translateY(10px); }
   :global([data-anim][data-on]) .r { opacity: 1; transform: none; transition: opacity 0.45s ease var(--d, 0s), transform 0.55s cubic-bezier(0.2, 0.6, 0.2, 1) var(--d, 0s); }
 
-  .t10 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
   .col { display: flex; flex-direction: column; gap: 8px; }
   .grp { margin: 0 0 2px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
   .t { display: grid; grid-template-columns: 26px 1fr; gap: 8px; align-items: baseline; padding: 9px 10px; background: var(--paper); border: 1px solid var(--paper-edge); border-radius: 8px; font-size: 12.5px; line-height: 1.3; }
@@ -71,7 +72,7 @@
   .t.first { border-color: var(--accent); }
 
   .msgs { display: flex; flex-direction: column; gap: 12px; }
-  .msg { position: relative; max-width: 86%; padding: 12px 14px; background: var(--paper); border: 1px solid var(--paper-edge); border-radius: 10px; }
+  .msg { position: relative; padding: 12px 14px; background: var(--paper); border: 1px solid var(--paper-edge); border-radius: 10px; }
   .mh { margin: 0 0 4px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
   .mb { margin: 0; font-size: 13.5px; line-height: 1.45; }
   .wave { display: flex; align-items: center; gap: 3px; height: 30px; }
@@ -80,7 +81,6 @@
   .note { margin: 2px 0 0; font-size: 11px; color: var(--ink-soft); }
 
   .pil { display: flex; flex-direction: column; gap: 8px; }
-  .row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; align-items: end; }
   .p { display: flex; flex-direction: column; gap: 4px; min-height: 120px; justify-content: flex-end; padding: 12px 10px; background: var(--paper); border: 1px solid var(--paper-edge); border-radius: 10px 10px 4px 4px; }
   .p b { font-family: var(--font-display); font-weight: 400; font-size: 15px; line-height: 1.15; }
   .p span { font-size: 11.5px; line-height: 1.35; color: var(--ink-mute); }
@@ -92,9 +92,4 @@
   .qs li { display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: center; padding: 14px 16px; background: var(--paper); border: 1px solid var(--paper-edge); border-radius: 10px; font-size: 15px; line-height: 1.4; }
   .qs b { font-family: var(--font-display); font-weight: 400; font-size: 28px; color: var(--accent); text-align: center; }
 
-  @media (max-width: 560px) {
-    .t10 { grid-template-columns: 1fr; }
-    .row { grid-template-columns: repeat(2, 1fr); }
-    .msg { max-width: 100%; margin-left: 0 !important; }
-  }
 </style>

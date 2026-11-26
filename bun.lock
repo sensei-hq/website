@@ -5,6 +5,28 @@
     "": {
       "name": "sensei-site",
     },
+    "packages/articles": {
+      "name": "@site/articles",
+      "version": "0.0.0",
+      "dependencies": {
+        "@senseihq/emaki": "^0.8.0",
+        "@senseihq/emaki-svelte": "^0.8.0",
+        "@site/content": "workspace:*",
+      },
+      "devDependencies": {
+        "@sveltejs/kit": "^2.70.4",
+        "@types/node": "^25.9.9",
+        "svelte": "^5.57.3",
+        "svelte-check": "^4.7.8",
+        "typescript": "^6.0.3",
+        "vite": "^8.3.6",
+        "vitest": "^4.1.12",
+      },
+      "peerDependencies": {
+        "@sveltejs/kit": "^2.70.4",
+        "svelte": "^5.57.3",
+      },
+    },
     "packages/content": {
       "name": "@site/content",
       "version": "0.0.0",
@@ -64,6 +86,7 @@
         "@senseihq/emaki": "^0.8.0",
         "@senseihq/emaki-posting": "^0.8.0",
         "@senseihq/emaki-svelte": "^0.8.0",
+        "@site/articles": "workspace:*",
         "@site/content": "workspace:*",
         "@site/ui": "workspace:*",
         "@sveltejs/adapter-cloudflare": "^7.2.8",
@@ -101,6 +124,9 @@
       "version": "0.1.0",
       "dependencies": {
         "@rokkit/ui": "^1.15.2",
+        "@senseihq/emaki": "^0.8.0",
+        "@senseihq/emaki-svelte": "^0.8.0",
+        "@site/articles": "workspace:*",
         "@site/content": "workspace:*",
         "@site/ui": "workspace:*",
         "@sveltejs/adapter-cloudflare": "^7.2.8",
@@ -407,6 +433,8 @@
     "@shikijs/vscode-textmate": ["@shikijs/vscode-textmate@10.1.0", "", {}, "sha512-cVBuhDQjBZaNMTwBquYfPydrUP+E3hE6oYGasx8h6ZrODIM7/r+gxLDXdd66oszbrggZHEntdE6j+5gYIVyMWQ=="],
 
     "@sindresorhus/is": ["@sindresorhus/is@7.2.0", "", {}, "sha512-P1Cz1dWaFfR4IR+U13mqqiGsLFf1KbayybWwdd2vfctdV6hDpUkgCY0nKOLLTMSoRd/jJNjtbqzf13K8DCCXQw=="],
+
+    "@site/articles": ["@site/articles@workspace:packages/articles"],
 
     "@site/content": ["@site/content@workspace:packages/content"],
 

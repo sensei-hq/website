@@ -14,6 +14,7 @@
   const links = [
     ['#libraries', 'Libraries'],
     ['#principles', 'How we build'],
+    ['/articles', 'Articles'],
     [COMMERCIAL, 'Sensei HQ'],
   ] as const;
 </script>

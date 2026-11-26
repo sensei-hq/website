@@ -1,7 +1,7 @@
 <script lang="ts">
   import { base } from '$app/paths';
-  import type { ArticleCardData } from '$lib/articles-server.js';
-  import { sectionPath, cardHref } from '$lib/article-meta.js';
+  import type { ArticleCardData } from '@site/content/articles-server';
+  import { sectionPath, cardHref } from '@site/content/article-meta';
   let { a, preview = false }: { a: ArticleCardData; preview?: boolean } = $props();
   const fmt = (d: string) => new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 </script>
