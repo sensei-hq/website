@@ -1,0 +1,41 @@
+{
+	"name": "@site/articles",
+	"private": true,
+	"license": "UNLICENSED",
+	"version": "0.0.0",
+	"type": "module",
+	"description": "The articles section, shared by sensei-hq.com and sensei-hq.org: page components, server loads, feeds, SEO. Each site passes its own config and gets its own slice of the pool in @site/content.",
+	"exports": {
+		"./server": "./src/server.ts",
+		"./seo": "./src/seo.ts",
+		"./site": "./src/site.ts",
+		"./show": "./src/show.ts",
+		"./ArticlesIndex.svelte": { "svelte": "./src/ArticlesIndex.svelte", "default": "./src/ArticlesIndex.svelte" },
+		"./ArticlePage.svelte": { "svelte": "./src/ArticlePage.svelte", "default": "./src/ArticlePage.svelte" },
+		"./ListPage.svelte": { "svelte": "./src/ListPage.svelte", "default": "./src/ListPage.svelte" },
+		"./ShowPage.svelte": { "svelte": "./src/ShowPage.svelte", "default": "./src/ShowPage.svelte" },
+		"./ArticleCard.svelte": { "svelte": "./src/ArticleCard.svelte", "default": "./src/ArticleCard.svelte" }
+	},
+	"scripts": {
+		"check": "svelte-check --tsconfig ./tsconfig.json",
+		"test:unit": "vitest run"
+	},
+	"dependencies": {
+		"@senseihq/emaki": "^0.8.0",
+		"@senseihq/emaki-svelte": "^0.8.0",
+		"@site/content": "workspace:*"
+	},
+	"peerDependencies": {
+		"@sveltejs/kit": "^2.70.4",
+		"svelte": "^5.57.3"
+	},
+	"devDependencies": {
+		"@sveltejs/kit": "^2.70.4",
+		"@types/node": "^25.9.9",
+		"svelte": "^5.57.3",
+		"svelte-check": "^4.7.8",
+		"typescript": "^6.0.3",
+		"vite": "^8.3.6",
+		"vitest": "^4.1.12"
+	}
+}

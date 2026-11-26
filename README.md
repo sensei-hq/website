@@ -21,23 +21,27 @@ Sensei, Torii · Seiki and Katachi.
 
 ## Develop
 
+One repo, bun workspaces: `sites/com` is sensei-hq.com (the commercial site, the one deployed today),
+`packages/*` holds what the sites share. Root scripts fan out with `--filter`:
+
 ```bash
 bun install
-bun run dev          # http://localhost:5173
-bun run check        # svelte-check
-bun run test:unit    # vitest
-bun run test:e2e     # playwright — serves on its own port, 4180 (PORT to change)
-bun run build        # → build/
+bun run dev          # sites/com → http://localhost:5173
+bun run check        # svelte-check, every workspace
+bun run test:unit    # vitest, every workspace
+bun run test:e2e     # playwright per site — serves on its own port, 4180 (PORT to change)
+bun run build        # sites/com → sites/com/.svelte-kit/cloudflare
+bun run test:scripts # posting scripts (python)
 ```
 
 ## Content
 
-- **Products and libraries** are data: add an entry to `src/lib/hub-data.ts`, and its accent
-  hue to `rokkit.config.js` and `uno.config.js` (a test checks every id has one).
-- **A product page** keeps its copy in `src/lib/<product>-data.ts` beside its route.
-- **Articles** (`/articles`): `src/lib/content/articles/index.json` lists every article (slug, title, app, tags,
-  keywords, `publish_date`, social links, cover); its body (sections, takeaway) is `src/lib/content/articles/<slug>.json`.
-  If `src/lib/motion/films/<slug>/` exists, the article plays that film (the slideshow, then YouTube once `social.youtube`
+- **Products and libraries** are data: add an entry to `packages/content/src/hub-data.ts`, and its accent
+  hue to `sites/com/rokkit.config.js` and `sites/com/uno.config.js` (a test checks every id has one).
+- **A product page** keeps its copy in `sites/com/src/lib/<product>-data.ts` beside its route.
+- **Articles** (`/articles`): `packages/content/src/content/articles/index.json` lists every article (slug, title, app, tags,
+  keywords, `publish_date`, social links, cover); its body (sections, takeaway) is `packages/content/src/content/articles/<slug>.json`.
+  If `packages/content/src/motion/films/<slug>/` exists, the article plays that film (the slideshow, then YouTube once `social.youtube`
   is set), and each section whose id is a scene id shows that scene. An article is published at the first build on or
   after its `publish_date` in
   America/Chicago, and `.github/workflows/daily-publish.yml` rebuilds every morning (needs the
@@ -47,5 +51,7 @@ bun run build        # → build/
 
 ## Deploy
 
-Cloudflare builds the site from this repository's `main` branch: `bun run build`, output in
-`build/`, from the repository root.
+Cloudflare builds the site from this repository's `main` branch. Since the workspace split (website#4) the
+Pages project's **root directory must be `sites/com`** (build command `bun run build`, output
+`.svelte-kit/cloudflare`, build watch paths `sites/com/**`, `packages/**`, `bun.lock`). Change that setting in the
+dashboard *before* this layout reaches `main`, or the production build breaks.

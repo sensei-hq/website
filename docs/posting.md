@@ -45,15 +45,21 @@ The site now builds with `@sveltejs/adapter-cloudflare`: every public page is st
 
 ### 2. Database and media bucket
 
+Run these from `sites/com` (where `wrangler.jsonc` and `migrations/` live since website#4).
+
 ```sh
 bunx wrangler login
 bunx wrangler d1 create sensei-site                 # copy the database_id into wrangler.jsonc
 bunx wrangler d1 migrations apply sensei-site --remote   # 0001 posting, 0002 planning (run again after new migrations)
-bunx wrangler r2 bucket create sensei-media         # leave public access off
+bunx wrangler r2 bucket create sensei-posting --location enam   # private: leave public access off
 ```
 
 Commit `wrangler.jsonc`. Pages reads the `DB` and `MEDIA` bindings from it; if the dashboard shows none after the
-next deploy, add them under **Settings → Bindings** (D1 `DB` → `sensei-site`, R2 `MEDIA` → `sensei-media`).
+next deploy, add them under **Settings → Bindings** (D1 `DB` → `sensei-site`, R2 `MEDIA` → `sensei-posting`).
+
+`sensei-posting` is private staging for the social posts only. Public assets (article images, covers, film files) go
+in the separate public bucket `sensei-hq-media`, served at `media.sensei-hq.com` and `media.sensei-hq.org` (one
+bucket, both domains, so an article can change site without moving files). Both buckets are in ENAM (2026-11-26).
 
 ### 3. Cloudflare Access (Zero Trust)
 

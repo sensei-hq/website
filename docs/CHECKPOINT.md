@@ -1,35 +1,36 @@
-# Checkpoint: Phase A done; Sensei install PR waiting on CI
+# Checkpoint: articles split (.com / .org) + media buckets on feat/workspaces
 
 ## Slice
-.com / .org split + commercial transition — plan agreed (docs/plan/site-split.md).
+.com / .org split (#4) — plan docs/plan/site-split.md. Phase A is on develop.
 
-## Done
-- Discovery + plan, owner decisions D1–D4 recorded (§7). Repo private (D1).
-- Phase A, all on `develop`:
-  - #1 4abc01e — links → sensei-releases; crawl e2e
-    (tests/no-private-repo-links.spec.ts) guards sensei/torii/katachi/kata.
-  - #2 f657fb5 — src/lib/claims.ts `unverified(…)` + `shown(…)`; SSO/SCIM
-    kept in data, never rendered.
-  - #3 8aecfb9 — future apps under "Coming soon" (#coming-soon), out of the
-    nav, katachi off REPOS, /katachi has no source link.
-  - 994bb83 — proprietary LICENSE, package.json `UNLICENSED`.
-- Sensei PR #539: develop merged in, Windows remedy link fixed, token added.
+## Done (branch feat/workspaces)
+- B: sites/com + workspaces; @site/content; .com company home, /sensei + /torii
+  mini-sites, per-product pricing. C1: @site/ui; sites/org home.
+- C3 (27611c2): @site/articles — shared page components, server loads, feeds,
+  SEO, /show. .com = Sensei + concepts; .org = 24 library articles. Old .com
+  library URLs 301 → .org (verified in the built worker via wrangler pages dev).
+  Phone layouts via Uno sm:/md:/lg:; no overflow at 390px on either site.
+- Media (a594949): private `sensei-posting` (ENAM) bound as MEDIA (prod +
+  preview); APAC `sensei-media` deleted (was empty); public `sensei-hq-media`
+  (ENAM) on media.sensei-hq.com + media.sensei-hq.org, SSL active, serving.
+- check 0 errors (5 workspaces) · unit 63+20 · e2e com 114 (+2 fixme) · org 27.
+- Cloudflare: `website` builds build:com; `sensei-hq-org` builds build:org.
+  main FAILS TO BUILD until this branch merges (live site keeps last deploy).
+  Live posting desk's MEDIA points at the deleted bucket until next prod deploy.
 
 ## Remain
-1. Owner: merge #539 when test/senseid/windows go green; release; then
-   deploy the site (download links 404 until sensei-releases has a release).
-2. Phases B → C → D (#4); Phase E in library repos.
-3. Older: posting setup per docs/posting.md (Access, secrets).
+1. C2: /projects/<lib> pages — install/package names from each repo README.
+2. C4 cross-links. Covers → sensei-hq-media (later).
+3. Owner: merge feat/workspaces → develop → main; then attach sensei-hq.org.
+4. Sensei #539/#540 (owner); #541 live check after daemon install. #5 post.yml.
 
 ## Next command
-Phase B (plan §4): bun workspaces — move app to `sites/com`, extract
-`packages/ui` + `packages/content`; no behaviour change, full e2e green.
+C2: gh api repos/sensei-hq/<lib>/readme, then a failing e2e for /projects/<lib>.
 
 ## Open questions
-- D5–D7 in the plan (pricing per product, concepts placement, email provider).
-- Sensei CodeQL fails on every PR since the repo went private (needs GitHub
-  Advanced Security); qlty is out of minutes.
+- Same tier prices for Sensei and Torii?
 
 ## Known broken
-- Live site keeps the old links until develop deploys; brew install 404s
-  until the next Sensei release.
+- post.yml (#5). films/tools edits local-only (gitignored).
+- motion-parity measure-right-work: flaky once, passes on rerun.
+- Film title card: on phones the play button overlaps the title (pre-existing).

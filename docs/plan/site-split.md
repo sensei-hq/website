@@ -8,7 +8,7 @@ Status: agreed 2026-11-26 (decisions in §7). Sensei install fixes in flight: se
 |---|---|
 | Stack | SvelteKit 2 / Svelte 5, Rokkit + UnoCSS, bun, one package (`sensei-site` 0.22.1) |
 | Hosting | Cloudflare **Pages** (git-integrated, builds `main`), `adapter-cloudflare`; public pages prerendered, worker only for `/admin`, `/api/admin`, `/m/*` |
-| Bindings | D1 `sensei-site` (posting desk: approvals, posts, audit), R2 `sensei-media` |
+| Bindings | D1 `sensei-site` (posting desk: approvals, posts, audit), R2 `sensei-media` (APAC; replaced 2026-11-26 by private `sensei-posting` + public `sensei-hq-media` on media.sensei-hq.com/.org, both ENAM) |
 | Auth | Cloudflare Access in front of `/admin` (`hooks.server.ts` → `@senseihq/emaki-posting`). No customer accounts, orgs, pricing or forms anywhere |
 | CI | `ci.yml` (check, unit, build, e2e), `daily-publish.yml` (deploy hook — articles are date-gated), `post.yml` + `schedule-sync.yml` (talk to `https://sensei-hq.com/admin`) |
 | Routes | `/` hub · `/sensei{,/docs,/faq,/relay,/diagrams}` · `/torii-seiki` · `/katachi` · `/articles/**` (41: 15 sensei, 24 library, 2 concept) · `/show/[film]` · `/privacy` · `/terms` · `/sitemap.xml` · dev-only `/campaign/**` |
@@ -111,7 +111,7 @@ Why one content package for both sites: the posting desk, films and the daily da
 6. Analytics: Cloudflare Web Analytics, one site tag per project (cookieless; no consent banner needed). Outbound GitHub clicks / CTA events as `data-` attributes counted by the beacon where supported.
 
 ### Phase E — library repos (one small PR each, in their repos)
-Add `<lib>.sensei-hq.org` custom domain; update canonical/OG/`llms.txt`/`package.json homepage`/`Cargo.toml homepage`/README links to `.org`; keep `.com` host alive behind the 301 rule for at least 12 months. Licences untouched.
+~~Add `<lib>.sensei-hq.org` custom domain~~ — done by the owner 2026-11-26 (all five answer on .org; the website links them since b8d9954). Remaining: update canonical/OG/`llms.txt`/`package.json homepage`/`Cargo.toml homepage`/README links to `.org`; keep `.com` host alive behind the 301 rule for at least 12 months. Licences untouched.
 
 ### Phase F — entitlements, vouchers, complimentary access (brief §7–9) — **not in the website**
 The entitlement source of truth must be readable by the Sensei daemon/Dojo and by Torii/Seiki, server-side. The marketing site is the wrong home for it (static, separate DB, public-facing). What already exists:
