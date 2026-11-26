@@ -4,7 +4,6 @@
   import SiteNav from '$lib/components/SiteNav.svelte';
   import {
     KATACHI_URL,
-    KATACHI_REPO,
     KATACHI_NAV_LINKS,
     STEPS,
     MAKES,
@@ -192,11 +191,10 @@
       The preview is open by invitation.
     </h2>
     <p class="text-ink-mute m-0 text-lg" style="line-height:1.6;max-width:560px">
-      Bring an invite code, a photo and something you want to make. The code is open on GitHub.
+      Bring an invite code, a photo and something you want to make.
     </p>
     <div class="flex items-center flex-wrap gap-3">
       <Button href={KATACHI_URL} target="_blank" rel="noopener" variant="primary" size="lg">Try the preview</Button>
-      <a href={KATACHI_REPO} target="_blank" rel="noopener" class="text-ink-mute text-sm">sensei-hq/katachi on GitHub ↗</a>
     </div>
   </div>
 </section>

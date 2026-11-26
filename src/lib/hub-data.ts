@@ -35,8 +35,8 @@ export interface IncubatingProduct {
   category: string;
   tagline: string;
   blurb: string;
-  /** an experiment is Incubating; one you can already try is a Preview, with its own page */
-  status: 'Incubating' | 'Preview';
+  /** proprietary apps not yet shipped (website#3): Coming soon, or a Preview you can already try, with its own page */
+  status: 'Coming soon' | 'Preview';
   href?: string;
 }
 
@@ -136,6 +136,8 @@ export const PRINCIPLES: Principle[] = [
     text: 'No nags, no dark patterns, no telemetry you did not ask for. Our tools stay out of the way until you reach for them.' },
 ];
 
+// Future apps are proprietary for now and kept low-key: a "Coming soon"
+// section on the hub, no repo links, not in the nav (owner decision 2026-11-26).
 export const INCUBATING: IncubatingProduct[] = [
   { id: 'katachi', kanji: '形', name: 'Katachi', label: 'Katachi · shape',
     category: 'Web · Craft',
@@ -146,12 +148,12 @@ export const INCUBATING: IncubatingProduct[] = [
     category: 'Local-first · Library',
     tagline: 'Your whole library, in one nest.',
     blurb: 'Books, comics, manga and webtoons — collected, organized and read in one place. No accounts, no clouds, just your shelf.',
-    status: 'Incubating' },
+    status: 'Coming soon' },
   { id: 'kata', kanji: '型', name: 'Kata', label: 'Kata · form',
     category: 'Local-first · Fitness',
     tagline: 'Training that meets you where you are.',
     blurb: 'AI programs your workouts and adapts to your real progress. No cloud subscription, no rented streaks — your training stays yours.',
-    status: 'Incubating' },
+    status: 'Coming soon' },
 ];
 
 export const REPOS: Repo[] = [
@@ -160,13 +162,11 @@ export const REPOS: Repo[] = [
   { name: 'sensei-hq/rokkit', accentClass: 'bg-rokkit', lang: 'Svelte', note: 'Data-driven components', href: 'https://github.com/sensei-hq/rokkit' },
   { name: 'sensei-hq/kavach', accentClass: 'bg-kavach', lang: 'TypeScript', note: 'Auth for SvelteKit', href: 'https://github.com/sensei-hq/kavach' },
   { name: 'sensei-hq/emaki', accentClass: 'bg-emaki', lang: 'TypeScript', note: 'Motion stories from JSON scenes', href: 'https://github.com/sensei-hq/emaki' },
-  { name: 'sensei-hq/katachi', accentClass: 'bg-katachi', lang: 'Svelte', note: 'Snap → Make craft tool', href: 'https://github.com/sensei-hq/katachi' },
 ];
 
 export const NAV_LINKS = [
   ['#products', 'Products'],
   ['#libraries', 'Libraries'],
-  ['#incubation', 'Incubation'],
   ['#approach', 'Approach'],
   ['#open', 'Open source'],
   ['#contact', 'Contact'],

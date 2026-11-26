@@ -2,19 +2,19 @@
   import { INCUBATING } from '$lib/hub-data.js';
 </script>
 
-<section id="incubation" class="incubation-wrap mx-auto px-7 py-24">
+<section id="coming-soon" class="incubation-wrap mx-auto px-7 py-24">
   <div class="flex items-end justify-between flex-wrap gap-4 mb-7">
     <div>
       <div class="flex items-baseline gap-3 mb-3">
         <span class="kanji text-accent text-3xl" style="line-height:1">育</span>
-        <span class="mono text-ink-soft text-xs" style="letter-spacing:0.12em;text-transform:uppercase">Iku · to nurture — in incubation</span>
+        <span class="mono text-ink-soft text-xs" style="letter-spacing:0.12em;text-transform:uppercase">Iku · to nurture — in the workshop</span>
       </div>
       <h2 class="display text-ink m-0 text-3xl" style="font-weight:300;letter-spacing:-0.02em">
-        Still taking shape.
+        Coming soon.
       </h2>
     </div>
     <p class="text-ink-mute text-sm" style="line-height:1.6;max-width:380px">
-      Experiments we are nurturing in the workshop. Rougher edges, same
+      Apps we are building in the workshop. Rougher edges, same
       temperament — these may grow into the next tools we ship.
     </p>
   </div>
@@ -25,7 +25,7 @@
         this={p.href ? 'a' : 'div'}
         href={p.href}
         class="incubation-card border border-paper-edge rounded-lg no-underline text-{p.id}"
-        class:border-dashed={p.status === 'Incubating'}>
+        class:border-dashed={p.status === 'Coming soon'}>
         <div class="p-6 flex flex-col" style="flex:1">
           <div class="flex items-center justify-between">
             <span class="kanji text-{p.id} text-3xl" style="line-height:1">{p.kanji}</span>

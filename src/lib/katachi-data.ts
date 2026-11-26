@@ -1,10 +1,10 @@
-// ─── Katachi product page content — from github.com/sensei-hq/katachi (README, docs/prd) ───
+// ─── Katachi product page content — from the katachi repo (README, docs/prd) ───
+// Katachi is proprietary for now (website#3): no source link on the page.
 // A hobbyist's entry-level craft tool: snap a photo, say what you want, and get a
 // measured, cut-ready design. What it does today, and what is still to come, is
 // said as the product's own README says it — nothing here runs ahead of it.
 
 export const KATACHI_URL = 'https://katachi.sensei-hq.com';
-export const KATACHI_REPO = 'https://github.com/sensei-hq/katachi';
 
 export interface Step {
   kanji: string;
