@@ -19,8 +19,8 @@ test.describe('Sensei HQ hub at /', () => {
 
   test('product cards link internally (Sensei, Torii, Seiki)', async ({ page }) => {
     await expect(page.locator('a[href="/sensei"]').first()).toBeVisible();
-    await expect(page.locator('a[href="/torii-seiki"]').first()).toBeVisible();
-    await expect(page.locator('a[href="/torii-seiki#seiki"]').first()).toBeVisible();
+    await expect(page.locator('a[href="/torii"]').first()).toBeVisible();
+    await expect(page.locator('a[href="/torii#seiki"]').first()).toBeVisible();
   });
 
   test('library rows point at per-library subdomains in a new tab', async ({ page }) => {
@@ -38,13 +38,13 @@ test.describe('Sensei HQ hub at /', () => {
   });
 
   test('Sensei, Torii and Seiki are marked Preview (not Available)', async ({ page }) => {
-    for (const href of ['/sensei', '/torii-seiki', '/torii-seiki#seiki']) {
+    for (const href of ['/sensei', '/torii', '/torii#seiki']) {
       const card = page.locator(`#products a[href="${href}"]`).first();
       await expect(card).toContainText('Preview');
       await expect(card).not.toContainText('Available');
     }
     // Seiki is managed SaaS (2026-11-07); self-hosting comes later, if ever.
-    await expect(page.locator('#products a[href="/torii-seiki#seiki"]').first()).toContainText(
+    await expect(page.locator('#products a[href="/torii#seiki"]').first()).toContainText(
       'Fully managed'
     );
   });

@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Torii · Seiki product page at /torii-seiki', () => {
+test.describe('Torii · Seiki product page at /torii', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/torii-seiki');
+    await page.goto('/torii');
     await page.waitForLoadState('networkidle');
   });
 
@@ -41,4 +41,11 @@ test.describe('Torii · Seiki product page at /torii-seiki', () => {
     // website#2: design intent in sensei-hq/torii, flagged unverified in the data.
     await expect(page.locator('body')).not.toContainText(/SSO|SCIM/);
   });
+});
+
+test('the old /torii-seiki URL moves permanently to /torii', async ({ request }) => {
+  // Route map (plan §3): /torii-seiki → /torii, 301; the browser keeps #seiki.
+  const res = await request.get('/torii-seiki', { maxRedirects: 0 });
+  expect(res.status()).toBe(301);
+  expect(res.headers()['location']).toBe('/torii');
 });
