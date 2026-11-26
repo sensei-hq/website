@@ -59,20 +59,31 @@ describe('hub-data — portfolio model', () => {
 		expect(labels).toContain('Libraries');
 	});
 
-	// Katachi is what Burn-E became (laser-only → paper and wood, layered art, kits):
-	// it takes Burn-E's place among the things still taking shape, as a preview
-	// with its own page and repo rather than an experiment.
-	it('Katachi takes shape as a preview with its own page; Burn-E is gone', () => {
+	// Owner decision 2026-11-26 (website#3): future apps are proprietary and kept
+	// low-key — a "Coming soon" section, not a nav destination.
+	it('future apps are not a nav destination', () => {
+		expect(NAV_LINKS.map(([href]) => href)).not.toContain('#incubation');
+		expect(NAV_LINKS.map(([href]) => href)).not.toContain('#coming-soon');
+	});
+
+	// Katachi is what Burn-E became (laser-only → paper and wood, layered art, kits).
+	// It is a proprietary, invite-only preview with its own page — not an open
+	// source repo (website#3).
+	it('Katachi is a proprietary preview with its own page; Burn-E is gone', () => {
 		const k = INCUBATING.find((p) => p.id === 'katachi');
 		expect([k?.status, k?.href, k?.kanji]).toEqual(['Preview', '/katachi', '形']);
 		expect(INCUBATING.map((p) => p.id)).not.toContain('burne');
 		expect(PRODUCTS.map((p) => p.id)).not.toContain('katachi');
-		expect(REPOS.map((r) => r.name)).toContain('sensei-hq/katachi');
+		expect(REPOS.map((r) => r.name)).not.toContain('sensei-hq/katachi');
 	});
 
-	it('the rest of what is taking shape is still incubating, with no page yet', () => {
+	it('the other future apps are coming soon, with no page yet', () => {
 		for (const p of INCUBATING.filter((p) => p.id !== 'katachi'))
-			expect([p.status, p.href], p.id).toEqual(['Incubating', undefined]);
+			expect([p.status, p.href], p.id).toEqual(['Coming soon', undefined]);
+	});
+
+	it('only the five MIT libraries are listed as open source repos', () => {
+		expect(REPOS.map((r) => r.name)).toEqual(libraryList().map((l) => `sensei-hq/${l.id}`));
 	});
 
 	it('open-source repos all point at github.com/sensei-hq', () => {

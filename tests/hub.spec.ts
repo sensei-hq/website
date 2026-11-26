@@ -14,7 +14,7 @@ test.describe('Sensei HQ hub at /', () => {
     await expect(
       page.getByRole('heading', { name: 'What our products stand on.' })
     ).toBeVisible();
-    await expect(page.getByText('Still taking shape')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Coming soon.' })).toBeVisible();
   });
 
   test('product cards link internally (Sensei, Torii, Seiki)', async ({ page }) => {
@@ -56,16 +56,22 @@ test.describe('Sensei HQ hub at /', () => {
   });
 });
 
-test.describe('Still taking shape', () => {
-  test('Katachi sits among the incubating, marked Preview and linked to its page', async ({ page }) => {
+test.describe('Coming soon', () => {
+  // website#3: future apps are proprietary — a low-key "Coming soon" section,
+  // no GitHub links, no open-source wording.
+  test('Katachi sits among the coming-soon apps, marked Preview and linked to its page', async ({ page }) => {
     await page.goto('/');
-    const section = page.locator('#incubation');
+    const section = page.locator('#coming-soon');
+    await expect(section.getByRole('heading', { name: 'Coming soon.' })).toBeVisible();
     const katachi = section.locator('a[href="/katachi"]');
     await expect(katachi).toBeVisible();
     await expect(katachi).toContainText('Katachi');
     await expect(katachi).toContainText('Preview');
-    await expect(katachi).not.toContainText('Incubating');
-    await expect(section.getByText('Incubating')).toHaveCount(2);
+    await expect(section.getByText('Coming soon', { exact: true })).toHaveCount(2);
+    await expect(section).not.toContainText('Incubating');
+    await expect(section).not.toContainText(/open source/i);
+    await expect(section.locator('a[href*="github.com"]')).toHaveCount(0);
     await expect(page.locator('#products a[href="/katachi"]')).toHaveCount(0);
+    await expect(page.locator('a[href="https://github.com/sensei-hq/katachi"]')).toHaveCount(0);
   });
 });

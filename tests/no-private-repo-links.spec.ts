@@ -2,8 +2,9 @@ import { test, expect } from '@playwright/test';
 
 // sensei-hq/sensei and sensei-hq/torii are private: every link to them 404s
 // for visitors. Binaries and the public issue tracker live on
-// sensei-hq/sensei-releases (website#1, sensei-hq/sensei#538).
-const PRIVATE_REPO = /github\.com\/sensei-hq\/(sensei|torii)(?![\w.-])/;
+// sensei-hq/sensei-releases (website#1, sensei-hq/sensei#538). Future apps
+// (katachi, kata) are proprietary too (website#3).
+const PRIVATE_REPO = /github\.com\/sensei-hq\/(sensei|torii|katachi|kata)(?![\w.-])/;
 
 // Worker-served or auth-gated paths are not part of the public site.
 const SKIP = /^\/(admin|api|m)(\/|$)/;

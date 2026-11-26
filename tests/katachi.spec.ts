@@ -18,13 +18,17 @@ test.describe('Katachi product page at /katachi', () => {
     await expect(page.locator('#machines [data-status="Coming"]')).toHaveCount(2);
   });
 
-  test('opens the preview and the code in new tabs', async ({ page }) => {
-    for (const href of ['https://katachi.sensei-hq.com', 'https://github.com/sensei-hq/katachi']) {
-      const link = page.locator(`a[href="${href}"]`).first();
-      await expect(link, href).toBeVisible();
-      await expect(link).toHaveAttribute('target', '_blank');
-      await expect(link).toHaveAttribute('rel', /noopener/);
-    }
+  test('opens the preview in a new tab', async ({ page }) => {
+    const link = page.locator('a[href="https://katachi.sensei-hq.com"]').first();
+    await expect(link).toBeVisible();
+    await expect(link).toHaveAttribute('target', '_blank');
+    await expect(link).toHaveAttribute('rel', /noopener/);
+  });
+
+  test('presents Katachi as a proprietary preview — no source link', async ({ page }) => {
+    // website#3: future apps are proprietary for now.
+    await expect(page.locator('a[href*="github.com"]')).toHaveCount(0);
+    await expect(page.locator('body')).not.toContainText(/open on GitHub|open source/i);
   });
 
   test('carries the studio mark and the Katachi mark', async ({ page }) => {
