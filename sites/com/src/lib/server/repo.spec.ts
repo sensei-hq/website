@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { mkdirSync, mkdtempSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join, relative } from 'node:path';
+import { dirname, join, relative } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { repoRoot, filmsDir } from './repo.js';
 
 // The app moves to sites/com (website#4), so `process.cwd()` stops being the
@@ -30,7 +31,7 @@ describe('repoRoot — the website repo, wherever the app runs from', () => {
   });
 
   it('no server code builds a path from process.cwd() itself', () => {
-    const src = join(repoRoot(), 'src');
+    const src = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
     const offenders: string[] = [];
     const walk = (d: string) => {
       for (const f of readdirSync(d)) {

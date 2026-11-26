@@ -9,7 +9,7 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]   # the website repo
 FILMS = REPO / 'films'                       # film sources, takes, renders, campaign (gitignored)
-APP = REPO                                   # the SvelteKit app (bun run dev runs here)
+APP = REPO / 'sites' / 'com'                 # the sensei-hq.com SvelteKit app (bun run dev runs here)
 STATIC = APP / 'static'
 ARTICLES_INDEX = APP / 'src' / 'lib' / 'content' / 'articles' / 'index.json'
 MOTION_FILMS = APP / 'src' / 'lib' / 'motion' / 'films'

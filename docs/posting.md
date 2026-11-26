@@ -45,6 +45,8 @@ The site now builds with `@sveltejs/adapter-cloudflare`: every public page is st
 
 ### 2. Database and media bucket
 
+Run these from `sites/com` (where `wrangler.jsonc` and `migrations/` live since website#4).
+
 ```sh
 bunx wrangler login
 bunx wrangler d1 create sensei-site                 # copy the database_id into wrangler.jsonc

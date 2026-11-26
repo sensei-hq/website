@@ -6,8 +6,11 @@ node_modules
 .vercel
 .netlify
 .wrangler
-/.svelte-kit
+.svelte-kit
 /build
+sites/*/build
+/test-results
+sites/*/test-results
 
 # Vite temp files
 vite.config.js.timestamp-*
