@@ -13,7 +13,7 @@
 <PageShell title="Pricing" wide>
   <div class="section-tag mb-4">Pricing</div>
   <h1 class="display page-title text-2xl lg:text-3xl mb-5">Sensei pricing.</h1>
-  <p class="page-intro display mb-12">{pricing.summary}</p>
+  <p class="page-intro mb-12">{pricing.summary}</p>
   <PricingTable {pricing} accent="sensei" />
 </PageShell>
 
