@@ -14,8 +14,13 @@ import pixelmatch from 'pixelmatch';
 //   construction path, identical DOM/styles/layout/fonts) with real differences, and would
 //   never hold across platforms. pixelmatch at threshold 0.1 ignores sub-perceptual dust
 //   while any visible regression (wrong glyph, shifted layout, missing element) fails.
+// - Budget: on a loaded machine (the full suite, a CI runner) the hook scene's slowly zooming camera layer can be
+//   shot before Chrome re-rasterises it, leaving 9–25 differing pixels of edge noise in a ~2M-pixel frame (seen at
+//   "hook at 3.25s", never reproduced in isolation). A wrong or shifted glyph at these sizes changes hundreds of
+//   pixels, so a 100-pixel budget absorbs the noise and still fails every visible regression.
 const CONVERTED = ['measure-right-work'];
 const THRESHOLD = 0.1;
+const MAX_DIFF_PIXELS = 100;
 
 type ShowApi = { meta: { scenes: { id: string; start: number; dur: number }[] }; ready: Promise<unknown>; seek: (t: number) => Promise<void> };
 const api = (page: Page) => page.evaluate(() => (window as unknown as { __show: ShowApi }).__show.meta);
@@ -52,7 +57,7 @@ for (const slug of CONVERTED) {
       const fromJson = await shoot(browser, slug, o, 'json');
       expect(fromJson.samples.map((s) => s.t)).toEqual(fromJs.samples.map((s) => s.t));
       fromJson.shots.forEach((shot, i) => {
-        expect(diffPixels(shot, fromJs.shots[i]), `${fromJson.samples[i].id} at ${fromJson.samples[i].t.toFixed(2)}s`).toBe(0);
+        expect(diffPixels(shot, fromJs.shots[i]), `${fromJson.samples[i].id} at ${fromJson.samples[i].t.toFixed(2)}s`).toBeLessThanOrEqual(MAX_DIFF_PIXELS);
       });
     });
   }
