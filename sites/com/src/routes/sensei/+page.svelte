@@ -39,6 +39,7 @@
     ['#philosophy', 'Philosophy'],
     ['#privacy', 'Privacy'],
     ['#faq', 'FAQ'],
+    [`${base}/sensei/pricing`, 'Pricing'],
   ] as const;
 
   const steps = [
@@ -98,8 +99,9 @@
       a: 'Ollama powers on-device tasks like pattern detection, code similarity, semantic search embeddings, and prompt classification — keeping routine analysis off cloud APIs and reducing cost.' },
     { q: 'Can I export my data?',
       a: 'Yes. Settings → Export gives you a JSON dump of every pattern, memory, and adopted teaching. Import is also supported.' },
-    { q: 'What\'s the long-term plan?',
-      a: 'Sensei stays local-first and free. We may add an optional paid tier later for cross-machine sync, but the core promise — quiet, local, observant — never changes.' },
+    { q: 'What does it cost?',
+      a: 'The desktop app stays local-first and free. Team plans add the Dōjō, so lessons and rules are shared across your team.',
+      link: { href: `${base}/sensei/pricing`, label: 'See pricing →' } },
   ];
 
   const footerCols = [
@@ -107,6 +109,7 @@
       { label: 'Download', href: RELEASES_URL },
       { label: 'Relay', href: `${base}/sensei/relay` },
       { label: 'FAQ', href: `${base}/sensei/faq` },
+      { label: 'Pricing', href: `${base}/sensei/pricing` },
       { label: 'Docs', href: `${base}/sensei/docs` },
       { label: 'Changelog', href: `${RELEASES}/releases` },
     ]},
@@ -342,11 +345,11 @@
           { q: 'What platforms?', a: 'Claude Code, OpenCode, Zed, VS Code and Copilot, with transcript, MCP and skills support — more coming soon.' },
           { q: 'What\'s included?', a: '20 commands, 9 agents, skills, hooks, and MCP tools for code search, patterns, and call graph analysis.' },
           { q: 'Will it slow me down?', a: 'Rust daemon, event-driven. Ollama is optional and hardware-aware — it degrades gracefully.' },
-          { q: 'Is it free?', a: 'Free during preview. If we move to a paid tier, early adopters get a permanent discount.' },
-        ] as card}
+          { q: 'Is it free?', a: 'The desktop app is. Team plans add the Dōjō for your team.', link: { href: `${base}/sensei/pricing`, label: 'See pricing →' } },
+        ] as { q: string; a: string; link?: { href: string; label: string } }[] as card}
           <div class="faq-card p-6">
             <div class="display faq-card-q">{card.q}</div>
-            <div class="faq-card-a">{card.a}</div>
+            <div class="faq-card-a">{card.a}{#if card.link} <a href={card.link.href}>{card.link.label}</a>{/if}</div>
           </div>
         {/each}
       </div>

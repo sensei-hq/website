@@ -1,5 +1,6 @@
 <script lang="ts">
   import PageShell from '$lib/components/PageShell.svelte';
+  import { base } from '$app/paths';
 
   const faqs = [
     { q: 'Which AI assistants does sensei work with?',
@@ -29,7 +30,8 @@
     { q: 'Does sensei work across multiple projects?',
       a: 'Yes. Sensei supports solution grouping — logical products spanning multiple repos with shared profiles, cross-repo graph detection, and solution-scoped metrics.' },
     { q: 'What\'s the pricing model?',
-      a: 'Sensei is free during the preview period. We\'re experimenting and learning what\'s useful. If we move to a paid tier, early adopters and supporters will receive a permanent discount. The core promise — quiet, local, observant — never changes regardless of pricing.' },
+      a: 'The Sensei desktop app is free and stays local-first. Team, Growth, Business and Enterprise plans add the Dōjō for your team, and a paid 30-day pilot is available. AI provider costs are separate: you bring your own keys.',
+      link: { href: `${base}/sensei/pricing`, label: 'See pricing →' } },
   ];
 </script>
 
@@ -47,7 +49,7 @@
           <span>{it.q}</span>
           <span class="faq-toggle">+</span>
         </summary>
-        <div class="faq-answer mt-4">{it.a}</div>
+        <div class="faq-answer mt-4">{it.a}{#if it.link} <a href={it.link.href}>{it.link.label}</a>{/if}</div>
       </details>
     {/each}
   </div>
