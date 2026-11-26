@@ -17,7 +17,7 @@ test.describe('Torii · Seiki product page at /torii', () => {
 
   test('links back to the studio home and out to Gateway', async ({ page }) => {
     await expect(page.locator('a[href="/"]').first()).toBeVisible();
-    const gateway = page.locator('a[href="https://gateway.sensei-hq.com"]').first();
+    const gateway = page.locator('a[href="https://gateway.sensei-hq.org"]').first();
     await expect(gateway).toBeVisible();
     await expect(gateway).toHaveAttribute('target', '_blank');
     await expect(gateway).toHaveAttribute('rel', /noopener/);

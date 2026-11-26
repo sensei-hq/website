@@ -42,16 +42,25 @@ test.describe('Sensei HQ home at / — the company', () => {
 
   test('work with us: free app, pilot, plans, implementation, BYOK — from the pricing config', async ({ page }) => {
     const start = page.locator('#start');
-    for (const t of ['Free', '$500', '30 days', '$149', '$1,500–$4,000']) await expect(start).toContainText(t);
+    // The pitch and the price are separate: each card is a pitch with its price as a tag.
+    const steps = start.locator('[data-step]');
+    await expect(steps).toHaveCount(4);
+    const prices = ['Free', '$500 · 30 days', 'From $149 / month', '$1,500–$4,000 one-time'];
+    for (const [i, price] of prices.entries()) {
+      await expect(steps.nth(i).locator('[data-price]')).toHaveText(price);
+      await expect(steps.nth(i).locator('[data-pitch]')).not.toContainText('$');
+    }
     await expect(start).toContainText(/your own provider keys/i);
     await expect(start.locator('a[href="/sensei/pricing"]')).toBeVisible();
     await expect(start.locator('a[href="/torii/pricing"]')).toBeVisible();
   });
 
-  test('libraries are a compact open-source strip', async ({ page }) => {
-    await expect(page.locator('#products a[href*=".sensei-hq.com"]')).toHaveCount(0);
+  test('libraries are a compact open-source strip, linking their sensei-hq.org sites', async ({ page }) => {
+    // The libraries' docs sites now answer on sensei-hq.org (owner 2026-11-26); the
+    // .com hosts are to be dropped later, so nothing links them.
+    await expect(page.locator('a[href*=".sensei-hq.com"]')).toHaveCount(0);
     for (const host of ['gateway', 'dbd', 'rokkit', 'kavach', 'emaki']) {
-      const link = page.locator(`#open a[href="https://${host}.sensei-hq.com"]`).first();
+      const link = page.locator(`#open a[href="https://${host}.sensei-hq.org"]`).first();
       await expect(link).toBeVisible();
       await expect(link).toHaveAttribute('target', '_blank');
       await expect(link).toHaveAttribute('rel', /noopener/);
