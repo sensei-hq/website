@@ -82,6 +82,11 @@ test.describe('articles on sensei-hq.org', () => {
     expect(sitemap).toContain('https://sensei-hq.org/articles/product/dbd');
   });
 
+  test('the index points to the product articles on sensei-hq.com', async ({ page }) => {
+    await page.goto('/articles');
+    await expect(page.locator('[data-elsewhere] a[href="https://sensei-hq.com/articles"]')).toBeVisible();
+  });
+
   test('the home page links the articles', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('a[href="/articles"]').first()).toBeVisible();

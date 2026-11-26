@@ -1,36 +1,35 @@
-# Checkpoint: articles split (.com / .org) + media buckets on feat/workspaces
+# Checkpoint: both sites live; .org project pages in PR #8
 
 ## Slice
-.com / .org split (#4) — plan docs/plan/site-split.md. Phase A is on develop.
+.com / .org split (#4) — plan docs/plan/site-split.md.
 
-## Done (branch feat/workspaces)
-- B: sites/com + workspaces; @site/content; .com company home, /sensei + /torii
-  mini-sites, per-product pricing. C1: @site/ui; sites/org home.
-- C3 (27611c2): @site/articles — shared page components, server loads, feeds,
-  SEO, /show. .com = Sensei + concepts; .org = 24 library articles. Old .com
-  library URLs 301 → .org (verified in the built worker via wrangler pages dev).
-  Phone layouts via Uno sm:/md:/lg:; no overflow at 390px on either site.
-- Media (a594949): private `sensei-posting` (ENAM) bound as MEDIA (prod +
-  preview); APAC `sensei-media` deleted (was empty); public `sensei-hq-media`
-  (ENAM) on media.sensei-hq.com + media.sensei-hq.org, SSL active, serving.
-- check 0 errors (5 workspaces) · unit 63+20 · e2e com 114 (+2 fixme) · org 27.
-- Cloudflare: `website` builds build:com; `sensei-hq-org` builds build:org.
-  main FAILS TO BUILD until this branch merges (live site keeps last deploy).
-  Live posting desk's MEDIA points at the deleted bucket until next prod deploy.
+## Done
+- Live 2026-11-26 (#6 → develop, #7 → main, cfe1f39): sensei-hq.com company
+  home, /sensei + /torii mini-sites, pricing, shared @site/* packages, articles
+  split (library articles 301 → .org). Verified in production.
+- sensei-hq.org → Pages `sensei-hq-org` (Squarespace records replaced, owner
+  OK; old values in docs/dns-sensei-hq-org-squarespace.md). www 301 → apex
+  (zone redirect rule). Pages domain status "pending" until its cert flips.
+- Media: private `sensei-posting` (MEDIA), public `sensei-hq-media` on
+  media.sensei-hq.com/.org, both ENAM. Posting desk works again since deploy.
+- CI fixed: films/-dependent tests skip without films/; chromium installed for
+  the sites' pinned Playwright; @site/articles unit tests; parity ≤100 px.
+- GitHub profile links /torii + both pricing pages.
+- PR #8 (feat/org-projects): /projects/<lib> from READMEs, licence +
+  contribute links, cross-links. Local: check 0, unit green, e2e org 52/com 116.
 
 ## Remain
-1. C2: /projects/<lib> pages — install/package names from each repo README.
-2. C4 cross-links. Covers → sensei-hq-media (later).
-3. Owner: merge feat/workspaces → develop → main; then attach sensei-hq.org.
+1. Merge #8 (CI) → develop → main; then add project links to the org profile.
+2. Library repos (Phase E): homepage/README links → .org.
+3. Phase D items (request-access, analytics, deploy hooks for both sites).
 4. Sensei #539/#540 (owner); #541 live check after daemon install. #5 post.yml.
 
 ## Next command
-C2: gh api repos/sensei-hq/<lib>/readme, then a failing e2e for /projects/<lib>.
+gh pr checks 8 --watch, then gh pr merge 8 --merge.
 
 ## Open questions
 - Same tier prices for Sensei and Torii?
 
 ## Known broken
-- post.yml (#5). films/tools edits local-only (gitignored).
-- motion-parity measure-right-work: flaky once, passes on rerun.
+- post.yml (#5). films/tools edits local-only (gitignored). qlty out of minutes.
 - Film title card: on phones the play button overlaps the title (pre-existing).
