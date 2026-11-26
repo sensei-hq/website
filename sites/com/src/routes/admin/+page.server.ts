@@ -1,6 +1,6 @@
 import { fail } from '@sveltejs/kit';
 import { ARTICLES, PRODUCT_NAMES, today } from '$lib/articles-data';
-import { FILMS } from '$lib/motion/films';
+import { FILMS } from '@site/content/motion/films';
 import { deskFor } from '$lib/server/desk.js';
 
 // /admin (Jerry only): the plan (order, scripts, what is produced), the next piece with everything that will go out,

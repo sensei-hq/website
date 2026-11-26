@@ -2,7 +2,7 @@
   // One static cover still: the film's close scene, final frame, fitted to the thumb.
   // Mounts once and renders one frame (no loop), so a 28-card gallery stays cheap.
   import { onMount } from 'svelte';
-  import { film as getFilm, mountScene, type Mounted } from '$lib/motion/films.js';
+  import { film as getFilm, mountScene, type Mounted } from './films.js';
 
   let { slug }: { slug: string } = $props();
   let host: HTMLDivElement;

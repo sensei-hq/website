@@ -1,7 +1,7 @@
 name: daily-publish
 
 # The site is prerendered, so a scheduled article goes live at the first build on or after its date
-# (America/Chicago; see published() in src/lib/articles-data.ts). This rebuilds every morning.
+# (America/Chicago; see published() in packages/content/src/articles-data.ts). This rebuilds every morning.
 #
 # Setup, once: in Cloudflare, create a deploy hook for this site's production branch (Pages: Settings →
 # Builds & deployments → Deploy hooks), then add its URL as the repository secret CLOUDFLARE_DEPLOY_HOOK.

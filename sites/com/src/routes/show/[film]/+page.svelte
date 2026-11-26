@@ -4,7 +4,7 @@
   // Query: ?o=portrait|landscape  ?slide=N (1-based)  ?capture=1 (no chrome, stage at 1:1, window.__show)  ?src=json|js (force a scene source; default prefers JSON)  ?chrome=0 (hide the toolbar for recordings)
   import { onMount } from 'svelte';
   import { page } from '$app/state';
-  import { film as getFilm, timeline, filmScore, coverTime, SIZES, type Layout } from '$lib/motion/films.js';
+  import { film as getFilm, timeline, filmScore, coverTime, SIZES, type Layout } from '@site/content/motion/films';
   import { createShow, mountPlayerChrome, showKey, renderWav, type Show } from '@senseihq/emaki';
 
   // The film comes from the URL; +page.ts has already 404ed unknown ones.

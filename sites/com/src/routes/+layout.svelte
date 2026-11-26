@@ -4,7 +4,7 @@
   import { vibe } from '@rokkit/states';
   import { themable } from '@rokkit/actions';
   // Side effect: wires our film folders into emaki (every motion component needs setupMotion first).
-  import '$lib/motion/films.js';
+  import '@site/content/motion/films';
 
   // zen-sumi is our brand style, but the vibe store only allows rokkit/minimal/
   // material by default — register it, then make it the site default. themable's

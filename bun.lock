@@ -5,6 +5,25 @@
     "": {
       "name": "sensei-site",
     },
+    "packages/content": {
+      "name": "@site/content",
+      "version": "0.0.0",
+      "dependencies": {
+        "@rokkit/ui": "^1.15.2",
+        "@senseihq/emaki": "^0.8.0",
+      },
+      "devDependencies": {
+        "@types/node": "^25.9.9",
+        "svelte": "^5.57.3",
+        "svelte-check": "^4.7.8",
+        "typescript": "^6.0.3",
+        "vite": "^8.3.6",
+        "vitest": "^4.1.12",
+      },
+      "peerDependencies": {
+        "svelte": "^5.57.3",
+      },
+    },
     "sites/com": {
       "name": "site-com",
       "version": "0.22.1",
@@ -22,6 +41,7 @@
         "@senseihq/emaki": "^0.8.0",
         "@senseihq/emaki-posting": "^0.8.0",
         "@senseihq/emaki-svelte": "^0.8.0",
+        "@site/content": "workspace:*",
         "@sveltejs/adapter-cloudflare": "^7.2.8",
         "@sveltejs/adapter-static": "^3.0.11",
         "@unocss/extractor-svelte": "^66.12.0",
@@ -341,6 +361,8 @@
     "@shikijs/vscode-textmate": ["@shikijs/vscode-textmate@10.1.0", "", {}, "sha512-cVBuhDQjBZaNMTwBquYfPydrUP+E3hE6oYGasx8h6ZrODIM7/r+gxLDXdd66oszbrggZHEntdE6j+5gYIVyMWQ=="],
 
     "@sindresorhus/is": ["@sindresorhus/is@7.2.0", "", {}, "sha512-P1Cz1dWaFfR4IR+U13mqqiGsLFf1KbayybWwdd2vfctdV6hDpUkgCY0nKOLLTMSoRd/jJNjtbqzf13K8DCCXQw=="],
+
+    "@site/content": ["@site/content@workspace:packages/content"],
 
     "@speed-highlight/core": ["@speed-highlight/core@1.2.24", "", {}, "sha512-qeW2e1l78afw8VhRPfPQ1Gjj+KU5XFQ/OFV5ti6eTa9bruO7mJyZtA4vw0ofqmA3tKCkROE9xLk3VZoeRc98nw=="],
 

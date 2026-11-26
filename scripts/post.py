@@ -9,7 +9,7 @@ the admin API, checks every file's sha256 against what was approved, posts it, a
 /api/admin/posted (the timeline and audit log). Without --live (the default, and POST_MODE=dry-run in the workflow)
 it does everything except the posting itself and reports "dry-run".
 
-After a real post it writes the link into the article's `social` in src/lib/content/articles/index.json (the workflow
+After a real post it writes the link into the article's `social` in packages/content/src/content/articles/index.json (the workflow
 commits that, so the next build links and embeds the post).
 
 Environment (GitHub secrets; docs/posting.md, step 5):

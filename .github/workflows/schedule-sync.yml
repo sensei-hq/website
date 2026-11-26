@@ -1,6 +1,6 @@
 name: schedule-sync
 
-# Writes the posting order set in https://sensei-hq.com/admin ("Make next") into sites/com/src/lib/content/articles/index.json,
+# Writes the posting order set in https://sensei-hq.com/admin ("Make next") into packages/content/src/content/articles/index.json,
 # before the 05:07 daily rebuild; the commit itself rebuilds the site. Uses the poster's Access service token.
 
 on:
@@ -30,10 +30,10 @@ jobs:
         run: python3 scripts/sync_schedule.py
       - name: Commit
         run: |
-          if ! git diff --quiet sites/com/src/lib/content/articles/index.json; then
+          if ! git diff --quiet packages/content/src/content/articles/index.json; then
             git config user.name "sensei-hq posting"
             git config user.email "posting@sensei-hq.com"
-            git add sites/com/src/lib/content/articles/index.json
+            git add packages/content/src/content/articles/index.json
             git commit -m "Posting order from /admin ($(date -u +%F))"
             git push
           fi

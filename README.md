@@ -36,12 +36,12 @@ bun run test:scripts # posting scripts (python)
 
 ## Content
 
-- **Products and libraries** are data: add an entry to `sites/com/src/lib/hub-data.ts`, and its accent
+- **Products and libraries** are data: add an entry to `packages/content/src/hub-data.ts`, and its accent
   hue to `sites/com/rokkit.config.js` and `sites/com/uno.config.js` (a test checks every id has one).
 - **A product page** keeps its copy in `sites/com/src/lib/<product>-data.ts` beside its route.
-- **Articles** (`/articles`): `sites/com/src/lib/content/articles/index.json` lists every article (slug, title, app, tags,
-  keywords, `publish_date`, social links, cover); its body (sections, takeaway) is `src/lib/content/articles/<slug>.json`.
-  If `src/lib/motion/films/<slug>/` exists, the article plays that film (the slideshow, then YouTube once `social.youtube`
+- **Articles** (`/articles`): `packages/content/src/content/articles/index.json` lists every article (slug, title, app, tags,
+  keywords, `publish_date`, social links, cover); its body (sections, takeaway) is `packages/content/src/content/articles/<slug>.json`.
+  If `packages/content/src/motion/films/<slug>/` exists, the article plays that film (the slideshow, then YouTube once `social.youtube`
   is set), and each section whose id is a scene id shows that scene. An article is published at the first build on or
   after its `publish_date` in
   America/Chicago, and `.github/workflows/daily-publish.yml` rebuilds every morning (needs the

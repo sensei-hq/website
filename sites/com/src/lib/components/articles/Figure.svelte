@@ -1,5 +1,5 @@
 <script lang="ts">
-  // One article figure in its card: a scene from the section's motion film (src/lib/motion/films), or, for the
+  // One article figure in its card: a scene from the section's motion film (packages/content/src/motion/films), or, for the
   // scenes that are all words, an HTML figure; plus a caption.
   import type { FigureId } from '$lib/articles-data.js';
   import HtmlFigure from './HtmlFigure.svelte';

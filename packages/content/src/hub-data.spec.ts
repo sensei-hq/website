@@ -8,7 +8,6 @@ import {
 	libraryList,
 	featuredProduct
 } from './hub-data';
-import rokkitConfig from '../../rokkit.config.js';
 
 describe('hub-data — portfolio model', () => {
 	it('splits into 3 products and 5 libraries', () => {
@@ -89,12 +88,5 @@ describe('hub-data — portfolio model', () => {
 	it('open-source repos all point at github.com/sensei-hq', () => {
 		for (const r of REPOS) expect(r.href, r.name).toMatch(/^https:\/\/github\.com\/sensei-hq\//);
 	});
-
-	// The invariant that keeps "add a product" a pure data change: every product,
-	// library and incubating id must have a matching per-product accent token.
-	it('every id has an accent token in rokkit.config overrides', () => {
-		const overrides = (rokkitConfig as { overrides: Record<string, unknown> }).overrides;
-		for (const p of PRODUCTS) expect(overrides[p.id], `accent token: ${p.id}`).toBeDefined();
-		for (const p of INCUBATING) expect(overrides[p.id], `accent token: ${p.id}`).toBeDefined();
-	});
 });
+

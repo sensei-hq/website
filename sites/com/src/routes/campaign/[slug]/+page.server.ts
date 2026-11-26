@@ -2,7 +2,7 @@ import { error } from '@sveltejs/kit';
 import { dev } from '$app/environment';
 import { ARTICLES } from '$lib/articles-data';
 import { toCard } from '$lib/articles-server';
-import { SHORTS } from '$lib/motion/shorts.js';
+import { SHORTS } from '@site/content/motion/shorts';
 import { hasRender, takesStatus } from '$lib/server/campaign.js';
 
 // /campaign/<slug>: dev-only review of one campaign piece — the article exactly as it will

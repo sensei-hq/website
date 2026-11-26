@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { FILMS, film } from '$lib/motion/films.js';
+import { FILMS, film } from '@site/content/motion/films';
 
 // A client-only player: the static build writes one shell per film and the scenes mount in the browser.
 export const ssr = false;

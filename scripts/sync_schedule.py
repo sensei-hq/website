@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Write the posting order set in /admin ("Make next") into src/lib/content/articles/index.json.
+"""Write the posting order set in /admin ("Make next") into packages/content/src/content/articles/index.json.
 
     python3 scripts/sync_schedule.py
 

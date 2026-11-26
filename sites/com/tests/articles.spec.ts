@@ -6,20 +6,21 @@ import { fileURLToPath } from 'node:url';
 // Page-driven data: Playwright runs in plain node, where the app's import.meta.glob and JSON
 // imports do not resolve, so the published list is read off disk with the same rule
 // (publish_date <= today in America/Chicago).
-const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+// Articles and films live in the shared package (website#4).
+const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..', '..', 'packages', 'content', 'src');
 const readJson = (p: string): any => JSON.parse(readFileSync(join(root, p), 'utf8'));
 const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Chicago', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
 interface ArticleEntry { slug: string; title: string; publish_date: string; sections: { id: string; title: string; figure?: unknown; motion?: unknown }[] }
-const ARTICLES: ArticleEntry[] = (readJson('src/lib/content/articles/index.json') as ArticleEntry[])
+const ARTICLES: ArticleEntry[] = (readJson('content/articles/index.json') as ArticleEntry[])
   .filter((e) => e.publish_date <= today)
-  .map((e) => ({ ...e, sections: readJson(`src/lib/content/articles/${e.slug}.json`).sections }))
+  .map((e) => ({ ...e, sections: readJson(`content/articles/${e.slug}.json`).sections }))
   .sort((a, b) => b.publish_date.localeCompare(a.publish_date));
 
 /** Scene ids of the film that shares the slug (or the campaign Short at short-<slug>), if any. Mirrors articles-data load(). */
 const filmScenes = (slug: string): Set<string> => {
   for (const dir of [slug, `short-${slug}`]) {
     try {
-      return new Set((readJson(`src/lib/motion/films/${dir}/film.json`).scenes as { id: string }[]).map((s) => s.id));
+      return new Set((readJson(`motion/films/${dir}/film.json`).scenes as { id: string }[]).map((s) => s.id));
     } catch {
       continue;
     }

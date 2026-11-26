@@ -4,7 +4,6 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { FILMS, film, hasJsonScene, takeUrl, timeline } from './films.js';
 import { validateScene, type SceneSpec } from '@senseihq/emaki';
-import { repoRoot } from '../server/repo.js';
 
 // Scene sources on disk: JSON first, JS modules where a scene needs code.
 const sceneModules = import.meta.glob('./films/*/scene-*.js');
@@ -120,6 +119,9 @@ describe('motion films', () => {
 
   // films/ is gitignored, so this only runs where the film folders exist (local renders, never CI).
   const here = dirname(fileURLToPath(import.meta.url));
+  // The repo root: the nearest folder holding .git (dir, or a worktree's file).
+  const repoRoot = (dir: string): string =>
+    existsSync(join(dir, '.git')) || dirname(dir) === dir ? dir : repoRoot(dirname(dir));
   for (const f of FILMS) {
     const buildCopy = join(repoRoot(here), 'films', f.slug, 'film.json');
     it.runIf(existsSync(buildCopy))(`${f.slug} stays in sync with its films/film.json`, () => {

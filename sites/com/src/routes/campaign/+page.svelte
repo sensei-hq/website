@@ -1,9 +1,9 @@
 <script lang="ts">
   // Dev-only review gallery (see +page.ts): the 28 campaign shorts as article-like
   // cards with live close-scene covers. Click a card to review it one by one.
-  import { SHORTS } from '$lib/motion/shorts.js';
-  import { film as getFilm, timeline } from '$lib/motion/films.js';
-  import ShortCover from '$lib/motion/ShortCover.svelte';
+  import { SHORTS } from '@site/content/motion/shorts';
+  import { film as getFilm, timeline } from '@site/content/motion/films';
+  import ShortCover from '@site/content/motion/ShortCover.svelte';
 
   const fmt = (s: number) => `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, '0')}`;
   const rows = SHORTS.map((s) => ({ ...s, f: getFilm(`short-${s.slug}`)! })).filter((r) => r.f);

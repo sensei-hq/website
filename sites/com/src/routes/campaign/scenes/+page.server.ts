@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
 import { dev } from '$app/environment';
-import { film as getFilm, FILMS, hasJsonScene, type Layout } from '$lib/motion/films.js';
+import { film as getFilm, FILMS, hasJsonScene, type Layout } from '@site/content/motion/films';
 import type { SceneSource } from '@senseihq/emaki';
 
 // The scenes inspector: verify one scene of one film, in any layout, from either source.

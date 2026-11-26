@@ -20,7 +20,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: write   # to commit the post links into sites/com/src/lib/content/articles/index.json
+  contents: write   # to commit the post links into packages/content/src/content/articles/index.json
 
 jobs:
   post:
@@ -54,10 +54,10 @@ jobs:
       - name: Commit post links
         if: always() && vars.POST_MODE == 'live'
         run: |
-          if ! git diff --quiet sites/com/src/lib/content/articles/index.json; then
+          if ! git diff --quiet packages/content/src/content/articles/index.json; then
             git config user.name "sensei-hq posting"
             git config user.email "posting@sensei-hq.com"
-            git add sites/com/src/lib/content/articles/index.json
+            git add packages/content/src/content/articles/index.json
             git commit -m "Record post links ($(date -u +%F))"
             git push
           fi

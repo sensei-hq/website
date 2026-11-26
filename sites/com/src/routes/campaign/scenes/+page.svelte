@@ -6,7 +6,7 @@
   import { untrack } from 'svelte';
   import { ScenePlayer } from '@senseihq/emaki-svelte';
   import { ScenePlayerState, type SceneSource } from '@senseihq/emaki';
-  import type { Layout } from '$lib/motion/films.js';
+  import type { Layout } from '@site/content/motion/films';
 
   let { data } = $props();
   // Plain instance: ScenePlayer subscribes to it internally, so no $state wrapper is needed.
