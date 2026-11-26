@@ -2,6 +2,7 @@
 // gitignored films/ tree. No $app imports: unit-testable under node.
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
+import { filmsDir } from './repo.js';
 
 export interface TakeInfo {
   n: number;
@@ -10,7 +11,7 @@ export interface TakeInfo {
 }
 
 /** The campaign build folder for a short (film.json, takes/, out/). */
-export const shortDir = (slug: string) => join(process.cwd(), 'films', 'campaign', 'shorts', slug);
+export const shortDir = (slug: string) => filmsDir('campaign', 'shorts', slug);
 
 /** Recorded takes (take-NN.wav) and the beat count from the short's film.json. */
 export function takesStatus(slug: string): { beats: number; takes: TakeInfo[] } {
