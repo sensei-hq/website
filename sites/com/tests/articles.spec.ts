@@ -10,9 +10,10 @@ import { fileURLToPath } from 'node:url';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..', '..', 'packages', 'content', 'src');
 const readJson = (p: string): any => JSON.parse(readFileSync(join(root, p), 'utf8'));
 const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Chicago', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
-interface ArticleEntry { slug: string; title: string; publish_date: string; sections: { id: string; title: string; figure?: unknown; motion?: unknown }[] }
+interface ArticleEntry { slug: string; title: string; app: string; publish_date: string; sections: { id: string; title: string; figure?: unknown; motion?: unknown }[] }
 const ARTICLES: ArticleEntry[] = (readJson('content/articles/index.json') as ArticleEntry[])
-  .filter((e) => e.publish_date <= today)
+  // .com keeps Sensei and the concepts; the library articles live on sensei-hq.org (sites/org/tests/articles.spec.ts).
+  .filter((e) => e.publish_date <= today && ['sensei', 'practice'].includes(e.app))
   .map((e) => ({ ...e, sections: readJson(`content/articles/${e.slug}.json`).sections }))
   .sort((a, b) => b.publish_date.localeCompare(a.publish_date));
 
@@ -54,13 +55,6 @@ test.describe('Articles at /articles', () => {
     });
   }
 
-  test('film card links its standalone show', async ({ page }) => {
-    await page.goto('/articles/schema-as-code');
-    await page.waitForLoadState('networkidle');
-    await page.locator('.film').getByRole('button', { name: /^Play the film/ }).click();
-    await expect(page.locator('.film .emk-popout')).toHaveAttribute('href', '/show/short-schema-as-code');
-  });
-
   test('film shows its toolbar before the first play', async ({ page }) => {
     await page.goto('/articles/sensei-relay');
     await page.waitForLoadState('networkidle');
@@ -70,19 +64,6 @@ test.describe('Articles at /articles', () => {
     await expect(page.locator('.film .emk-voice')).toBeDisabled();
     // Without JS there is no player: the cover still shows.
     expect(await page.locator('.film noscript').innerHTML()).toContain('/covers/sensei-relay.jpg');
-  });
-
-  test('playing stage fills its box edge-to-edge', async ({ page }) => {
-    await page.goto('/articles/schema-as-code');
-    await page.waitForLoadState('networkidle');
-    await page.locator('.film').getByRole('button', { name: /^Play the film/ }).click();
-    await page.locator('.film .emk-bar').waitFor();
-    const slack = await page.evaluate(() => {
-      const fit = document.querySelector('.film .ms-fit')!.getBoundingClientRect();
-      const st = document.querySelector('.film .ms-stage')!.getBoundingClientRect();
-      return Math.max(Math.abs(fit.width - st.width), Math.abs(fit.height - st.height));
-    });
-    expect(slack).toBeLessThanOrEqual(2);
   });
 
   test('search filters the gallery', async ({ page }) => {

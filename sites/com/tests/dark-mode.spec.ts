@@ -18,7 +18,7 @@ test.describe('Dark mode switching', () => {
   });
 
   test('motion figures follow body data-mode', async ({ page }) => {
-    await page.goto('/articles/schema-as-code');
+    await page.goto('/articles/sensei-relay');
     await page.waitForSelector('figure .motion-scene');
     const stage = () =>
       page.evaluate(() => {
