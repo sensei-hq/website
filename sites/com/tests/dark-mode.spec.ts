@@ -62,6 +62,8 @@ test.describe('Dark mode switching', () => {
       null,
       { timeout: 5000 },
     );
+    // The scene module loads lazily; wait for its terminal card before reading its colour.
+    await page.waitForFunction(() => !!document.querySelector('.motion-player > div')?.shadowRoot?.querySelector('.hook-term'), null, { timeout: 10000 });
     const lum = await page.evaluate(() => {
       const el = document.querySelector('.motion-player > div')?.shadowRoot?.querySelector('.hook-term') as HTMLElement | null;
       const [r, g, b] = getComputedStyle(el!).backgroundColor.match(/[\d.]+/g)!.map(Number);
