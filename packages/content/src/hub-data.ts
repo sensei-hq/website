@@ -121,6 +121,8 @@ export const PRINCIPLES: Principle[] = [
     text: 'Local-first wherever it makes sense. Your data lives on your machine, in formats you can read, export and delete.' },
   { kanji: '静', label: 'Sei · stillness', title: 'Quiet by default',
     text: 'No nags, no dark patterns, no telemetry you did not ask for. Our tools stay out of the way until you reach for them.' },
+  { kanji: '実', label: 'Jitsu · the real thing', title: 'Only what is built',
+    text: 'We list what our products do today, and nothing that is still a plan. Your AI provider bills you directly: bring your own keys.' },
 ];
 
 export const REPOS: Repo[] = [

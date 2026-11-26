@@ -4,13 +4,14 @@
   import CoreProducts from '$lib/components/hub/CoreProducts.svelte';
   import Approach from '$lib/components/hub/Approach.svelte';
   import OpenSource from '$lib/components/hub/OpenSource.svelte';
+  import WorkWithUs from '$lib/components/hub/WorkWithUs.svelte';
   import Footer from '$lib/components/hub/Footer.svelte';
   import { Button } from '@rokkit/ui';
 </script>
 
 <svelte:head>
-  <title>Sensei HQ · Sensei and Torii — AI for engineering teams, under your control</title>
-  <meta name="description" content="Sensei helps your team learn from AI-assisted work and share what works. Torii gives everyone one governed gate to your organization's models. Free desktop app, paid 30-day pilot, plans per product." />
+  <title>Sensei HQ · Tools for engineering teams that work with AI</title>
+  <meta name="description" content="Sensei HQ is an independent studio building Sensei and Torii — tools that help engineering teams work well with AI and keep it under their control — and open-source libraries underneath them." />
 </svelte:head>
 
 <div class="sensei hub" style="min-height:100%;background:var(--paper);position:relative">
@@ -18,6 +19,7 @@
   <Hero />
   <CoreProducts />
   <Approach />
+  <WorkWithUs />
   <OpenSource />
 
   <!-- Contact section -->

@@ -11,15 +11,15 @@
           The master observes for a long time before teaching.
         </h2>
         <p class="text-ink-mute mt-4 text-sm" style="line-height:1.7;max-width:360px">
-          The kanji on each tool name a phase of practice — observe, build,
-          hasten, guard. They are what we ask of the people who use our
-          tools, and what we ask of ourselves while making them.
+          Sensei HQ is a small, independent studio. We build fewer things, and build
+          them to last: tools that earn a place in a team's day by staying quiet,
+          honest and under the team's control.
         </p>
       </div>
 
       <div class="flex flex-col gap-0">
         {#each PRINCIPLES as pr, i (pr.title)}
-          <div class="principle-row gap-5 py-5" class:border-t={i > 0} class:border-paper-edge={i > 0}>
+          <div data-principle class="principle-row gap-5 py-5" class:border-t={i > 0} class:border-paper-edge={i > 0}>
             <div style="width:56px">
               <span class="kanji text-accent text-3xl" style="line-height:1">{pr.kanji}</span>
             </div>
