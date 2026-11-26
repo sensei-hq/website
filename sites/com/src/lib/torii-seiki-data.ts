@@ -35,7 +35,7 @@ export interface DetailRow {
   detail: string;
 }
 
-export const GATEWAY_URL = 'https://gateway.sensei-hq.com';
+export const GATEWAY_URL = 'https://gateway.sensei-hq.org';
 
 export const CLIENTS: Client[] = [
   {

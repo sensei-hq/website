@@ -15,11 +15,11 @@
     {
       title: 'Libraries',
       items: [
-        { label: 'Gateway', href: 'https://gateway.sensei-hq.com', external: true },
-        { label: 'DBD', href: 'https://dbd.sensei-hq.com', external: true },
-        { label: 'Rokkit', href: 'https://rokkit.sensei-hq.com', external: true },
-        { label: 'Kavach', href: 'https://kavach.sensei-hq.com', external: true },
-        { label: 'emaki', href: 'https://emaki.sensei-hq.com', external: true },
+        { label: 'Gateway', href: 'https://gateway.sensei-hq.org', external: true },
+        { label: 'DBD', href: 'https://dbd.sensei-hq.org', external: true },
+        { label: 'Rokkit', href: 'https://rokkit.sensei-hq.org', external: true },
+        { label: 'Kavach', href: 'https://kavach.sensei-hq.org', external: true },
+        { label: 'emaki', href: 'https://emaki.sensei-hq.org', external: true },
       ],
     },
     {

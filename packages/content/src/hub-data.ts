@@ -78,7 +78,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Fallback chains and budgets, in one workspace.',
     blurb: 'Talk to around fifteen model providers, and local models, through one Rust interface. Order your fallbacks, cap the spend, and embed it in your own service rather than adding another hop.',
     meta: ['Rust crate', 'MIT licensed', 'Budget control'],
-    status: 'Open source', href: 'https://gateway.sensei-hq.com',
+    status: 'Open source', href: 'https://gateway.sensei-hq.org',
   },
   {
     id: 'dbd', kind: 'library', index: '02', kanji: '構', name: 'DBD', lang: 'Rust',
@@ -86,7 +86,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Schema design that lives in your terminal.',
     blurb: 'Keep your schema as plain SQL files. dbd orders, applies and migrates them on Postgres, Supabase and SQLite, catches drift in CI, and generates DBML docs — all from the command line.',
     meta: ['Rust CLI · SQL', 'MIT licensed', 'Postgres · Supabase · SQLite'],
-    status: 'Open source', href: 'https://dbd.sensei-hq.com',
+    status: 'Open source', href: 'https://dbd.sensei-hq.org',
   },
   {
     id: 'rokkit', kind: 'library', index: '03', kanji: '速', name: 'Rokkit', lang: 'Svelte',
@@ -94,7 +94,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Data-driven components for Svelte.',
     blurb: 'Bind a source and get a table, chart or form that just works. Headless where you need control, batteries-included where you do not.',
     meta: ['Svelte 5', 'MIT licensed', 'Open source'],
-    status: 'Open source', href: 'https://rokkit.sensei-hq.com',
+    status: 'Open source', href: 'https://rokkit.sensei-hq.org',
   },
   {
     id: 'kavach', kind: 'library', index: '04', kanji: '守', name: 'Kavach', lang: 'TypeScript',
@@ -102,7 +102,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Auth for Svelte, without the ceremony.',
     blurb: 'Sessions, providers and route guards in a few lines. Sane defaults, escape hatches everywhere, and no vendor lock-in.',
     meta: ['SvelteKit', 'OAuth · Magic links', 'MIT licensed'],
-    status: 'Open source', href: 'https://kavach.sensei-hq.com',
+    status: 'Open source', href: 'https://kavach.sensei-hq.org',
   },
   {
     id: 'emaki', kind: 'library', index: '05', kanji: '絵', name: 'emaki', lang: 'TypeScript',
@@ -110,7 +110,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Articles, players and narrated video from JSON scenes.',
     blurb: 'Write each story once as data and render it three ways — reader-friendly articles, a presentation-ready story player, and narrated videos — in every language you configure. Framework-agnostic core with Svelte, React and Vue wrappers, a CLI and a Claude plugin.',
     meta: ['TypeScript', 'MIT licensed', 'Svelte · React · Vue'],
-    status: 'Open source', href: 'https://emaki.sensei-hq.com',
+    status: 'Open source', href: 'https://emaki.sensei-hq.org',
   },
 ];
 

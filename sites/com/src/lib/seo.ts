@@ -17,11 +17,11 @@ export const CHANNELS = {
 /** Product homes, for "about this product" links on article pages. */
 export const PRODUCT_HOME: Record<string, string> = {
   sensei: '/sensei',
-  dbd: 'https://dbd.sensei-hq.com',
-  rokkit: 'https://rokkit.sensei-hq.com',
-  kavach: 'https://kavach.sensei-hq.com',
-  gateway: 'https://gateway.sensei-hq.com',
-  emaki: 'https://emaki.sensei-hq.com',
+  dbd: 'https://dbd.sensei-hq.org',
+  rokkit: 'https://rokkit.sensei-hq.org',
+  kavach: 'https://kavach.sensei-hq.org',
+  gateway: 'https://gateway.sensei-hq.org',
+  emaki: 'https://emaki.sensei-hq.org',
 };
 
 export const articleUrl = (a: Article) => `${SITE}/articles/${a.slug}`;

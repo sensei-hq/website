@@ -1,4 +1,4 @@
-// JSON Feed 1.1: lets the product sites (dbd., rokkit., kavach., gateway.sensei-hq.com) list their articles
+// JSON Feed 1.1: lets the product sites (dbd., rokkit., kavach., gateway.sensei-hq.org) list their articles
 // by fetching this and filtering on `_sensei.product`, while the canonical page stays on sensei-hq.com.
 import { live } from '$lib/articles-server.js';
 import { SITE, SITE_NAME, articleUrl } from '$lib/seo.js';

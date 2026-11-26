@@ -9,15 +9,20 @@
     ...[sensei, torii].flatMap((p) => p.tiers.map((t) => t.monthlyUsd ?? Infinity).filter((n) => n > 0))
   );
 
+  // Pitch and price kept apart: the card says what you get, the tag says what it costs.
   const steps = [
-    { kanji: '一', title: `${priceLabel(sensei.tiers[0])}: the Sensei desktop app`,
-      text: 'Local-first. Install it and see what your own AI-assisted work is teaching you.' },
-    { kanji: '二', title: `A ${usd(sensei.pilot.usd)} pilot, ${sensei.pilot.days} days`,
-      text: 'Set up with your team and your providers, an admin walkthrough, then a review of what we found.' },
-    { kanji: '三', title: `Plans from ${usd(from)} a month`,
-      text: 'Per product, for teams and organizations, up to Enterprise terms.' },
-    { kanji: '四', title: `Implementation, ${usd(sensei.implementation.fromUsd)}–${usd(sensei.implementation.toUsd)}`,
-      text: 'One-time, when you want help with deployment, configuration and onboarding.' },
+    { kanji: '一', pitch: 'Start with the Sensei desktop app',
+      text: 'Local-first. Install it and see what your own AI-assisted work is teaching you.',
+      price: priceLabel(sensei.tiers[0]) },
+    { kanji: '二', pitch: 'Run a pilot with your team',
+      text: 'Set up with your team and your providers, an admin walkthrough, then a review of what we found.',
+      price: `${usd(sensei.pilot.usd)} · ${sensei.pilot.days} days` },
+    { kanji: '三', pitch: 'Choose a plan per product',
+      text: 'For teams and organizations, up to Enterprise terms. Each product has its own pricing.',
+      price: `From ${usd(from)} / month` },
+    { kanji: '四', pitch: 'Get help rolling it out',
+      text: 'Deployment, configuration and onboarding, when you want a hand.',
+      price: `${usd(sensei.implementation.fromUsd)}–${usd(sensei.implementation.toUsd)} one-time` },
   ];
 </script>
 
@@ -37,9 +42,12 @@
 
   <ol class="steps grid gap-4 m-0 p-0" style="list-style:none">
     {#each steps as s (s.kanji)}
-      <li class="border border-paper-edge rounded-lg bg-paper-soft p-5">
-        <span class="kanji text-accent text-2xl block mb-3" style="line-height:1">{s.kanji}</span>
-        <span class="display text-ink block text-lg" style="line-height:1.3">{s.title}</span>
+      <li class="step border border-paper-edge rounded-lg bg-paper-soft p-5 flex flex-col" data-step>
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <span class="kanji text-accent text-2xl" style="line-height:1">{s.kanji}</span>
+          <span class="price mono rounded-sm px-2 py-0.5 text-xs" data-price>{s.price}</span>
+        </div>
+        <span class="display text-ink block text-lg" style="line-height:1.3" data-pitch>{s.pitch}</span>
         <span class="text-ink-mute text-sm block mt-2" style="line-height:1.55">{s.text}</span>
       </li>
     {/each}
@@ -54,5 +62,11 @@
   }
   .steps {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+  .price {
+    white-space: nowrap;
+    color: var(--ink);
+    border: 1px solid var(--paper-edge);
+    background: var(--paper);
   }
 </style>
