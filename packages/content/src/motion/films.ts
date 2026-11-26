@@ -14,6 +14,7 @@ import {
 } from '@senseihq/emaki';
 import { viteSource } from '@senseihq/emaki/loaders/vite';
 import type { VoiceLine } from '@senseihq/emaki';
+import { voiceUrl } from './voice.js';
 
 export type { Layout, Mounted, FilmMeta, SceneMeta };
 export { SIZES, timeline, warp, coverTime, filmScore } from '@senseihq/emaki';
@@ -27,12 +28,13 @@ const voiceText = import.meta.glob('./films/*/voice/*.json', { eager: true, impo
 
 const { filmSource } = viteSource({ films, scenes, timings, raw, logos, voiceText });
 
-// Dev-only narration: takes stream from the review API (which 404s in prod), so fitted films
-// speak in review while deployed films stay exactly as built.
-const devVoice = async (slug: string, locale: string, scene: string) =>
-  (import.meta.env.DEV ? takeUrl(slug, scene) : null) ?? ((await filmSource.voice?.(slug, locale, scene)) ?? null);
+// Narration: in dev, takes stream from the review API (films/, gitignored) so fresh takes can be checked; deployed,
+// the published takes come from the media bucket (voice.ts, written by scripts/sync_voice.py).
+const narration = async (slug: string, locale: string, scene: string) =>
+  (import.meta.env.DEV ? takeUrl(slug, scene) : typeof location === 'undefined' ? null : voiceUrl(slug, scene, location.hostname)) ??
+  ((await filmSource.voice?.(slug, locale, scene)) ?? null);
 
-setupMotion({ source: { ...filmSource, voice: devVoice }, site: { locales: ['en'], defaultLocale: 'en' }, logos });
+setupMotion({ source: { ...filmSource, voice: narration }, site: { locales: ['en'], defaultLocale: 'en' }, logos });
 
 // ── Sync index (articles-data and prerender entries need films without awaiting) ────────────
 

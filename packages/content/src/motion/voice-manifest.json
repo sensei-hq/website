@@ -1,0 +1,16 @@
+{
+  "ai-security-essentials": 9,
+  "sensei-relay": 6,
+  "short-catch-schema-drift-in-ci": 6,
+  "short-data-first-binding": 5,
+  "short-field-mapping": 5,
+  "short-file-path-is-the-entity-name": 6,
+  "short-forms-from-a-schema": 5,
+  "short-inside-rokkit-architecture": 5,
+  "short-migrations-from-snapshots": 5,
+  "short-one-schema-many-engines": 4,
+  "short-schema-as-code": 6,
+  "short-seed-data-as-code": 5,
+  "short-themes-with-data-attributes": 5,
+  "working-with-ai-without-overload": 6
+}
