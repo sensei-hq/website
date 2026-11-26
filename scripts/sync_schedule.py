@@ -9,7 +9,7 @@ commit rebuilds the site with the new dates. Uses the poster's Access service to
 import json, os, sys, urllib.request
 from pathlib import Path
 
-INDEX = Path(__file__).absolute().parents[1] / 'src/lib/content/articles/index.json'
+from site_paths import ARTICLES_INDEX as INDEX
 E = os.environ
 req = urllib.request.Request(E.get('ADMIN_ORIGIN', 'https://sensei-hq.com').rstrip('/') + '/api/admin/schedule',
                              headers={'CF-Access-Client-Id': E['POSTER_CLIENT_ID'], 'CF-Access-Client-Secret': E['POSTER_CLIENT_SECRET']})
