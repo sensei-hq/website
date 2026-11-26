@@ -75,7 +75,8 @@
             <p class="display text-ink mt-3 mb-0 text-lg" style="font-weight:400;line-height:1.3">{l.tagline}</p>
             <p class="text-ink-mute mt-2 mb-0 text-sm" style="line-height:1.6;flex:1">{l.blurb}</p>
             <div class="flex items-center flex-wrap gap-x-6 gap-y-2 mt-5 pt-4 border-t border-paper-edge">
-              <a href={l.href} target="_blank" rel="noopener" class="text-{l.id} text-sm font-medium no-underline">Docs ↗</a>
+              <a href="/projects/{l.id}" class="text-{l.id} text-sm font-medium no-underline">Get started →</a>
+              <a href={l.href} target="_blank" rel="noopener" class="text-ink-mute text-sm no-underline">Docs ↗</a>
               {#if l.repo}
                 <a href={l.repo} target="_blank" rel="noopener" class="text-ink-mute text-sm no-underline">Source ↗</a>
               {/if}

@@ -15,5 +15,6 @@ export const ARTICLES_SITE: ArticlesSite = {
   channels: { github: 'https://github.com/sensei-hq' },
   // Each library's docs site, from the shared registry.
   productHome: Object.fromEntries(libraryList().map((l) => [l.id, l.href])),
+  elsewhere: { text: 'Articles about Sensei, and on working with AI, live at', label: 'sensei-hq.com/articles', href: 'https://sensei-hq.com/articles' },
   redirectMoved: false,
 };

@@ -22,6 +22,8 @@ export interface ArticlesSite {
   channels: Record<string, string>;
   /** Each product's or library's home, for "visit" and "more about" links. */
   productHome: Record<string, string>;
+  /** A modest pointer to the other site's articles, shown on the index. */
+  elsewhere?: { text: string; label: string; href: string };
   /** Legacy URLs of articles that moved to the other site answer with a 301 there (sensei-hq.com only). */
   redirectMoved: boolean;
 }

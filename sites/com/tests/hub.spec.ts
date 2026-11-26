@@ -55,12 +55,14 @@ test.describe('Sensei HQ home at / — the company', () => {
     await expect(start.locator('a[href="/torii/pricing"]')).toBeVisible();
   });
 
-  test('libraries are a compact open-source strip, linking their sensei-hq.org sites', async ({ page }) => {
+  test('libraries link their sensei-hq.org docs sites, never the old .com hosts', async ({ page }) => {
     // The libraries' docs sites now answer on sensei-hq.org (owner 2026-11-26); the
-    // .com hosts are to be dropped later, so nothing links them.
+    // .com hosts are to be dropped later, so nothing links them. The open-source strip
+    // goes to each project page on sensei-hq.org (articles-split.spec); the footer
+    // links the docs.
     await expect(page.locator('a[href*=".sensei-hq.com"]')).toHaveCount(0);
     for (const host of ['gateway', 'dbd', 'rokkit', 'kavach', 'emaki']) {
-      const link = page.locator(`#open a[href="https://${host}.sensei-hq.org"]`).first();
+      const link = page.locator(`footer a[href="https://${host}.sensei-hq.org"]`).first();
       await expect(link).toBeVisible();
       await expect(link).toHaveAttribute('target', '_blank');
       await expect(link).toHaveAttribute('rel', /noopener/);
