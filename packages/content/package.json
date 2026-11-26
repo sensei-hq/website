@@ -13,6 +13,7 @@
 		"./claims": "./src/claims.ts",
 		"./motion/films": "./src/motion/films.ts",
 		"./motion/shorts": "./src/motion/shorts.ts",
+		"./motion/voice": "./src/motion/voice.ts",
 		"./motion/ShortCover.svelte": {
 			"svelte": "./src/motion/ShortCover.svelte",
 			"default": "./src/motion/ShortCover.svelte"
