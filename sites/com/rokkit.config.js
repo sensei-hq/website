@@ -23,9 +23,6 @@ export default {
     rokkit:  { light: 'oklch(0.495 0.120 162)', dark: 'oklch(0.730 0.110 162)' },
     kavach:  { light: 'oklch(0.485 0.170 305)', dark: 'oklch(0.700 0.150 305)' },
     emaki:   { light: 'oklch(0.495 0.130 190)', dark: 'oklch(0.720 0.120 190)' },
-    magpie:  { light: 'oklch(0.500 0.120 210)', dark: 'oklch(0.720 0.110 200)' },
-    kata:    { light: 'oklch(0.500 0.130 150)', dark: 'oklch(0.720 0.120 145)' },
-    katachi: { light: 'oklch(0.520 0.085 65)',  dark: 'oklch(0.780 0.070 70)'  },
   },
 
   themes: ['zen-sumi'],

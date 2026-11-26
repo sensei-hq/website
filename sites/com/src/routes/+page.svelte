@@ -2,7 +2,6 @@
   import Nav from '$lib/components/hub/Nav.svelte';
   import Hero from '$lib/components/hub/Hero.svelte';
   import CoreProducts from '$lib/components/hub/CoreProducts.svelte';
-  import Incubation from '$lib/components/hub/Incubation.svelte';
   import Approach from '$lib/components/hub/Approach.svelte';
   import OpenSource from '$lib/components/hub/OpenSource.svelte';
   import Footer from '$lib/components/hub/Footer.svelte';
@@ -19,7 +18,6 @@
   <Hero />
   <CoreProducts />
   <Approach />
-  <Incubation />
   <OpenSource />
 
   <!-- Contact section -->

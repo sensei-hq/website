@@ -27,19 +27,6 @@ export interface Product {
   highlights?: string[];
 }
 
-export interface IncubatingProduct {
-  id: string;
-  kanji: string;
-  name: string;
-  label: string;
-  category: string;
-  tagline: string;
-  blurb: string;
-  /** proprietary apps not yet shipped (website#3): Coming soon, or a Preview you can already try, with its own page */
-  status: 'Coming soon' | 'Preview';
-  href?: string;
-}
-
 export interface Principle {
   kanji: string;
   label: string;
@@ -134,26 +121,6 @@ export const PRINCIPLES: Principle[] = [
     text: 'Local-first wherever it makes sense. Your data lives on your machine, in formats you can read, export and delete.' },
   { kanji: '静', label: 'Sei · stillness', title: 'Quiet by default',
     text: 'No nags, no dark patterns, no telemetry you did not ask for. Our tools stay out of the way until you reach for them.' },
-];
-
-// Future apps are proprietary for now and kept low-key: a "Coming soon"
-// section on the hub, no repo links, not in the nav (owner decision 2026-11-26).
-export const INCUBATING: IncubatingProduct[] = [
-  { id: 'katachi', kanji: '形', name: 'Katachi', label: 'Katachi · shape',
-    category: 'Web · Craft',
-    tagline: 'From a photo to a cut.',
-    blurb: 'For hobbyists with a laser or a cutter and no time for a vector editor. Snap a sketch and the thing it must fit, say what you want, and get measured, cut-ready parts with a preview before any material is used.',
-    status: 'Preview', href: '/katachi' },
-  { id: 'magpie', kanji: '集', name: 'Magpie', label: 'Shū · to gather',
-    category: 'Local-first · Library',
-    tagline: 'Your whole library, in one nest.',
-    blurb: 'Books, comics, manga and webtoons — collected, organized and read in one place. No accounts, no clouds, just your shelf.',
-    status: 'Coming soon' },
-  { id: 'kata', kanji: '型', name: 'Kata', label: 'Kata · form',
-    category: 'Local-first · Fitness',
-    tagline: 'Training that meets you where you are.',
-    blurb: 'AI programs your workouts and adapts to your real progress. No cloud subscription, no rented streaks — your training stays yours.',
-    status: 'Coming soon' },
 ];
 
 export const REPOS: Repo[] = [

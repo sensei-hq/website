@@ -5,7 +5,7 @@ import { isProduct } from '$lib/article-meta.js';
 
 export const prerender = true;
 
-const STATIC = ['/', '/sensei', '/sensei/relay', '/sensei/docs', '/sensei/faq', '/sensei/diagrams', '/sensei/pricing', '/torii', '/torii/pricing', '/katachi', '/privacy', '/terms'];
+const STATIC = ['/', '/sensei', '/sensei/relay', '/sensei/docs', '/sensei/faq', '/sensei/diagrams', '/sensei/pricing', '/torii', '/torii/pricing', '/privacy', '/terms'];
 
 export const GET = () => {
   const list = live();
