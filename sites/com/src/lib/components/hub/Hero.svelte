@@ -6,7 +6,7 @@
   const meta = ['Independent studio', 'Est. 2024', 'Three products · five libraries'];
   const workshopCount = String(PRODUCTS.length).padStart(2, '0');
 
-  // Internal routes (/sensei, /torii-seiki) get the base prefix and open in place;
+  // Internal routes (/sensei, /torii) get the base prefix and open in place;
   // the library sites (absolute https URLs) open in a new tab.
   const isExternal = (p: typeof PRODUCTS[number]): boolean => p.href.startsWith('http');
   const productHref = (p: typeof PRODUCTS[number]): string =>

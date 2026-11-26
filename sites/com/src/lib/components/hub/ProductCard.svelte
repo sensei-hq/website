@@ -5,7 +5,7 @@
 
   let { p }: { p: Product } = $props();
 
-  // Internal routes are authored as `/sensei`, `/torii-seiki`; everything else
+  // Internal routes are authored as `/sensei`, `/torii`; everything else
   // (the library sites) is an absolute https URL opened in a new tab.
   const isExternal = $derived(p.href.startsWith('http'));
   const href = $derived(isExternal ? p.href : `${base}${p.href}`);

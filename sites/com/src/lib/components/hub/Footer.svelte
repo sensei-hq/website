@@ -6,8 +6,8 @@
       title: 'Products',
       items: [
         { label: 'Sensei', href: `${base}/sensei`, external: false },
-        { label: 'Torii', href: `${base}/torii-seiki`, external: false },
-        { label: 'Seiki', href: `${base}/torii-seiki#seiki`, external: false },
+        { label: 'Torii', href: `${base}/torii`, external: false },
+        { label: 'Seiki', href: `${base}/torii#seiki`, external: false },
       ],
     },
     {

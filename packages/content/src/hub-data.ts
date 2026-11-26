@@ -73,7 +73,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'The gate your team walks through.',
     blurb: 'One client for every model your organization has signed with. Ask, keep a library, try things in the playground — and always see whether the answer ran on your device or through the gate.',
     meta: ['macOS · Windows · Linux', 'Tauri', 'Works offline'],
-    status: 'Preview', href: '/torii-seiki',
+    status: 'Preview', href: '/torii',
   },
   {
     id: 'seiki', kind: 'product', index: '03', kanji: '社', name: 'Seiki',
@@ -82,7 +82,7 @@ export const PRODUCTS: Product[] = [
     blurb: 'Where the rules are kept: every request, every provider, routing and fallback chains, and budgets that cascade down your real org structure.',
     // SSO / SCIM: design intent in sensei-hq/torii (SCIM is a fast-follow).
     meta: ['Fully managed', unverified('SSO · SCIM'), 'Full audit trail'],
-    status: 'Preview', href: '/torii-seiki#seiki',
+    status: 'Preview', href: '/torii#seiki',
   },
   // ── Libraries — things you build on ─────────────────────────────────────
   {
