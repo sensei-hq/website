@@ -16,3 +16,4 @@ vite.config.ts.timestamp-*
 
 # Film masters, voiceover takes and renders (large; published on YouTube, not in git)
 /films
+__pycache__/

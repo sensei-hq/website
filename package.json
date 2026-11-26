@@ -13,6 +13,7 @@
 		"test:unit": "vitest run",
 		"test:e2e": "playwright test",
 		"test:tools": "cd films/tools && python3 -m unittest discover -s tests",
+		"test:scripts": "cd scripts && python3 -m unittest discover -s tests",
 		"publish:youtube": "films/.venv/bin/python films/tools/publish.py youtube",
 		"publish:instagram": "films/.venv/bin/python films/tools/publish.py instagram",
 		"icons:bundle": "rokkit-cli bundle -i icons -o src/lib/icons"
