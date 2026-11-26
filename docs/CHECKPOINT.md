@@ -1,4 +1,4 @@
-# Checkpoint: Phase B + home/pricing done on feat/workspaces — owner review
+# Checkpoint: company home + Sensei/Torii only, on feat/workspaces — owner review
 
 ## Slice
 .com / .org split (#4) — plan docs/plan/site-split.md. Phase A is on develop.
@@ -10,18 +10,23 @@
 - /torii (was /torii-seiki, which 301s via a worker route).
 - /sensei/pricing, /torii/pricing from @site/content/pricing (brief §6 tiers,
   pilot $500/30d, implementation $1,500–$4,000, BYOK; limits "contact us").
-- Home: value hero + How to start, two product cards, compact OSS strip.
-- check 0 errors · unit 61+18 · e2e 111 green. Filed #5 (post.yml broken).
+- Consumer apps removed from .com (1b65393): registry, /katachi, Coming soon,
+  theme tokens. They get their own sites once evaluable (owner 2026-11-26).
+- Home = the company (258dc57): who we are, products in brief, approach
+  (+ 'Only what is built'), Work with us (pricing config), OSS strip, contact.
+- check 0 errors · unit 60+18 · e2e 110 green. Filed #5 (post.yml broken).
 
 ## Remain
 1. Owner review at http://localhost:5180 (dev server running).
-2. Phase C: sites/org (+ packages/ui, extracted as .org needs it).
-3. B4 owner: Pages root dir → sites/com BEFORE feat/workspaces reaches main.
-4. Sensei #539/#540 merge + release (owner).
+2. Step 3: /sensei and /torii as product mini-sites — shared product nav
+   (Overview, Pricing, Docs, FAQ) + footer; movable to own domain later.
+3. Phase C: sites/org (+ packages/ui, extracted as .org needs it).
+4. B4 owner: Pages root dir → sites/com BEFORE feat/workspaces reaches main.
+5. Sensei #539/#540 merge + release (owner).
 
 ## Next command
-After review: `mkdir sites/org` — failing e2e for the .org home listing the
-five libraries.
+Step 3: failing e2e that every /sensei/** and /torii/** page shares its
+product nav (Overview, Pricing, Docs/FAQ) and links back to the company home.
 
 ## Open questions
 - Same tier prices for Sensei and Torii? (both carry the brief's numbers now)
