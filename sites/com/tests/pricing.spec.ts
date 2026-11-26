@@ -43,7 +43,8 @@ for (const { path, product, home } of PAGES) {
       await expect(page.locator('#byok')).toContainText(/separate/i);
       await expect(page.locator('body')).toContainText(/allowances.*contact us/i);
       // No limit the brief left undecided appears as a number.
-      await expect(page.locator('[data-tier]')).not.toContainText(/\b\d+\s*(seats?|users?|GB|days retention)\b/i);
+      const tierText = await page.locator('[data-tier]').allTextContents();
+      expect(tierText.filter((t) => /\b\d+\s*(seats?|users?|GB|days retention)\b/i.test(t))).toEqual([]);
     });
 
     test('leads back to the product and to a person', async ({ page }) => {
