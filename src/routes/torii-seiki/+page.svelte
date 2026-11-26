@@ -11,6 +11,9 @@
     GATEWAY_URL,
     TS_NAV_LINKS,
   } from '$lib/torii-seiki-data.js';
+  import { shown } from '$lib/claims.js';
+
+  const privacyRows = shown(PRIVACY_ROWS);
 </script>
 
 <svelte:head>
@@ -158,7 +161,7 @@
               {/each}
             </div>
             <div class="flex flex-wrap gap-2">
-              {#each c.meta as m (m)}
+              {#each shown(c.meta) as m (m)}
                 <span class="mono text-ink-soft border border-paper-edge rounded-sm text-xs px-2 py-0.5" style="white-space:nowrap">{m}</span>
               {/each}
             </div>
@@ -223,8 +226,8 @@
       <div class="border border-paper-edge rounded-lg bg-paper-soft p-7">
         <span class="mono text-ink-soft block mb-4 text-xs" style="letter-spacing:0.12em;text-transform:uppercase">Where your data goes</span>
         <div class="flex flex-col">
-          {#each PRIVACY_ROWS as row, i (row.term)}
-            <div class="ts-detail-row py-3 flex items-baseline justify-between gap-6" class:last={i === PRIVACY_ROWS.length - 1}>
+          {#each privacyRows as row, i (row.term)}
+            <div class="ts-detail-row py-3 flex items-baseline justify-between gap-6" class:last={i === privacyRows.length - 1}>
               <span class="text-ink text-sm">{row.term}</span>
               <span class="text-ink-soft text-sm" style="text-align:right;max-width:240px">{row.detail}</span>
             </div>

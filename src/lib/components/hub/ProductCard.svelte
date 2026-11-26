@@ -1,6 +1,7 @@
 <script lang="ts">
   import { base } from '$app/paths';
   import type { Product } from '$lib/hub-data.js';
+  import { shown } from '$lib/claims.js';
 
   let { p }: { p: Product } = $props();
 
@@ -46,7 +47,7 @@
       </div>
       <div class="flex items-center justify-between flex-wrap gap-4">
         <div class="flex flex-wrap gap-2">
-          {#each p.meta as m (m)}
+          {#each shown(p.meta) as m (m)}
             <span class="mono text-ink-soft border border-paper-edge rounded-sm text-xs px-2 py-1" style="white-space:nowrap">{m}</span>
           {/each}
         </div>
@@ -79,7 +80,7 @@
       <p class="text-ink-mute mt-2 text-sm" style="line-height:1.6">{p.blurb}</p>
       <div style="flex:1"></div>
       <div class="mt-5 mb-4 flex flex-wrap gap-2">
-        {#each p.meta as m (m)}
+        {#each shown(p.meta) as m (m)}
           <span class="mono text-ink-soft border border-paper-edge rounded-sm text-xs px-2 py-1" style="white-space:nowrap">{m}</span>
         {/each}
       </div>

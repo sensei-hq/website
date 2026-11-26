@@ -4,6 +4,8 @@
 // here (and its accent hue in rokkit.config.js + uno.config.js). `kind` splits
 // the two — products are things you open, libraries are things you build on.
 
+import { unverified, type Claimed } from './claims';
+
 export type ProductKind = 'product' | 'library';
 
 export interface Product {
@@ -15,7 +17,8 @@ export interface Product {
   category: string;
   tagline: string;
   blurb: string;
-  meta: string[];
+  /** render through `shown()` — unverified entries are design intent */
+  meta: Claimed<string>[];
   status: string;
   href: string;
   /** libraries carry the language they ship in (shown in the libraries table) */
@@ -77,7 +80,8 @@ export const PRODUCTS: Product[] = [
     category: 'Web · Governance plane',
     tagline: 'The sanctuary behind the gate.',
     blurb: 'Where the rules are kept: every request, every provider, routing and fallback chains, and budgets that cascade down your real org structure.',
-    meta: ['Fully managed', 'SSO · SCIM', 'Full audit trail'],
+    // SSO / SCIM: design intent in sensei-hq/torii (SCIM is a fast-follow).
+    meta: ['Fully managed', unverified('SSO · SCIM'), 'Full audit trail'],
     status: 'Preview', href: '/torii-seiki#seiki',
   },
   // ── Libraries — things you build on ─────────────────────────────────────
