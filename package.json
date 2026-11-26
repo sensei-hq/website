@@ -1,6 +1,7 @@
 {
 	"name": "sensei-site",
 	"private": true,
+	"license": "UNLICENSED",
 	"version": "0.22.1",
 	"type": "module",
 	"scripts": {
