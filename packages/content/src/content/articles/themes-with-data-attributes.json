@@ -1,0 +1,66 @@
+{
+  "sections": [
+    {
+      "id": "attrs",
+      "eyebrow": "The contract",
+      "title": "Components annotate, themes style",
+      "body": [
+        "Every element a component renders carries semantic attributes such as data-list-item and data-selected. Those attributes are the styling contract, and they read like documentation."
+      ],
+      "code": {
+        "lang": "css",
+        "text": "[data-list-item][data-selected='true'] {\n  background: var(--primary);\n  color: var(--on-primary);\n}"
+      },
+      "motion": {
+        "film": "short-themes-with-data-attributes",
+        "scene": "annotate"
+      },
+      "caption": "The element annotates itself with data-selected."
+    },
+    {
+      "id": "layers",
+      "eyebrow": "Three layers",
+      "title": "Style, skin and mode",
+      "body": [
+        "A style sets shape and spacing (rokkit, minimal, material, frosted, zen-sumi and more). A skin sets the colour values. A mode flips light and dark. They change independently."
+      ],
+      "motion": {
+        "film": "short-themes-with-data-attributes",
+        "scene": "restyle"
+      },
+      "caption": "Same list, three restyles: style, skin, mode."
+    },
+    {
+      "id": "tokens",
+      "eyebrow": "Named tokens",
+      "title": "Paper, ink, primary",
+      "body": [
+        "Instead of shade numbers, themes use a named vocabulary: paper, paper-soft, ink, ink-mute, primary, success and so on. Written once, a theme works in both modes."
+      ],
+      "points": [
+        "No CSS inside components",
+        "Swap a theme at runtime",
+        "Dark mode for free"
+      ],
+      "motion": {
+        "film": "short-themes-with-data-attributes",
+        "scene": "tokens"
+      },
+      "caption": "Named tokens lock the palette."
+    },
+    {
+      "id": "ai",
+      "eyebrow": "With AI",
+      "title": "Consistency by construction",
+      "body": [
+        "When an assistant writes UI with named tokens, it cannot invent a new grey. The design system stays a system."
+      ],
+      "motion": {
+        "film": "short-themes-with-data-attributes",
+        "scene": "hook"
+      },
+      "caption": "A bare component with no styles at all."
+    }
+  ],
+  "takeaway": "Themes, not overrides."
+}

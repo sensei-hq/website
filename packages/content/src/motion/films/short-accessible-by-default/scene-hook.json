@@ -1,0 +1,34 @@
+{
+  "components": [
+    { "type": "board", "id": "hook-bg" },
+    {
+      "type": "raw",
+      "id": "player",
+      "html": "<div class='card hook-player'><div class='hook-screen'><span class='hook-play'>▶</span></div><div class='hook-controls'><span class='hook-dot'></span><span class='hook-track'><span class='hook-fill'></span></span><span class='mono hook-ccoff'>CC off</span></div></div>"
+    },
+    { "type": "raw", "id": "addon", "html": "<div class='tag hot hook-addon'>a11y · add-on</div>" },
+    {
+      "type": "head",
+      "id": "hook-head",
+      "at": "ground",
+      "eyebrow": "emaki",
+      "line": "Access is usually an add-on.",
+      "sub": "Most motion players bolt it on last.",
+      "style": "left:110px;top:330px;width:720px"
+    }
+  ],
+  "tracks": [
+    { "kind": "effect", "effect": "push", "target": ".cam", "t0": 0, "dur": 6, "from": 1, "to": 1.03 },
+    { "kind": "effect", "effect": "showHead", "target": ".hook-head", "t0": -0.4 },
+    { "kind": "effect", "effect": "fade", "target": ".hook-player", "t0": 0.6 },
+    { "kind": "effect", "effect": "fade", "target": ".hook-controls > *", "count": 3, "t0": 1.2, "stagger": 0.3 },
+    { "kind": "effect", "effect": "pop", "target": ".hook-addon", "t0": 2.8 }
+  ],
+  "css": ".hook-player { left:940px; top:250px; width:800px; box-sizing:border-box; padding:28px } .hook-screen { height:280px; border-radius:12px; background:var(--shade); position:relative } .hook-play { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:96px; height:96px; border-radius:50%; background:var(--main); color:var(--ground); font-size:38px; line-height:96px; text-align:center } .hook-controls { display:flex; align-items:center; gap:20px; margin-top:24px } .hook-dot { width:28px; height:28px; border-radius:50%; background:var(--main); flex:none } .hook-track { flex:1; height:12px; border-radius:6px; background:var(--hair); position:relative } .hook-fill { position:absolute; left:0; top:0; bottom:0; width:30%; border-radius:6px; background:var(--mute) } .hook-ccoff { font-size:26px; color:var(--accent); white-space:nowrap } .hook-addon { left:1500px; top:680px }",
+  "portrait": {
+    "hoist": [".hook-head"],
+    "frame": [700, 920],
+    "crop": [880, 190, 920, 590],
+    "css": ".hook-head{left:70px!important;top:150px!important;width:940px!important}"
+  }
+}

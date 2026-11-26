@@ -1,0 +1,62 @@
+{
+  "sections": [
+    {
+      "id": "problem",
+      "eyebrow": "The problem",
+      "title": "The same form, rewritten",
+      "body": [
+        "Labels, bindings, validation, loading states, dirty tracking: every form repeats the same work, and every copy drifts a little."
+      ],
+      "motion": {
+        "film": "short-forms-from-a-schema",
+        "scene": "hook"
+      },
+      "caption": "A stack of identical hand-coded forms repeats itself."
+    },
+    {
+      "id": "idea",
+      "eyebrow": "The idea",
+      "title": "Data and schema in, form out",
+      "body": [
+        "FormRenderer takes your data and, optionally, a JSON-schema-like description. Types map to inputs (a string with format email becomes an email field), layout is a separate description, and lookups load options for selects."
+      ],
+      "points": [
+        "Schema derived from data when you have none",
+        "Layout separate from schema",
+        "Validation on blur, dirty state tracked"
+      ],
+      "motion": {
+        "film": "short-forms-from-a-schema",
+        "scene": "derive"
+      },
+      "caption": "A data object wires into a rendered form."
+    },
+    {
+      "id": "same",
+      "eyebrow": "One library",
+      "title": "Built from the same components",
+      "body": [
+        "Form inputs are built on the same Rokkit components as the rest of the UI, so they theme and behave the same way."
+      ],
+      "motion": {
+        "film": "short-forms-from-a-schema",
+        "scene": "fields"
+      },
+      "caption": "Types map to inputs; a lookup fills the select."
+    },
+    {
+      "id": "week",
+      "eyebrow": "The week",
+      "title": "The Rokkit idea",
+      "body": [
+        "Bind data as it is, map fields instead of reshaping, keep a strict architecture, and let themes do the styling. Next week: Kavach, authentication for SvelteKit."
+      ],
+      "motion": {
+        "film": "short-forms-from-a-schema",
+        "scene": "validation"
+      },
+      "caption": "Inline validation and dirty state on the finished form."
+    }
+  ],
+  "takeaway": "Forms that come from your data"
+}

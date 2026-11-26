@@ -1,0 +1,33 @@
+{
+  "components": [
+    { "type": "board", "id": "folder-bg" },
+    {
+      "type": "raw",
+      "id": "files",
+      "html": "<div class='card folder-file' style='top:250px'><b class='mono'>users.ddl</b><span>TABLE users</span></div><div class='card folder-file' style='top:430px'><b class='mono'>orders.ddl</b><span>TABLE orders</span></div><div class='card folder-file' style='top:610px'><b class='mono'>invoicing.ddl</b><span>PROCEDURE bill</span></div>"
+    },
+    { "type": "raw", "id": "tag", "html": "<div class='tag ok folder-tag'>reviewed like code</div>" },
+    {
+      "type": "head",
+      "id": "folder-head",
+      "at": "ground",
+      "eyebrow": "Schema as code",
+      "line": "Every table is a file you can review.",
+      "sub": "Tables, views, procedures — in the repo.",
+      "style": "left:110px;top:330px;width:720px"
+    }
+  ],
+  "tracks": [
+    { "kind": "effect", "effect": "push", "target": ".cam", "t0": 0, "dur": 7, "from": 1, "to": 1.03 },
+    { "kind": "effect", "effect": "showHead", "target": ".folder-head", "t0": -0.4 },
+    { "kind": "effect", "effect": "fade", "target": ".folder-file", "count": 3, "t0": 0.8, "stagger": 0.5 },
+    { "kind": "effect", "effect": "pop", "target": ".folder-tag", "t0": 3.2 }
+  ],
+  "css": ".folder-file { left:980px; width:760px; box-sizing:border-box; padding:22px 32px } .folder-file b { display:block; font-size:40px; font-weight:600 } .folder-file span { font-size:26px; letter-spacing:0.08em; color:var(--mute) } .folder-tag { left:1360px; top:800px }",
+  "portrait": {
+    "hoist": [".folder-head"],
+    "frame": [700, 920],
+    "crop": [920, 210, 880, 700],
+    "css": ".folder-head{left:70px!important;top:150px!important;width:940px!important}"
+  }
+}

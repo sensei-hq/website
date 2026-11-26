@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "Most auth bugs are a page someone forgot to protect."
+  },
+  {
+    "scene": "open-door",
+    "text": "Opt-in protection means new pages start public."
+  },
+  {
+    "scene": "flip-default",
+    "text": "Kavach flips it: everything is protected unless listed as public."
+  },
+  {
+    "scene": "fails-closed",
+    "text": "Forget something, and it fails closed."
+  },
+  {
+    "scene": "close",
+    "text": "Kavach. Protected by default."
+  }
+]

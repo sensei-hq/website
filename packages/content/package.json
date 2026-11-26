@@ -1,0 +1,42 @@
+{
+	"name": "@site/content",
+	"private": true,
+	"license": "UNLICENSED",
+	"version": "0.0.0",
+	"type": "module",
+	"description": "Shared content for sensei-hq.com and sensei-hq.org: articles, films, the product + library registry, feature claims.",
+	"exports": {
+		"./articles-data": "./src/articles-data.ts",
+		"./article-meta": "./src/article-meta.ts",
+		"./articles-server": "./src/articles-server.ts",
+		"./hub-data": "./src/hub-data.ts",
+		"./claims": "./src/claims.ts",
+		"./motion/films": "./src/motion/films.ts",
+		"./motion/shorts": "./src/motion/shorts.ts",
+		"./motion/ShortCover.svelte": {
+			"svelte": "./src/motion/ShortCover.svelte",
+			"default": "./src/motion/ShortCover.svelte"
+		},
+		"./content/*": "./src/content/*",
+		"./pricing": "./src/pricing.ts"
+	},
+	"scripts": {
+		"check": "svelte-check --tsconfig ./tsconfig.json",
+		"test:unit": "vitest run"
+	},
+	"dependencies": {
+		"@rokkit/ui": "^1.15.2",
+		"@senseihq/emaki": "^0.8.0"
+	},
+	"peerDependencies": {
+		"svelte": "^5.57.3"
+	},
+	"devDependencies": {
+		"@types/node": "^25.9.9",
+		"svelte": "^5.57.3",
+		"svelte-check": "^4.7.8",
+		"typescript": "^6.0.3",
+		"vite": "^8.3.6",
+		"vitest": "^4.1.12"
+	}
+}

@@ -1,0 +1,53 @@
+{
+  "sections": [
+    {
+      "id": "problem",
+      "eyebrow": "The problem",
+      "title": "The ALTER you forgot",
+      "body": [
+        "Change a table file, then remember to write the matching ALTER, in the right order, without missing a default or a constraint. Every step is a chance to get it slightly wrong."
+      ],
+      "motion": {
+        "film": "short-migrations-from-snapshots",
+        "scene": "checklist"
+      },
+      "caption": "Every forgotten ALTER detail piles onto the checklist."
+    },
+    {
+      "id": "flow",
+      "eyebrow": "The workflow",
+      "title": "Design, release, snapshot",
+      "body": [
+        "Before release, dbd reconcile applies the design to a development database in place. dbd release writes a baseline snapshot and locks in the snapshot-and-migration workflow. From then on, dbd snapshot captures the schema and generates the migration SQL from the difference."
+      ],
+      "code": {
+        "lang": "sh",
+        "text": "dbd release            # baseline, then snapshots only\n# …edit ddl files…\ndbd snapshot           # capture + generate migration SQL\ndbd migrate --status   # where each database stands"
+      },
+      "motion": {
+        "film": "short-migrations-from-snapshots",
+        "scene": "snapshots"
+      },
+      "caption": "Two snapshots generate the migration SQL between them."
+    },
+    {
+      "id": "why",
+      "eyebrow": "Why it helps",
+      "title": "The diff is the migration",
+      "body": [
+        "You review one thing, the change to the design, and the migration follows from it."
+      ],
+      "points": [
+        "No hand-ordered ALTER scripts",
+        "Versioned snapshots in the repo",
+        "Status per environment"
+      ],
+      "motion": {
+        "film": "short-migrations-from-snapshots",
+        "scene": "status"
+      },
+      "caption": "One status table shows where each database stands."
+    }
+  ],
+  "takeaway": "You review the design change. The migration follows."
+}

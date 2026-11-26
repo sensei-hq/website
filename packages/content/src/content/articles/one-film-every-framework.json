@@ -1,0 +1,44 @@
+{
+  "sections": [
+    {
+      "body": [
+        "When the film belongs to the framework, every new stack means rewriting the story — same idea, new code each time."
+      ],
+      "caption": "Three frameworks, three separate films.",
+      "eyebrow": "The problem",
+      "id": "locked-in",
+      "motion": {
+        "film": "short-one-film-every-framework",
+        "scene": "hook"
+      },
+      "title": "Your framework picks your film"
+    },
+    {
+      "body": [
+        "emaki's core is framework-free: JSON scenes go in and motion comes out, with no framework in the middle."
+      ],
+      "caption": "JSON scenes in, motion out, nothing in between.",
+      "eyebrow": "The idea",
+      "id": "framework-free-core",
+      "motion": {
+        "film": "short-one-film-every-framework",
+        "scene": "framework-free-core"
+      },
+      "title": "A core with no framework in it"
+    },
+    {
+      "body": [
+        "Svelte, React and Vue wrappers speak the same film, and web components carry it everywhere else — same film, same chrome."
+      ],
+      "caption": "Three wrappers, one shared film.",
+      "eyebrow": "The payoff",
+      "id": "everywhere",
+      "motion": {
+        "film": "short-one-film-every-framework",
+        "scene": "three-wrappers"
+      },
+      "title": "One film, every framework"
+    }
+  ],
+  "takeaway": "Write the story once, play it anywhere."
+}

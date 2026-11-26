@@ -1,0 +1,86 @@
+import { describe, it, expect } from 'vitest';
+import {
+	PRODUCTS,
+	NAV_LINKS,
+	REPOS,
+	productList,
+	libraryList,
+	featuredProduct
+} from './hub-data';
+
+describe('hub-data — portfolio model', () => {
+	it('splits into 3 products and 5 libraries', () => {
+		expect(productList().map((p) => p.id)).toEqual(['sensei', 'torii', 'seiki']);
+		expect(libraryList().map((p) => p.id)).toEqual(['gateway', 'dbd', 'rokkit', 'kavach', 'emaki']);
+	});
+
+	it('every entry has kind product or library', () => {
+		for (const p of PRODUCTS) expect(['product', 'library']).toContain(p.kind);
+	});
+
+	it('exactly one featured product, and it is Sensei', () => {
+		expect(PRODUCTS.filter((p) => p.featured)).toHaveLength(1);
+		const f = featuredProduct();
+		expect(f?.id).toBe('sensei');
+		expect(f?.kind).toBe('product');
+		expect(f?.highlights?.length ?? 0).toBeGreaterThan(0);
+	});
+
+	it('libraries all declare a language; products do not need one', () => {
+		for (const p of libraryList()) expect(p.lang, p.id).toBeTruthy();
+	});
+
+	it('ids are unique and the index restarts per kind', () => {
+		const ids = PRODUCTS.map((p) => p.id);
+		expect(new Set(ids).size).toBe(ids.length);
+		expect(productList().map((p) => p.index)).toEqual(['01', '02', '03']);
+		expect(libraryList().map((p) => p.index)).toEqual(['01', '02', '03', '04', '05']);
+	});
+
+	it('every entry has the required non-empty copy', () => {
+		const required = ['kanji', 'name', 'category', 'tagline', 'blurb', 'status', 'href'] as const;
+		for (const p of PRODUCTS) {
+			for (const k of required) expect(p[k], `${p.id}.${k}`).toBeTruthy();
+			expect(p.meta.length, `${p.id}.meta`).toBeGreaterThan(0);
+		}
+	});
+
+	it('hrefs are internal (/) or external (https://)', () => {
+		for (const p of PRODUCTS) {
+			expect(/^(\/|https:\/\/)/.test(p.href), `${p.id} href=${p.href}`).toBe(true);
+		}
+	});
+
+	it('nav links include Products and Libraries', () => {
+		const labels = NAV_LINKS.map(([, label]) => label);
+		expect(labels).toContain('Products');
+		expect(labels).toContain('Libraries');
+	});
+
+	// Owner decision 2026-11-26 (website#3): future apps are proprietary and kept
+	// low-key — a "Coming soon" section, not a nav destination.
+	it('future apps are not a nav destination', () => {
+		expect(NAV_LINKS.map(([href]) => href)).not.toContain('#incubation');
+		expect(NAV_LINKS.map(([href]) => href)).not.toContain('#coming-soon');
+	});
+
+	// Owner decision 2026-11-26: sensei-hq.com lists only Sensei and Torii. Consumer
+	// apps (Katachi, Magpie, Kata) get their own sites once there is enough to
+	// evaluate — they are not in the shared registry at all.
+	it('the registry holds no consumer apps', async () => {
+		const mod = await import('./hub-data');
+		expect(Object.keys(mod)).not.toContain('INCUBATING');
+		const ids = PRODUCTS.map((p) => p.id);
+		for (const app of ['katachi', 'magpie', 'kata']) expect(ids).not.toContain(app);
+		expect(REPOS.map((r) => r.name)).not.toContain('sensei-hq/katachi');
+	});
+
+	it('only the five MIT libraries are listed as open source repos', () => {
+		expect(REPOS.map((r) => r.name)).toEqual(libraryList().map((l) => `sensei-hq/${l.id}`));
+	});
+
+	it('open-source repos all point at github.com/sensei-hq', () => {
+		for (const r of REPOS) expect(r.href, r.name).toMatch(/^https:\/\/github\.com\/sensei-hq\//);
+	});
+});
+

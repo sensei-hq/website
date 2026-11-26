@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "Most motion players treat access as an add-on."
+  },
+  {
+    "scene": "captions",
+    "text": "emaki ships captions from the voice script."
+  },
+  {
+    "scene": "keyboard",
+    "text": "Full keyboard controls: play, seek, scenes, captions."
+  },
+  {
+    "scene": "chrome",
+    "text": "One consistent chrome, so every film works the same."
+  },
+  {
+    "scene": "close",
+    "text": "emaki. Accessible by default."
+  }
+]

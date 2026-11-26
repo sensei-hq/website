@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "Your style guide is a suggestion. Rules are different."
+  },
+  {
+    "scene": "four-tiers",
+    "text": "Sensei ranks rules: mandatory, required, recommended, advisory."
+  },
+  {
+    "scene": "locked",
+    "text": "Mandatory rules are locked: narrower scopes can refine, never weaken."
+  },
+  {
+    "scene": "scope-ladder",
+    "text": "Organization to repository: the most specific scope wins."
+  },
+  {
+    "scene": "close",
+    "text": "And they’re loaded into the assistant every session."
+  }
+]

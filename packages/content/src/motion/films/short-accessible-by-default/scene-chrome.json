@@ -1,0 +1,36 @@
+{
+  "components": [
+    { "type": "board", "id": "chrome-bg" },
+    {
+      "type": "raw",
+      "id": "bar",
+      "html": "<div class='card chrome-bar'><span class='chrome-play'>▶</span><span class='chrome-track'><span class='chrome-fill'></span></span><span class='chrome-dots'><i></i><i></i><i></i></span><span class='chrome-cc'>CC</span></div>"
+    },
+    { "type": "raw", "id": "mini-a", "html": "<div class='card chrome-mini' style='left:940px'><div class='chrome-screen'></div><div class='chrome-strip'><i></i><span></span></div></div>" },
+    { "type": "raw", "id": "mini-b", "html": "<div class='card chrome-mini' style='left:1220px'><div class='chrome-screen'></div><div class='chrome-strip'><i></i><span></span></div></div>" },
+    { "type": "raw", "id": "mini-c", "html": "<div class='card chrome-mini' style='left:1500px'><div class='chrome-screen'></div><div class='chrome-strip'><i></i><span></span></div></div>" },
+    {
+      "type": "head",
+      "id": "chrome-head",
+      "at": "ground",
+      "eyebrow": "One chrome",
+      "line": "One chrome on every film.",
+      "sub": "Every film works the same way.",
+      "style": "left:110px;top:330px;width:720px"
+    }
+  ],
+  "tracks": [
+    { "kind": "effect", "effect": "push", "target": ".cam", "t0": 0, "dur": 6, "from": 1, "to": 1.025 },
+    { "kind": "effect", "effect": "showHead", "target": ".chrome-head", "t0": -0.4 },
+    { "kind": "effect", "effect": "fade", "target": ".chrome-bar", "t0": 0.6 },
+    { "kind": "effect", "effect": "fade", "target": ".chrome-bar > *", "count": 4, "t0": 1, "stagger": 0.25 },
+    { "kind": "effect", "effect": "fade", "target": ".chrome-mini", "count": 3, "t0": 1.8, "stagger": 0.4 }
+  ],
+  "css": ".chrome-bar { left:940px; top:270px; width:820px; box-sizing:border-box; padding:26px 30px; display:flex; align-items:center; gap:24px } .chrome-play { width:64px; height:64px; flex:none; border-radius:50%; background:var(--jade); color:var(--ground); font-size:26px; line-height:64px; text-align:center } .chrome-track { flex:1; height:12px; border-radius:6px; background:var(--hair); position:relative } .chrome-fill { position:absolute; left:0; top:0; bottom:0; width:45%; border-radius:6px; background:var(--jade) } .chrome-dots { display:flex; gap:10px } .chrome-dots i { width:18px; height:18px; border-radius:50%; background:var(--hair) } .chrome-dots i:first-child { background:var(--main) } .chrome-cc { font-size:24px; font-weight:600; padding:6px 14px; border-radius:8px; background:var(--main); color:var(--ground); white-space:nowrap } .chrome-mini { top:470px; width:260px; box-sizing:border-box; padding:18px } .chrome-screen { height:120px; border-radius:10px; background:var(--shade) } .chrome-strip { display:flex; align-items:center; gap:12px; margin-top:14px } .chrome-strip i { width:26px; height:26px; border-radius:50%; background:var(--jade); flex:none } .chrome-strip span { flex:1; height:10px; border-radius:5px; background:var(--hair) }",
+  "portrait": {
+    "hoist": [".chrome-head"],
+    "frame": [700, 920],
+    "crop": [880, 210, 940, 520],
+    "css": ".chrome-head{left:70px!important;top:150px!important;width:940px!important}"
+  }
+}

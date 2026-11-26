@@ -1,0 +1,25 @@
+{
+  "scenes": {
+    "hook": {
+      "voice": 0.6,
+      "dur": 6.3
+    },
+    "patterns": {
+      "voice": 0.6,
+      "dur": 16.3
+    },
+    "prevent": {
+      "voice": 0.6,
+      "dur": 15.8
+    },
+    "trace": {
+      "voice": 0.6
+    },
+    "sensei": {
+      "voice": 0.6
+    },
+    "close": {
+      "voice": 0.6
+    }
+  }
+}

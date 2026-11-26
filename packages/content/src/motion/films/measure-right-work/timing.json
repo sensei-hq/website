@@ -1,0 +1,20 @@
+{
+  "scenes": {
+    "pair": {
+      "voice": 0.6,
+      "dur": 18.1
+    },
+    "hook": {
+      "voice": 0.6
+    },
+    "problem": {
+      "voice": 0.6
+    },
+    "sensei": {
+      "voice": 0.6
+    },
+    "close": {
+      "voice": 0.6
+    }
+  }
+}

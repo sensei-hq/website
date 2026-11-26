@@ -1,0 +1,66 @@
+{
+  "sections": [
+    {
+      "id": "problem",
+      "eyebrow": "The problem",
+      "title": "Drift is silent",
+      "body": [
+        "A hotfix in the console, a manual index, a column renamed by a script that never got committed: the live database slowly stops matching the design. Nobody notices until a migration fails or a query returns the wrong thing."
+      ],
+      "motion": {
+        "film": "short-catch-schema-drift-in-ci",
+        "scene": "pileup"
+      },
+      "caption": "Console hotfixes and manual tweaks pile up uncommitted."
+    },
+    {
+      "id": "diff",
+      "eyebrow": "The check",
+      "title": "dbd diff",
+      "body": [
+        "dbd diff is read-only. It reports the complete difference between the live database and the design: columns, keys, constraints, indexes, comments, enums and materialized view drift. With --exit-code it fails the build when they differ."
+      ],
+      "code": {
+        "lang": "sh",
+        "text": "dbd diff --exit-code   # non-zero when the live DB has drifted"
+      },
+      "motion": {
+        "film": "short-catch-schema-drift-in-ci",
+        "scene": "diff"
+      },
+      "caption": "dbd diff lists every difference, read-only."
+    },
+    {
+      "id": "ci",
+      "eyebrow": "Where to run it",
+      "title": "In CI and before every release",
+      "body": [
+        "Run it against staging on every pull request and against production before a release. Drift becomes a red check with a readable report, not an incident."
+      ],
+      "points": [
+        "Read-only: safe against production",
+        "Covers indexes, comments and enums too",
+        "One flag to gate a pipeline"
+      ],
+      "motion": {
+        "film": "short-catch-schema-drift-in-ci",
+        "scene": "red-check"
+      },
+      "caption": "Drift fails the build with a red check."
+    },
+    {
+      "id": "ai",
+      "eyebrow": "With AI",
+      "title": "Trust, but diff",
+      "body": [
+        "When assistants touch databases, a mechanical check between intent and reality is the cheapest safety net you can buy."
+      ],
+      "motion": {
+        "film": "short-catch-schema-drift-in-ci",
+        "scene": "hook"
+      },
+      "caption": "The live database quietly drifts from the design."
+    }
+  ],
+  "takeaway": "Trust, but diff."
+}

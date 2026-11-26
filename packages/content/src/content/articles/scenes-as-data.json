@@ -1,0 +1,44 @@
+{
+  "sections": [
+    {
+      "body": [
+        "Video timelines are opaque binaries: change one frame and you re-render everything. There is nothing to read, review, or diff — the motion is locked inside the file."
+      ],
+      "caption": "A sealed timeline: one frame changes, everything re-renders.",
+      "eyebrow": "The problem",
+      "id": "problem",
+      "motion": {
+        "film": "short-scenes-as-data",
+        "scene": "hook"
+      },
+      "title": "Timelines are opaque"
+    },
+    {
+      "body": [
+        "emaki scenes are JSON: components, tracks and timing as data. A scene is a file you can read, diff in a pull request, and generate from code."
+      ],
+      "caption": "Components, tracks and timing as JSON.",
+      "eyebrow": "The idea",
+      "id": "idea",
+      "motion": {
+        "film": "short-scenes-as-data",
+        "scene": "scenes-as-json"
+      },
+      "title": "Scenes as data"
+    },
+    {
+      "body": [
+        "One set of scenes renders as article figures, a story player, and narrated video. Write the motion once, and publish it everywhere it needs to be."
+      ],
+      "caption": "One scene file wired to three renders.",
+      "eyebrow": "The payoff",
+      "id": "payoff",
+      "motion": {
+        "film": "short-scenes-as-data",
+        "scene": "three-renders"
+      },
+      "title": "One source, three renders"
+    }
+  ],
+  "takeaway": "Motion you can review like code."
+}

@@ -1,0 +1,64 @@
+{
+  "title": "Five habits that keep AI on track",
+  "look": "Session board: a track with five gates, habit cards, a vague and a clear ask, and Sensei's checks on a dot-grid desk. Plain. Colors and type from the Zen-Sumi design system: washi paper, sumi ink, rationed vermillion for guesses, jade for what is settled. The Sensei mark on the close.",
+  "background": "#F3F0E9",
+  "dark": {
+    "background": "#1E1B18"
+  },
+  "palette": [
+    "#F9F6F1",
+    "#48413D",
+    "#1F1916",
+    "#C25237"
+  ],
+  "fonts": {
+    "display": {
+      "family": "Fraunces",
+      "or": "fraunces",
+      "weights": [
+        300,
+        400
+      ]
+    },
+    "sans": {
+      "family": "Inter",
+      "or": "instrument-sans",
+      "weights": [
+        400,
+        600
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "name": "On track",
+      "dur": 6,
+      "desc": "Keep AI on track with five habits: the work passes five gates along its path."
+    },
+    {
+      "id": "habits",
+      "name": "The habits",
+      "dur": 14,
+      "desc": "Requirements written and read, verification defined first, the design agreed, phases with checks, conventions as rules."
+    },
+    {
+      "id": "why",
+      "name": "Less room to guess",
+      "dur": 9.5,
+      "desc": "A vague ask leaves gaps the AI fills with guesses; requirements and a verification definition close them."
+    },
+    {
+      "id": "sensei",
+      "name": "Habits you can see",
+      "dur": 10,
+      "desc": "Sensei scores the plan's depth, flags departures from it, and turns repeated corrections into rules."
+    },
+    {
+      "id": "close",
+      "name": "Sensei",
+      "dur": 5.5,
+      "desc": "End card with the Sensei mark: less room to guess."
+    }
+  ]
+}

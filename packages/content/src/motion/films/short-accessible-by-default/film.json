@@ -1,0 +1,64 @@
+{
+  "title": "Accessible by default",
+  "look": "Session board on a dot-grid desk: a player with the a11y add-on bolted beside it, a captioned film frame, four keyboard keys, one standard toolbar over three small films, and the emaki end card. Plain. Colors and type from the Zen-Sumi design system: washi paper, sumi ink, rationed vermillion for what is wrong, jade for what is right.",
+  "background": "#F3F0E9",
+  "dark": {
+    "background": "#1E1B18"
+  },
+  "palette": [
+    "#F9F6F1",
+    "#48413D",
+    "#1F1916",
+    "#C25237"
+  ],
+  "fonts": {
+    "display": {
+      "family": "Fraunces",
+      "or": "fraunces",
+      "weights": [
+        300,
+        400
+      ]
+    },
+    "sans": {
+      "family": "Inter",
+      "or": "instrument-sans",
+      "weights": [
+        400,
+        600
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "name": "The add-on",
+      "dur": 6,
+      "desc": "A motion player with captions off and the a11y add-on bolted on beside it."
+    },
+    {
+      "id": "captions",
+      "name": "Captions from the script",
+      "dur": 6,
+      "desc": "A film frame with a CC badge and a caption bar quoting the voice script."
+    },
+    {
+      "id": "keyboard",
+      "name": "Keyboard controls",
+      "dur": 6,
+      "desc": "Four keys: play, seek, scenes, captions."
+    },
+    {
+      "id": "chrome",
+      "name": "One chrome",
+      "dur": 6,
+      "desc": "One standard toolbar above three small films that all share it."
+    },
+    {
+      "id": "close",
+      "name": "emaki",
+      "dur": 5.5,
+      "desc": "End card with the emaki mark: accessible by default."
+    }
+  ]
+}

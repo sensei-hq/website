@@ -1,0 +1,29 @@
+{
+  "scenes": {
+    "hook": {
+      "voice": 0.6,
+      "dur": 11.3
+    },
+    "streams": {
+      "voice": 0.6,
+      "dur": 14.7
+    },
+    "sessions": {
+      "voice": 0.6,
+      "dur": 13.7
+    },
+    "close": {
+      "voice": 0.6,
+      "dur": 5.7
+    },
+    "graph": {
+      "voice": 0.6
+    },
+    "local": {
+      "voice": 0.6
+    },
+    "share": {
+      "voice": 0.6
+    }
+  }
+}

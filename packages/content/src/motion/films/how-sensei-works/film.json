@@ -1,0 +1,82 @@
+{
+  "title": "How Sensei Fits Together",
+  "look": "Architecture board: dashed boundaries for your machine, the models and the team, with the app, gateway, dōjō and phone as paper boxes on a dot-grid desk. Plain. Colors and type from the Zen-Sumi design system: washi paper, sumi ink, vermillion for inference, jade for the team. The Sensei mark on the close.",
+  "background": "#F3F0E9",
+  "dark": {
+    "background": "#1E1B18"
+  },
+  "palette": [
+    "#F9F6F1",
+    "#48413D",
+    "#1F1916",
+    "#C25237"
+  ],
+  "fonts": {
+    "display": {
+      "family": "Fraunces",
+      "or": "fraunces",
+      "weights": [
+        300,
+        400
+      ]
+    },
+    "sans": {
+      "family": "Inter",
+      "or": "instrument-sans",
+      "weights": [
+        400,
+        600
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "name": "The whole picture",
+      "dur": 11,
+      "desc": "The simplified architecture assembles: your machine, the models it can use, your team, your phone."
+    },
+    {
+      "id": "machine",
+      "name": "On your machine",
+      "dur": 12.5,
+      "desc": "The desktop app wraps the CLI, the MCP servers, an always-on daemon and a local Postgres; your assistant connects to it."
+    },
+    {
+      "id": "gateway",
+      "name": "The gateway",
+      "dur": 13,
+      "desc": "One inference entry point inside the app: embedded Ollama by default, your own Ollama host or cloud keys when you want them, with fallback."
+    },
+    {
+      "id": "dojo",
+      "name": "The dōjō",
+      "dur": 12,
+      "desc": "Your team's service: lessons go up, consolidated practice comes back down; an opt-in public collective sits beside it."
+    },
+    {
+      "id": "relay",
+      "name": "Relay",
+      "dur": 11,
+      "desc": "The phone companion: watch runs, approve gated actions, answer decisions; only status and choices cross."
+    },
+    {
+      "id": "roles",
+      "name": "Sensei and dōjō",
+      "dur": 13,
+      "desc": "What each one does: Sensei works the code on your machine; the dōjō shares what the team learns."
+    },
+    {
+      "id": "together",
+      "name": "Together",
+      "dur": 12,
+      "desc": "The loop: Sensei learns, you share, the dōjō consolidates, upgrades come back, Sensei applies them."
+    },
+    {
+      "id": "close",
+      "name": "Sensei",
+      "dur": 5.5,
+      "desc": "End card with the Sensei mark: your machine does the work, your team keeps the lessons."
+    }
+  ]
+}

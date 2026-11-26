@@ -1,0 +1,64 @@
+{
+  "sections": [
+    {
+      "id": "definition",
+      "eyebrow": "A working definition",
+      "title": "Easy to change, safely",
+      "body": [
+        "Quality is not elegance. It is how cheaply and safely the next change can be made: can someone read it, find the right place, change it once, and know they did not break something else?"
+      ],
+      "motion": {
+        "film": "what-is-code-quality",
+        "scene": "definition"
+      },
+      "caption": "One file tile found, changed once, all checks green."
+    },
+    {
+      "id": "signals",
+      "eyebrow": "What to look at",
+      "title": "Signals you can measure",
+      "body": [
+        "Several signals track that well over time."
+      ],
+      "points": [
+        "Duplication: the same logic in many places, so a fix has to be made many times",
+        "Maintainability smells: complex functions, deep nesting, long parameter lists",
+        "Coverage: how much code a test would notice breaking",
+        "Churn: how many files change every day, and how concentrated the change is"
+      ],
+      "motion": {
+        "film": "what-is-code-quality",
+        "scene": "signals"
+      },
+      "caption": "Four signal cards, each with its own small chart."
+    },
+    {
+      "id": "trend",
+      "eyebrow": "Read the trend",
+      "title": "Direction beats a single number",
+      "body": [
+        "A codebase at 8% duplication that is falling is healthier than one at 4% that is climbing. Quality is a trajectory."
+      ],
+      "motion": {
+        "film": "what-is-code-quality",
+        "scene": "trend"
+      },
+      "caption": "Two duplication lines: falling 8% beats climbing 4%."
+    },
+    {
+      "id": "sensei",
+      "eyebrow": "In Sensei",
+      "title": "Measured over real history",
+      "body": [
+        "Sensei measures duplication and maintainability with qlty at sampled commits from your git history, ingests coverage from your own test runs, and counts churn from git. You see the trend, not just today."
+      ],
+      "motion": {
+        "film": "what-is-code-quality",
+        "scene": "sensei"
+      },
+      "caption": "Sampled commits across git history draw the trend."
+    }
+  ],
+  "takeaway": "Quality is a trajectory.",
+  "takeawaySub": "Sensei measures it across your real history."
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "scene": "flood",
+    "text": "We all use AI heavily now. Code, analysis, answers: it produces far more than anyone can read, and reviewing it all is real cognitive load."
+  },
+  {
+    "scene": "questions",
+    "text": "So how do you manage it? How do you skim without being overwhelmed? Do you read for intent and outcome? And how do you know it's relevant, accurate and aligned with what you need?"
+  },
+  {
+    "scene": "define",
+    "text": "Here's the cycle I follow. Start with the concept. Break it into detailed requirements, and read them closely, because any miss here skews every result. Then decide how it will be verified: clear guidelines and predefined skills keep the AI on the design."
+  },
+  {
+    "scene": "build",
+    "text": "Next, the design: the patterns, principles and architecture that keep the code from turning into spaghetti, with UX and mock-ups alongside, made in Claude Cowork. Then a plan in phases, each one verified. From there, it's about results."
+  },
+  {
+    "scene": "payoff",
+    "text": "That's the payoff. You don't read every line. You check output against the definition, for intent and outcome, and read closely only what misses."
+  },
+  {
+    "scene": "close",
+    "text": "Define it. Verify it. Then trust the results."
+  }
+]

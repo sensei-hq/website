@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "More tokens. More commits. Is any of it right?"
+  },
+  {
+    "scene": "busy",
+    "text": "Volume goes up when work goes badly too. Fixing things is activity."
+  },
+  {
+    "scene": "pair",
+    "text": "Track first-turn resolution: sessions done without a correction. And rework share: the effort spent on sessions that needed one. Read them together. High resolution with rising rework means work deferred, not done."
+  },
+  {
+    "scene": "grouped",
+    "text": "Sensei groups its metrics by what they answer, and never shows speed without its quality companion."
+  },
+  {
+    "scene": "close",
+    "text": "Sensei. Measure right work, not more work."
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "Choosing an auth provider shouldn’t be forever."
+  },
+  {
+    "scene": "tangle",
+    "text": "SDK calls spread everywhere, and switching means touching all of them."
+  },
+  {
+    "scene": "adapters",
+    "text": "Kavach puts each provider behind an adapter, behind one API."
+  },
+  {
+    "scene": "swap",
+    "text": "Swap the adapter; keep your routes, rules and UI."
+  },
+  {
+    "scene": "close",
+    "text": "Kavach. No lock-in."
+  }
+]

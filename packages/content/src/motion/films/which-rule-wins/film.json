@@ -1,0 +1,76 @@
+{
+  "title": "Which Rule Wins?",
+  "look": "Session board: two conflicting rule cards, the enforcement ladder, the scope ladder, the resolver's sorted list, rule packs and a session timeline on a dot-grid desk. Plain. Colors and type from the Zen-Sumi design system: washi paper, sumi ink, vermillion for mandatory, jade for the rule that holds. The Sensei mark on the close.",
+  "background": "#F3F0E9",
+  "dark": {
+    "background": "#1E1B18"
+  },
+  "palette": [
+    "#F9F6F1",
+    "#48413D",
+    "#1F1916",
+    "#C25237"
+  ],
+  "fonts": {
+    "display": {
+      "family": "Fraunces",
+      "or": "fraunces",
+      "weights": [
+        300,
+        400
+      ]
+    },
+    "sans": {
+      "family": "Inter",
+      "or": "instrument-sans",
+      "weights": [
+        400,
+        600
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "name": "Two rules",
+      "dur": 9,
+      "desc": "A dōjō rule and a repository rule disagree. Which one does the assistant follow?"
+    },
+    {
+      "id": "enforcement",
+      "name": "Stronger first",
+      "dur": 12.5,
+      "desc": "Mandatory, required, recommended, advisory: the stronger rule wins, and a mandatory rule is never overridden."
+    },
+    {
+      "id": "scope",
+      "name": "Then closer",
+      "dur": 12.5,
+      "desc": "At equal strength the most specific scope wins: built-in, you, dōjō, workspace, repository."
+    },
+    {
+      "id": "resolve",
+      "name": "Resolved",
+      "dur": 12.5,
+      "desc": "Sensei gathers every rule, sorts by strength then scope, locks the mandatory ones, merges duplicates."
+    },
+    {
+      "id": "packs",
+      "name": "Rule packs",
+      "dur": 14,
+      "desc": "Examples of rule sets: security, TDD, Clean Code, SOLID, compliance, UX, Ponytail, and stack packs adopted where the stack is found."
+    },
+    {
+      "id": "sticky",
+      "name": "It sticks",
+      "dur": 12,
+      "desc": "Mandatory and required rules are pushed at session start, re-sent at compaction, and a mandatory violation is blocked."
+    },
+    {
+      "id": "close",
+      "name": "Sensei",
+      "dur": 5.5,
+      "desc": "End card with the Sensei mark: the stronger rule wins, then the closer one."
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "title": "Learn It Once",
+  "look": "Session board: developers, a personal constitution, rule packs, a share preview, the dōjō pipeline and the scope stack on a dot-grid desk. Plain. Colors and type from the Zen-Sumi design system: washi paper, sumi ink, rationed vermillion, jade for what the team keeps. The Sensei mark on the close.",
+  "background": "#F3F0E9",
+  "dark": {
+    "background": "#1E1B18"
+  },
+  "palette": [
+    "#F9F6F1",
+    "#48413D",
+    "#1F1916",
+    "#C25237"
+  ],
+  "fonts": {
+    "display": {
+      "family": "Fraunces",
+      "or": "fraunces",
+      "weights": [
+        300,
+        400
+      ]
+    },
+    "sans": {
+      "family": "Inter",
+      "or": "instrument-sans",
+      "weights": [
+        400,
+        600
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "name": "Four times",
+      "dur": 9,
+      "desc": "Four developers teach their assistants the same lesson, separately."
+    },
+    {
+      "id": "constitution",
+      "name": "Your rules",
+      "dur": 12.5,
+      "desc": "Even solo you have a constitution; adopt proven rule packs into it."
+    },
+    {
+      "id": "share",
+      "name": "Share on your terms",
+      "dur": 12,
+      "desc": "A rule that works is offered to the dōjō: previewed, anonymised, confirmed."
+    },
+    {
+      "id": "triage",
+      "name": "The team decides",
+      "dur": 12.5,
+      "desc": "Contributions accumulate, maintainers triage and approve, then it is distributed."
+    },
+    {
+      "id": "upgrade",
+      "name": "Upgrades",
+      "dur": 11,
+      "desc": "It reaches every member as an upgrade they can apply, mute or pin."
+    },
+    {
+      "id": "resolve",
+      "name": "Wherever you code",
+      "dur": 12,
+      "desc": "Rules resolve across dōjō, workspace and repository; preview any project's rules before the first commit."
+    },
+    {
+      "id": "close",
+      "name": "Sensei",
+      "dur": 5.5,
+      "desc": "End card with the Sensei mark: learn it once, and the team keeps it."
+    }
+  ]
+}

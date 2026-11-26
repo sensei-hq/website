@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "AI writes code faster. It also copies your mistakes faster."
+  },
+  {
+    "scene": "review-bottleneck",
+    "text": "Reviewers can’t keep up, and what slips through becomes the next pattern."
+  },
+  {
+    "scene": "rework-loop",
+    "text": "Sessions that need correcting move work; they don’t finish it."
+  },
+  {
+    "scene": "codebase-prompt",
+    "text": "Your codebase is the prompt: clean in, clean out."
+  },
+  {
+    "scene": "close",
+    "text": "Sensei pairs every speed metric with its quality companion."
+  }
+]

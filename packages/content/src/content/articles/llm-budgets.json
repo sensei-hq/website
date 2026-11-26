@@ -1,0 +1,53 @@
+{
+  "sections": [
+    {
+      "id": "problem",
+      "eyebrow": "The problem",
+      "title": "Costs you see next month",
+      "body": [
+        "A prompt that grew, a loop that didn’t stop, a model swapped for a pricier one: AI costs are easy to run up and hard to see until the invoice."
+      ],
+      "motion": {
+        "film": "short-llm-budgets",
+        "scene": "hook"
+      },
+      "caption": "The invoice arrives next month, too late."
+    },
+    {
+      "id": "estimate",
+      "eyebrow": "The mechanism",
+      "title": "Estimate, then choose",
+      "body": [
+        "Gateway estimates each candidate model’s cost from its pricing and the token counts, input plus maximum output, and partitions candidates into affordable and over budget before routing."
+      ],
+      "code": {
+        "lang": "text",
+        "text": "estimate = input_tokens × input_price / 1k\n         + max_output_tokens × output_price / 1k"
+      },
+      "motion": {
+        "film": "short-llm-budgets",
+        "scene": "estimate"
+      },
+      "caption": "Gateway estimates each candidate model's cost first."
+    },
+    {
+      "id": "why",
+      "eyebrow": "Why it helps",
+      "title": "Spend as a routing input",
+      "body": [
+        "Cost stops being a report and becomes a decision made per request, alongside availability and preference."
+      ],
+      "points": [
+        "Estimates before the call",
+        "Over-budget models skipped",
+        "Works with fallback chains"
+      ],
+      "motion": {
+        "film": "short-llm-budgets",
+        "scene": "skipped"
+      },
+      "caption": "Over-budget models grey out; the chain continues."
+    }
+  ],
+  "takeaway": "Spend as a routing decision."
+}

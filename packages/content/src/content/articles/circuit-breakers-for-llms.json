@@ -1,0 +1,49 @@
+{
+  "sections": [
+    {
+      "id": "problem",
+      "eyebrow": "The problem",
+      "title": "Retries that pile on",
+      "body": [
+        "When an endpoint is struggling, every retry adds load and latency. Users wait for timeouts that were predictable."
+      ],
+      "motion": {
+        "film": "short-circuit-breakers-for-llms",
+        "scene": "hook"
+      },
+      "caption": "A failing console where retries pile onto the queue."
+    },
+    {
+      "id": "breaker",
+      "eyebrow": "The pattern",
+      "title": "Closed, open, half-open",
+      "body": [
+        "Gateway keeps a circuit breaker per endpoint. After a run of consecutive failures it opens and skips that endpoint; after a timeout it half-opens and lets a few requests through; enough successes close it again."
+      ],
+      "points": [
+        "Defaults: open after 5 failures",
+        "Wait 5 minutes before probing",
+        "Close after 3 successes in half-open"
+      ],
+      "motion": {
+        "film": "short-circuit-breakers-for-llms",
+        "scene": "states"
+      },
+      "caption": "Three state chips with the failure and timeout thresholds."
+    },
+    {
+      "id": "together",
+      "eyebrow": "Together",
+      "title": "Breakers plus fallbacks",
+      "body": [
+        "An open breaker simply moves the request to the next model in its fallback chain, so failure is fast and invisible."
+      ],
+      "motion": {
+        "film": "short-circuit-breakers-for-llms",
+        "scene": "breaker-opens"
+      },
+      "caption": "An open switch stops traffic to the failing endpoint."
+    }
+  ],
+  "takeaway": "Fail fast, recover carefully."
+}

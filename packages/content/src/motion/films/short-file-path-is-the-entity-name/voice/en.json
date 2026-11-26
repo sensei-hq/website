@@ -1,0 +1,26 @@
+[
+  {
+    "scene": "hook",
+    "text": "What if your folder structure was your database model?"
+  },
+  {
+    "scene": "manifest",
+    "text": "Most tools need a manifest that drifts from the SQL."
+  },
+  {
+    "scene": "path",
+    "text": "In dbd, ddl/table/config/lookups.ddl is the table config.lookups."
+  },
+  {
+    "scene": "addfile",
+    "text": "Add a file, get an entity. No list to update."
+  },
+  {
+    "scene": "assistant",
+    "text": "And an AI assistant knows exactly where new SQL belongs."
+  },
+  {
+    "scene": "close",
+    "text": "dbd. Convention over configuration."
+  }
+]

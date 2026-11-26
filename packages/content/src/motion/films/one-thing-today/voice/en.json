@@ -1,0 +1,30 @@
+[
+  {
+    "scene": "hook",
+    "text": "You don’t need another dashboard. Your day needs one decision, not more charts."
+  },
+  {
+    "scene": "today",
+    "text": "Sensei opens on Today: one finding that needs you, where it came from, and one action. A few supporting insights and your recent sessions sit underneath."
+  },
+  {
+    "scene": "loop",
+    "text": "Every part of Sensei works the same way. It observes, forms one finding, and offers one action: apply, review or dismiss."
+  },
+  {
+    "scene": "listening",
+    "text": "Early on, it just listens. Until there’s enough to go on, it offers no advice at all."
+  },
+  {
+    "scene": "insights",
+    "text": "Insights sort into now, soon and settled. Each asks for one decision with a sensible default."
+  },
+  {
+    "scene": "adopted",
+    "text": "And you can see what it adopted for you: each memory with what it is, why, how it applies, and how often it was used."
+  },
+  {
+    "scene": "close",
+    "text": "Sensei. One thing today, with its receipt."
+  }
+]

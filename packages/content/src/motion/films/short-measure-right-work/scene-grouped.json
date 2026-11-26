@@ -1,0 +1,50 @@
+{
+  "components": [
+    { "type": "board", "id": "grouped-bg" },
+    {
+      "type": "raw",
+      "id": "cols",
+      "html": "<div class='grouped-col' style='left:880px'><h4>Outcome</h4><div class='grouped-m'>Rework share</div><div class='grouped-m'>First-turn resolution</div><div class='grouped-m'>Spec deviation</div></div><div class='grouped-col' style='left:1071px'><h4>Quality</h4><div class='grouped-m'>Duplication</div><div class='grouped-m'>Edit before read</div><div class='grouped-m'>Churn</div></div><div class='grouped-col' style='left:1262px'><h4>Velocity</h4><div class='grouped-m'>Throughput</div><div class='grouped-m'>Time to useful result</div></div><div class='grouped-col' style='left:1453px'><h4>Usage</h4><div class='grouped-m'>Tokens per day</div><div class='grouped-m'>Cache reuse</div></div><div class='grouped-col' style='left:1644px'><h4>Cost</h4><div class='grouped-m'>Cost per result</div></div>"
+    },
+    {
+      "type": "svg",
+      "id": "link",
+      "body": "<path class='grouped-link' pathLength='1' d='M968 290 C968 170, 1350 170, 1350 290' style='fill:none;stroke:var(--accent);stroke-width:5;stroke-dasharray:1 1;stroke-linecap:round'/>"
+    },
+    {
+      "type": "raw",
+      "id": "pair-tag",
+      "html": "<span class='tag hot grouped-pair'>Always shown together</span>"
+    },
+    {
+      "type": "raw",
+      "id": "note",
+      "html": "<span class='grouped-note'>Illustrative</span>"
+    },
+    {
+      "type": "head",
+      "id": "grouped-head",
+      "at": "ground",
+      "eyebrow": "In Sensei",
+      "line": "Speed is never shown alone.",
+      "sub": "Metrics grouped by what they answer.",
+      "style": "left:110px;top:330px;width:720px"
+    }
+  ],
+  "tracks": [
+    { "kind": "effect", "effect": "push", "target": ".cam", "t0": 0, "dur": 8.4, "from": 1, "to": 1.02 },
+    { "kind": "effect", "effect": "showHead", "target": ".grouped-head", "t0": -0.4 },
+    { "kind": "effect", "effect": "fade", "target": ".grouped-col", "count": 5, "t0": 0.8, "stagger": 0.35 },
+    { "kind": "effect", "effect": "fade", "target": ".grouped-note", "t0": 0.8 },
+    { "kind": "effect", "effect": "swap", "target": ".grouped-m", "indices": [0, 6], "at": 3.6, "addClass": "on" },
+    { "kind": "effect", "effect": "draw", "target": ".grouped-link", "t0": 3.8, "t1": 4.8 },
+    { "kind": "effect", "effect": "pop", "target": ".grouped-pair", "t0": 4.8, "base": "translate(-50%,0)" }
+  ],
+  "css": ".grouped-col { position:absolute; top:300px; width:176px; display:flex; flex-direction:column; gap:12px }.grouped-col h4 { margin:0 0 4px; font-size:22px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--mute); text-align:center }.grouped-m { box-sizing:border-box; height:96px; padding:12px 14px; border-radius:14px; background:var(--tile); border:2px solid var(--hair); font-size:22px; line-height:1.25; font-weight:500; display:flex; align-items:center; box-shadow:0 8px 18px rgba(0,0,0,.05) }.grouped-m.on { border-color:var(--accent); border-width:3px; background:color-mix(in srgb, var(--accent) 8%, var(--tile)) }.grouped-pair { left:1159px; top:126px } .grouped-note { position:absolute; left:1560px; top:180px; font-size:20px; color:var(--mute) }",
+  "portrait": {
+    "hoist": [".grouped-head"],
+    "frame": [700, 920],
+    "crop": [820, 60, 1060, 670],
+    "css": ".grouped-head{left:70px!important;top:150px!important;width:940px!important}"
+  }
+}

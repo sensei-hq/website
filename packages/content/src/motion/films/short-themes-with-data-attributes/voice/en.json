@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "What if components had no styles at all?"
+  },
+  {
+    "scene": "annotate",
+    "text": "Rokkit components describe themselves with data attributes."
+  },
+  {
+    "scene": "restyle",
+    "text": "Themes read those attributes; skins set colours; modes flip dark and light."
+  },
+  {
+    "scene": "tokens",
+    "text": "Named tokens mean AI can’t invent a new grey."
+  },
+  {
+    "scene": "close",
+    "text": "Rokkit. Themes, not overrides."
+  }
+]

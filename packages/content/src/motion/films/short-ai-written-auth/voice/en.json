@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "AI can write your login page. Can it write your auth?"
+  },
+  {
+    "scene": "client-server",
+    "text": "Generated auth often checks the page but not the server."
+  },
+  {
+    "scene": "route",
+    "text": "And misses the route nobody mentioned."
+  },
+  {
+    "scene": "rules",
+    "text": "Kavach keeps rules central, enforced on the server, deny by default."
+  },
+  {
+    "scene": "close",
+    "text": "So AI edits a rule, not every page."
+  }
+]

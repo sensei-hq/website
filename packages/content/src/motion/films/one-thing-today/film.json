@@ -1,0 +1,76 @@
+{
+  "title": "One Thing Today",
+  "look": "Session board: the Today screen, a three-step loop, insight columns and memory cards on a dot-grid desk. Plain. Colors and type from the Zen-Sumi design system: washi paper, sumi ink, rationed vermillion for what needs you, jade for what's settled. The Sensei mark on the close.",
+  "background": "#F3F0E9",
+  "dark": {
+    "background": "#1E1B18"
+  },
+  "palette": [
+    "#F9F6F1",
+    "#48413D",
+    "#1F1916",
+    "#C25237"
+  ],
+  "fonts": {
+    "display": {
+      "family": "Fraunces",
+      "or": "fraunces",
+      "weights": [
+        300,
+        400
+      ]
+    },
+    "sans": {
+      "family": "Inter",
+      "or": "instrument-sans",
+      "weights": [
+        400,
+        600
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "name": "Not a dashboard",
+      "dur": 9,
+      "desc": "A wall of charts fades back; one card that needs a decision stays."
+    },
+    {
+      "id": "today",
+      "name": "Today",
+      "dur": 12.5,
+      "desc": "Today shows one finding with its receipt, a few supporting insights, first-turn resolution and recent sessions."
+    },
+    {
+      "id": "loop",
+      "name": "Observe, find, act",
+      "dur": 12,
+      "desc": "Every surface observes, forms one finding, and offers one action: Apply, Review or Dismiss."
+    },
+    {
+      "id": "listening",
+      "name": "Still listening",
+      "dur": 11.5,
+      "desc": "Early on it says 'Still listening' and offers nothing; once there is enough signal, findings start."
+    },
+    {
+      "id": "insights",
+      "name": "Now, Soon, Settled",
+      "dur": 12,
+      "desc": "Insights sort into Now, Soon and Settled; one decision moves a card along."
+    },
+    {
+      "id": "adopted",
+      "name": "Adopted for you",
+      "dur": 12,
+      "desc": "What Sensei adopted for you: each memory with what, why, how and a seven-day usage strip."
+    },
+    {
+      "id": "close",
+      "name": "Sensei",
+      "dur": 5.5,
+      "desc": "End card with the Sensei mark: one thing today, with its receipt."
+    }
+  ]
+}

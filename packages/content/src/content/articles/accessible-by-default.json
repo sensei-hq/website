@@ -1,0 +1,44 @@
+{
+  "sections": [
+    {
+      "id": "problem",
+      "eyebrow": "The problem",
+      "title": "Access is not an add-on",
+      "body": [
+        "Most motion players treat access as an add-on: captions missing, keyboard an afterthought, and every player working a little differently."
+      ],
+      "motion": {
+        "film": "short-accessible-by-default",
+        "scene": "hook"
+      },
+      "caption": "A player with captions off and the a11y add-on bolted on beside it."
+    },
+    {
+      "id": "captions",
+      "eyebrow": "The idea",
+      "title": "Captions from the voice script",
+      "body": [
+        "emaki ships captions from the voice script, so the caption track mirrors the narration, with full keyboard controls for play, seek, scenes and captions."
+      ],
+      "motion": {
+        "film": "short-accessible-by-default",
+        "scene": "captions"
+      },
+      "caption": "A captioned frame: CC badge and the voice line as captions."
+    },
+    {
+      "id": "chrome",
+      "eyebrow": "The payoff",
+      "title": "One chrome on every film",
+      "body": [
+        "One consistent chrome means every film works the same way: the same controls, the same scenes, the same captions, everywhere."
+      ],
+      "motion": {
+        "film": "short-accessible-by-default",
+        "scene": "chrome"
+      },
+      "caption": "One standard toolbar shared by every film."
+    }
+  ],
+  "takeaway": "Access is the default, not the add-on."
+}

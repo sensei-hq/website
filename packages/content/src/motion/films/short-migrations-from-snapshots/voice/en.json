@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "Stop hand-writing ALTER scripts."
+  },
+  {
+    "scene": "checklist",
+    "text": "Edit the table file, then remember the ALTER, the order, the defaults…"
+  },
+  {
+    "scene": "snapshots",
+    "text": "dbd snapshots the design and generates the migration from the difference."
+  },
+  {
+    "scene": "status",
+    "text": "dbd migrate --status shows where each database stands."
+  },
+  {
+    "scene": "close",
+    "text": "You review the design change. The migration follows."
+  }
+]

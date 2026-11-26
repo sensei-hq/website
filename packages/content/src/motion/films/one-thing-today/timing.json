@@ -1,0 +1,25 @@
+{
+  "scenes": {
+    "hook": {
+      "voice": 0.6
+    },
+    "today": {
+      "voice": 0.6
+    },
+    "loop": {
+      "voice": 0.6
+    },
+    "listening": {
+      "voice": 0.6
+    },
+    "insights": {
+      "voice": 0.6
+    },
+    "adopted": {
+      "voice": 0.6
+    },
+    "close": {
+      "voice": 0.6
+    }
+  }
+}

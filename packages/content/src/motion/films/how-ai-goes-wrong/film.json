@@ -1,0 +1,70 @@
+{
+  "title": "Five ways AI-assisted coding goes wrong",
+  "look": "Session board: five failure panels, a session log, a metrics card and a prevent/catch table on a dot-grid desk. Plain. Colors and type from the Zen-Sumi design system: washi paper, sumi ink, rationed vermillion for the failures, jade for the fixes. The Sensei mark on the close.",
+  "background": "#F3F0E9",
+  "dark": {
+    "background": "#1E1B18"
+  },
+  "palette": [
+    "#F9F6F1",
+    "#48413D",
+    "#1F1916",
+    "#C25237"
+  ],
+  "fonts": {
+    "display": {
+      "family": "Fraunces",
+      "or": "fraunces",
+      "weights": [
+        300,
+        400
+      ]
+    },
+    "sans": {
+      "family": "Inter",
+      "or": "instrument-sans",
+      "weights": [
+        400,
+        600
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "name": "Five ways",
+      "dur": 6,
+      "desc": "AI-assisted coding fails in five predictable ways: five numbered tiles drop in."
+    },
+    {
+      "id": "patterns",
+      "name": "The patterns",
+      "dur": 15,
+      "desc": "Edit before read, shallow analysis, spec deviation, duplication, context pressure: each panel acts out its failure in turn."
+    },
+    {
+      "id": "trace",
+      "name": "The trace",
+      "dur": 9.5,
+      "desc": "A session log: each failure leaves a line you can point at, and each is flagged."
+    },
+    {
+      "id": "sensei",
+      "name": "Counted",
+      "dur": 9,
+      "desc": "Sensei counts each pattern per repository, with the evidence behind it."
+    },
+    {
+      "id": "prevent",
+      "name": "Prevent and catch",
+      "dur": 15,
+      "desc": "For each pattern, what Sensei does before the work to prevent it and after to catch it; corrections become rules."
+    },
+    {
+      "id": "close",
+      "name": "Sensei",
+      "dur": 5.5,
+      "desc": "End card with the Sensei mark: predictable failures are preventable."
+    }
+  ]
+}

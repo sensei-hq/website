@@ -1,0 +1,70 @@
+{
+  "title": "Working with AI Without Overload",
+  "look": "Relay board: Flat assistant nodes on a grid, task cards gliding along live wires. Plain. Colors and type from the Zen-Sumi design system: washi paper, sumi ink, rationed vermillion.",
+  "background": "#F3F0E9",
+  "dark": {
+    "background": "#1E1B18"
+  },
+  "palette": [
+    "#F9F6F1",
+    "#48413D",
+    "#1F1916",
+    "#C25237"
+  ],
+  "fonts": {
+    "display": {
+      "family": "Fraunces",
+      "or": "fraunces",
+      "weights": [
+        300,
+        400
+      ]
+    },
+    "sans": {
+      "family": "Inter",
+      "or": "instrument-sans",
+      "weights": [
+        400,
+        600
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": "flood",
+      "name": "The flood",
+      "dur": 12.5,
+      "desc": "Code, analysis and answers pour onto the board faster than anyone can read them."
+    },
+    {
+      "id": "questions",
+      "name": "The questions",
+      "dur": 13.5,
+      "desc": "Three questions: how to skim, whether to read for intent, how to know it is right."
+    },
+    {
+      "id": "define",
+      "name": "Define first",
+      "dur": 17.5,
+      "desc": "The cycle begins: concept, detailed requirements, and how it will be verified."
+    },
+    {
+      "id": "build",
+      "name": "Design, plan, results",
+      "dur": 17.5,
+      "desc": "Design with UX and mock-ups alongside, a phased plan with checks, then results."
+    },
+    {
+      "id": "payoff",
+      "name": "Read less, check more",
+      "dur": 15.5,
+      "desc": "Output passes through the verification frame; only what misses is surfaced for reading."
+    },
+    {
+      "id": "close",
+      "name": "End card",
+      "dur": 6,
+      "desc": "Title and the takeaway line."
+    }
+  ]
+}

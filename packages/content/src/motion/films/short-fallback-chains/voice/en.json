@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "Your model provider just went down. Now what?"
+  },
+  {
+    "scene": "single-provider",
+    "text": "With one provider, their outage is your outage."
+  },
+  {
+    "scene": "chain",
+    "text": "A fallback chain names what to try next, in order."
+  },
+  {
+    "scene": "order-kept",
+    "text": "Gateway keeps your order exactly, request after request."
+  },
+  {
+    "scene": "close",
+    "text": "Gateway. Decide what happens next, before it happens."
+  }
+]

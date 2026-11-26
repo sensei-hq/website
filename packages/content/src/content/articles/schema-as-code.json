@@ -1,0 +1,62 @@
+{
+  "sections": [
+    {
+      "id": "problem",
+      "eyebrow": "The problem",
+      "title": "The schema nobody owns",
+      "body": [
+        "Most teams version their application code carefully and their database carelessly. Tables are created by hand, changed in a console, and documented, if at all, in a wiki page that drifted months ago.",
+        "When something breaks, nobody can say what the database is supposed to look like, only what it looks like right now."
+      ],
+      "motion": {
+        "film": "short-schema-as-code",
+        "scene": "split"
+      },
+      "caption": "Code reviewed in git, schema lost in console."
+    },
+    {
+      "id": "idea",
+      "eyebrow": "The idea",
+      "title": "Schema as code",
+      "body": [
+        "Treat every table, view and procedure as a file in the repository. Review changes in pull requests. Let a tool work out the order to create things in, apply them, and tell you when the live database and the design disagree."
+      ],
+      "motion": {
+        "film": "short-schema-as-code",
+        "scene": "folder"
+      },
+      "caption": "Every table becomes a reviewable file in folders."
+    },
+    {
+      "id": "dbd",
+      "eyebrow": "How dbd does it",
+      "title": "A project you can read",
+      "body": [
+        "dbd is a Rust CLI and library for managing database schemas as code. You write plain SQL files; dbd handles dependency ordering, migrations, data loading, documentation and deployment."
+      ],
+      "code": {
+        "lang": "sh",
+        "text": "cargo install dbd-cli\ndbd init --name myproject\ndbd inspect     # validate the design\ndbd apply       # apply it to $DATABASE_URL"
+      },
+      "motion": {
+        "film": "short-schema-as-code",
+        "scene": "commands"
+      },
+      "caption": "Three commands order, check, and apply the schema."
+    },
+    {
+      "id": "ai",
+      "eyebrow": "Why now",
+      "title": "AI writes SQL faster than anyone reviews it",
+      "body": [
+        "Assistants will happily generate a migration. Keeping the schema as reviewed files gives every generated change a home, a diff and a check, instead of a console session nobody saw."
+      ],
+      "motion": {
+        "film": "short-schema-as-code",
+        "scene": "pr"
+      },
+      "caption": "Generated SQL lands in a pull request diff."
+    }
+  ],
+  "takeaway": "Schema design that lives in your terminal."
+}

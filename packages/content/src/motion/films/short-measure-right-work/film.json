@@ -1,0 +1,64 @@
+{
+  "title": "Measure right work, not just more work",
+  "look": "Session board on a dot-grid desk: climbing volume counters under a vermillion question mark, an activity chart split between going well and going badly, a pair of metric cards with a deferred-work warning, Sensei's grouped metrics with velocity linked to its quality companion, and the Sensei end card. Plain. Colors and type from the Zen-Sumi design system: washi paper, sumi ink, rationed vermillion for what is wrong, jade for what is right.",
+  "background": "#F3F0E9",
+  "dark": {
+    "background": "#1E1B18"
+  },
+  "palette": [
+    "#F9F6F1",
+    "#48413D",
+    "#1F1916",
+    "#C25237"
+  ],
+  "fonts": {
+    "display": {
+      "family": "Fraunces",
+      "or": "fraunces",
+      "weights": [
+        300,
+        400
+      ]
+    },
+    "sans": {
+      "family": "Inter",
+      "or": "instrument-sans",
+      "weights": [
+        400,
+        600
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "name": "More",
+      "dur": 6,
+      "desc": "Volume counters climb: tokens, commits, lines changed under a vermillion question mark."
+    },
+    {
+      "id": "busy",
+      "name": "Busy is not good",
+      "dur": 6.8,
+      "desc": "An activity chart: volume rises when work goes badly too, because fixing is activity."
+    },
+    {
+      "id": "pair",
+      "name": "The pair",
+      "dur": 14.8,
+      "desc": "First-turn resolution and rework share, read together: rising rework means deferred work."
+    },
+    {
+      "id": "grouped",
+      "name": "Grouped by answer",
+      "dur": 8.4,
+      "desc": "Sensei groups metrics by what they answer; velocity links to its quality companion."
+    },
+    {
+      "id": "close",
+      "name": "Sensei",
+      "dur": 5.5,
+      "desc": "End card with the Sensei mark: measure right work, not more work."
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "sections": [
+    {
+      "id": "problem",
+      "eyebrow": "The problem",
+      "title": "A single point of failure",
+      "body": [
+        "If every request goes to one model at one provider, that provider’s outage is your outage, and its rate limit is your ceiling."
+      ],
+      "motion": {
+        "film": "short-fallback-chains",
+        "scene": "single-provider"
+      },
+      "caption": "One wire from app to provider, broken in the middle."
+    },
+    {
+      "id": "chains",
+      "eyebrow": "The idea",
+      "title": "Order your fallbacks",
+      "body": [
+        "A fallback chain is a named, ordered list of models to try. If the first fails, Gateway moves to the next, and the order you authored is kept exactly."
+      ],
+      "points": [
+        "Named chains per purpose",
+        "Your order, preserved",
+        "Same request shape for every step"
+      ],
+      "motion": {
+        "film": "short-fallback-chains",
+        "scene": "chain"
+      },
+      "caption": "Three ordered tiles: first, second, third to try."
+    },
+    {
+      "id": "prefs",
+      "eyebrow": "Per request",
+      "title": "Routing preferences",
+      "body": [
+        "Individual requests can also express preferences: sort candidates, allow only some providers, ignore others, or set an explicit order."
+      ],
+      "motion": {
+        "film": "short-fallback-chains",
+        "scene": "order-kept"
+      },
+      "caption": "Tile one fails; the request hops to tile two."
+    }
+  ],
+  "takeaway": "Decide what happens next, before it happens."
+}

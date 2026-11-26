@@ -1,0 +1,96 @@
+{
+  "components": [
+    {
+      "id": "kavach-bg",
+      "type": "board"
+    },
+    {
+      "children": [
+        {
+          "id": "kavach-logo",
+          "name": "kavach",
+          "size": 380,
+          "type": "logo",
+          "x": 1360,
+          "y": 450
+        }
+      ],
+      "id": "kavach-mark",
+      "style": "transform-origin:1360px 450px",
+      "type": "group"
+    },
+    {
+      "html": "<div class='card kavach-chip' style='left:970px'><b>one API</b></div><div class='card kavach-chip' style='left:1230px'><b>route rules</b></div><div class='card kavach-chip' style='left:1490px'><b>ready UI</b></div>",
+      "id": "chips",
+      "type": "raw"
+    },
+    {
+      "html": "<div class='tag ok kavach-tag'>drop-in auth for SvelteKit</div>",
+      "id": "tag",
+      "type": "raw"
+    },
+    {
+      "at": "ground",
+      "eyebrow": "Kavach",
+      "id": "kavach-head",
+      "line": "The whole foundation, packaged.",
+      "style": "left:110px;top:330px;width:720px",
+      "sub": "Drop-in auth for SvelteKit.",
+      "type": "head"
+    }
+  ],
+  "css": ".kavach-chip { top:680px; width:240px; box-sizing:border-box; padding:14px 10px; text-align:center } .kavach-chip b { display:block; font-size:26px; font-weight:600; white-space:nowrap } .kavach-tag { left:1360px; top:770px }",
+  "portrait": {
+    "crop": [
+      910,
+      200,
+      880,
+      640
+    ],
+    "css": ".kavach-head{left:70px!important;top:150px!important;width:940px!important}",
+    "frame": [
+      700,
+      920
+    ],
+    "hoist": [
+      ".kavach-head"
+    ]
+  },
+  "tracks": [
+    {
+      "dur": 6,
+      "effect": "push",
+      "from": 1,
+      "kind": "effect",
+      "t0": 0,
+      "target": ".cam",
+      "to": 1.03
+    },
+    {
+      "effect": "showHead",
+      "kind": "effect",
+      "t0": -0.4,
+      "target": ".kavach-head"
+    },
+    {
+      "effect": "fade",
+      "kind": "effect",
+      "t0": 0.6,
+      "target": ".kavach-mark"
+    },
+    {
+      "count": 3,
+      "effect": "fade",
+      "kind": "effect",
+      "stagger": 0.4,
+      "t0": 1.2,
+      "target": ".kavach-chip"
+    },
+    {
+      "effect": "pop",
+      "kind": "effect",
+      "t0": 2.8,
+      "target": ".kavach-tag"
+    }
+  ]
+}

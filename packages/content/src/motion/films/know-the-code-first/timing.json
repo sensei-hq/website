@@ -1,0 +1,27 @@
+{
+  "scenes": {
+    "hook": {
+      "voice": 0.6,
+      "dur": 9.3
+    },
+    "map": {
+      "voice": 0.6,
+      "dur": 13.3
+    },
+    "coupling": {
+      "voice": 0.6
+    },
+    "drift": {
+      "voice": 0.6
+    },
+    "context": {
+      "voice": 0.6
+    },
+    "intake": {
+      "voice": 0.6
+    },
+    "close": {
+      "voice": 0.6
+    }
+  }
+}

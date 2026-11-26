@@ -1,0 +1,29 @@
+{
+  "scenes": {
+    "hook": {
+      "voice": 0.6,
+      "dur": 13.1
+    },
+    "enforcement": {
+      "voice": 0.6,
+      "dur": 15.0
+    },
+    "scope": {
+      "voice": 0.6,
+      "dur": 13.1
+    },
+    "close": {
+      "voice": 0.6,
+      "dur": 6.3
+    },
+    "resolve": {
+      "voice": 0.6
+    },
+    "packs": {
+      "voice": 0.6
+    },
+    "sticky": {
+      "voice": 0.6
+    }
+  }
+}

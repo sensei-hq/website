@@ -1,0 +1,38 @@
+[
+  {
+    "scene": "hook",
+    "text": "AI is now part of every workflow. That's the good news. The catch: every assistant is also a new way into your data and your systems."
+  },
+  {
+    "scene": "top10",
+    "text": "The OWASP Top 10 for LLM apps, 2026, falls into three groups. What goes in: injection, poisoning, supply chain, retrieval stores. What comes out: leaks, misinformation, exposed context, unchecked output. And what it can do: excessive agency and runaway cost."
+  },
+  {
+    "scene": "inject",
+    "text": "Number one is prompt injection: instructions hidden in a document or email, and the AI follows them. Treat every input as untrusted, separate instructions from data, limit what tools can do, and ask a human before risky actions."
+  },
+  {
+    "scene": "phish",
+    "text": "Attackers use AI too. Phishing is now personal, polished and produced at scale, even cloned voices. Verify requests on a second channel, use phishing-resistant sign-in, authenticate your email, and keep practising."
+  },
+  {
+    "scene": "agency",
+    "text": "Agents act for us, so limit what they can reach: scoped, short-lived credentials, approval gates for risky actions, an audit trail, and spending caps that stop a runaway loop."
+  },
+  {
+    "scene": "data",
+    "text": "Guard what goes in and what comes out. Classify data before it reaches AI, keep secrets out of prompts, assume system prompts can leak, and check output before other systems use it."
+  },
+  {
+    "scene": "responsible",
+    "text": "Responsible AI is designed in: fairness, transparency, privacy, accountability, oversight — on governance: policy, inventory, and frameworks like NIST AI RMF and ISO 42001."
+  },
+  {
+    "scene": "layers",
+    "text": "No single control is enough. Layer them: govern, protect the data, guard inputs and outputs, limit what agents can do, and keep monitoring and testing."
+  },
+  {
+    "scene": "close",
+    "text": "AI security essentials. Secure by design, responsible by default."
+  }
+]

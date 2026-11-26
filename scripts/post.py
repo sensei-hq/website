@@ -9,7 +9,7 @@ the admin API, checks every file's sha256 against what was approved, posts it, a
 /api/admin/posted (the timeline and audit log). Without --live (the default, and POST_MODE=dry-run in the workflow)
 it does everything except the posting itself and reports "dry-run".
 
-After a real post it writes the link into the article's `social` in src/lib/content/articles/index.json (the workflow
+After a real post it writes the link into the article's `social` in packages/content/src/content/articles/index.json (the workflow
 commits that, so the next build links and embeds the post).
 
 Environment (GitHub secrets; docs/posting.md, step 5):
@@ -23,8 +23,8 @@ import base64, hashlib, hmac, json, os, secrets, sys, time, urllib.parse, urllib
 from pathlib import Path
 
 SITE = Path(__file__).absolute().parents[1]
-INDEX = SITE / 'src/lib/content/articles/index.json'
 sys.path.insert(0, str(SITE / 'films' / 'tools'))
+from site_paths import ARTICLES_INDEX as INDEX  # noqa: E402
 from uploader import yt_upload_caption, yt_set_thumbnail  # noqa: E402
 E = os.environ
 RUN = f"{E.get('GITHUB_SERVER_URL', '')}/{E.get('GITHUB_REPOSITORY', '')}/actions/runs/{E.get('GITHUB_RUN_ID', '')}" if E.get('GITHUB_RUN_ID') else 'local'

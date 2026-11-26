@@ -1,0 +1,22 @@
+[
+  {
+    "scene": "hook",
+    "text": "Two model providers means two SDKs, two error types, two retry stories."
+  },
+  {
+    "scene": "socket",
+    "text": "Gateway puts about fifteen providers behind one Rust interface."
+  },
+  {
+    "scene": "badges",
+    "text": "With fallback chains, circuit breakers and budgets built in."
+  },
+  {
+    "scene": "in-process",
+    "text": "And it runs in your process, not as another hop."
+  },
+  {
+    "scene": "close",
+    "text": "Gateway. Open source, MIT."
+  }
+]

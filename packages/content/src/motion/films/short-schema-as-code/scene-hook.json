@@ -1,0 +1,34 @@
+{
+  "components": [
+    { "type": "board", "id": "hook-bg" },
+    {
+      "type": "raw",
+      "id": "term",
+      "html": "<div class='card hook-term night'><div class='hook-bar'><i></i><i></i><i></i></div><p class='mono hook-ln'>$ psql prod</p><p class='mono hook-ln dim'>$ cat schema_final_v2.sql</p><p class='mono hook-ln dim'>$ # where is the users table?</p><p class='mono hook-ln dim'>$ history | grep ALTER</p><p class='mono hook-ln hot'>error: relation already exists</p></div>"
+    },
+    { "type": "raw", "id": "q", "html": "<div class='hook-q'>?</div>" },
+    {
+      "type": "head",
+      "id": "hook-head",
+      "at": "ground",
+      "eyebrow": "Schema as code",
+      "line": "Where does your schema actually live?",
+      "sub": "Not in git. Not reviewed.",
+      "style": "left:110px;top:330px;width:720px"
+    }
+  ],
+  "tracks": [
+    { "kind": "effect", "effect": "push", "target": ".cam", "t0": 0, "dur": 6, "from": 1, "to": 1.03 },
+    { "kind": "effect", "effect": "showHead", "target": ".hook-head", "t0": -0.4 },
+    { "kind": "effect", "effect": "fade", "target": ".hook-term", "t0": 0.6 },
+    { "kind": "effect", "effect": "fade", "target": ".hook-ln", "count": 5, "t0": 1, "stagger": 0.25 },
+    { "kind": "effect", "effect": "pop", "target": ".hook-q", "t0": 3.6, "base": "translate(-50%,-50%)" }
+  ],
+  "css": ".hook-term { left:940px; top:230px; width:820px; box-sizing:border-box; padding:0 0 28px; background:var(--second); border-color:var(--second); overflow:hidden } .hook-bar { display:flex; gap:10px; padding:18px 26px 14px } .hook-bar i { width:16px; height:16px; border-radius:50%; background:var(--mute) } .hook-ln { margin:0; padding:8px 30px; font-size:31px; color:var(--ground) } .hook-ln.dim { color:var(--mute) } .hook-ln.hot { color:var(--accent) } .hook-q { position:absolute; left:1700px; top:240px; transform:translate(-50%,-50%); width:120px; height:120px; border-radius:50%; background:var(--accent); color:var(--ground); font-family:var(--display, serif); font-size:76px; line-height:120px; text-align:center }",
+  "portrait": {
+    "hoist": [".hook-head"],
+    "frame": [700, 920],
+    "crop": [900, 190, 920, 580],
+    "css": ".hook-head{left:70px!important;top:150px!important;width:940px!important}"
+  }
+}
