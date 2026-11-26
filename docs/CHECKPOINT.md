@@ -14,7 +14,6 @@
   media.sensei-hq.com/.org, both ENAM. Posting desk works again since deploy.
 - CI fixed: films/-dependent tests skip without films/; chromium installed for
   the sites' pinned Playwright; @site/articles unit tests; parity ≤100 px.
-- GitHub profile links /torii + both pricing pages.
 - Live (#8 → develop, #9 → main, 6f9de01): sensei-hq.org/projects/<lib> from
   READMEs, licence + contribute links, cross-links. Org profile links them.
 
