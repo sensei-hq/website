@@ -1,31 +1,30 @@
-# Checkpoint: Phase B under way on feat/workspaces
+# Checkpoint: Phase B + home/pricing done on feat/workspaces — owner review
 
 ## Slice
 .com / .org split (#4) — plan docs/plan/site-split.md. Phase A is on develop.
 
-## Done (branch feat/workspaces, not on develop — develop→main must stay shippable)
-- B0: scripts/site_paths.py (one place for site paths; test:scripts in CI);
-  src/lib/server/repo.ts `repoRoot()/filmsDir()` replaces process.cwd().
-- B1 25a1747: app → sites/com (git mv), root bun workspaces, scripts fan out
-  with --filter. check / 68 unit / 99 e2e / build green from the new layout.
-- Filed #5: scheduled post.yml fails every run (imports gitignored films/tools).
+## Done (branch feat/workspaces; develop→main stays shippable)
+- B0: scripts/site_paths.py + repoRoot(); B1: app → sites/com, bun workspaces.
+- B2a: packages/content (@site/content): articles, films, hub registry,
+  claims, pricing; $lib re-exports; vite fs.allow covers packages/.
+- /torii (was /torii-seiki, which 301s via a worker route).
+- /sensei/pricing, /torii/pricing from @site/content/pricing (brief §6 tiers,
+  pilot $500/30d, implementation $1,500–$4,000, BYOK; limits "contact us").
+- Home: value hero + How to start, two product cards, compact OSS strip.
+- check 0 errors · unit 61+18 · e2e 111 green. Filed #5 (post.yml broken).
 
 ## Remain
-1. B2: packages/content (articles, films, hub registry, seo(site)), then
-   packages/ui (hub components, SiteNav, Footer, tokens, icons) — move + re-export.
-2. B3: CI matrix per site. B4 owner: Pages root dir → sites/com BEFORE merge.
-3. Owner ask 2026-11-26: home page = core products + value offering;
-   /sensei/pricing and /torii/pricing (per product, D5). /torii-seiki → /torii.
-4. Phase C sites/org; Sensei #539/#540 merge + release (owner).
+1. Owner review at http://localhost:5180 (dev server running).
+2. Phase C: sites/org (+ packages/ui, extracted as .org needs it).
+3. B4 owner: Pages root dir → sites/com BEFORE feat/workspaces reaches main.
+4. Sensei #539/#540 merge + release (owner).
 
 ## Next command
-Extract packages/content: failing test that sites/com imports articles from
-`@site/content`.
+After review: `mkdir sites/org` — failing e2e for the .org home listing the
+five libraries.
 
 ## Open questions
-- Per-product prices: brief tiers (Community/Team $149/Growth $399/Business $999/
-  Enterprise) — which product(s) they apply to.
+- Same tier prices for Sensei and Torii? (both carry the brief's numbers now)
 
 ## Known broken
-- post.yml (#5). Film tools (films/tools, gitignored) were edited locally to
-  import scripts/site_paths.py — not versioned.
+- post.yml (#5). films/tools edits are local-only (gitignored).
