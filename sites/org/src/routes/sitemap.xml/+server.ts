@@ -1,9 +1,10 @@
 import { sitemapRows } from '@site/articles/server';
 import { SITE } from '$lib/site.js';
 import { ARTICLES_SITE } from '$lib/articles-site.js';
+import { PROJECTS } from '@site/content/projects';
 
 // One sitemap per site: sensei-hq.org lists only its own pages, its library articles included.
-const PAGES = ['/'];
+const PAGES = ['/', ...PROJECTS.map((p) => `/projects/${p.id}`)];
 
 export const prerender = true;
 
