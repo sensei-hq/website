@@ -93,5 +93,4 @@ export const TS_NAV_LINKS = [
   ['#planes', 'Two planes'],
   ['#capabilities', 'Capabilities'],
   ['#gateway', 'Gateway'],
-  ['/torii/pricing', 'Pricing'],
 ] as const;

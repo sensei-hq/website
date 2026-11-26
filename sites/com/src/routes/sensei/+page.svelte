@@ -39,7 +39,6 @@
     ['#philosophy', 'Philosophy'],
     ['#privacy', 'Privacy'],
     ['#faq', 'FAQ'],
-    [`${base}/sensei/pricing`, 'Pricing'],
   ] as const;
 
   const steps = [
