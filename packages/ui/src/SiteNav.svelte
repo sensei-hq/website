@@ -25,6 +25,10 @@
     cta: Cta;
   } = $props();
 
+  // Button forwards extra attributes to its <a>, but its props type has no `rel`;
+  // spreading it keeps the attribute without widening the type.
+  const relOf = (c: Cta): Record<string, string> => (c.rel ? { rel: c.rel } : {});
+
   let open = $state(false);
   const close = () => (open = false);
 </script>
@@ -42,7 +46,7 @@
         <Button
           href={cta.href}
           target={cta.target}
-          rel={cta.rel}
+          {...relOf(cta)}
           variant={cta.variant}
           style={cta.style}
           size="sm"
@@ -90,7 +94,7 @@
       <Button
         href={cta.href}
         target={cta.target}
-        rel={cta.rel}
+        {...relOf(cta)}
         variant={cta.variant}
         style={cta.style}
         size="md"

@@ -10,6 +10,7 @@
 	"scripts": {
 		"dev": "bun run --filter site-com dev",
 		"dev:com": "bun run --filter site-com dev",
+		"dev:org": "bun run --filter site-org dev",
 		"build": "bun run --filter './sites/*' build",
 		"check": "bun run --filter '*' check",
 		"test:unit": "bun run --filter '*' test:unit",

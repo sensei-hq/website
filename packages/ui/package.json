@@ -20,7 +20,8 @@
 		}
 	},
 	"scripts": {
-		"icons:bundle": "rokkit-cli bundle -i icons -o src/icons"
+		"icons:bundle": "rokkit-cli bundle -i icons -o src/icons",
+		"check": "svelte-check --tsconfig ./tsconfig.json"
 	},
 	"dependencies": {
 		"@rokkit/actions": "^1.15.2",
@@ -35,6 +36,10 @@
 		"svelte": "^5.57.3"
 	},
 	"devDependencies": {
-		"@rokkit/cli": "^1.15.2"
+		"@rokkit/cli": "^1.15.2",
+		"@types/node": "^25.9.9",
+		"svelte": "^5.57.3",
+		"svelte-check": "^4.7.8",
+		"typescript": "^6.0.3"
 	}
 }
