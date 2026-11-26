@@ -1,4 +1,8 @@
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { test, expect } from '@playwright/test';
+// films/ (masters, campaign takes) is gitignored, so CI has none: this test needs a checkout that has them.
+const FILMS = fileURLToPath(new URL('../../../films', import.meta.url));
 
 // The show runs the standard emaki chrome: icon transport, progress ticks, count, mute.
 // (CC needs voice lines and the pop-out needs a player page, so neither renders here.)
@@ -44,6 +48,7 @@ test('O flips orientation and keeps the scene', async ({ page }) => {
 });
 
 test('a fitted short plays its takes with the picture', async ({ page }) => {
+  test.skip(!existsSync(`${FILMS}/campaign`), 'no films/ checkout');
   const takes: string[] = [];
   page.on('response', (r) => {
     if (r.url().includes('/api/campaign/scenes-as-data/takes/')) takes.push(`${r.status()} ${r.url()}`);

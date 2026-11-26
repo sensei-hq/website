@@ -1,4 +1,8 @@
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { test, expect } from '@playwright/test';
+// films/ (masters, campaign takes) is gitignored, so CI has none: this test needs a checkout that has them.
+const FILMS = fileURLToPath(new URL('../../../films', import.meta.url));
 
 test.describe('Dark mode switching', () => {
   test.beforeEach(async ({ page }) => {
@@ -47,6 +51,7 @@ test.describe('Dark mode switching', () => {
   });
 
   test('dark surfaces stay dark instead of inverting', async ({ page }) => {
+    test.skip(!existsSync(FILMS), 'no films/ checkout');
     await page.goto('/campaign/scenes?film=know-the-code-first&scene=hook');
     await page.waitForSelector('.motion-player');
     await page.evaluate(() => {
