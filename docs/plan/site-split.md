@@ -8,7 +8,7 @@ Status: agreed 2026-11-26 (decisions in §7). Sensei install fixes in flight: se
 |---|---|
 | Stack | SvelteKit 2 / Svelte 5, Rokkit + UnoCSS, bun, one package (`sensei-site` 0.22.1) |
 | Hosting | Cloudflare **Pages** (git-integrated, builds `main`), `adapter-cloudflare`; public pages prerendered, worker only for `/admin`, `/api/admin`, `/m/*` |
-| Bindings | D1 `sensei-site` (posting desk: approvals, posts, audit), R2 `sensei-media` |
+| Bindings | D1 `sensei-site` (posting desk: approvals, posts, audit), R2 `sensei-media` (APAC; replaced 2026-11-26 by private `sensei-posting` + public `sensei-hq-media` on media.sensei-hq.com/.org, both ENAM) |
 | Auth | Cloudflare Access in front of `/admin` (`hooks.server.ts` → `@senseihq/emaki-posting`). No customer accounts, orgs, pricing or forms anywhere |
 | CI | `ci.yml` (check, unit, build, e2e), `daily-publish.yml` (deploy hook — articles are date-gated), `post.yml` + `schedule-sync.yml` (talk to `https://sensei-hq.com/admin`) |
 | Routes | `/` hub · `/sensei{,/docs,/faq,/relay,/diagrams}` · `/torii-seiki` · `/katachi` · `/articles/**` (41: 15 sensei, 24 library, 2 concept) · `/show/[film]` · `/privacy` · `/terms` · `/sitemap.xml` · dev-only `/campaign/**` |
