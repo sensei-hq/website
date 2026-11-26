@@ -17,7 +17,8 @@
 			"svelte": "./src/motion/ShortCover.svelte",
 			"default": "./src/motion/ShortCover.svelte"
 		},
-		"./content/*": "./src/content/*"
+		"./content/*": "./src/content/*",
+		"./pricing": "./src/pricing.ts"
 	},
 	"scripts": {
 		"check": "svelte-check --tsconfig ./tsconfig.json",
