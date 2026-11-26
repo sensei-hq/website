@@ -88,6 +88,10 @@
     </div>
     {#if !shown.length}<p class="text-ink-mute">Nothing matches yet. Try another word.</p>{/if}
 
+    {#if site.elsewhere}
+      <p class="text-ink-mute text-sm mt-12 mb-0" data-elsewhere>{site.elsewhere.text} <a href={site.elsewhere.href} class="text-accent no-underline">{site.elsewhere.label} →</a></p>
+    {/if}
+
     <nav class="browse grid grid-cols-1 gap-9 mt-14 pt-10 md:grid-cols-[1fr_1.4fr_2fr] md:gap-x-14 md:mt-[72px]" aria-label="Browse">
       {#if products.length}
         <div>

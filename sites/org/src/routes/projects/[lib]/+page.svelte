@@ -1,6 +1,6 @@
 <script lang="ts">
   import ArticleCard from '@site/articles/ArticleCard.svelte';
-  import { SITE, SITE_NAME } from '$lib/site.js';
+  import { SITE, SITE_NAME, COMMERCIAL } from '$lib/site.js';
 
   let { data } = $props();
   const p = $derived(data.project);
@@ -78,6 +78,27 @@
     </section>
   {/if}
 
+  <section class="wrap mx-auto px-5 md:px-7 pb-16 grid grid-cols-1 gap-4 md:grid-cols-2">
+    <div class="box">
+      <p class="mono text-ink-soft text-xs m-0 mb-2" style="letter-spacing:0.12em;text-transform:uppercase">Licence</p>
+      <p class="text-ink-mute text-sm m-0" style="line-height:1.6">
+        <a href={p.license.href} target="_blank" rel="noopener" class="text-ink">{p.license.spdx} licence ↗</a> — use it, fork it, ship it.
+      </p>
+    </div>
+    <div class="box">
+      <p class="mono text-ink-soft text-xs m-0 mb-2" style="letter-spacing:0.12em;text-transform:uppercase">Contribute</p>
+      <p class="text-ink-mute text-sm m-0" style="line-height:1.6">
+        {l.name} is developed in public. <a href={p.contribute} target="_blank" rel="noopener" class="text-ink">{p.contribute.endsWith('CONTRIBUTING.md') ? 'Read the contributing guide' : 'Open an issue or a pull request'} ↗</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap mx-auto px-5 md:px-7 pb-16" data-commercial>
+    <p class="text-ink-soft text-sm m-0" style="line-height:1.6">
+      Looking for an integrated AI development workspace? <a href="{COMMERCIAL}/sensei" class="text-sensei">Explore Sensei →</a>
+    </p>
+  </section>
+
   <footer class="border-t border-paper-edge">
     <div class="wrap mx-auto px-5 md:px-7 py-8 flex flex-wrap items-center justify-between gap-4 text-xs text-ink-soft">
       <span>{l.name} is MIT-licensed · © Sensei HQ</span>
@@ -90,6 +111,7 @@
   .page { min-height: 100%; background: var(--paper); color: var(--ink); }
   .wrap { max-width: 1120px; }
   .code { margin: 0; padding: 16px 18px; overflow-x: auto; border: 1px solid var(--paper-edge); border-radius: 10px; background: var(--paper-soft); font-family: var(--font-mono); font-size: 13px; line-height: 1.6; color: var(--ink); }
+  .box { border: 1px solid var(--paper-edge); border-radius: 10px; padding: 16px 18px; }
   .pkgs { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
   .pkgs li { display: flex; flex-direction: column; gap: 2px; padding-bottom: 10px; border-bottom: 1px solid var(--paper-edge); }
   .pkgs li:last-child { border-bottom: 0; }

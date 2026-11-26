@@ -16,11 +16,12 @@
       <p class="display text-ink m-0 text-lg" style="font-weight:400;line-height:1.35">
         Built on five MIT-licensed libraries we develop in public.
       </p>
+      <a href="https://sensei-hq.org" class="text-accent text-sm no-underline inline-block mt-2">sensei-hq.org →</a>
     </div>
     <ul class="flex flex-wrap gap-x-6 gap-y-3 m-0 p-0" style="list-style:none">
       {#each libraries as l (l.id)}
         <li>
-          <a href={l.href} target="_blank" rel="noopener" class="lib no-underline">
+          <a href="https://sensei-hq.org/projects/{l.id}" class="lib no-underline">
             <span class="display text-ink text-base">{l.name}</span>
             <span class="text-ink-soft text-xs">{l.category}</span>
           </a>

@@ -11,11 +11,19 @@ export interface Project {
   packages: { name: string; what: string }[];
   /** The README, the source of everything above. */
   source: string;
+  /** The repo's licence file (every library is MIT). */
+  license: { spdx: 'MIT'; href: string };
+  /** Where to start contributing: the repo's CONTRIBUTING.md where it has one, else its issues. */
+  contribute: string;
 }
 
 const readme = (id: string) => `https://github.com/sensei-hq/${id}#readme`;
+const repo = (id: string) => `https://github.com/sensei-hq/${id}`;
 
-const BY_ID: Record<string, Omit<Project, 'id' | 'source'>> = {
+// From the GitHub community-profile API (2026-11-26): only rokkit has a CONTRIBUTING.md.
+const CONTRIBUTING: Record<string, string> = { rokkit: `${repo('rokkit')}/blob/main/CONTRIBUTING.md` };
+
+const BY_ID: Record<string, Omit<Project, 'id' | 'source' | 'license' | 'contribute'>> = {
   gateway: {
     start: {
       title: 'Consuming it',
@@ -109,6 +117,12 @@ npx emaki validate`,
 };
 
 /** One project per library, in the registry's order. */
-export const PROJECTS: Project[] = libraryList().map((l) => ({ id: l.id, source: readme(l.id), ...BY_ID[l.id] }));
+export const PROJECTS: Project[] = libraryList().map((l) => ({
+  id: l.id,
+  source: readme(l.id),
+  license: { spdx: 'MIT', href: `${repo(l.id)}/blob/main/LICENSE` },
+  contribute: CONTRIBUTING[l.id] ?? `${repo(l.id)}/issues`,
+  ...BY_ID[l.id],
+}));
 
 export const projectFor = (id: string) => PROJECTS.find((p) => p.id === id);

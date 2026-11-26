@@ -20,5 +20,6 @@ export const ARTICLES_SITE: ArticlesSite = {
     github: 'https://github.com/sensei-hq',
   },
   productHome: { sensei: '/sensei' },
+  elsewhere: { text: 'Writing about our open-source libraries lives at', label: 'sensei-hq.org/articles', href: 'https://sensei-hq.org/articles' },
   redirectMoved: true,
 };
