@@ -18,7 +18,10 @@ jobs:
       - run: bun run test:unit
       - run: bun run test:scripts
       - run: bun run build
+      # Install the browser for the Playwright the sites pin (the root has no Playwright, so a root bunx would fetch
+      # the latest release and a chromium build the sites' runner cannot find).
       - run: bunx playwright install --with-deps chromium
+        working-directory: sites/com
       - run: bun run test:e2e
         env:
           CI: true
