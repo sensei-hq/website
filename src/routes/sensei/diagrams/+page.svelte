@@ -128,7 +128,7 @@
     </h2>
     <div class="flex items-center flex-wrap gap-3 mt-8">
       <Button href="{base}/sensei" variant="primary" size="lg">Meet sensei</Button>
-      <a href="https://github.com/sensei-hq/sensei" target="_blank" rel="noopener" class="text-ink-mute text-sm no-underline nav-link">sensei-hq/sensei on GitHub ↗</a>
+      <a href="{base}/sensei/docs" class="text-ink-mute text-sm no-underline nav-link">Read the docs →</a>
     </div>
   </section>
 

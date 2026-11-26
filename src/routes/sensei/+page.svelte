@@ -18,10 +18,12 @@
     Tone
   } from '$lib/sensei-surfaces-data';
 
-  const GITHUB = 'https://github.com/sensei-hq/sensei';
-  // Releases ship on the sensei repo with version-pinned asset names, so the
-  // download CTAs link the latest release page instead of guessing a file.
-  const RELEASES_URL = `${GITHUB}/releases/latest`;
+  // The source repo is private; binaries and the public issue tracker live on
+  // the binaries-only sensei-releases repo (sensei#538). Assets carry the
+  // version in their names, so the download CTAs link the latest release page
+  // instead of guessing a file.
+  const RELEASES = 'https://github.com/sensei-hq/sensei-releases';
+  const RELEASES_URL = `${RELEASES}/releases/latest`;
 
   // ── Theme toggle ────────────────────────────────────────────
   let isDark = $derived(vibe.mode === 'dark');
@@ -102,20 +104,18 @@
 
   const footerCols = [
     { title: 'Product', links: [
-      { label: 'Download', href: '#' },
+      { label: 'Download', href: RELEASES_URL },
       { label: 'Relay', href: `${base}/sensei/relay` },
       { label: 'FAQ', href: `${base}/sensei/faq` },
       { label: 'Docs', href: `${base}/sensei/docs` },
-      { label: 'Changelog', href: `${GITHUB}/releases` },
+      { label: 'Changelog', href: `${RELEASES}/releases` },
     ]},
     { title: 'Legal', links: [
       { label: 'Privacy', href: `${base}/privacy` },
       { label: 'Terms', href: `${base}/terms` },
     ]},
-    { title: 'Source', links: [
-      { label: 'GitHub', href: GITHUB },
-      { label: 'Issues', href: `${GITHUB}/issues` },
-      { label: 'Roadmap', href: `${GITHUB}/projects` },
+    { title: 'Support', links: [
+      { label: 'Issues', href: `${RELEASES}/issues` },
     ]},
   ];
 </script>
