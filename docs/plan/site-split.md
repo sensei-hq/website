@@ -111,7 +111,7 @@ Why one content package for both sites: the posting desk, films and the daily da
 6. Analytics: Cloudflare Web Analytics, one site tag per project (cookieless; no consent banner needed). Outbound GitHub clicks / CTA events as `data-` attributes counted by the beacon where supported.
 
 ### Phase E — library repos (one small PR each, in their repos)
-Add `<lib>.sensei-hq.org` custom domain; update canonical/OG/`llms.txt`/`package.json homepage`/`Cargo.toml homepage`/README links to `.org`; keep `.com` host alive behind the 301 rule for at least 12 months. Licences untouched.
+~~Add `<lib>.sensei-hq.org` custom domain~~ — done by the owner 2026-11-26 (all five answer on .org; the website links them since b8d9954). Remaining: update canonical/OG/`llms.txt`/`package.json homepage`/`Cargo.toml homepage`/README links to `.org`; keep `.com` host alive behind the 301 rule for at least 12 months. Licences untouched.
 
 ### Phase F — entitlements, vouchers, complimentary access (brief §7–9) — **not in the website**
 The entitlement source of truth must be readable by the Sensei daemon/Dojo and by Torii/Seiki, server-side. The marketing site is the wrong home for it (static, separate DB, public-facing). What already exists:

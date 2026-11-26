@@ -14,6 +14,7 @@
   theme tokens. They get their own sites once evaluable (owner 2026-11-26).
 - Home = the company (258dc57): who we are, products in brief, approach
   (+ 'Only what is built'), Work with us (pricing config), OSS strip, contact.
+- b8d9954: work-with-us price tags; library links → <lib>.sensei-hq.org.
 - check 0 errors · unit 60+18 · e2e 110 green. Filed #5 (post.yml broken).
 
 ## Remain
