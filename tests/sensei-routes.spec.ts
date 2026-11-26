@@ -49,14 +49,14 @@ test('Sensei product site renders at /sensei', async ({ page }) => {
 });
 
 test('Download buttons point at the real releases page', async ({ page }) => {
-  // Releases ship on sensei-hq/sensei (there is no sensei-releases repo),
-  // with version-pinned asset names — so both CTAs link the release page
-  // instead of guessing a filename.
+  // The source repo is private; binaries ship on the public, binaries-only
+  // sensei-hq/sensei-releases (sensei#538), with version-pinned asset names —
+  // so both CTAs link the release page instead of guessing a filename.
   await page.goto('/sensei');
   const ctas = page.getByRole('link', { name: /download sensei/i });
   await expect(ctas).toHaveCount(2);
   for (const cta of await ctas.all()) {
-    await expect(cta).toHaveAttribute('href', 'https://github.com/sensei-hq/sensei/releases/latest');
+    await expect(cta).toHaveAttribute('href', 'https://github.com/sensei-hq/sensei-releases/releases/latest');
   }
 });
 
