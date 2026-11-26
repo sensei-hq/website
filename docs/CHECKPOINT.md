@@ -1,4 +1,4 @@
-# Checkpoint: both sites live; .org project pages in PR #8
+# Checkpoint: both sites live, project pages live (main 6f9de01)
 
 ## Slice
 .com / .org split (#4) — plan docs/plan/site-split.md.
@@ -15,17 +15,16 @@
 - CI fixed: films/-dependent tests skip without films/; chromium installed for
   the sites' pinned Playwright; @site/articles unit tests; parity ≤100 px.
 - GitHub profile links /torii + both pricing pages.
-- PR #8 (feat/org-projects): /projects/<lib> from READMEs, licence +
-  contribute links, cross-links. Local: check 0, unit green, e2e org 52/com 116.
+- Live (#8 → develop, #9 → main, 6f9de01): sensei-hq.org/projects/<lib> from
+  READMEs, licence + contribute links, cross-links. Org profile links them.
 
 ## Remain
-1. Merge #8 (CI) → develop → main; then add project links to the org profile.
-2. Library repos (Phase E): homepage/README links → .org.
-3. Phase D items (request-access, analytics, deploy hooks for both sites).
-4. Sensei #539/#540 (owner); #541 live check after daemon install. #5 post.yml.
+1. Library repos (Phase E): homepage/README links → .org.
+2. Phase D items (request-access, analytics, deploy hooks for both sites).
+3. Sensei #539/#540 (owner); #541 live check after daemon install. #5 post.yml.
 
 ## Next command
-gh pr checks 8 --watch, then gh pr merge 8 --merge.
+Phase E: per library repo, a PR pointing homepage/README links at .org.
 
 ## Open questions
 - Same tier prices for Sensei and Torii?
