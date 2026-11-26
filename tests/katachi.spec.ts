@@ -27,7 +27,8 @@ test.describe('Katachi product page at /katachi', () => {
 
   test('presents Katachi as a proprietary preview — no source link', async ({ page }) => {
     // website#3: future apps are proprietary for now.
-    await expect(page.locator('a[href*="github.com"]')).toHaveCount(0);
+    // (The shared nav's Sponsor link is studio-wide and stays.)
+    await expect(page.locator('a[href*="github.com/sensei-hq/katachi"]')).toHaveCount(0);
     await expect(page.locator('body')).not.toContainText(/open on GitHub|open source/i);
   });
 
