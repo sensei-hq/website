@@ -13,7 +13,7 @@ test.describe('Sensei HQ home at /', () => {
     await expect(page).toHaveTitle(/Sensei HQ/);
     await expect(page.getByRole('heading', { level: 1 })).toContainText(/AI/);
     await expect(page.locator('body')).not.toContainText('Three products. Five libraries.');
-    await expect(page.getByRole('heading', { name: 'What our products stand on.' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Two products. One temperament.' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Coming soon.' })).toBeVisible();
   });
 

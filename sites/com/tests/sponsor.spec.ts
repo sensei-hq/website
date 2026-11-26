@@ -30,11 +30,13 @@ test.describe('Sponsor links', () => {
     await expect(sponsor).toBeVisible();
   });
 
-  test('featured product card stacks to a single column on small mobile', async ({ page }) => {
+  test('product cards stack to a single column on small mobile, with no sideways scroll', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
-    const tracks = await page.evaluate(
-      () => getComputedStyle(document.querySelector('.featured-card')!).gridTemplateColumns.split(' ').length
-    );
-    expect(tracks).toBe(1);
+    const cards = page.locator('#products [data-product]');
+    const [a, b] = [await cards.nth(0).boundingBox(), await cards.nth(1).boundingBox()];
+    expect(b!.y).toBeGreaterThan(a!.y + a!.height - 1);
+    expect(Math.abs(a!.x - b!.x)).toBeLessThan(1);
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    expect(overflow).toBeLessThanOrEqual(0);
   });
 });
