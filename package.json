@@ -12,6 +12,8 @@
 		"dev:com": "bun run --filter site-com dev",
 		"dev:org": "bun run --filter site-org dev",
 		"build": "bun run --filter './sites/*' build",
+		"build:com": "bun run --filter site-com build",
+		"build:org": "bun run --filter site-org build",
 		"check": "bun run --filter '*' check",
 		"test:unit": "bun run --filter '*' test:unit",
 		"test:e2e": "bun run --filter './sites/*' test:e2e",
