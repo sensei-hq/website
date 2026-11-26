@@ -1,35 +1,31 @@
-# Checkpoint: Phase A done; Sensei install PR waiting on CI
+# Checkpoint: Phase B under way on feat/workspaces
 
 ## Slice
-.com / .org split + commercial transition — plan agreed (docs/plan/site-split.md).
+.com / .org split (#4) — plan docs/plan/site-split.md. Phase A is on develop.
 
-## Done
-- Discovery + plan, owner decisions D1–D4 recorded (§7). Repo private (D1).
-- Phase A, all on `develop`:
-  - #1 4abc01e — links → sensei-releases; crawl e2e
-    (tests/no-private-repo-links.spec.ts) guards sensei/torii/katachi/kata.
-  - #2 f657fb5 — src/lib/claims.ts `unverified(…)` + `shown(…)`; SSO/SCIM
-    kept in data, never rendered.
-  - #3 8aecfb9 — future apps under "Coming soon" (#coming-soon), out of the
-    nav, katachi off REPOS, /katachi has no source link.
-  - 994bb83 — proprietary LICENSE, package.json `UNLICENSED`.
-- Sensei PR #539: develop merged in, Windows remedy link fixed, token added.
+## Done (branch feat/workspaces, not on develop — develop→main must stay shippable)
+- B0: scripts/site_paths.py (one place for site paths; test:scripts in CI);
+  src/lib/server/repo.ts `repoRoot()/filmsDir()` replaces process.cwd().
+- B1 25a1747: app → sites/com (git mv), root bun workspaces, scripts fan out
+  with --filter. check / 68 unit / 99 e2e / build green from the new layout.
+- Filed #5: scheduled post.yml fails every run (imports gitignored films/tools).
 
 ## Remain
-1. Owner: merge #539 when test/senseid/windows go green; release; then
-   deploy the site (download links 404 until sensei-releases has a release).
-2. Phases B → C → D (#4); Phase E in library repos.
-3. Older: posting setup per docs/posting.md (Access, secrets).
+1. B2: packages/content (articles, films, hub registry, seo(site)), then
+   packages/ui (hub components, SiteNav, Footer, tokens, icons) — move + re-export.
+2. B3: CI matrix per site. B4 owner: Pages root dir → sites/com BEFORE merge.
+3. Owner ask 2026-11-26: home page = core products + value offering;
+   /sensei/pricing and /torii/pricing (per product, D5). /torii-seiki → /torii.
+4. Phase C sites/org; Sensei #539/#540 merge + release (owner).
 
 ## Next command
-Phase B (plan §4): bun workspaces — move app to `sites/com`, extract
-`packages/ui` + `packages/content`; no behaviour change, full e2e green.
+Extract packages/content: failing test that sites/com imports articles from
+`@site/content`.
 
 ## Open questions
-- D5–D7 in the plan (pricing per product, concepts placement, email provider).
-- Sensei CodeQL fails on every PR since the repo went private (needs GitHub
-  Advanced Security); qlty is out of minutes.
+- Per-product prices: brief tiers (Community/Team $149/Growth $399/Business $999/
+  Enterprise) — which product(s) they apply to.
 
 ## Known broken
-- Live site keeps the old links until develop deploys; brew install 404s
-  until the next Sensei release.
+- post.yml (#5). Film tools (films/tools, gitignored) were edited locally to
+  import scripts/site_paths.py — not versioned.
