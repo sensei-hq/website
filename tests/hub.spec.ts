@@ -48,6 +48,12 @@ test.describe('Sensei HQ hub at /', () => {
       'Fully managed'
     );
   });
+
+  test('does not advertise SSO or SCIM, which are not built yet', async ({ page }) => {
+    // website#2: the Seiki card's "SSO · SCIM" is design intent, flagged unverified.
+    await expect(page.locator('#products')).toContainText('Fully managed');
+    await expect(page.locator('body')).not.toContainText(/SSO|SCIM/);
+  });
 });
 
 test.describe('Still taking shape', () => {

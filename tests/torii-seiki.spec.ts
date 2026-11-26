@@ -36,4 +36,9 @@ test.describe('Torii · Seiki product page at /torii-seiki', () => {
     await expect(page.locator('body')).not.toContainText('Self-hosted');
     await expect(page.locator('body')).not.toContainText('Strategos');
   });
+
+  test('does not advertise SSO or SCIM, which are not built yet', async ({ page }) => {
+    // website#2: design intent in sensei-hq/torii, flagged unverified in the data.
+    await expect(page.locator('body')).not.toContainText(/SSO|SCIM/);
+  });
 });
