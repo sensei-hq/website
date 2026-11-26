@@ -8,6 +8,8 @@
         { label: 'Sensei', href: `${base}/sensei`, external: false },
         { label: 'Torii', href: `${base}/torii`, external: false },
         { label: 'Seiki', href: `${base}/torii#seiki`, external: false },
+        { label: 'Sensei pricing', href: `${base}/sensei/pricing`, external: false },
+        { label: 'Torii pricing', href: `${base}/torii/pricing`, external: false },
       ],
     },
     {

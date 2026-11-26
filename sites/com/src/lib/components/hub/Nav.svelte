@@ -1,12 +1,14 @@
 <script lang="ts">
   import { base } from '$app/paths';
   import SiteNav from '$lib/components/SiteNav.svelte';
-  import { NAV_LINKS } from '$lib/hub-data.js';
+  import { HOME_NAV } from '$lib/home-data.js';
+
+  const links = HOME_NAV.map(([href, label]) => [href.startsWith('/') ? `${base}${href}` : href, label] as const);
 </script>
 
 <SiteNav
-  links={NAV_LINKS}
-  cta={{ href: 'https://github.com/sensei-hq', target: '_blank', rel: 'noopener', style: 'outline', label: 'GitHub' }}>
+  {links}
+  cta={{ href: 'mailto:hi@sensei-hq.com', style: 'outline', label: 'Talk to us' }}>
   {#snippet brand()}
     <a href="{base}/" class="flex items-center gap-3 no-underline">
       <!-- Sensei HQ brushed-ensō mark (i-brand:sensei-hq), tinted to the brand vermillion -->

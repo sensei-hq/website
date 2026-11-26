@@ -1,68 +1,72 @@
 <script lang="ts">
   import { Button } from '@rokkit/ui';
   import { base } from '$app/paths';
-  import { PRODUCTS } from '$lib/hub-data.js';
+  import { pricingFor, priceLabel, usd } from '@site/content/pricing';
 
-  const meta = ['Independent studio', 'Est. 2024', 'Three products · five libraries'];
-  const workshopCount = String(PRODUCTS.length).padStart(2, '0');
+  // The three ways in, straight from the pricing config — never a number of its own.
+  const sensei = pricingFor('sensei');
+  const from = Math.min(
+    ...[sensei, pricingFor('torii')].flatMap((p) => p.tiers.map((t) => t.monthlyUsd ?? Infinity).filter((n) => n > 0))
+  );
+  const free = priceLabel(sensei.tiers[0]);
 
-  // Internal routes (/sensei, /torii) get the base prefix and open in place;
-  // the library sites (absolute https URLs) open in a new tab.
-  const isExternal = (p: typeof PRODUCTS[number]): boolean => p.href.startsWith('http');
-  const productHref = (p: typeof PRODUCTS[number]): string =>
-    isExternal(p) ? p.href : `${base}${p.href}`;
+  const steps = [
+    { kanji: '一', title: `${free} — the Sensei desktop app`, text: 'Local-first. Install it and see what your own AI-assisted work is teaching you.' },
+    { kanji: '二', title: `A ${usd(sensei.pilot.usd)} pilot, ${sensei.pilot.days} days`, text: 'Set up with your team and your providers, then a review of what we found.' },
+    { kanji: '三', title: `Plans from ${usd(from)} a month`, text: 'Per product, for teams and organizations. Bring your own provider keys.' },
+  ];
 </script>
 
 <header id="top" class="hero-wrap mx-auto px-7 pt-7 pb-9">
-  <div class="grid grid-cols-1 md:grid-cols-[1.55fr_1fr] items-start gap-8">
+  <div class="grid grid-cols-1 md:grid-cols-[1.45fr_1fr] items-start gap-8">
     <!-- Statement -->
     <div>
       <div class="flex items-baseline gap-3 mb-5">
         <span class="kanji text-accent text-3xl" style="line-height:1">道</span>
-        <span class="mono text-ink-soft text-xs" style="letter-spacing:0.12em;text-transform:uppercase">Dō · the way — an independent studio</span>
+        <span class="mono text-ink-soft text-xs" style="letter-spacing:0.12em;text-transform:uppercase">Dō · the way — Sensei HQ</span>
       </div>
       <h1 class="display text-ink m-0 text-3xl md:text-4xl hero-h1">
-        We build quiet, sharp tools for the people who build software.
+        Get more from AI across your engineering team — and keep it under your control.
       </h1>
-      <p class="text-ink-mute mt-5 text-lg" style="line-height:1.6;max-width:540px">
-        Sensei HQ is a small workshop of developer tools — three products you
-        open, five libraries you build on. Restraint over noise, craft over
-        scale, and a deep respect for the person on the other side of the screen.
+      <p class="text-ink-mute mt-5 text-lg" style="line-height:1.6;max-width:560px">
+        Two products for teams that work with AI every day. <strong class="text-ink" style="font-weight:500">Sensei</strong>
+        helps people learn from their AI-assisted work and share what works.
+        <strong class="text-ink" style="font-weight:500">Torii</strong> gives everyone one governed gate to your
+        organization's models.
       </p>
       <div class="flex items-center flex-wrap gap-3 mt-6">
-        <Button href="#products" variant="primary" size="lg">
-          <span class="kanji text-base" style="line-height:1">見</span>
-          See the tools
+        <Button href="{base}/sensei" variant="primary" size="lg">
+          <span class="kanji text-base" style="line-height:1">観</span>
+          Explore Sensei
         </Button>
-        <a href="#approach" class="text-ink-mute text-sm no-underline">How we work ↓</a>
-      </div>
-      <div class="flex flex-wrap gap-4 mt-7">
-        {#each meta as m (m)}
-          <span class="mono text-ink-soft text-xs">{m}</span>
-        {/each}
+        <Button href="{base}/torii" style="outline" size="lg">
+          <span class="kanji text-base" style="line-height:1">門</span>
+          Explore Torii
+        </Button>
+        <a href="#start" class="text-ink-mute text-sm no-underline">How to start ↓</a>
       </div>
     </div>
 
-    <!-- In the workshop -->
-    <aside class="border border-paper-edge rounded-lg bg-paper-soft" style="overflow:hidden">
+    <!-- How to start -->
+    <aside id="start" class="border border-paper-edge rounded-lg bg-paper-soft" style="overflow:hidden">
       <div class="px-5 py-4 border-b border-paper-edge flex items-center justify-between">
-        <span class="mono text-ink-soft text-xs" style="letter-spacing:0.12em;text-transform:uppercase">In the workshop</span>
-        <span class="mono text-ink-faint text-xs">{workshopCount}</span>
+        <span class="mono text-ink-soft text-xs" style="letter-spacing:0.12em;text-transform:uppercase">How to start</span>
+        <span class="mono text-ink-faint text-xs">Preview</span>
       </div>
-      <div class="divide-y divide-paper-edge">
-        {#each PRODUCTS as p (p.id)}
-          <a href={productHref(p)}
-             target={isExternal(p) ? '_blank' : undefined}
-             rel={isExternal(p) ? 'noopener' : undefined}
-             class="workshop-row gap-4 px-5 py-4 no-underline text-{p.id}">
-            <span class="kanji text-2xl" style="line-height:1;width:30px;text-align:center">{p.kanji}</span>
+      <ol class="divide-y divide-paper-edge m-0 p-0" style="list-style:none">
+        {#each steps as s (s.kanji)}
+          <li class="start-row gap-4 px-5 py-4">
+            <span class="kanji text-accent text-xl" style="line-height:1.2;width:24px;text-align:center">{s.kanji}</span>
             <span>
-              <span class="display text-ink block text-base">{p.name}</span>
-              <span class="text-ink-soft text-xs">{p.category}</span>
+              <span class="display text-ink block text-base">{s.title}</span>
+              <span class="text-ink-soft text-sm" style="line-height:1.5">{s.text}</span>
             </span>
-            <span class="product-dot" style="background:var(--{p.id})"></span>
-          </a>
+          </li>
         {/each}
+      </ol>
+      <div class="px-5 py-4 border-t border-paper-edge flex flex-wrap gap-x-5 gap-y-2">
+        <a href="{base}/sensei/pricing" class="text-sensei text-sm no-underline">Sensei pricing →</a>
+        <a href="{base}/torii/pricing" class="text-torii text-sm no-underline">Torii pricing →</a>
       </div>
     </aside>
   </div>
@@ -76,22 +80,11 @@
     font-weight: 300;
     line-height: 1.08;
     letter-spacing: -0.025em;
-    max-width: 640px;
+    max-width: 660px;
   }
-  .workshop-row {
+  .start-row {
     display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    transition: background 0.15s;
-  }
-  .workshop-row:hover {
-    background: var(--paper-mute);
-  }
-  .product-dot {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    flex-shrink: 0;
+    grid-template-columns: auto 1fr;
+    align-items: start;
   }
 </style>
