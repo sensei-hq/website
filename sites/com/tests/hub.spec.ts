@@ -1,22 +1,24 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Sensei HQ home at /', () => {
-  // Owner ask 2026-11-26: the home page leads with the two core products and
-  // what they offer; each has its own pricing page. Libraries step back to a
-  // compact open-source strip (they move to sensei-hq.org in Phase C).
+test.describe('Sensei HQ home at / — the company', () => {
+  // Owner decision 2026-11-26: the home page is about the company — philosophy,
+  // the commercial offer and the open-source work. Sensei and Torii appear in
+  // brief; their detail lives on their own sections (/sensei, /torii).
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
   });
 
-  test('leads with the value offering, not a portfolio count', async ({ page }) => {
+  test('opens with who we are, then the sections in order', async ({ page }) => {
     await expect(page).toHaveTitle(/Sensei HQ/);
     await expect(page.getByRole('heading', { level: 1 })).toContainText(/AI/);
-    await expect(page.locator('body')).not.toContainText('Three products. Five libraries.');
-    await expect(page.getByRole('heading', { name: 'Two products. One temperament.' })).toBeVisible();
+    const order = await page.locator('main > section[id], body section[id]').evaluateAll((els) =>
+      els.map((e) => e.id).filter((id) => ['products', 'approach', 'start', 'open', 'contact'].includes(id))
+    );
+    expect([...new Set(order)]).toEqual(['products', 'approach', 'start', 'open', 'contact']);
   });
 
-  test('the products section holds exactly the two core products', async ({ page }) => {
+  test('the two products in brief, each leading to its own section and pricing', async ({ page }) => {
     const cards = page.locator('#products [data-product]');
     await expect(cards).toHaveCount(2);
     for (const [id, name, home, pricing] of [
@@ -26,26 +28,27 @@ test.describe('Sensei HQ home at /', () => {
       const card = page.locator(`#products [data-product="${id}"]`);
       await expect(card).toContainText(name);
       await expect(card).toContainText('Preview');
-      await expect(card.locator('[data-value] li')).toHaveCount(3);
       await expect(card.locator(`a[href="${home}"]`).first()).toBeVisible();
       await expect(card.locator(`a[href="${pricing}"]`).first()).toBeVisible();
     }
-    // Torii comes with Seiki, the governance plane — managed SaaS (2026-11-07).
+    // Detail lives on the product sections, not the company page.
+    await expect(page.locator('#products [data-value]')).toHaveCount(0);
     await expect(page.locator('#products [data-product="torii"]')).toContainText('Seiki');
-    await expect(page.locator('#products a[href="/torii#seiki"]').first()).toBeVisible();
   });
 
-  test('how to start: free app, paid pilot, plans — numbers from the pricing config', async ({ page }) => {
+  test('the approach states how the company works', async ({ page }) => {
+    await expect(page.locator('#approach [data-principle]')).toHaveCount(4);
+  });
+
+  test('work with us: free app, pilot, plans, implementation, BYOK — from the pricing config', async ({ page }) => {
     const start = page.locator('#start');
-    await expect(start).toContainText('Free');
-    await expect(start).toContainText('$500');
-    await expect(start).toContainText('30 days');
-    await expect(start).toContainText('$149');
+    for (const t of ['Free', '$500', '30 days', '$149', '$1,500–$4,000']) await expect(start).toContainText(t);
+    await expect(start).toContainText(/your own provider keys/i);
     await expect(start.locator('a[href="/sensei/pricing"]')).toBeVisible();
     await expect(start.locator('a[href="/torii/pricing"]')).toBeVisible();
   });
 
-  test('libraries are a compact strip, outside the products section', async ({ page }) => {
+  test('libraries are a compact open-source strip', async ({ page }) => {
     await expect(page.locator('#products a[href*=".sensei-hq.com"]')).toHaveCount(0);
     for (const host of ['gateway', 'dbd', 'rokkit', 'kavach', 'emaki']) {
       const link = page.locator(`#open a[href="https://${host}.sensei-hq.com"]`).first();
@@ -55,10 +58,10 @@ test.describe('Sensei HQ home at /', () => {
     }
   });
 
-  test('nav leads to the products, pricing and a person', async ({ page }) => {
-    await expect(page.locator('nav a[href="#products"]').first()).toBeVisible();
-    await expect(page.locator('nav a[href="#start"]').first()).toBeVisible();
-    await expect(page.locator('nav a[href="#libraries"]')).toHaveCount(0);
+  test('nav: products, approach, working with us, open source, a person', async ({ page }) => {
+    for (const href of ['#products', '#approach', '#start', '#open']) {
+      await expect(page.locator(`nav a[href="${href}"]`).first()).toBeVisible();
+    }
     await expect(page.locator('nav a[href="mailto:hi@sensei-hq.com"]').first()).toBeVisible();
   });
 
