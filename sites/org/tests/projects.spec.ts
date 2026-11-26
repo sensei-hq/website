@@ -29,6 +29,25 @@ for (const lib of LIBS) {
   });
 }
 
+// Discovered from the GitHub API (2026-11-26): every repo has an MIT LICENSE; only rokkit has a CONTRIBUTING.md, so
+// the others point contributors at their issues.
+const CONTRIBUTE: Record<string, string> = {
+  gateway: 'https://github.com/sensei-hq/gateway/issues',
+  dbd: 'https://github.com/sensei-hq/dbd/issues',
+  rokkit: 'https://github.com/sensei-hq/rokkit/blob/main/CONTRIBUTING.md',
+  kavach: 'https://github.com/sensei-hq/kavach/issues',
+  emaki: 'https://github.com/sensei-hq/emaki/issues',
+};
+
+for (const lib of LIBS) {
+  test(`/projects/${lib.id} carries its licence, a way to contribute, and a modest pointer to the products`, async ({ page }) => {
+    await page.goto(`/projects/${lib.id}`);
+    await expect(page.locator(`a[href="https://github.com/sensei-hq/${lib.id}/blob/main/LICENSE"]`).first()).toContainText('MIT');
+    await expect(page.locator(`a[href="${CONTRIBUTE[lib.id]}"]`).first()).toBeVisible();
+    await expect(page.locator('[data-commercial] a[href="https://sensei-hq.com/sensei"]')).toBeVisible();
+  });
+}
+
 test('a library with live articles links them from its page', async ({ page }) => {
   await page.goto('/projects/dbd');
   await expect(page.locator('a[href$="/articles/product/dbd"]').first()).toBeVisible();

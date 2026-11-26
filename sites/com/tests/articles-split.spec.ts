@@ -26,6 +26,19 @@ test.describe('articles on sensei-hq.com after the split', () => {
     });
   }
 
+  test('the index points to the library articles on sensei-hq.org', async ({ page }) => {
+    await page.goto('/articles');
+    await expect(page.locator('[data-elsewhere] a[href="https://sensei-hq.org/articles"]')).toBeVisible();
+  });
+
+  test('the home page open-source strip links sensei-hq.org and each project page', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.locator('#open a[href="https://sensei-hq.org"]')).toBeVisible();
+    for (const id of ['gateway', 'dbd', 'rokkit', 'kavach', 'emaki']) {
+      await expect(page.locator(`#open a[href="https://sensei-hq.org/projects/${id}"]`)).toBeVisible();
+    }
+  });
+
   test('the feeds and sitemap carry only .com articles', async ({ request }) => {
     const feed = await (await request.get('/articles/feed.json')).json();
     expect(feed.items.length).toBeGreaterThan(0);
