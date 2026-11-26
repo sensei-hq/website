@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Button } from '@rokkit/ui';
   import { base } from '$app/paths';
-  import SiteNav from '$lib/components/SiteNav.svelte';
+  import SiteNav from '@site/ui/SiteNav.svelte';
   import {
     CLIENTS,
     PLANES,

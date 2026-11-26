@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { readdirSync, readFileSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
-import config from '../../rokkit.config.js';
+import config from '@site/ui/rokkit.config';
 import { zenSumi } from '@rokkit/unocss/palettes';
 
 // Sensei HQ's sites share one theme — rokkit's zen-sumi family, imported, not a copy

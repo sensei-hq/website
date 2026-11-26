@@ -11,8 +11,7 @@
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.check.json",
 		"test:unit": "vitest run",
-		"test:e2e": "playwright test",
-		"icons:bundle": "rokkit-cli bundle -i icons -o src/lib/icons"
+		"test:e2e": "playwright test"
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "^4.14.0",
@@ -50,6 +49,7 @@
 		"@senseihq/emaki-posting": "^0.8.0",
 		"@senseihq/emaki-svelte": "^0.8.0",
 		"@site/content": "workspace:*",
+		"@site/ui": "workspace:*",
 		"@sveltejs/adapter-cloudflare": "^7.2.8",
 		"@sveltejs/adapter-static": "^3.0.11",
 		"@unocss/extractor-svelte": "^66.12.0",

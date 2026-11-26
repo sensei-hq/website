@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { PRODUCTS } from '@site/content/hub-data';
-import rokkitConfig from '../../rokkit.config.js';
+import rokkitConfig from '@site/ui/rokkit.config';
 
 // The invariant that keeps "add a product" a pure data change: every product,
 // and library id in the shared registry must have a matching

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { base } from '$app/paths';
-  import SiteNav from '$lib/components/SiteNav.svelte';
+  import SiteNav from '@site/ui/SiteNav.svelte';
   import { HOME_NAV } from '$lib/home-data.js';
 
   const links = HOME_NAV.map(([href, label]) => [href.startsWith('/') ? `${base}${href}` : href, label] as const);

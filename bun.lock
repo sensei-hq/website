@@ -24,6 +24,25 @@
         "svelte": "^5.57.3",
       },
     },
+    "packages/ui": {
+      "name": "@site/ui",
+      "version": "0.0.0",
+      "dependencies": {
+        "@rokkit/actions": "^1.15.2",
+        "@rokkit/states": "^1.15.2",
+        "@rokkit/themes": "^1.15.2",
+        "@rokkit/ui": "^1.15.2",
+        "@rokkit/unocss": "^1.15.2",
+        "@unocss/reset": "^66.12.0",
+        "unocss": "^66.12.0",
+      },
+      "devDependencies": {
+        "@rokkit/cli": "^1.15.2",
+      },
+      "peerDependencies": {
+        "svelte": "^5.57.3",
+      },
+    },
     "sites/com": {
       "name": "site-com",
       "version": "0.22.1",
@@ -42,6 +61,7 @@
         "@senseihq/emaki-posting": "^0.8.0",
         "@senseihq/emaki-svelte": "^0.8.0",
         "@site/content": "workspace:*",
+        "@site/ui": "workspace:*",
         "@sveltejs/adapter-cloudflare": "^7.2.8",
         "@sveltejs/adapter-static": "^3.0.11",
         "@unocss/extractor-svelte": "^66.12.0",
@@ -363,6 +383,8 @@
     "@sindresorhus/is": ["@sindresorhus/is@7.2.0", "", {}, "sha512-P1Cz1dWaFfR4IR+U13mqqiGsLFf1KbayybWwdd2vfctdV6hDpUkgCY0nKOLLTMSoRd/jJNjtbqzf13K8DCCXQw=="],
 
     "@site/content": ["@site/content@workspace:packages/content"],
+
+    "@site/ui": ["@site/ui@workspace:packages/ui"],
 
     "@speed-highlight/core": ["@speed-highlight/core@1.2.24", "", {}, "sha512-qeW2e1l78afw8VhRPfPQ1Gjj+KU5XFQ/OFV5ti6eTa9bruO7mJyZtA4vw0ofqmA3tKCkROE9xLk3VZoeRc98nw=="],
 
