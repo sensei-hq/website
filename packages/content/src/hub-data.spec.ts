@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import {
 	PRODUCTS,
-	INCUBATING,
 	NAV_LINKS,
 	REPOS,
 	productList,
@@ -65,20 +64,15 @@ describe('hub-data — portfolio model', () => {
 		expect(NAV_LINKS.map(([href]) => href)).not.toContain('#coming-soon');
 	});
 
-	// Katachi is what Burn-E became (laser-only → paper and wood, layered art, kits).
-	// It is a proprietary, invite-only preview with its own page — not an open
-	// source repo (website#3).
-	it('Katachi is a proprietary preview with its own page; Burn-E is gone', () => {
-		const k = INCUBATING.find((p) => p.id === 'katachi');
-		expect([k?.status, k?.href, k?.kanji]).toEqual(['Preview', '/katachi', '形']);
-		expect(INCUBATING.map((p) => p.id)).not.toContain('burne');
-		expect(PRODUCTS.map((p) => p.id)).not.toContain('katachi');
+	// Owner decision 2026-11-26: sensei-hq.com lists only Sensei and Torii. Consumer
+	// apps (Katachi, Magpie, Kata) get their own sites once there is enough to
+	// evaluate — they are not in the shared registry at all.
+	it('the registry holds no consumer apps', async () => {
+		const mod = await import('./hub-data');
+		expect(Object.keys(mod)).not.toContain('INCUBATING');
+		const ids = PRODUCTS.map((p) => p.id);
+		for (const app of ['katachi', 'magpie', 'kata']) expect(ids).not.toContain(app);
 		expect(REPOS.map((r) => r.name)).not.toContain('sensei-hq/katachi');
-	});
-
-	it('the other future apps are coming soon, with no page yet', () => {
-		for (const p of INCUBATING.filter((p) => p.id !== 'katachi'))
-			expect([p.status, p.href], p.id).toEqual(['Coming soon', undefined]);
 	});
 
 	it('only the five MIT libraries are listed as open source repos', () => {

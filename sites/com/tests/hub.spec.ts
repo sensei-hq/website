@@ -14,7 +14,6 @@ test.describe('Sensei HQ home at /', () => {
     await expect(page.getByRole('heading', { level: 1 })).toContainText(/AI/);
     await expect(page.locator('body')).not.toContainText('Three products. Five libraries.');
     await expect(page.getByRole('heading', { name: 'Two products. One temperament.' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Coming soon.' })).toBeVisible();
   });
 
   test('the products section holds exactly the two core products', async ({ page }) => {
@@ -68,22 +67,20 @@ test.describe('Sensei HQ home at /', () => {
   });
 });
 
-test.describe('Coming soon', () => {
-  // website#3: future apps are proprietary — a low-key "Coming soon" section,
-  // no GitHub links, no open-source wording.
-  test('Katachi sits among the coming-soon apps, marked Preview and linked to its page', async ({ page }) => {
+test.describe('Consumer apps are not on sensei-hq.com', () => {
+  // Owner decision 2026-11-26: only Sensei and Torii are listed; Katachi, Magpie and
+  // Kata get their own sites once there is enough to evaluate. /katachi is dropped.
+  test('the home page names no consumer app and has no coming-soon section', async ({ page }) => {
     await page.goto('/');
-    const section = page.locator('#coming-soon');
-    await expect(section.getByRole('heading', { name: 'Coming soon.' })).toBeVisible();
-    const katachi = section.locator('a[href="/katachi"]');
-    await expect(katachi).toBeVisible();
-    await expect(katachi).toContainText('Katachi');
-    await expect(katachi).toContainText('Preview');
-    await expect(section.getByText('Coming soon', { exact: true })).toHaveCount(2);
-    await expect(section).not.toContainText('Incubating');
-    await expect(section).not.toContainText(/open source/i);
-    await expect(section.locator('a[href*="github.com"]')).toHaveCount(0);
-    await expect(page.locator('#products a[href="/katachi"]')).toHaveCount(0);
-    await expect(page.locator('a[href="https://github.com/sensei-hq/katachi"]')).toHaveCount(0);
+    await expect(page.locator('#coming-soon')).toHaveCount(0);
+    await expect(page.locator('body')).not.toContainText(/Katachi|Magpie|\bKata\b|Coming soon/);
+  });
+
+  test('/katachi is gone', async ({ request }) => {
+    expect((await request.get('/katachi')).status()).toBe(404);
+  });
+
+  test('the sitemap lists no consumer app', async ({ request }) => {
+    expect(await (await request.get('/sitemap.xml')).text()).not.toMatch(/katachi|magpie/i);
   });
 });
