@@ -229,7 +229,15 @@ def record_link(slug, channel, url):
     INDEX.write_text(json.dumps(index, indent=2, ensure_ascii=False) + '\n')
 
 
+def need(*names):
+    """Exit with the names of the settings that are not set (they are GitHub secrets in the `posting` environment)."""
+    missing = [n for n in names if not E.get(n)]
+    if missing:
+        sys.exit(f"post.py: missing {', '.join(missing)}; see docs/posting.md (steps 4 and 6)")
+
+
 def main():
+    need('POSTER_CLIENT_ID', 'POSTER_CLIENT_SECRET')
     live = '--live' in sys.argv
     only = sys.argv[sys.argv.index('--only') + 1].split(',') if '--only' in sys.argv else None
     q = admin('GET', '/api/admin/queue')
