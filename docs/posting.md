@@ -98,6 +98,8 @@ From a private window without signing in, it must not open.
 **Settings → Environments → New: `posting`**, deployment branches: `main` only. Its secrets:
 `POSTER_CLIENT_ID`, `POSTER_CLIENT_SECRET`, and the platform keys from step 7. **Settings → Variables**:
 `POST_MODE` = `dry-run`, `YT_PRIVACY` = `unlisted` (for the first live tests).
+Until `POST_MODE` exists the scheduled job is skipped (not failed); with it set but the poster secrets missing,
+`post.py` stops and names them.
 
 ### 7. Platform keys
 
