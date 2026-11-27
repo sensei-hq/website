@@ -28,6 +28,15 @@ class PostImportsWithoutFilms(unittest.TestCase):
         r = subprocess.run([sys.executable, '-c', NO_FILMS], cwd=SCRIPTS, capture_output=True, text=True)
         self.assertEqual(r.returncode, 0, r.stderr)
 
+    def test_names_the_missing_settings_instead_of_a_traceback(self):
+        env = {'PATH': '/usr/bin:/bin'}
+        r = subprocess.run([sys.executable, 'post.py'], cwd=SCRIPTS, env=env, capture_output=True, text=True)
+        self.assertNotEqual(r.returncode, 0)
+        self.assertNotIn('Traceback', r.stderr)
+        self.assertIn('POSTER_CLIENT_ID', r.stderr)
+        self.assertIn('POSTER_CLIENT_SECRET', r.stderr)
+        self.assertIn('docs/posting.md', r.stderr)
+
 
 if __name__ == '__main__':
     unittest.main()
