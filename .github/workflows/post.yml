@@ -24,6 +24,8 @@ permissions:
 
 jobs:
   post:
+    # Off until set up: the job runs only once the POST_MODE variable exists (docs/posting.md step 6).
+    if: vars.POST_MODE != ''
     runs-on: ubuntu-24.04
     environment: posting   # holds the secrets below; can be restricted to the main branch
     timeout-minutes: 30
