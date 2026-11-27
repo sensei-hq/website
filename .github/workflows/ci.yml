@@ -25,3 +25,11 @@ jobs:
       - run: bun run test:e2e
         env:
           CI: true
+      # Screenshots and traces of failed e2e tests, to diagnose flakes from the real frames.
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-results
+          path: sites/*/test-results/
+          retention-days: 7
+          if-no-files-found: ignore

@@ -18,6 +18,9 @@ import pixelmatch from 'pixelmatch';
 //   shot before Chrome re-rasterises it, leaving 9–25 differing pixels of edge noise in a ~2M-pixel frame (seen at
 //   "hook at 3.25s", never reproduced in isolation). A wrong or shifted glyph at these sizes changes hundreds of
 //   pixels, so a 100-pixel budget absorbs the noise and still fails every visible regression.
+// - Settling: the compositor can still be rasterising after seek's two animation frames (CI 2-core runner,
+//   "close at 42.54s", 221 px, 2026-11-27). Like toHaveScreenshot, each sample is shot until two consecutive
+//   captures agree, so a half-rasterised frame is never compared.
 const CONVERTED = ['measure-right-work'];
 const THRESHOLD = 0.1;
 const MAX_DIFF_PIXELS = 100;
@@ -39,10 +42,21 @@ async function shoot(browser: Browser, slug: string, o: 'landscape' | 'portrait'
   const shots: Buffer[] = [];
   for (const smp of samples) {
     await page.evaluate((t) => (window as unknown as { __show: ShowApi }).__show.seek(t), smp.t);
-    shots.push(await page.screenshot());
+    shots.push(await settledShot(page));
   }
   await context.close();
   return { samples, shots };
+}
+
+/** A screenshot once the frame stops changing: two consecutive captures with no differing pixel (at most 5 tries). */
+async function settledShot(page: Page) {
+  let prev = await page.screenshot();
+  for (let i = 0; i < 4; i++) {
+    const next = await page.screenshot();
+    if (diffPixels(prev, next) === 0) return next;
+    prev = next;
+  }
+  return prev;
 }
 
 const diffPixels = (a: Buffer, b: Buffer) => {
