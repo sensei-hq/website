@@ -59,9 +59,9 @@ async function settledShot(page: Page) {
   return prev;
 }
 
-const diffPixels = (a: Buffer, b: Buffer) => {
+const diffPixels = (a: Buffer, b: Buffer, out?: PNG) => {
   const p1 = PNG.sync.read(a), p2 = PNG.sync.read(b);
-  return pixelmatch(p1.data, p2.data, null, p1.width, p1.height, { threshold: THRESHOLD });
+  return pixelmatch(p1.data, p2.data, out?.data ?? null, p1.width, p1.height, { threshold: THRESHOLD });
 };
 
 for (const slug of CONVERTED) {
@@ -70,9 +70,19 @@ for (const slug of CONVERTED) {
       const fromJs = await shoot(browser, slug, o, 'js');
       const fromJson = await shoot(browser, slug, o, 'json');
       expect(fromJson.samples.map((s) => s.t)).toEqual(fromJs.samples.map((s) => s.t));
-      fromJson.shots.forEach((shot, i) => {
-        expect(diffPixels(shot, fromJs.shots[i]), `${fromJson.samples[i].id} at ${fromJson.samples[i].t.toFixed(2)}s`).toBeLessThanOrEqual(MAX_DIFF_PIXELS);
-      });
+      for (const [i, shot] of fromJson.shots.entries()) {
+        const label = `${fromJson.samples[i].id} at ${fromJson.samples[i].t.toFixed(2)}s`;
+        const { width, height } = PNG.sync.read(shot);
+        const diff = new PNG({ width, height });
+        const n = diffPixels(shot, fromJs.shots[i], diff);
+        // A failing frame keeps its evidence (CI uploads test-results): both renders and the diff.
+        if (n > MAX_DIFF_PIXELS) {
+          await test.info().attach(`${label} js`, { body: fromJs.shots[i], contentType: 'image/png' });
+          await test.info().attach(`${label} json`, { body: shot, contentType: 'image/png' });
+          await test.info().attach(`${label} diff`, { body: PNG.sync.write(diff), contentType: 'image/png' });
+        }
+        expect(n, label).toBeLessThanOrEqual(MAX_DIFF_PIXELS);
+      }
     });
   }
 }
