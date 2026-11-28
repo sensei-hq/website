@@ -1,0 +1,22 @@
+{
+  "scenes": {
+    "hook": {
+      "voice": 0.6,
+      "dur": 6.3
+    },
+    "layers": {
+      "voice": 0.6,
+      "dur": 6.7
+    },
+    "kavach": {
+      "voice": 0.6
+    },
+    "terminal": {
+      "voice": 0.6,
+      "dur": 7.1
+    },
+    "close": {
+      "voice": 0.6
+    }
+  }
+}

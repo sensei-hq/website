@@ -1,0 +1,20 @@
+{
+  "scenes": {
+    "hook": {
+      "voice": 0.6
+    },
+    "derive": {
+      "voice": 0.6
+    },
+    "fields": {
+      "voice": 0.6,
+      "dur": 7.1
+    },
+    "validation": {
+      "voice": 0.6
+    },
+    "close": {
+      "voice": 0.6
+    }
+  }
+}

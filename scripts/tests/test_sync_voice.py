@@ -69,5 +69,31 @@ class SyncVoicePlan(unittest.TestCase):
         self.assertEqual(sync_voice.manifest(plan), {'short-two': 3, 'wide-one': 2})
 
 
+
+class VoiceCues(unittest.TestCase):
+    """The player narrates only scenes with a voice cue in timing.json; the library shorts had none (website: .org
+    films silent with their takes published). Each published film is cued as films/tools/fit.py fits it: the voice
+    starts LEAD (0.6 s) into the scene, and the scene runs at least LEAD + take + TAIL (1.2 s), rounded up to 0.1 s."""
+
+    SCENES = [{'id': 'hook', 'dur': 6}, {'id': 'close', 'dur': 5.5}]
+
+    def test_every_scene_gets_a_voice_cue(self):
+        t = sync_voice.cue_timing({}, self.SCENES, [2.0, 1.5])
+        self.assertEqual(t, {'scenes': {'hook': {'voice': 0.6}, 'close': {'voice': 0.6}}})
+
+    def test_a_scene_shorter_than_its_take_needs_runs_longer(self):
+        t = sync_voice.cue_timing({}, self.SCENES, [5.3, 2.34])
+        self.assertEqual(t['scenes']['hook'], {'voice': 0.6, 'dur': 7.1})   # 0.6 + 5.3 + 1.2
+        self.assertEqual(t['scenes']['close'], {'voice': 0.6})              # 4.14 fits in 5.5
+
+    def test_hand_set_holds_are_kept_and_count_toward_the_running_time(self):
+        t = sync_voice.cue_timing({'scenes': {'hook': {'holds': [[2, 1.5]]}}}, self.SCENES, [5.3, 1.0])
+        self.assertEqual(t['scenes']['hook'], {'holds': [[2, 1.5]], 'voice': 0.6})   # 6 + 1.5 >= 7.1
+
+    def test_a_stale_stretch_is_dropped_when_the_take_fits(self):
+        t = sync_voice.cue_timing({'scenes': {'hook': {'dur': 9, 'voice': 0.6}}}, self.SCENES, [1.0, 1.0])
+        self.assertEqual(t['scenes']['hook'], {'voice': 0.6})
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -2,7 +2,8 @@
   // The article's film: a title card that loads the YouTube player on click (no third-party request before that).
   // With no video id yet, the card says the film is coming. With a cover (the film's closing punchline card), the card
   // shows that instead of the drawn title, since the cover already carries the title.
-  // With a motion film (`film`) and no video yet, the card plays the film itself as a slideshow, with its music.
+  // With a motion film (`film`) and no video yet, the card plays the film itself as a slideshow, with its music and
+  // narration: the click is the reader asking for sound, so the show starts with it on (the toggle still mutes it).
   // With a cover the player mounts as a poster (its toolbar visible before the first play) and starts with
   // sound on; without JS the cover image still shows.
   import { MotionShow } from '@senseihq/emaki-svelte';
@@ -15,6 +16,7 @@
     onccchange?: (on: boolean) => void; onvoicechange?: (on: boolean) => void;
   } = $props();
   let playing = $state(false);
+  let sound = $state(true);
 </script>
 
 <div class="film" class:playing={playing || cover}>
@@ -29,7 +31,7 @@
       <span class="meta mono">Play the film · {length} · with music</span>
     </button>
   {:else if film && !youtube}
-    <MotionShow {film} playerHref={`/show/${film}`} {cc} {voice} {onccchange} {onvoicechange} />
+    <MotionShow {film} playerHref={`/show/${film}`} {sound} onsoundchange={(on) => (sound = on)} {cc} {voice} {onccchange} {onvoicechange} />
   {:else if playing && youtube}
     <iframe
       src="https://www.youtube-nocookie.com/embed/{youtube}?autoplay=1&rel=0&cc_load_policy=1"

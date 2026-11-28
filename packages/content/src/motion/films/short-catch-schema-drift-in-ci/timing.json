@@ -1,0 +1,24 @@
+{
+  "scenes": {
+    "hook": {
+      "voice": 0.6
+    },
+    "pileup": {
+      "voice": 0.6
+    },
+    "diff": {
+      "voice": 0.6,
+      "dur": 9.9
+    },
+    "red-check": {
+      "voice": 0.6,
+      "dur": 7.2
+    },
+    "green-check": {
+      "voice": 0.6
+    },
+    "close": {
+      "voice": 0.6
+    }
+  }
+}

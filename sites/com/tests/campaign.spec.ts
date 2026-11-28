@@ -45,8 +45,8 @@ test('cc stays shared while sound stays per player', async ({ page }) => {
   // And back: a figure toggle drives the film.
   await page.locator('.emk-scene-cc').first().click();
   await expect(page.locator('.emk-cap')).toBeHidden();
-  // Sound never spreads: the film must not sound its figures.
-  await page.getByRole('button', { name: 'Sound on', exact: true }).click();
+  // Sound never spreads: the card starts the film with sound on, and its figures stay silent.
+  await expect(page.getByRole('button', { name: 'Sound off', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await expect(page.locator('.ms-snd').first()).toHaveAttribute('aria-pressed', 'false');
   // And a figure toggle sounds only itself.
   await page.locator('.ms-snd').first().click();
@@ -64,7 +64,7 @@ test('voice off cuts narration everywhere while the film plays', async ({ page }
   await page.waitForLoadState('networkidle');
   await page.getByRole('button', { name: /Play the film/ }).click();
   await page.locator('.emk-bar').waitFor();
-  await page.getByRole('button', { name: 'Sound on', exact: true }).click();
+  // The card starts the film with sound on, so its narration is fetched at once.
   await expect.poll(() => takes.length, { timeout: 15000 }).toBeGreaterThan(0);
   // A figure sounds only on its own toggle, narrating while voice is on.
   const fig = page.locator('.ms-snd').first();
