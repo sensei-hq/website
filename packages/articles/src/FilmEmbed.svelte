@@ -57,6 +57,9 @@
 </div>
 
 <style>
+  /* The poster's own round play button and "Play the film" chip duplicate the toolbar's play (owner, 2026-11-28);
+     the poster button itself stays, so a click anywhere on the picture still starts the film. */
+  .film :global(.ms-play), .film :global(.ms-chip) { display: none; }
   .film { position: relative; aspect-ratio: 16 / 9; border: 1px solid var(--paper-edge); border-radius: 12px; overflow: hidden; background: var(--paper-soft); --emk-accent: var(--accent); }
   /* Once playing, the card sizes to content (aspect-locked stage plus the bar below); the fixed
      ratio would clip the bar and letterbox the stage. */
