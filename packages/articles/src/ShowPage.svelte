@@ -1,7 +1,7 @@
 <script lang="ts">
   // The show shell: a core Show plus the standard chrome, fitted to the window.
   //   ←/→ scene · Space play/pause · M sound · R replay scene · O orientation · F fullscreen · Home restart · click toggles play
-  // Query: ?o=portrait|landscape  ?slide=N (1-based)  ?capture=1 (no chrome, stage at 1:1, window.__show)  ?src=json|js (force a scene source; default prefers JSON)  ?chrome=0 (hide the toolbar for recordings)
+  // Query: ?o=portrait|landscape  ?slide=N (1-based)  ?capture=1 (no chrome, stage at 1:1, window.__show)  ?src=json|js (force a scene source; default prefers JSON)  ?chrome=0 (hide the toolbar for recordings)  ?mode=dark|light (the film's look; capture defaults to light, so renders never depend on the machine)
   import { onMount } from 'svelte';
   import { page } from '$app/state';
   import { film as getFilm, timeline, filmScore, coverTime, SIZES, type Layout } from '@site/content/motion/films';
@@ -13,6 +13,7 @@
   const q = page.url.searchParams;
   const capture = q.get('capture') === '1';
   const src = q.get('src') === 'js' ? 'js' : q.get('src') === 'json' ? 'json' : undefined;
+  const mode = q.get('mode') === 'dark' ? 'dark' : q.get('mode') === 'light' ? 'light' : undefined;
   const slide = Math.max(1, Math.min(f.scenes.length, Number(q.get('slide') ?? 1)));
   let layout: Layout = q.get('o') === 'portrait' ? 'portrait' : 'landscape';
   const chromeOn = !capture && q.get('chrome') !== '0';
@@ -46,7 +47,7 @@
     let chrome: { destroy: () => void } | null = null;
     let offPlaying = () => {};
     const ready = (async () => {
-      show = await createShow(host, f.slug, { layout, src, capture, slide });
+      show = await createShow(host, f.slug, { layout, src, capture, slide, mode });
       if (dead) return;
       fit();
       frameEl.dataset.playing = String(show.state.playing);
@@ -94,7 +95,7 @@
 </svelte:head>
 <svelte:window onkeydown={onkey} />
 
-<div class="shell" class:capture style="--bg:{f.background}">
+<div class="shell" class:capture style="--bg:{mode === 'dark' && f.dark ? f.dark.background : f.background}">
   <div class="player" bind:this={player}>
     <div
       class="frame"
