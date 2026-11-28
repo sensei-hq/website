@@ -61,3 +61,17 @@ test('a fitted short plays its takes with the picture', async ({ page }) => {
   await expect.poll(() => takes.length, { timeout: 15000 }).toBeGreaterThan(0);
   expect(takes[0]).toMatch(/^200 https?:\/\/[^/]+\/api\/campaign\/scenes-as-data\/takes\/1$/);
 });
+
+// Owner, 2026-11-28: on an article whose film has a cover, the player opened with a round play button and a
+// "Play the film · 2:25" chip over the picture, on top of the toolbar's own play button. The toolbar is the one
+// control; a click anywhere on the picture still starts the film.
+test('an article film with a cover shows the toolbar, without extra play overlays', async ({ page }) => {
+  await page.goto('/articles/ai-security-essentials');
+  await page.waitForLoadState('networkidle');
+  const film = page.locator('.film').first();
+  await expect(film.locator('.emk-toggle')).toBeVisible();
+  await expect(film.locator('.ms-play')).toBeHidden();
+  await expect(film.locator('.ms-chip')).toBeHidden();
+  await film.locator('.ms-poster').click();
+  await expect(film.locator('.emk-toggle')).toHaveAttribute('aria-label', /Pause/);
+});
