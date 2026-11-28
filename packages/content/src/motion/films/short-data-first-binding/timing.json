@@ -1,0 +1,21 @@
+{
+  "scenes": {
+    "hook": {
+      "voice": 0.6
+    },
+    "reshape": {
+      "voice": 0.6,
+      "dur": 7.6
+    },
+    "adapt": {
+      "voice": 0.6
+    },
+    "original": {
+      "voice": 0.6,
+      "dur": 6.1
+    },
+    "close": {
+      "voice": 0.6
+    }
+  }
+}

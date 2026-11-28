@@ -1,0 +1,19 @@
+{
+  "scenes": {
+    "hook": {
+      "voice": 0.6
+    },
+    "emit": {
+      "voice": 0.6,
+      "dur": 9.2
+    },
+    "diagram": {
+      "voice": 0.6,
+      "dur": 8.5
+    },
+    "close": {
+      "voice": 0.6,
+      "dur": 5.8
+    }
+  }
+}

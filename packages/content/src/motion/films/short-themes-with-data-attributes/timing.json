@@ -1,0 +1,20 @@
+{
+  "scenes": {
+    "hook": {
+      "voice": 0.6
+    },
+    "annotate": {
+      "voice": 0.6
+    },
+    "restyle": {
+      "voice": 0.6,
+      "dur": 8.3
+    },
+    "tokens": {
+      "voice": 0.6
+    },
+    "close": {
+      "voice": 0.6
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "scenes": {
+    "hook": {
+      "voice": 0.6
+    },
+    "split": {
+      "voice": 0.6,
+      "dur": 8.7
+    },
+    "folder": {
+      "voice": 0.6,
+      "dur": 7.3
+    },
+    "commands": {
+      "voice": 0.6,
+      "dur": 7.2
+    },
+    "pr": {
+      "voice": 0.6,
+      "dur": 7.9
+    },
+    "close": {
+      "voice": 0.6,
+      "dur": 6.7
+    }
+  }
+}

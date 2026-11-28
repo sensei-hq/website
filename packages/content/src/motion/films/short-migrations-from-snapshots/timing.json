@@ -1,0 +1,23 @@
+{
+  "scenes": {
+    "hook": {
+      "voice": 0.6
+    },
+    "checklist": {
+      "voice": 0.6,
+      "dur": 7.0
+    },
+    "snapshots": {
+      "voice": 0.6,
+      "dur": 6.6
+    },
+    "status": {
+      "voice": 0.6,
+      "dur": 7.1
+    },
+    "close": {
+      "voice": 0.6,
+      "dur": 5.6
+    }
+  }
+}
