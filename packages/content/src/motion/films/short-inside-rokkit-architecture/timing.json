@@ -1,0 +1,20 @@
+{
+  "scenes": {
+    "hook": {
+      "voice": 0.6
+    },
+    "layers": {
+      "voice": 0.6,
+      "dur": 9.8
+    },
+    "rule": {
+      "voice": 0.6
+    },
+    "compose": {
+      "voice": 0.6
+    },
+    "close": {
+      "voice": 0.6
+    }
+  }
+}

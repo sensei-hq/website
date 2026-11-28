@@ -10,15 +10,20 @@ API played them, so deployed films were silent. This script:
   4. uploads it to the sensei-hq-media bucket as voice/<film>/take-NN.mp3
      (served at media.sensei-hq.com and media.sensei-hq.org),
   5. writes packages/content/src/motion/voice-manifest.json ({film: take count}), which the player
-     reads in production. Commit the manifest; the next deploy speaks.
+     reads in production,
+  6. cues every scene of each published film in its timing.json (the player narrates only cued scenes):
+     the voice starts LEAD s in, and a scene shorter than LEAD + take + TAIL runs that long (as films/tools/fit.py).
+  Commit the manifest and the timing files; the next deploy speaks.
 
-    python3 scripts/sync_voice.py            # encode, upload, write the manifest
-    python3 scripts/sync_voice.py --dry-run  # show the plan only
+    python3 scripts/sync_voice.py              # encode, upload, write the manifest and the cues
+    python3 scripts/sync_voice.py --cues-only  # write the cues only (the takes are already uploaded)
+    python3 scripts/sync_voice.py --dry-run    # show the plan only
 
 Needs ffmpeg and a logged-in wrangler (bunx wrangler login, from sites/com).
 """
 import argparse
 import json
+import math
 import subprocess
 import sys
 import tempfile
@@ -30,6 +35,8 @@ from zoneinfo import ZoneInfo
 import site_paths
 
 BUCKET = 'sensei-hq-media'
+LEAD = 0.6   # the voice starts this long into each scene (films/tools/build.py)
+TAIL = 1.2   # at least this long between the end of a take and the cut
 MANIFEST = site_paths.CONTENT / 'motion' / 'voice-manifest.json'
 
 
@@ -81,6 +88,39 @@ def manifest(plans: list) -> dict:
     return {p.film: p.takes for p in sorted(plans, key=lambda p: p.film)}
 
 
+def cue_timing(timing: dict, scenes: list, takes: list) -> dict:
+    """timing.json with every scene cued for its take (seconds, in scene order); holds and other keys are kept."""
+    out = json.loads(json.dumps(timing)) if timing else {}
+    tsc = out.setdefault('scenes', {})
+    for s, length in zip(scenes, takes):
+        cfg = tsc.setdefault(s['id'], {})
+        cfg['voice'] = LEAD
+        base = s['dur'] + sum(h[1] for h in cfg.get('holds', []))
+        need = math.ceil(round((LEAD + length + TAIL) * 10, 6)) / 10
+        if need > base + 1e-6:
+            cfg['dur'] = need
+        else:
+            cfg.pop('dur', None)
+    return out
+
+
+def take_length(wav: Path) -> float:
+    r = subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', str(wav)],
+                       check=True, capture_output=True, text=True)
+    return float(r.stdout.strip())
+
+
+def write_cues(p: FilmPlan, motion: Path):
+    folder = motion / p.film
+    scenes = json.loads((folder / 'film.json').read_text())['scenes']
+    tpath = folder / 'timing.json'
+    timing = json.loads(tpath.read_text()) if tpath.exists() else {}
+    cued = cue_timing(timing, scenes, [take_length(wav) for wav, _ in p.files])
+    if cued != timing:
+        tpath.write_text(json.dumps(cued, indent=2) + '\n')
+        print(f'  cued {p.film}')
+
+
 def encode(wav: Path, mp3: Path):
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(wav), '-ac', '1', '-b:a', '128k', str(mp3)], check=True)
 
@@ -96,6 +136,7 @@ def upload(mp3: Path, key: str):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--dry-run', action='store_true')
+    ap.add_argument('--cues-only', action='store_true', help='write the timing cues only; upload nothing')
     args = ap.parse_args()
 
     today = datetime.now(ZoneInfo('America/Chicago')).strftime('%Y-%m-%d')
@@ -107,6 +148,11 @@ def main():
         print(f'  skip {what}: {why}')
     print(f'{len(plans)} films, {sum(p.takes for p in plans)} takes (published by {today})')
     if args.dry_run:
+        return 0
+
+    for p in plans:
+        write_cues(p, site_paths.MOTION_FILMS)
+    if args.cues_only:
         return 0
 
     with tempfile.TemporaryDirectory() as tmp:

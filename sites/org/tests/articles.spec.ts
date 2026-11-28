@@ -55,6 +55,18 @@ test.describe('articles on sensei-hq.org', () => {
     await expect(page.locator('.film .emk-popout')).toHaveAttribute('href', '/show/short-schema-as-code');
   });
 
+  // Owner, 2026-11-27: the library Shorts played silent on .org. The click on the card is the reader asking for the film,
+  // so it starts with sound on, and the first scene's narration take is fetched (dev: the review API; deployed: the
+  // media domain). Both were missing: the Shorts had no voice cues, and the card started the show muted.
+  test('the film card plays the Short with its narration', async ({ page }) => {
+    await page.goto('/articles/forms-from-a-schema');
+    await page.waitForLoadState('networkidle');
+    const take = page.waitForRequest(/\/takes\/1$|\/take-01\.mp3$/, { timeout: 10_000 });
+    await page.locator('.film').getByRole('button', { name: /^Play the film/ }).click();
+    await expect(page.locator('.film button[title="Sound (M)"]')).toHaveAttribute('aria-pressed', 'true');
+    await take;
+  });
+
   test('the playing stage fills its box edge-to-edge', async ({ page }) => {
     await page.goto('/articles/schema-as-code');
     await page.waitForLoadState('networkidle');

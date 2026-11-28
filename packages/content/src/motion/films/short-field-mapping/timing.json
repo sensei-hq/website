@@ -1,0 +1,21 @@
+{
+  "scenes": {
+    "hook": {
+      "voice": 0.6,
+      "dur": 6.1
+    },
+    "mapping": {
+      "voice": 0.6
+    },
+    "three-ways": {
+      "voice": 0.6
+    },
+    "untouched": {
+      "voice": 0.6,
+      "dur": 6.7
+    },
+    "close": {
+      "voice": 0.6
+    }
+  }
+}

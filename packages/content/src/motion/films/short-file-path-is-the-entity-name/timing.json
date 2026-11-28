@@ -1,0 +1,24 @@
+{
+  "scenes": {
+    "hook": {
+      "voice": 0.6
+    },
+    "manifest": {
+      "voice": 0.6
+    },
+    "path": {
+      "voice": 0.6,
+      "dur": 10.5
+    },
+    "addfile": {
+      "voice": 0.6
+    },
+    "assistant": {
+      "voice": 0.6,
+      "dur": 6.6
+    },
+    "close": {
+      "voice": 0.6
+    }
+  }
+}

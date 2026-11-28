@@ -1,0 +1,20 @@
+{
+  "scenes": {
+    "hook": {
+      "voice": 0.6
+    },
+    "terminal": {
+      "voice": 0.6
+    },
+    "import": {
+      "voice": 0.6,
+      "dur": 7.7
+    },
+    "pr": {
+      "voice": 0.6
+    },
+    "close": {
+      "voice": 0.6
+    }
+  }
+}
